@@ -1,5 +1,11 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { Stack, Text, Inline } from "@staple-css/primitives";
+import Prism from "prismjs";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-json";
+import "prismjs/components/prism-bash";
 
 interface CodePreviewProps {
   code: string;
@@ -28,6 +34,29 @@ export function CodePreview({
   const toggleCollapsed = useCallback(() => {
     setCollapsed((c) => !c);
   }, []);
+
+  // Map language names to Prism grammar keys
+  const prismLanguage = useMemo(() => {
+    const langMap: Record<string, string> = {
+      css: "css",
+      ts: "typescript",
+      typescript: "typescript",
+      js: "javascript",
+      javascript: "javascript",
+      json: "json",
+      bash: "bash",
+      sh: "bash",
+      shell: "bash",
+    };
+    return langMap[language] || "css";
+  }, [language]);
+
+  // Highlight code
+  const highlightedCode = useMemo(() => {
+    const grammar = Prism.languages[prismLanguage];
+    if (!grammar) return code;
+    return Prism.highlight(code, grammar, prismLanguage);
+  }, [code, prismLanguage]);
 
   return (
     <Stack gap={0}>
@@ -66,7 +95,10 @@ export function CodePreview({
       )}
       {(!collapsible || !collapsed) && (
         <pre className="code-block code-preview-content">
-          <code>{code}</code>
+          <code
+            className={`language-${prismLanguage}`}
+            dangerouslySetInnerHTML={{ __html: highlightedCode }}
+          />
         </pre>
       )}
     </Stack>
@@ -83,6 +115,7 @@ interface TabCodePreviewProps {
 
 export function TabCodePreview({ tabs }: TabCodePreviewProps) {
   const [activeTab, setActiveTab] = useState(0);
+  const currentTab = tabs[activeTab];
 
   return (
     <Stack gap={0}>
@@ -97,10 +130,10 @@ export function TabCodePreview({ tabs }: TabCodePreviewProps) {
           </button>
         ))}
       </Inline>
-      {tabs[activeTab] && (
+      {currentTab && (
         <CodePreview
-          code={tabs[activeTab].code}
-          language={tabs[activeTab].language}
+          code={currentTab.code}
+          language={currentTab.language}
         />
       )}
     </Stack>

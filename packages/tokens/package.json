@@ -26,6 +26,8 @@
     "./tokens.css": "./dist/tokens.css",
     "./themes.css": "./dist/themes.css",
     "./density.css": "./dist/density.css",
+    "./palettes.css": "./dist/palettes.css",
+    "./breakpoints.css": "./dist/breakpoints.css",
     "./all.css": "./dist/all.css"
   },
   "files": [

@@ -90,3 +90,90 @@ export {
   generateSemanticColorsFromPrimary,
   type GeneratedCss,
 } from "./generator.js";
+
+// Re-export color palettes (Tailwind-style)
+export {
+  palettes,
+  paletteVar,
+  generatePalettesCss,
+  slate,
+  gray,
+  zinc,
+  neutral,
+  stone,
+  red,
+  orange,
+  amber,
+  yellow,
+  lime,
+  green,
+  emerald,
+  teal,
+  cyan,
+  sky,
+  blue,
+  indigo,
+  violet,
+  purple,
+  fuchsia,
+  pink,
+  rose,
+  type PaletteShade,
+  type PaletteName,
+  type ColorPalette as TailwindColorPalette,
+} from "./palettes.js";
+
+// Re-export breakpoints
+export {
+  defaultBreakpoints,
+  bootstrapBreakpoints,
+  minimalBreakpoints,
+  fineGrainedBreakpoints,
+  breakpointPresets,
+  getBreakpoints,
+  generateBreakpointVars,
+  generateBreakpointsCss,
+  getMediaQueries,
+  createBreakpointHelpers,
+  type BreakpointConfig,
+  type BreakpointsOptions,
+  type BreakpointPreset,
+} from "./breakpoints.js";
+
+// Re-export builder config schema
+export {
+  seedsSchema,
+  generationParamsSchema,
+  paletteSchema,
+  semanticMapSchema,
+  overrideSchema,
+  builderConfigSchema,
+  validateBuilderConfig,
+  validateSemanticMap,
+  validateOverrides,
+  defaultSeeds,
+  defaultGenerationParams,
+  defaultSemanticMapLight,
+  defaultSemanticMapDark,
+  type Seeds,
+  type GenerationParams,
+  type Palette,
+  type SemanticMap,
+  type SemanticRef,
+  type Override,
+  type OverrideTarget,
+  type BuilderConfig,
+} from "./builder-config.js";
+
+// Re-export builder generator
+export {
+  generatePalettes,
+  generateHarmonySuggestions,
+  resolveSemanticRef,
+  resolveSemanticColors,
+  applyPaletteOverrides,
+  applySemanticOverrides,
+  generateBuilderCss,
+  createDefaultBuilderConfig,
+  type HarmonySuggestion,
+} from "./builder-generator.js";

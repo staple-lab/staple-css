@@ -23,6 +23,8 @@ import {
   densityComfortable,
   densityCompact,
 } from "./tokens.js";
+import { generatePalettesCss } from "./palettes.js";
+import { generateBreakpointsCss } from "./breakpoints.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "..", "dist");
@@ -163,8 +165,22 @@ const allCss = `/**
 
 writeFileSync(join(distDir, "all.css"), allCss);
 
+// ============================================================================
+// palettes.css - Tailwind-style color palettes
+// ============================================================================
+const palettesCss = generatePalettesCss();
+writeFileSync(join(distDir, "palettes.css"), palettesCss);
+
+// ============================================================================
+// breakpoints.css - Responsive breakpoints
+// ============================================================================
+const breakpointsCss = generateBreakpointsCss();
+writeFileSync(join(distDir, "breakpoints.css"), breakpointsCss);
+
 console.log("Generated CSS files in dist/:");
 console.log("  - tokens.css");
 console.log("  - themes.css");
 console.log("  - density.css");
+console.log("  - palettes.css");
+console.log("  - breakpoints.css");
 console.log("  - all.css");

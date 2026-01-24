@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Single Page App redirect for GitHub Pages
+    // Preserves the path by storing it and redirecting to index.html
+    const path = window.location.pathname;
+    const search = window.location.search;
+    const hash = window.location.hash;
+
+    // Store the path in sessionStorage so index.html can restore it
+    sessionStorage.setItem('spa-redirect', path + search + hash);
+
+    // Redirect to the base path (handled by index.html)
+    window.location.replace(window.location.origin + '/staple-css/');
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>

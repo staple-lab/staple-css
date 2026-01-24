@@ -11,6 +11,7 @@
   "scripts": {
     "build": "npm run build -ws --if-present",
     "build:packages": "npm run build -w @staple-css/tokens -w @staple-css/primitives",
+    "build:docs": "npm run build -w docs",
     "dev": "npm run dev -w docs",
     "dev:demo": "npm run dev -w demo",
     "test": "vitest run",

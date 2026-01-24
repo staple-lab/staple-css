@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  // Support GitHub Pages deployment with BASE_URL env var
+  base: process.env.BASE_URL || "/",
   server: {
     port: 3000,
   },

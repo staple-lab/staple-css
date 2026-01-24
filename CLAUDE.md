@@ -27,10 +27,12 @@ staple-css/
 │   │   │   ├── generate.ts  # CSS generator script
 │   │   │   └── index.ts     # TypeScript exports
 │   │   └── dist/            # Generated CSS files
-│   │       ├── tokens.css   # Base tokens
-│   │       ├── themes.css   # Light/dark themes
-│   │       ├── density.css  # Comfortable/compact density
-│   │       └── all.css      # Combined import
+│   │       ├── tokens.css      # Base tokens
+│   │       ├── themes.css      # Light/dark themes
+│   │       ├── density.css     # Comfortable/compact density
+│   │       ├── palettes.css    # Tailwind-style color palettes (50-950)
+│   │       ├── breakpoints.css # Responsive breakpoints
+│   │       └── all.css         # Combined import
 │   └── primitives/       # @staple-css/primitives - React components
 │       ├── src/
 │       │   ├── Box.tsx, Stack.tsx, etc.  # Components
@@ -212,3 +214,156 @@ Primitives map to roles (layout, typography, surface), not HTML elements. There'
 ### No Utility Classes
 
 staple-css is not a utility-first framework. Props are the API; classes are implementation details.
+
+## Responsive Design
+
+### Intrinsic Responsive Patterns
+
+The recommended approach for responsive layouts is **intrinsic design** using CSS Grid with `auto-fill`/`auto-fit` and `minmax()`. This avoids media queries entirely:
+
+```css
+/* Grid that automatically adjusts columns based on available space */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--st-space-4);
+}
+```
+
+This pattern is used throughout the docs app and is the preferred method.
+
+### Breakpoints System
+
+For cases where you need explicit breakpoints, staple-css provides a configurable breakpoint system.
+
+**Import breakpoints CSS:**
+```css
+@import "@staple-css/tokens/breakpoints.css";
+```
+
+**Default breakpoints (Tailwind-style):**
+| Name | Min-Width | CSS Variable |
+|------|-----------|--------------|
+| sm   | 640px     | `--st-screen-sm` |
+| md   | 768px     | `--st-screen-md` |
+| lg   | 1024px    | `--st-screen-lg` |
+| xl   | 1280px    | `--st-screen-xl` |
+| 2xl  | 1536px    | `--st-screen-2xl` |
+
+**Using breakpoints in CSS:**
+```css
+/* Mobile-first: start with mobile styles */
+.card {
+  padding: var(--st-space-3);
+}
+
+/* Then add breakpoint overrides */
+@media (min-width: 768px) {
+  .card {
+    padding: var(--st-space-5);
+  }
+}
+```
+
+**Visibility utilities included:**
+```css
+.st-hide-md { }        /* Hidden at md and up */
+.st-show-md { }        /* Shown at md and up */
+.st-hide-below-md { }  /* Hidden below md */
+.st-show-below-md { }  /* Shown below md */
+```
+
+### Custom Breakpoints Configuration
+
+Generate breakpoints with custom prefixes or values:
+
+```typescript
+import { generateBreakpointsCss, type BreakpointsOptions } from "@staple-css/tokens";
+
+// Custom prefix
+const css = generateBreakpointsCss({
+  prefix: "my",           // Default: "st"
+  screenPrefix: "bp",     // Default: "screen"
+});
+// Generates: --my-bp-sm, --my-bp-md, etc.
+
+// Custom breakpoints
+const css = generateBreakpointsCss({
+  breakpoints: [
+    { name: "mobile", minWidth: 480 },
+    { name: "tablet", minWidth: 768 },
+    { name: "desktop", minWidth: 1200 },
+  ],
+});
+```
+
+**Available presets:**
+```typescript
+import { breakpointPresets, getBreakpoints } from "@staple-css/tokens";
+
+// Tailwind (default): sm, md, lg, xl, 2xl
+const tailwind = getBreakpoints("tailwind");
+
+// Bootstrap: sm, md, lg, xl, xxl
+const bootstrap = getBreakpoints("bootstrap");
+
+// Minimal: tablet, desktop, wide
+const minimal = getBreakpoints("minimal");
+
+// Fine-grained: xs, sm, md, lg, xl, 2xl, 3xl
+const fine = getBreakpoints("fine-grained");
+```
+
+**TypeScript helpers for runtime breakpoint detection:**
+```typescript
+import { createBreakpointHelpers } from "@staple-css/tokens";
+
+const bp = createBreakpointHelpers();
+
+// Check current breakpoint
+if (bp.matches("md")) {
+  // Viewport is md or larger
+}
+
+// Get current breakpoint name
+const current = bp.current(); // "lg" | "md" | etc.
+
+// Subscribe to changes
+const unsubscribe = bp.onChange((breakpoint) => {
+  console.log("Now at:", breakpoint);
+});
+```
+
+## Color Palettes
+
+### Tailwind-Compatible Palettes
+
+22 color palettes with 11 shades each (50-950):
+
+```css
+@import "@staple-css/tokens/palettes.css";
+
+.button {
+  background: var(--st-blue-600);
+}
+.button:hover {
+  background: var(--st-blue-700);
+}
+```
+
+**Available palettes:** slate, gray, zinc, neutral, stone, red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose
+
+### OKLCH Color Tools
+
+Generate custom palettes using perceptually uniform OKLCH color space:
+
+```typescript
+import { generateRamp, generateHarmony, hexToOklch } from "@staple-css/tokens/color";
+
+// Generate 12-step ramp from base color
+const ramp = generateRamp({ baseColor: "#2563eb" });
+
+// Generate color harmonies
+const complementary = generateHarmony("#2563eb", "complementary");
+const triadic = generateHarmony("#2563eb", "triadic");
+```

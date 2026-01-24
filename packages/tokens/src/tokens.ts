@@ -40,8 +40,8 @@ export type RadiusToken = keyof typeof radiusScale;
 // ============================================================================
 export const shadowScale = {
   0: "none",
-  1: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-  2: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+  1: "0 0.0625rem 0.125rem 0 rgb(0 0 0 / 0.05)",
+  2: "0 0.25rem 0.375rem -0.0625rem rgb(0 0 0 / 0.1), 0 0.125rem 0.25rem -0.125rem rgb(0 0 0 / 0.1)",
 } as const;
 
 export type ShadowToken = keyof typeof shadowScale;

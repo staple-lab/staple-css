@@ -1,4 +1,5 @@
 import { Container, Stack, Card, Text, Grid } from "@staple-css/primitives";
+import { CodePreview } from "../components/CodePreview";
 
 export function HomePage() {
   return (
@@ -64,11 +65,13 @@ export function HomePage() {
           <Text as="h2" size={4} weight="semibold">
             Quick Start
           </Text>
-          <Card pad={0} radius={2}>
-            <pre className="code-block">{`npm install @staple-css/tokens @staple-css/primitives`}</pre>
-          </Card>
-          <Card pad={0} radius={2}>
-            <pre className="code-block">{`// Import CSS at your app root
+          <CodePreview
+            code="npm install @staple-css/tokens @staple-css/primitives"
+            language="bash"
+            title="Install"
+          />
+          <CodePreview
+            code={`// Import CSS at your app root
 import "@staple-css/tokens/all.css";
 import "@staple-css/primitives/primitives.css";
 
@@ -86,8 +89,10 @@ function App() {
       </Stack>
     </Container>
   );
-}`}</pre>
-          </Card>
+}`}
+            language="typescript"
+            title="Usage"
+          />
         </Stack>
 
         {/* Packages */}

@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>staple-css Documentation</title>
     <meta name="description" content="A shared styling contract for apps—tokens, primitives, and accessible components." />
+    <!-- Handle SPA redirect from 404.html on GitHub Pages -->
+    <script>
+      (function() {
+        const redirect = sessionStorage.getItem('spa-redirect');
+        if (redirect) {
+          sessionStorage.removeItem('spa-redirect');
+          window.history.replaceState(null, '', redirect);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
