@@ -11,6 +11,18 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./config": {
+      "types": "./dist/config.d.ts",
+      "import": "./dist/config.js"
+    },
+    "./color": {
+      "types": "./dist/color/index.d.ts",
+      "import": "./dist/color/index.js"
+    },
+    "./generator": {
+      "types": "./dist/generator.d.ts",
+      "import": "./dist/generator.js"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./themes.css": "./dist/themes.css",
     "./density.css": "./dist/density.css",
@@ -26,6 +38,9 @@
     "build": "npm run generate && tsup",
     "generate": "node --import tsx src/generate.ts",
     "dev": "tsup --watch"
+  },
+  "dependencies": {
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "tsx": "^4.19.2",

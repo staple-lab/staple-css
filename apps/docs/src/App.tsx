@@ -5,6 +5,7 @@ import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
 import { WhyPage } from "./pages/WhyPage";
+import { StudioPage, ColorStudioPage, PromptsPage } from "./pages/studio";
 
 type Theme = "light" | "dark";
 type Density = "comfortable" | "compact";
@@ -52,6 +53,11 @@ export function App() {
                       Why
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink to="/studio" className="nav-link">
+                      Studio
+                    </NavLink>
+                  </li>
                 </Inline>
               </nav>
             </Inline>
@@ -73,6 +79,9 @@ export function App() {
           <Route path="/tokens" element={<TokensPage />} />
           <Route path="/primitives" element={<PrimitivesPage />} />
           <Route path="/why" element={<WhyPage />} />
+          <Route path="/studio" element={<StudioPage />} />
+          <Route path="/studio/colors" element={<ColorStudioPage />} />
+          <Route path="/studio/prompts" element={<PromptsPage />} />
         </Routes>
       </main>
 

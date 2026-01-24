@@ -68,3 +68,25 @@ export const cssVar = {
   color: (name: string) => `var(--st-color-${name})`,
   fontSize: (n: 0 | 1 | 2 | 3 | 4 | 5 | 6) => `var(--st-font-size-${n})`,
 } as const;
+
+// Re-export config module
+export {
+  tokenConfigSchema,
+  defaultConfig,
+  validateConfig,
+  mergeConfig,
+  configToJson,
+  configFromJson,
+  type TokenConfig,
+  type SemanticColors,
+  type DensityTokens,
+  type ColorPalette,
+} from "./config.js";
+
+// Re-export generator module
+export {
+  generateCss,
+  generatePreviewCss,
+  generateSemanticColorsFromPrimary,
+  type GeneratedCss,
+} from "./generator.js";
