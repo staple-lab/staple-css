@@ -1,0 +1,246 @@
+/**
+ * @staple-css/primitives - Component Styles
+ *
+ * Structural CSS for staple-css primitives.
+ * Requires @staple-css/tokens CSS to be loaded first.
+ *
+ * Uses:
+ * - :where() for low specificity (easy to override)
+ * - CSS logical properties for RTL support
+ * - CSS variables from @staple-css/tokens
+ */
+
+/* ============================================================================
+ * Box - Generic layout container
+ * ============================================================================ */
+:where(.st-Box) {
+  box-sizing: border-box;
+}
+
+/* Padding variants */
+:where(.st-Box--pad-0) { padding: var(--st-space-0); }
+:where(.st-Box--pad-1) { padding: var(--st-space-1); }
+:where(.st-Box--pad-2) { padding: var(--st-space-2); }
+:where(.st-Box--pad-3) { padding: var(--st-space-3); }
+:where(.st-Box--pad-4) { padding: var(--st-space-4); }
+:where(.st-Box--pad-5) { padding: var(--st-space-5); }
+:where(.st-Box--pad-6) { padding: var(--st-space-6); }
+:where(.st-Box--pad-7) { padding: var(--st-space-7); }
+:where(.st-Box--pad-8) { padding: var(--st-space-8); }
+
+/* Radius variants */
+:where(.st-Box--radius-0) { border-radius: var(--st-radius-0); }
+:where(.st-Box--radius-1) { border-radius: var(--st-radius-1); }
+:where(.st-Box--radius-2) { border-radius: var(--st-radius-2); }
+:where(.st-Box--radius-3) { border-radius: var(--st-radius-3); }
+:where(.st-Box--radius-4) { border-radius: var(--st-radius-4); }
+
+/* Shadow variants */
+:where(.st-Box--shadow-0) { box-shadow: var(--st-shadow-0); }
+:where(.st-Box--shadow-1) { box-shadow: var(--st-shadow-1); }
+:where(.st-Box--shadow-2) { box-shadow: var(--st-shadow-2); }
+
+/* ============================================================================
+ * Stack - Vertical flex layout
+ * ============================================================================ */
+:where(.st-Stack) {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Gap variants */
+:where(.st-Stack--gap-0) { gap: var(--st-space-0); }
+:where(.st-Stack--gap-1) { gap: var(--st-space-1); }
+:where(.st-Stack--gap-2) { gap: var(--st-space-2); }
+:where(.st-Stack--gap-3) { gap: var(--st-space-3); }
+:where(.st-Stack--gap-4) { gap: var(--st-space-4); }
+:where(.st-Stack--gap-5) { gap: var(--st-space-5); }
+:where(.st-Stack--gap-6) { gap: var(--st-space-6); }
+:where(.st-Stack--gap-7) { gap: var(--st-space-7); }
+:where(.st-Stack--gap-8) { gap: var(--st-space-8); }
+
+/* Align variants (cross-axis) */
+:where(.st-Stack--align-start) { align-items: flex-start; }
+:where(.st-Stack--align-center) { align-items: center; }
+:where(.st-Stack--align-end) { align-items: flex-end; }
+:where(.st-Stack--align-stretch) { align-items: stretch; }
+
+/* ============================================================================
+ * Inline - Horizontal flex layout
+ * ============================================================================ */
+:where(.st-Inline) {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+/* Gap variants */
+:where(.st-Inline--gap-0) { gap: var(--st-space-0); }
+:where(.st-Inline--gap-1) { gap: var(--st-space-1); }
+:where(.st-Inline--gap-2) { gap: var(--st-space-2); }
+:where(.st-Inline--gap-3) { gap: var(--st-space-3); }
+:where(.st-Inline--gap-4) { gap: var(--st-space-4); }
+:where(.st-Inline--gap-5) { gap: var(--st-space-5); }
+:where(.st-Inline--gap-6) { gap: var(--st-space-6); }
+:where(.st-Inline--gap-7) { gap: var(--st-space-7); }
+:where(.st-Inline--gap-8) { gap: var(--st-space-8); }
+
+/* Align variants (cross-axis) */
+:where(.st-Inline--align-start) { align-items: flex-start; }
+:where(.st-Inline--align-center) { align-items: center; }
+:where(.st-Inline--align-end) { align-items: flex-end; }
+:where(.st-Inline--align-baseline) { align-items: baseline; }
+:where(.st-Inline--align-stretch) { align-items: stretch; }
+
+/* Justify variants (main-axis) */
+:where(.st-Inline--justify-start) { justify-content: flex-start; }
+:where(.st-Inline--justify-center) { justify-content: center; }
+:where(.st-Inline--justify-end) { justify-content: flex-end; }
+:where(.st-Inline--justify-between) { justify-content: space-between; }
+
+/* Wrap variant */
+:where(.st-Inline--wrap) { flex-wrap: wrap; }
+
+/* ============================================================================
+ * Grid - CSS Grid layout
+ * ============================================================================ */
+:where(.st-Grid) {
+  display: grid;
+  box-sizing: border-box;
+}
+
+/* Gap variants */
+:where(.st-Grid--gap-0) { gap: var(--st-space-0); }
+:where(.st-Grid--gap-1) { gap: var(--st-space-1); }
+:where(.st-Grid--gap-2) { gap: var(--st-space-2); }
+:where(.st-Grid--gap-3) { gap: var(--st-space-3); }
+:where(.st-Grid--gap-4) { gap: var(--st-space-4); }
+:where(.st-Grid--gap-5) { gap: var(--st-space-5); }
+:where(.st-Grid--gap-6) { gap: var(--st-space-6); }
+:where(.st-Grid--gap-7) { gap: var(--st-space-7); }
+:where(.st-Grid--gap-8) { gap: var(--st-space-8); }
+
+/* Column presets */
+:where(.st-Grid--cols-1) { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+:where(.st-Grid--cols-2) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+:where(.st-Grid--cols-3) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+:where(.st-Grid--cols-4) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+:where(.st-Grid--cols-6) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+:where(.st-Grid--cols-12) { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+
+/* ============================================================================
+ * Container - Centered max-width container
+ * ============================================================================ */
+:where(.st-Container) {
+  box-sizing: border-box;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--st-space-4);
+}
+
+/* Size variants */
+:where(.st-Container--size-sm) { max-width: 640px; }
+:where(.st-Container--size-md) { max-width: 768px; }
+:where(.st-Container--size-lg) { max-width: 1024px; }
+:where(.st-Container--size-xl) { max-width: 1280px; }
+
+/* ============================================================================
+ * Text - Typography primitive
+ * ============================================================================ */
+:where(.st-Text) {
+  margin: 0;
+  font-family: var(--st-font-sans);
+  line-height: var(--st-leading-normal);
+}
+
+/* Size variants */
+:where(.st-Text--size-0) { font-size: var(--st-font-size-0); }
+:where(.st-Text--size-1) { font-size: var(--st-font-size-1); }
+:where(.st-Text--size-2) { font-size: var(--st-font-size-2); }
+:where(.st-Text--size-3) { font-size: var(--st-font-size-3); }
+:where(.st-Text--size-4) { font-size: var(--st-font-size-4); }
+:where(.st-Text--size-5) { font-size: var(--st-font-size-5); }
+:where(.st-Text--size-6) { font-size: var(--st-font-size-6); }
+
+/* Weight variants */
+:where(.st-Text--weight-normal) { font-weight: var(--st-font-weight-normal); }
+:where(.st-Text--weight-medium) { font-weight: var(--st-font-weight-medium); }
+:where(.st-Text--weight-semibold) { font-weight: var(--st-font-weight-semibold); }
+:where(.st-Text--weight-bold) { font-weight: var(--st-font-weight-bold); }
+
+/* Tone variants */
+:where(.st-Text--tone-neutral) { color: var(--st-color-text); }
+:where(.st-Text--tone-muted) { color: var(--st-color-text-muted); }
+:where(.st-Text--tone-primary) { color: var(--st-color-primary); }
+:where(.st-Text--tone-danger) { color: var(--st-color-danger); }
+:where(.st-Text--tone-warn) { color: var(--st-color-warn); }
+:where(.st-Text--tone-success) { color: var(--st-color-success); }
+
+/* Align variants */
+:where(.st-Text--align-start) { text-align: start; }
+:where(.st-Text--align-center) { text-align: center; }
+:where(.st-Text--align-end) { text-align: end; }
+
+/* Leading variants */
+:where(.st-Text--leading-tight) { line-height: var(--st-leading-tight); }
+:where(.st-Text--leading-normal) { line-height: var(--st-leading-normal); }
+:where(.st-Text--leading-relaxed) { line-height: var(--st-leading-relaxed); }
+
+/* Mono variant */
+:where(.st-Text--mono) { font-family: var(--st-font-mono); }
+
+/* ============================================================================
+ * Card - Surface wrapper with styling
+ * ============================================================================ */
+:where(.st-Card) {
+  box-sizing: border-box;
+  background-color: var(--st-color-surface-raised);
+  border: 1px solid var(--st-color-border);
+}
+
+/* Padding variants */
+:where(.st-Card--pad-0) { padding: var(--st-space-0); }
+:where(.st-Card--pad-1) { padding: var(--st-space-1); }
+:where(.st-Card--pad-2) { padding: var(--st-space-2); }
+:where(.st-Card--pad-3) { padding: var(--st-space-3); }
+:where(.st-Card--pad-4) { padding: var(--st-space-4); }
+:where(.st-Card--pad-5) { padding: var(--st-space-5); }
+:where(.st-Card--pad-6) { padding: var(--st-space-6); }
+:where(.st-Card--pad-7) { padding: var(--st-space-7); }
+:where(.st-Card--pad-8) { padding: var(--st-space-8); }
+
+/* Radius variants */
+:where(.st-Card--radius-0) { border-radius: var(--st-radius-0); }
+:where(.st-Card--radius-1) { border-radius: var(--st-radius-1); }
+:where(.st-Card--radius-2) { border-radius: var(--st-radius-2); }
+:where(.st-Card--radius-3) { border-radius: var(--st-radius-3); }
+:where(.st-Card--radius-4) { border-radius: var(--st-radius-4); }
+
+/* Shadow variants */
+:where(.st-Card--shadow-0) { box-shadow: var(--st-shadow-0); }
+:where(.st-Card--shadow-1) { box-shadow: var(--st-shadow-1); }
+:where(.st-Card--shadow-2) { box-shadow: var(--st-shadow-2); }
+
+/* Tone variants */
+:where(.st-Card--tone-neutral) {
+  background-color: var(--st-color-surface-raised);
+  border-color: var(--st-color-border);
+}
+:where(.st-Card--tone-primary) {
+  background-color: var(--st-color-primary);
+  border-color: var(--st-color-primary);
+  color: var(--st-color-primary-text);
+}
+:where(.st-Card--tone-danger) {
+  background-color: var(--st-color-danger-surface);
+  border-color: var(--st-color-danger);
+}
+:where(.st-Card--tone-warn) {
+  background-color: var(--st-color-warn-surface);
+  border-color: var(--st-color-warn);
+}
+:where(.st-Card--tone-success) {
+  background-color: var(--st-color-success-surface);
+  border-color: var(--st-color-success);
+}

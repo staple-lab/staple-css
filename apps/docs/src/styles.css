@@ -1,0 +1,144 @@
+/**
+ * Docs app styles
+ * Minimal styles that extend staple-css tokens
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--st-font-sans);
+  background-color: var(--st-color-background);
+  color: var(--st-color-text);
+  line-height: var(--st-leading-normal);
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  border-bottom: 1px solid var(--st-color-border);
+  padding: var(--st-space-3) 0;
+  background-color: var(--st-color-surface);
+}
+
+.app-main {
+  flex: 1;
+  padding: var(--st-space-6) 0;
+}
+
+.app-footer {
+  border-top: 1px solid var(--st-color-border);
+  padding: var(--st-space-4) 0;
+  background-color: var(--st-color-surface);
+}
+
+/* Navigation */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: var(--st-color-text-muted);
+  text-decoration: none;
+  font-size: var(--st-font-size-1);
+  transition: color var(--st-duration-fast) var(--st-easing-default);
+}
+
+.nav-link:hover {
+  color: var(--st-color-text);
+}
+
+.nav-link.active {
+  color: var(--st-color-primary);
+  font-weight: var(--st-font-weight-medium);
+}
+
+/* Toggle button */
+.toggle-btn {
+  padding: var(--st-space-1) var(--st-space-3);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  background-color: var(--st-color-surface-raised);
+  color: var(--st-color-text);
+  font-size: var(--st-font-size-0);
+  cursor: pointer;
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+}
+
+.toggle-btn:hover {
+  border-color: var(--st-color-primary);
+  background-color: var(--st-color-background);
+}
+
+/* Code blocks */
+.code-block {
+  background-color: var(--st-color-surface);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  padding: var(--st-space-4);
+  overflow-x: auto;
+  font-family: var(--st-font-mono);
+  font-size: var(--st-font-size-1);
+  line-height: var(--st-leading-relaxed);
+}
+
+/* Token table */
+.token-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--st-font-size-1);
+}
+
+.token-table th,
+.token-table td {
+  text-align: left;
+  padding: var(--st-space-2) var(--st-space-3);
+  border-bottom: 1px solid var(--st-color-border);
+}
+
+.token-table th {
+  font-weight: var(--st-font-weight-semibold);
+  background-color: var(--st-color-surface);
+}
+
+.token-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Color swatch */
+.color-swatch {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--st-radius-1);
+  border: 1px solid var(--st-color-border);
+  vertical-align: middle;
+  margin-right: var(--st-space-2);
+}
+
+/* Example preview */
+.example-preview {
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  padding: var(--st-space-4);
+  background-color: var(--st-color-background);
+}
+
+/* Primary colored box for examples */
+.primary-box {
+  background-color: var(--st-color-primary);
+}
+
+.primary-text {
+  color: var(--st-color-primary-text);
+}

@@ -1,0 +1,170 @@
+/**
+ * CSS Generator
+ *
+ * Generates CSS variable files from token definitions.
+ * Run with: node --import tsx src/generate.ts
+ */
+
+import { writeFileSync, mkdirSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import {
+  spaceScale,
+  radiusScale,
+  shadowScale,
+  fontFamily,
+  fontSizeScale,
+  lineHeight,
+  fontWeight,
+  duration,
+  easing,
+  colorsLight,
+  colorsDark,
+  densityComfortable,
+  densityCompact,
+} from "./tokens.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const distDir = join(__dirname, "..", "dist");
+
+// Ensure dist directory exists
+mkdirSync(distDir, { recursive: true });
+
+/**
+ * Convert camelCase to kebab-case
+ */
+function toKebab(str: string): string {
+  return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
+/**
+ * Generate CSS variable declarations
+ */
+function generateVars(
+  prefix: string,
+  values: Record<string | number, string>
+): string {
+  return Object.entries(values)
+    .map(([key, value]) => `  --st-${prefix}-${toKebab(String(key))}: ${value};`)
+    .join("\n");
+}
+
+// ============================================================================
+// tokens.css - Base tokens (non-theme, non-density)
+// ============================================================================
+const tokensCss = `/**
+ * @staple-css/tokens - Base Tokens
+ *
+ * Core design tokens for spacing, typography, shadows, and motion.
+ * Import this file once at your app root.
+ */
+
+:root {
+  /* Space Scale (0-8) */
+${generateVars("space", spaceScale)}
+
+  /* Radius Scale (0-4) */
+${generateVars("radius", radiusScale)}
+
+  /* Shadow Scale (0-2) */
+${generateVars("shadow", shadowScale)}
+
+  /* Font Family */
+${generateVars("font", fontFamily)}
+
+  /* Font Size Scale (0-6) */
+${generateVars("font-size", fontSizeScale)}
+
+  /* Line Height */
+${generateVars("leading", lineHeight)}
+
+  /* Font Weight */
+${generateVars("font-weight", fontWeight)}
+
+  /* Motion - Duration */
+${generateVars("duration", duration)}
+
+  /* Motion - Easing */
+${generateVars("easing", easing)}
+}
+`;
+
+writeFileSync(join(distDir, "tokens.css"), tokensCss);
+
+// ============================================================================
+// themes.css - Light/Dark color themes
+// ============================================================================
+const themesCss = `/**
+ * @staple-css/tokens - Theme Tokens
+ *
+ * Color tokens for light and dark themes.
+ * Themes are applied via data-theme attribute on a parent element.
+ * Default (no attribute) uses light theme.
+ */
+
+:root,
+[data-theme="light"] {
+  /* Backgrounds */
+${generateVars("color", colorsLight)}
+}
+
+[data-theme="dark"] {
+  /* Backgrounds */
+${generateVars("color", colorsDark)}
+}
+
+/* System preference support */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+${generateVars("color", colorsDark).replace(/^  /gm, "    ")}
+  }
+}
+`;
+
+writeFileSync(join(distDir, "themes.css"), themesCss);
+
+// ============================================================================
+// density.css - Comfortable/Compact density
+// ============================================================================
+const densityCss = `/**
+ * @staple-css/tokens - Density Tokens
+ *
+ * Density tokens for comfortable and compact UI modes.
+ * Applied via data-density attribute on a parent element.
+ * Default (no attribute) uses comfortable density.
+ */
+
+:root,
+[data-density="comfortable"] {
+${generateVars("density", densityComfortable)}
+}
+
+[data-density="compact"] {
+${generateVars("density", densityCompact)}
+}
+`;
+
+writeFileSync(join(distDir, "density.css"), densityCss);
+
+// ============================================================================
+// all.css - Combined import
+// ============================================================================
+const allCss = `/**
+ * @staple-css/tokens - All Tokens
+ *
+ * Convenience file that imports all token CSS files.
+ * Equivalent to importing tokens.css, themes.css, and density.css separately.
+ */
+
+@import "./tokens.css";
+@import "./themes.css";
+@import "./density.css";
+`;
+
+writeFileSync(join(distDir, "all.css"), allCss);
+
+console.log("Generated CSS files in dist/:");
+console.log("  - tokens.css");
+console.log("  - themes.css");
+console.log("  - density.css");
+console.log("  - all.css");

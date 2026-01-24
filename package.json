@@ -1,0 +1,55 @@
+{
+  "name": "staple-css-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A shared styling contract for apps—tokens, primitives, and accessible components",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build -ws --if-present",
+    "build:packages": "npm run build -w @staple-css/tokens -w @staple-css/primitives",
+    "dev": "npm run dev -w docs",
+    "dev:demo": "npm run dev -w demo",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --build",
+    "bundle-size": "node scripts/bundle-size.js",
+    "check-raw-values": "node scripts/check-raw-values.js",
+    "quality": "npm run typecheck && npm run lint && npm run test && npm run bundle-size",
+    "clean": "rm -rf packages/*/dist apps/*/dist node_modules/.cache"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.1.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.16.0",
+    "globals": "^15.13.0",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.17.0",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/staple-lab/staple-css.git"
+  },
+  "license": "MIT"
+}

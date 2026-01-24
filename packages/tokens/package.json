@@ -1,0 +1,51 @@
+{
+  "name": "@staple-css/tokens",
+  "version": "0.1.0",
+  "description": "Design tokens for staple-css - semantic CSS variables for spacing, color, typography, and more",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./themes.css": "./dist/themes.css",
+    "./density.css": "./dist/density.css",
+    "./all.css": "./dist/all.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "npm run generate && tsup",
+    "generate": "node --import tsx src/generate.ts",
+    "dev": "tsup --watch"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "tsup": "^8.3.5"
+  },
+  "keywords": [
+    "css",
+    "tokens",
+    "design-system",
+    "css-variables",
+    "theming"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/staple-lab/staple-css.git",
+    "directory": "packages/tokens"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
