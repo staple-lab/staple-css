@@ -1,5 +1,18 @@
 import type { ElementType, ComponentPropsWithoutRef, ReactNode } from "react";
-import type { Space, Radius, Shadow, LayoutStyleProps, Responsive } from "./types.js";
+import type {
+  Space,
+  Radius,
+  Shadow,
+  ZIndex,
+  Opacity,
+  BorderWidth,
+  MaxWidth,
+  AspectRatio,
+  OutlineWidth,
+  OutlineOffset,
+  LayoutStyleProps,
+  Responsive,
+} from "./types.js";
 import { cx } from "./cx.js";
 import { responsiveClasses } from "./types.js";
 
@@ -36,6 +49,20 @@ export interface BoxOwnProps {
   radius?: Radius;
   /** Box shadow (shadow scale 0-2) */
   shadow?: Shadow;
+  /** Z-index for stacking context (0, 10, 20, 30, 40, 50, max) */
+  zIndex?: ZIndex;
+  /** Opacity (0-100 scale), supports responsive values */
+  opacity?: Responsive<Opacity>;
+  /** Border width (0, 1, 2, 3, 4, 8), supports responsive values */
+  borderWidth?: Responsive<BorderWidth>;
+  /** Max width constraint (xs-7xl, prose, full, screen, none), supports responsive values */
+  maxWidth?: Responsive<MaxWidth>;
+  /** Aspect ratio preset (square, video, portrait, landscape, wide, golden, auto), supports responsive values */
+  aspectRatio?: Responsive<AspectRatio>;
+  /** Outline width for focus indicators (0, 1, 2, 4, 8), supports responsive values */
+  outlineWidth?: Responsive<OutlineWidth>;
+  /** Outline offset for focus indicators (0, 1, 2, 4, 8), supports responsive values */
+  outlineOffset?: Responsive<OutlineOffset>;
   /** Additional class names */
   className?: string;
   /**
@@ -71,6 +98,13 @@ export function Box<E extends ElementType = "div">({
   marginRight,
   radius,
   shadow,
+  zIndex,
+  opacity,
+  borderWidth,
+  maxWidth,
+  aspectRatio,
+  outlineWidth,
+  outlineOffset,
   className,
   style,
   ...rest
@@ -89,6 +123,13 @@ export function Box<E extends ElementType = "div">({
     ...responsiveClasses("st-Box", "margin-right", marginRight),
     radius !== undefined && `st-Box--radius-${radius}`,
     shadow !== undefined && `st-Box--shadow-${shadow}`,
+    zIndex !== undefined && `st-Box--z-${zIndex}`,
+    ...responsiveClasses("st-Box", "opacity", opacity),
+    ...responsiveClasses("st-Box", "border-width", borderWidth),
+    ...responsiveClasses("st-Box", "max-width", maxWidth),
+    ...responsiveClasses("st-Box", "aspect", aspectRatio),
+    ...responsiveClasses("st-Box", "outline-width", outlineWidth),
+    ...responsiveClasses("st-Box", "outline-offset", outlineOffset),
     className
   );
 

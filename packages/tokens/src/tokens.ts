@@ -118,6 +118,233 @@ export const easing = {
 export type EasingToken = keyof typeof easing;
 
 // ============================================================================
+// Z-Index Scale (Layering)
+// ============================================================================
+export const zIndexScale = {
+  0: "0",
+  10: "10",
+  20: "20",
+  30: "30",
+  40: "40",
+  50: "50",
+  max: "9999",
+} as const;
+
+export type ZIndexToken = keyof typeof zIndexScale;
+
+// ============================================================================
+// Opacity Scale (0-100)
+// ============================================================================
+export const opacityScale = {
+  0: "0",
+  5: "0.05",
+  10: "0.1",
+  20: "0.2",
+  30: "0.3",
+  40: "0.4",
+  50: "0.5",
+  60: "0.6",
+  70: "0.7",
+  80: "0.8",
+  90: "0.9",
+  100: "1",
+} as const;
+
+export type OpacityToken = keyof typeof opacityScale;
+
+// ============================================================================
+// Border Width Scale
+// ============================================================================
+export const borderWidthScale = {
+  0: "0",
+  1: "1px",
+  2: "2px",
+  3: "3px",
+  4: "4px",
+  8: "8px",
+} as const;
+
+export type BorderWidthToken = keyof typeof borderWidthScale;
+
+// ============================================================================
+// Max Width Scale
+// ============================================================================
+export const maxWidthScale = {
+  xs: "20rem", // 320px
+  sm: "24rem", // 384px
+  md: "28rem", // 448px
+  lg: "32rem", // 512px
+  xl: "36rem", // 576px
+  "2xl": "42rem", // 672px
+  "3xl": "48rem", // 768px
+  "4xl": "56rem", // 896px
+  "5xl": "64rem", // 1024px
+  "6xl": "72rem", // 1152px
+  "7xl": "80rem", // 1280px
+  prose: "65ch",
+  full: "100%",
+  screen: "100vw",
+  none: "none",
+} as const;
+
+export type MaxWidthToken = keyof typeof maxWidthScale;
+
+// ============================================================================
+// Aspect Ratio Scale
+// ============================================================================
+export const aspectRatioScale = {
+  square: "1 / 1",
+  video: "16 / 9",
+  portrait: "3 / 4",
+  landscape: "4 / 3",
+  wide: "21 / 9",
+  golden: "1.618 / 1",
+  auto: "auto",
+} as const;
+
+export type AspectRatioToken = keyof typeof aspectRatioScale;
+
+// ============================================================================
+// Letter Spacing Scale
+// ============================================================================
+export const letterSpacingScale = {
+  tighter: "-0.05em",
+  tight: "-0.025em",
+  normal: "0",
+  wide: "0.025em",
+  wider: "0.05em",
+  widest: "0.1em",
+} as const;
+
+export type LetterSpacingToken = keyof typeof letterSpacingScale;
+
+// ============================================================================
+// Line Clamp Scale
+// ============================================================================
+export const lineClampScale = {
+  1: "1",
+  2: "2",
+  3: "3",
+  4: "4",
+  5: "5",
+  6: "6",
+  none: "none",
+} as const;
+
+export type LineClampToken = keyof typeof lineClampScale;
+
+// ============================================================================
+// Outline Width Scale
+// ============================================================================
+export const outlineWidthScale = {
+  0: "0",
+  1: "1px",
+  2: "2px",
+  4: "4px",
+  8: "8px",
+} as const;
+
+export type OutlineWidthToken = keyof typeof outlineWidthScale;
+
+// ============================================================================
+// Outline Offset Scale
+// ============================================================================
+export const outlineOffsetScale = {
+  0: "0",
+  1: "1px",
+  2: "2px",
+  4: "4px",
+  8: "8px",
+} as const;
+
+export type OutlineOffsetToken = keyof typeof outlineOffsetScale;
+
+// ============================================================================
+// Blur Scale
+// ============================================================================
+export const blurScale = {
+  0: "0",
+  sm: "4px",
+  md: "8px",
+  lg: "16px",
+  xl: "24px",
+  "2xl": "40px",
+  "3xl": "64px",
+} as const;
+
+export type BlurToken = keyof typeof blurScale;
+
+// ============================================================================
+// Brightness Scale
+// ============================================================================
+export const brightnessScale = {
+  0: "0",
+  50: "0.5",
+  75: "0.75",
+  90: "0.9",
+  100: "1",
+  110: "1.1",
+  125: "1.25",
+  150: "1.5",
+  200: "2",
+} as const;
+
+export type BrightnessToken = keyof typeof brightnessScale;
+
+// ============================================================================
+// Contrast Scale
+// ============================================================================
+export const contrastScale = {
+  0: "0",
+  50: "0.5",
+  75: "0.75",
+  90: "0.9",
+  100: "1",
+  110: "1.1",
+  125: "1.25",
+  150: "1.5",
+  200: "2",
+} as const;
+
+export type ContrastToken = keyof typeof contrastScale;
+
+// ============================================================================
+// Saturate Scale
+// ============================================================================
+export const saturateScale = {
+  0: "0",
+  50: "0.5",
+  75: "0.75",
+  90: "0.9",
+  100: "1",
+  110: "1.1",
+  125: "1.25",
+  150: "1.5",
+  200: "2",
+} as const;
+
+export type SaturateToken = keyof typeof saturateScale;
+
+// ============================================================================
+// Scale (Transform) Scale
+// ============================================================================
+export const scaleScale = {
+  0: "0",
+  50: "0.5",
+  75: "0.75",
+  90: "0.9",
+  95: "0.95",
+  100: "1",
+  105: "1.05",
+  110: "1.1",
+  125: "1.25",
+  150: "1.5",
+  200: "2",
+} as const;
+
+export type ScaleToken = keyof typeof scaleScale;
+
+// ============================================================================
 // Color Tokens (Semantic) - Light Theme
 // ============================================================================
 export const colorsLight = {
@@ -250,6 +477,20 @@ export const tokens = {
   space: spaceScale,
   radius: radiusScale,
   shadow: shadowScale,
+  zIndex: zIndexScale,
+  opacity: opacityScale,
+  borderWidth: borderWidthScale,
+  maxWidth: maxWidthScale,
+  aspectRatio: aspectRatioScale,
+  letterSpacing: letterSpacingScale,
+  lineClamp: lineClampScale,
+  outlineWidth: outlineWidthScale,
+  outlineOffset: outlineOffsetScale,
+  blur: blurScale,
+  brightness: brightnessScale,
+  contrast: contrastScale,
+  saturate: saturateScale,
+  scale: scaleScale,
   fontFamily,
   fontSize: fontSizeScale,
   lineHeight,

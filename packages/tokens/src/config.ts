@@ -190,6 +190,16 @@ const colorPaletteSchema = z.object({
 const customPalettesSchema = z.array(colorPaletteSchema);
 
 /**
+ * Z-Index scale schema
+ */
+const zIndexScaleSchema = z.record(z.string());
+
+/**
+ * Flexible token scale schema (for opacity, border-width, aspect-ratio, etc.)
+ */
+const flexibleScaleSchema = z.record(z.string());
+
+/**
  * Full token configuration schema
  */
 export const tokenConfigSchema = z.object({
@@ -200,6 +210,20 @@ export const tokenConfigSchema = z.object({
   space: spaceScaleSchema,
   radius: radiusScaleSchema,
   shadow: shadowScaleSchema,
+  zIndex: zIndexScaleSchema.optional(),
+  opacity: flexibleScaleSchema.optional(),
+  borderWidth: flexibleScaleSchema.optional(),
+  maxWidth: flexibleScaleSchema.optional(),
+  aspectRatio: flexibleScaleSchema.optional(),
+  letterSpacing: flexibleScaleSchema.optional(),
+  lineClamp: flexibleScaleSchema.optional(),
+  outlineWidth: flexibleScaleSchema.optional(),
+  outlineOffset: flexibleScaleSchema.optional(),
+  blur: flexibleScaleSchema.optional(),
+  brightness: flexibleScaleSchema.optional(),
+  contrast: flexibleScaleSchema.optional(),
+  saturate: flexibleScaleSchema.optional(),
+  scale: flexibleScaleSchema.optional(),
 
   typography: z.object({
     fontFamily: fontFamilySchema,
@@ -263,6 +287,163 @@ export const defaultConfig: TokenConfig = {
     0: "none",
     1: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
     2: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+  },
+
+  zIndex: {
+    0: "0",
+    10: "10",
+    20: "20",
+    30: "30",
+    40: "40",
+    50: "50",
+    max: "9999",
+  },
+
+  opacity: {
+    0: "0",
+    5: "0.05",
+    10: "0.1",
+    20: "0.2",
+    30: "0.3",
+    40: "0.4",
+    50: "0.5",
+    60: "0.6",
+    70: "0.7",
+    80: "0.8",
+    90: "0.9",
+    100: "1",
+  },
+
+  borderWidth: {
+    0: "0",
+    1: "1px",
+    2: "2px",
+    3: "3px",
+    4: "4px",
+    8: "8px",
+  },
+
+  maxWidth: {
+    xs: "20rem",
+    sm: "24rem",
+    md: "28rem",
+    lg: "32rem",
+    xl: "36rem",
+    "2xl": "42rem",
+    "3xl": "48rem",
+    "4xl": "56rem",
+    "5xl": "64rem",
+    "6xl": "72rem",
+    "7xl": "80rem",
+    prose: "65ch",
+    full: "100%",
+    screen: "100vw",
+    none: "none",
+  },
+
+  aspectRatio: {
+    square: "1 / 1",
+    video: "16 / 9",
+    portrait: "3 / 4",
+    landscape: "4 / 3",
+    wide: "21 / 9",
+    golden: "1.618 / 1",
+    auto: "auto",
+  },
+
+  letterSpacing: {
+    tighter: "-0.05em",
+    tight: "-0.025em",
+    normal: "0",
+    wide: "0.025em",
+    wider: "0.05em",
+    widest: "0.1em",
+  },
+
+  lineClamp: {
+    1: "1",
+    2: "2",
+    3: "3",
+    4: "4",
+    5: "5",
+    6: "6",
+    none: "none",
+  },
+
+  outlineWidth: {
+    0: "0",
+    1: "1px",
+    2: "2px",
+    4: "4px",
+    8: "8px",
+  },
+
+  outlineOffset: {
+    0: "0",
+    1: "1px",
+    2: "2px",
+    4: "4px",
+    8: "8px",
+  },
+
+  blur: {
+    0: "0",
+    sm: "4px",
+    md: "8px",
+    lg: "16px",
+    xl: "24px",
+    "2xl": "40px",
+    "3xl": "64px",
+  },
+
+  brightness: {
+    0: "0",
+    50: "0.5",
+    75: "0.75",
+    90: "0.9",
+    100: "1",
+    110: "1.1",
+    125: "1.25",
+    150: "1.5",
+    200: "2",
+  },
+
+  contrast: {
+    0: "0",
+    50: "0.5",
+    75: "0.75",
+    90: "0.9",
+    100: "1",
+    110: "1.1",
+    125: "1.25",
+    150: "1.5",
+    200: "2",
+  },
+
+  saturate: {
+    0: "0",
+    50: "0.5",
+    75: "0.75",
+    90: "0.9",
+    100: "1",
+    110: "1.1",
+    125: "1.25",
+    150: "1.5",
+    200: "2",
+  },
+
+  scale: {
+    0: "0",
+    50: "0.5",
+    75: "0.75",
+    90: "0.9",
+    95: "0.95",
+    100: "1",
+    105: "1.05",
+    110: "1.1",
+    125: "1.25",
+    150: "1.5",
+    200: "2",
   },
 
   typography: {

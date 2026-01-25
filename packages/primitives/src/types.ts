@@ -1,4 +1,21 @@
-import type { SpaceToken, RadiusToken, ShadowToken, FontSizeToken, FontWeightToken, ToneToken } from "@staple-css/tokens";
+import type {
+  SpaceToken,
+  RadiusToken,
+  ShadowToken,
+  FontSizeToken,
+  FontWeightToken,
+  ToneToken,
+  ZIndexToken,
+  OpacityToken,
+  BorderWidthToken,
+  MaxWidthToken,
+  AspectRatioToken,
+  LetterSpacingToken,
+  LineClampToken,
+  OutlineWidthToken,
+  OutlineOffsetToken,
+  BlurToken,
+} from "@staple-css/tokens";
 
 /**
  * Space scale tokens (0-8)
@@ -59,6 +76,56 @@ export type TextAlign = "start" | "center" | "end";
  * Line height options
  */
 export type Leading = "tight" | "normal" | "relaxed";
+
+/**
+ * Z-Index scale tokens
+ */
+export type ZIndex = ZIndexToken;
+
+/**
+ * Opacity scale tokens
+ */
+export type Opacity = OpacityToken;
+
+/**
+ * Border width scale tokens
+ */
+export type BorderWidth = BorderWidthToken;
+
+/**
+ * Max width scale tokens
+ */
+export type MaxWidth = MaxWidthToken;
+
+/**
+ * Aspect ratio scale tokens
+ */
+export type AspectRatio = AspectRatioToken;
+
+/**
+ * Letter spacing scale tokens
+ */
+export type LetterSpacing = LetterSpacingToken;
+
+/**
+ * Line clamp scale tokens
+ */
+export type LineClamp = LineClampToken;
+
+/**
+ * Outline width scale tokens
+ */
+export type OutlineWidth = OutlineWidthToken;
+
+/**
+ * Outline offset scale tokens
+ */
+export type OutlineOffset = OutlineOffsetToken;
+
+/**
+ * Blur scale tokens
+ */
+export type Blur = BlurToken;
 
 /**
  * Container size presets

@@ -1,5 +1,14 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import type { Size, Weight, Tone, TextAlign, Leading, Responsive } from "./types.js";
+import type {
+  Size,
+  Weight,
+  Tone,
+  TextAlign,
+  Leading,
+  LetterSpacing,
+  LineClamp,
+  Responsive,
+} from "./types.js";
 import { cx } from "./cx.js";
 import { responsiveClasses } from "./types.js";
 
@@ -26,6 +35,10 @@ export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, "style"> {
   align?: Responsive<TextAlign>;
   /** Line height, supports responsive values */
   leading?: Responsive<Leading>;
+  /** Letter spacing, supports responsive values */
+  letterSpacing?: Responsive<LetterSpacing>;
+  /** Line clamp for text truncation (1-6 lines, or none), supports responsive values */
+  lineClamp?: Responsive<LineClamp>;
   /** Use monospace font */
   mono?: boolean;
   /** Additional class names */
@@ -51,6 +64,8 @@ export function Text({
   tone,
   align,
   leading,
+  letterSpacing,
+  lineClamp,
   mono,
   className,
   ...rest
@@ -62,6 +77,8 @@ export function Text({
     ...responsiveClasses("st-Text", "tone", tone),
     ...responsiveClasses("st-Text", "align", align),
     ...responsiveClasses("st-Text", "leading", leading),
+    ...responsiveClasses("st-Text", "letter-spacing", letterSpacing),
+    ...responsiveClasses("st-Text", "line-clamp", lineClamp),
     mono && "st-Text--mono",
     className
   );

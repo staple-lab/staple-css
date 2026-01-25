@@ -12,6 +12,20 @@ import {
   spaceScale,
   radiusScale,
   shadowScale,
+  zIndexScale,
+  opacityScale,
+  borderWidthScale,
+  maxWidthScale,
+  aspectRatioScale,
+  letterSpacingScale,
+  lineClampScale,
+  outlineWidthScale,
+  outlineOffsetScale,
+  blurScale,
+  brightnessScale,
+  contrastScale,
+  saturateScale,
+  scaleScale,
   fontFamily,
   fontSizeScale,
   lineHeight,
@@ -57,7 +71,7 @@ function generateVars(
 const tokensCss = `/**
  * @staple-css/tokens - Base Tokens
  *
- * Core design tokens for spacing, typography, shadows, and motion.
+ * Core design tokens for spacing, typography, shadows, motion, and layout.
  * Import this file once at your app root.
  */
 
@@ -70,6 +84,48 @@ ${generateVars("radius", radiusScale)}
 
   /* Shadow Scale (0-2) */
 ${generateVars("shadow", shadowScale)}
+
+  /* Z-Index Scale */
+${generateVars("z", zIndexScale)}
+
+  /* Opacity Scale (0-100) */
+${generateVars("opacity", opacityScale)}
+
+  /* Border Width Scale */
+${generateVars("border-width", borderWidthScale)}
+
+  /* Max Width Scale */
+${generateVars("max-width", maxWidthScale)}
+
+  /* Aspect Ratio Scale */
+${generateVars("aspect", aspectRatioScale)}
+
+  /* Letter Spacing Scale */
+${generateVars("letter-spacing", letterSpacingScale)}
+
+  /* Line Clamp Scale */
+${generateVars("line-clamp", lineClampScale)}
+
+  /* Outline Width Scale */
+${generateVars("outline-width", outlineWidthScale)}
+
+  /* Outline Offset Scale */
+${generateVars("outline-offset", outlineOffsetScale)}
+
+  /* Blur Scale */
+${generateVars("blur", blurScale)}
+
+  /* Brightness Scale */
+${generateVars("brightness", brightnessScale)}
+
+  /* Contrast Scale */
+${generateVars("contrast", contrastScale)}
+
+  /* Saturate Scale */
+${generateVars("saturate", saturateScale)}
+
+  /* Scale (Transform) Scale */
+${generateVars("scale", scaleScale)}
 
   /* Font Family */
 ${generateVars("font", fontFamily)}
