@@ -53,7 +53,7 @@ export interface GridOwnProps {
   /** Number of rows (responsive, preset: 1-6, "none") */
   rows?: Responsive<GridRows>;
   /** Intrinsic responsive preset (auto-fit/auto-fill presets) - mutually exclusive with cols */
-  preset?: GridPreset;
+  preset?: Responsive<GridPreset>;
   /** Grid auto flow (responsive) */
   flow?: Responsive<GridAutoFlow>;
   /** Auto size for implicit rows (responsive) */
