@@ -1,7 +1,8 @@
 {
   "name": "@staple-css/tokens",
   "version": "0.1.0",
-  "description": "Design tokens for staple-css - semantic CSS variables for spacing, color, typography, and more",
+  "description": "Design tokens for staple-css - semantic CSS variables for spacing, color, typography, shadows, motion. Includes OKLCH color generation and 22 Tailwind-compatible palettes.",
+  "homepage": "https://staple-lab.github.io/staple-css/",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -53,7 +54,18 @@
     "tokens",
     "design-system",
     "css-variables",
-    "theming"
+    "theming",
+    "design-tokens",
+    "oklch",
+    "color-palette",
+    "color-generation",
+    "responsive-design",
+    "breakpoints",
+    "tailwind",
+    "dark-mode",
+    "light-mode",
+    "accessibility",
+    "wcag"
   ],
   "license": "MIT",
   "repository": {

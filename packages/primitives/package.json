@@ -1,7 +1,8 @@
 {
   "name": "@staple-css/primitives",
   "version": "0.1.0",
-  "description": "Layout and typography primitives for staple-css - Box, Stack, Inline, Grid, Container, Text, Card",
+  "description": "React layout and typography primitives for staple-css - Box, Stack, Inline, Grid, Container, Text, Card with full responsive support and TypeScript types.",
+  "homepage": "https://staple-lab.github.io/staple-css/primitives",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -38,7 +39,18 @@
     "primitives",
     "design-system",
     "layout",
-    "components"
+    "components",
+    "typescript",
+    "responsive",
+    "flex",
+    "grid",
+    "breakpoints",
+    "box",
+    "stack",
+    "container",
+    "card",
+    "typography",
+    "ui-components"
   ],
   "license": "MIT",
   "repository": {
