@@ -206,3 +206,28 @@ export {
   createDefaultBuilderConfig,
   type HarmonySuggestion,
 } from "./builder-generator.js";
+
+// Re-export theme manager
+export {
+  createTheme,
+  updateThemeMetadata,
+  themeToJson,
+  themeFromJson,
+  themeToCSS,
+  themeToTypeScript,
+  applyTheme,
+  removeTheme,
+  themeCollectionToJson,
+  themeCollectionFromJson,
+  createThemeCollection,
+  getThemeById,
+  addThemeToCollection,
+  removeThemeFromCollection,
+  exportThemeCollectionAsZip,
+  saveThemeCollectionToStorage,
+  loadThemeCollectionFromStorage,
+  type Theme,
+  type ThemeMetadata,
+  type ThemeCollection,
+  type ThemeExportFormat,
+} from "./theme-manager.js";
