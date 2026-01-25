@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { Column, Text, Row } from "@staple-css/primitives";
 import Prism from "prismjs";
 import "prismjs/components/prism-css";

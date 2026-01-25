@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { Column, Text, Row, Card, Box } from "@staple-css/primitives";
 
 export interface PreviewColors {
   background: string;
@@ -23,7 +22,7 @@ export type PreviewSize = "mobile" | "tablet" | "desktop";
 
 interface LivePreviewProps {
   colors: PreviewColors;
-  theme?: "light" | "dark";
+  _theme?: "light" | "dark";
   size?: PreviewSize;
 }
 
@@ -34,7 +33,7 @@ const sizeWidths: Record<PreviewSize, string> = {
   desktop: "100%",
 };
 
-export function LivePreview({ colors, theme = "light", size = "desktop" }: LivePreviewProps) {
+export function LivePreview({ colors, _theme = "light", size = "desktop" }: LivePreviewProps) {
   // Generate inline styles that override CSS variables
   const previewStyle = useMemo(() => ({
     "--preview-background": colors.background,
