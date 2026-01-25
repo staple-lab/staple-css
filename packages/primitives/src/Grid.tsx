@@ -4,6 +4,10 @@ import type {
   GridCols,
   GridRows,
   GridAutoFlow,
+  GridAutoRows,
+  GridAutoColumns,
+  PlaceItems,
+  PlaceContent,
   Align,
   Justify,
   Responsive,
@@ -20,6 +24,19 @@ type PolymorphicProps<E extends ElementType> = {
 } & Omit<ComponentPropsWithoutRef<E>, "as">;
 
 /**
+ * Grid presets for intrinsic responsive layouts
+ */
+type GridPreset =
+  | "auto-fit-xs"  // repeat(auto-fit, minmax(200px, 1fr))
+  | "auto-fit-sm"  // repeat(auto-fit, minmax(250px, 1fr))
+  | "auto-fit-md"  // repeat(auto-fit, minmax(300px, 1fr))
+  | "auto-fit-lg"  // repeat(auto-fit, minmax(400px, 1fr))
+  | "auto-fill-xs" // repeat(auto-fill, minmax(200px, 1fr))
+  | "auto-fill-sm" // repeat(auto-fill, minmax(250px, 1fr))
+  | "auto-fill-md" // repeat(auto-fill, minmax(300px, 1fr))
+  | "auto-fill-lg"; // repeat(auto-fill, minmax(400px, 1fr))
+
+/**
  * Grid Props
  */
 export interface GridOwnProps {
@@ -31,28 +48,37 @@ export interface GridOwnProps {
   rowGap?: Responsive<Space>;
   /** Column gap (responsive, space scale 0-8) */
   columnGap?: Responsive<Space>;
-  /** Number of columns (responsive, preset: 1-12, "none") */
+  /** Number of columns (responsive, preset: 1-12, "none") - mutually exclusive with preset */
   cols?: Responsive<GridCols>;
   /** Number of rows (responsive, preset: 1-6, "none") */
   rows?: Responsive<GridRows>;
+  /** Intrinsic responsive preset (auto-fit/auto-fill presets) - mutually exclusive with cols */
+  preset?: GridPreset;
   /** Grid auto flow (responsive) */
   flow?: Responsive<GridAutoFlow>;
+  /** Auto size for implicit rows (responsive) */
+  autoRows?: Responsive<GridAutoRows>;
+  /** Auto size for implicit columns (responsive) */
+  autoColumns?: Responsive<GridAutoColumns>;
   /** Align items (responsive) */
   align?: Responsive<Align>;
   /** Justify items (responsive) */
   justify?: Responsive<Justify>;
+  /** Place items shorthand - sets both align and justify items (responsive) */
+  placeItems?: Responsive<PlaceItems>;
   /** Align content (responsive) */
   alignContent?: Responsive<Align | Justify>;
   /** Justify content (responsive) */
   justifyContent?: Responsive<Justify>;
-  /** Make container inline-grid (responsive) */
-  inline?: Responsive<boolean>;
+  /** Place content shorthand - sets both align and justify content (responsive) */
+  placeContent?: Responsive<PlaceContent>;
   /** Additional class names */
   className?: string;
   /**
    * Inline styles (escape hatch)
    * Only layout-related properties are allowed.
    * Use for custom grid-template-columns/rows values.
+   * Takes precedence over cols/rows/preset.
    */
   style?: LayoutStyleProps;
 }
@@ -98,11 +124,16 @@ export function Grid<E extends ElementType = "div">({
   columnGap,
   cols,
   rows,
+  preset,
   flow,
+  autoRows,
+  autoColumns,
   align,
   justify,
+  placeItems,
   alignContent,
   justifyContent,
+  placeContent,
   inline,
   className,
   style,
@@ -110,18 +141,31 @@ export function Grid<E extends ElementType = "div">({
 }: GridProps<E>) {
   const Component = as || "div";
 
+  if (typeof process !== "undefined" && process.env.NODE_ENV === "development") {
+    if (preset && cols) {
+      console.warn(
+        "Grid: Both 'preset' and 'cols' props provided. 'preset' will be ignored. Use one or the other."
+      );
+    }
+  }
+
   const classes = cx(
     "st-Grid",
     ...responsiveClasses("st-Grid", "gap", gap),
     ...responsiveClasses("st-Grid", "row-gap", rowGap),
     ...responsiveClasses("st-Grid", "col-gap", columnGap),
-    ...responsiveClasses("st-Grid", "cols", cols),
+    ...(preset ? [] : responsiveClasses("st-Grid", "cols", cols)),
     ...responsiveClasses("st-Grid", "rows", rows),
+    ...(preset ? [`st-Grid--preset-${preset}`] : []),
     ...responsiveClasses("st-Grid", "flow", flow),
+    ...responsiveClasses("st-Grid", "auto-rows", autoRows),
+    ...responsiveClasses("st-Grid", "auto-cols", autoColumns),
     ...responsiveClasses("st-Grid", "align", align),
     ...responsiveClasses("st-Grid", "justify", justify),
+    ...responsiveClasses("st-Grid", "place-items", placeItems),
     ...responsiveClasses("st-Grid", "align-content", alignContent),
     ...responsiveClasses("st-Grid", "justify-content", justifyContent),
+    ...responsiveClasses("st-Grid", "place-content", placeContent),
     ...responsiveClasses("st-Grid", "inline", inline),
     className
   );

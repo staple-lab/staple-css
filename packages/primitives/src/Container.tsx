@@ -1,6 +1,7 @@
 import type { ElementType, ComponentPropsWithoutRef, ReactNode } from "react";
-import type { ContainerSize, LayoutStyleProps } from "./types.js";
+import type { ContainerSize, LayoutStyleProps, Responsive } from "./types.js";
 import { cx } from "./cx.js";
+import { responsiveClasses } from "./types.js";
 
 /**
  * Props for polymorphic component
@@ -15,8 +16,8 @@ type PolymorphicProps<E extends ElementType> = {
 export interface ContainerOwnProps {
   /** Content */
   children?: ReactNode;
-  /** Max-width size preset */
-  size?: ContainerSize;
+  /** Max-width size preset, supports responsive values */
+  size?: Responsive<ContainerSize>;
   /** Additional class names */
   className?: string;
   /**
@@ -54,7 +55,7 @@ export function Container<E extends ElementType = "div">({
 
   const classes = cx(
     "st-Container",
-    size && `st-Container--size-${size}`,
+    ...responsiveClasses("st-Container", "size", size),
     className
   );
 

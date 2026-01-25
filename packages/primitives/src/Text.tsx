@@ -1,6 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import type { Size, Weight, Tone, TextAlign, Leading } from "./types.js";
+import type { Size, Weight, Tone, TextAlign, Leading, Responsive } from "./types.js";
 import { cx } from "./cx.js";
+import { responsiveClasses } from "./types.js";
 
 /**
  * Allowed elements for Text
@@ -15,16 +16,16 @@ export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, "style"> {
   children?: ReactNode;
   /** Render as different element */
   as?: TextElement;
-  /** Font size (size scale 0-6) */
-  size?: Size;
-  /** Font weight */
-  weight?: Weight;
-  /** Color tone */
-  tone?: Tone;
-  /** Text alignment */
-  align?: TextAlign;
-  /** Line height */
-  leading?: Leading;
+  /** Font size (size scale 0-6), supports responsive values */
+  size?: Responsive<Size>;
+  /** Font weight, supports responsive values */
+  weight?: Responsive<Weight>;
+  /** Color tone, supports responsive values */
+  tone?: Responsive<Tone>;
+  /** Text alignment, supports responsive values */
+  align?: Responsive<TextAlign>;
+  /** Line height, supports responsive values */
+  leading?: Responsive<Leading>;
   /** Use monospace font */
   mono?: boolean;
   /** Additional class names */
@@ -56,11 +57,11 @@ export function Text({
 }: TextProps) {
   const classes = cx(
     "st-Text",
-    size !== undefined && `st-Text--size-${size}`,
-    weight && `st-Text--weight-${weight}`,
-    tone && `st-Text--tone-${tone}`,
-    align && `st-Text--align-${align}`,
-    leading && `st-Text--leading-${leading}`,
+    ...responsiveClasses("st-Text", "size", size),
+    ...responsiveClasses("st-Text", "weight", weight),
+    ...responsiveClasses("st-Text", "tone", tone),
+    ...responsiveClasses("st-Text", "align", align),
+    ...responsiveClasses("st-Text", "leading", leading),
     mono && "st-Text--mono",
     className
   );

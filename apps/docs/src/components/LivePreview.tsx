@@ -19,12 +19,22 @@ export interface PreviewColors {
   warnSurface: string;
 }
 
+export type PreviewSize = "mobile" | "tablet" | "desktop";
+
 interface LivePreviewProps {
   colors: PreviewColors;
   theme?: "light" | "dark";
+  size?: PreviewSize;
 }
 
-export function LivePreview({ colors, theme = "light" }: LivePreviewProps) {
+// Size widths for preview (matching breakpoints)
+const sizeWidths: Record<PreviewSize, string> = {
+  mobile: "375px",
+  tablet: "768px",
+  desktop: "100%",
+};
+
+export function LivePreview({ colors, theme = "light", size = "desktop" }: LivePreviewProps) {
   // Generate inline styles that override CSS variables
   const previewStyle = useMemo(() => ({
     "--preview-background": colors.background,
@@ -44,8 +54,16 @@ export function LivePreview({ colors, theme = "light" }: LivePreviewProps) {
     "--preview-warn-surface": colors.warnSurface,
   } as React.CSSProperties), [colors]);
 
+  // Container style with size width
+  const containerStyle = useMemo(() => ({
+    ...previewStyle,
+    width: sizeWidths[size],
+    maxWidth: "100%",
+    margin: size !== "desktop" ? "0 auto" : undefined,
+  } as React.CSSProperties), [previewStyle, size]);
+
   return (
-    <div className="live-preview-container" style={previewStyle}>
+    <div className={`live-preview-container live-preview-container--${size}`} style={containerStyle}>
       <div className="live-preview-frame">
         {/* Header */}
         <header className="live-preview-header">

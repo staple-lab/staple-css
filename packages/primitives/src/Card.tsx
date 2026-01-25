@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import type { Space, Radius, Shadow, Tone } from "./types.js";
+import type { Space, Radius, Shadow, Tone, Responsive } from "./types.js";
 import { cx } from "./cx.js";
+import { responsiveClasses } from "./types.js";
 
 /**
  * Allowed elements for Card
@@ -15,14 +16,14 @@ export interface CardProps extends Omit<ComponentPropsWithoutRef<"div">, "style"
   children?: ReactNode;
   /** Render as different element */
   as?: CardElement;
-  /** Padding (space scale 0-8) */
-  pad?: Space;
-  /** Border radius (radius scale 0-4) */
-  radius?: Radius;
-  /** Box shadow (shadow scale 0-2) */
-  shadow?: Shadow;
-  /** Color tone */
-  tone?: Exclude<Tone, "muted">;
+  /** Padding (space scale 0-8), supports responsive values */
+  pad?: Responsive<Space>;
+  /** Border radius (radius scale 0-4), supports responsive values */
+  radius?: Responsive<Radius>;
+  /** Box shadow (shadow scale 0-2), supports responsive values */
+  shadow?: Responsive<Shadow>;
+  /** Color tone, supports responsive values */
+  tone?: Responsive<Exclude<Tone, "muted">>;
   /** Additional class names */
   className?: string;
 }
@@ -56,10 +57,10 @@ export function Card({
 }: CardProps) {
   const classes = cx(
     "st-Card",
-    `st-Card--pad-${pad}`,
-    `st-Card--radius-${radius}`,
-    shadow !== undefined && `st-Card--shadow-${shadow}`,
-    tone && `st-Card--tone-${tone}`,
+    ...responsiveClasses("st-Card", "pad", pad),
+    ...responsiveClasses("st-Card", "radius", radius),
+    ...responsiveClasses("st-Card", "shadow", shadow),
+    ...responsiveClasses("st-Card", "tone", tone),
     className
   );
 

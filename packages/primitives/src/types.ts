@@ -81,6 +81,26 @@ export type GridRows = 1 | 2 | 3 | 4 | 5 | 6 | "none";
 export type GridAutoFlow = "row" | "column" | "dense" | "row-dense" | "column-dense";
 
 /**
+ * Grid auto rows sizing options
+ */
+export type GridAutoRows = "auto" | "min" | "max" | "1fr" | "minmax";
+
+/**
+ * Grid auto columns sizing options
+ */
+export type GridAutoColumns = "auto" | "min" | "max" | "1fr" | "minmax";
+
+/**
+ * Place items shorthand (align-items + justify-items)
+ */
+export type PlaceItems = "start" | "center" | "end" | "stretch" | "baseline";
+
+/**
+ * Place content shorthand (align-content + justify-content)
+ */
+export type PlaceContent = "start" | "center" | "end" | "stretch" | "between" | "around" | "evenly";
+
+/**
  * Grid item placement
  */
 export type GridSpan = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | "full" | "auto";

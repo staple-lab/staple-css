@@ -38,6 +38,8 @@ export interface FlexOwnProps {
   justify?: Responsive<Justify>;
   /** Flex wrap (responsive) */
   wrap?: Responsive<FlexWrap>;
+  /** Content alignment for wrapped lines (responsive) */
+  alignContent?: Responsive<Align | Justify>;
   /** Make container inline-flex (responsive) */
   inline?: Responsive<boolean>;
   /** Additional class names */
@@ -88,6 +90,7 @@ export function Flex<E extends ElementType = "div">({
   align,
   justify,
   wrap,
+  alignContent,
   inline,
   className,
   style,
@@ -104,6 +107,7 @@ export function Flex<E extends ElementType = "div">({
     ...responsiveClasses("st-Flex", "align", align),
     ...responsiveClasses("st-Flex", "justify", justify),
     ...responsiveClasses("st-Flex", "wrap", wrap),
+    ...responsiveClasses("st-Flex", "align-content", alignContent),
     ...responsiveClasses("st-Flex", "inline", inline),
     className
   );
@@ -115,6 +119,3 @@ export function Flex<E extends ElementType = "div">({
   );
 }
 
-// Convenience aliases
-export const Row = Flex;
-export const Column = (props: FlexProps) => <Flex direction="column" {...props} />;

@@ -17,7 +17,7 @@
 
 // Components
 export { Box } from "./Box.js";
-export { Flex, Row, Column } from "./Flex.js";
+export { Flex } from "./Flex.js";
 export { Stack } from "./Stack.js";
 export { Inline } from "./Inline.js";
 export { Grid } from "./Grid.js";
@@ -53,6 +53,10 @@ export type {
   GridCols,
   GridRows,
   GridAutoFlow,
+  GridAutoRows,
+  GridAutoColumns,
+  PlaceItems,
+  PlaceContent,
   GridSpan,
   Breakpoint,
   Responsive,

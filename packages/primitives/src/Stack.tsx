@@ -35,14 +35,31 @@ export type StackProps<E extends ElementType = "div"> = StackOwnProps &
 /**
  * Stack
  *
+ * @deprecated Use `<Flex direction="column">` or the `<Column>` alias instead.
+ * Stack will be removed in v2.0. For backward compatibility, it's still available
+ * but new code should use Flex for all layout needs.
+ *
  * Vertical flex layout with consistent gap between children.
  * Supports responsive values for gap and alignment.
  *
  * @example
+ * // Deprecated - old way
  * <Stack gap={4}>
  *   <Text>First item</Text>
  *   <Text>Second item</Text>
  * </Stack>
+ *
+ * @example
+ * // New way (recommended)
+ * <Flex direction="column" gap={4}>
+ *   <Text>First item</Text>
+ *   <Text>Second item</Text>
+ * </Flex>
+ * // Or use the Column alias
+ * <Column gap={4}>
+ *   <Text>First item</Text>
+ *   <Text>Second item</Text>
+ * </Column>
  *
  * @example
  * // Responsive gap

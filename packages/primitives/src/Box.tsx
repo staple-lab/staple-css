@@ -18,6 +18,20 @@ export interface BoxOwnProps {
   children?: ReactNode;
   /** Padding (space scale 0-8), supports responsive values */
   pad?: Responsive<Space>;
+  /** Margin on all sides (space scale 0-8), supports responsive values */
+  margin?: Responsive<Space>;
+  /** Margin on horizontal axis (space scale 0-8), supports responsive values */
+  marginX?: Responsive<Space>;
+  /** Margin on vertical axis (space scale 0-8), supports responsive values */
+  marginY?: Responsive<Space>;
+  /** Margin on top (space scale 0-8), supports responsive values */
+  marginTop?: Responsive<Space>;
+  /** Margin on bottom (space scale 0-8), supports responsive values */
+  marginBottom?: Responsive<Space>;
+  /** Margin on left (space scale 0-8), supports responsive values */
+  marginLeft?: Responsive<Space>;
+  /** Margin on right (space scale 0-8), supports responsive values */
+  marginRight?: Responsive<Space>;
   /** Border radius (radius scale 0-4) */
   radius?: Radius;
   /** Box shadow (shadow scale 0-2) */
@@ -48,6 +62,13 @@ export function Box<E extends ElementType = "div">({
   as,
   children,
   pad,
+  margin,
+  marginX,
+  marginY,
+  marginTop,
+  marginBottom,
+  marginLeft,
+  marginRight,
   radius,
   shadow,
   className,
@@ -59,6 +80,13 @@ export function Box<E extends ElementType = "div">({
   const classes = cx(
     "st-Box",
     ...responsiveClasses("st-Box", "pad", pad),
+    ...responsiveClasses("st-Box", "margin", margin),
+    ...responsiveClasses("st-Box", "margin-x", marginX),
+    ...responsiveClasses("st-Box", "margin-y", marginY),
+    ...responsiveClasses("st-Box", "margin-top", marginTop),
+    ...responsiveClasses("st-Box", "margin-bottom", marginBottom),
+    ...responsiveClasses("st-Box", "margin-left", marginLeft),
+    ...responsiveClasses("st-Box", "margin-right", marginRight),
     radius !== undefined && `st-Box--radius-${radius}`,
     shadow !== undefined && `st-Box--shadow-${shadow}`,
     className

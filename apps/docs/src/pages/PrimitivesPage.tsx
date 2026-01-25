@@ -1,4 +1,4 @@
-import { Container, Stack, Card, Text, Box, Inline, Grid } from "@staple-css/primitives";
+import { Container, Stack, Card, Text, Box, Inline, Grid, Flex } from "@staple-css/primitives";
 import { CodePreview } from "../components/CodePreview";
 
 function CodeExample({
@@ -141,12 +141,101 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
           />
         </Stack>
 
-        {/* Stack */}
+        {/* Flex */}
         <Stack gap={4}>
           <Text as="h2" size={4} weight="semibold">
-            Stack
+            Flex
           </Text>
-          <Text>Vertical flex layout with consistent gap between children.</Text>
+          <Text>
+            Complete flexbox layout with full CSS Flex specification support. Use <Text as="span" mono>direction</Text>,
+            <Text as="span" mono>gap</Text>, <Text as="span" mono>align</Text>, <Text as="span" mono>justify</Text>, and more.
+            Convenience aliases: <Text as="span" mono>Row</Text> (flex row) and <Text as="span" mono>Column</Text> (flex column).
+          </Text>
+          <CodeExample
+            title="Flex Row - Horizontal Layout"
+            code={`<Flex gap={3} align="center">
+  <Box pad={2} radius={1} className="primary-box">Item 1</Box>
+  <Box pad={2} radius={1} className="primary-box">Item 2</Box>
+  <Box pad={2} radius={1} className="primary-box">Item 3</Box>
+</Flex>`}
+          >
+            <Flex gap={3} align="center">
+              <Box pad={2} radius={1} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text as="span" size={1}>Item 1</Text>
+              </Box>
+              <Box pad={2} radius={1} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text as="span" size={1}>Item 2</Text>
+              </Box>
+              <Box pad={2} radius={1} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text as="span" size={1}>Item 3</Text>
+              </Box>
+            </Flex>
+          </CodeExample>
+          <CodeExample
+            title="Flex Column with direction prop"
+            code={`<Flex direction="column" gap={4}>
+  <Box pad={3} radius={2}>Item 1</Box>
+  <Box pad={3} radius={2}>Item 2</Box>
+  <Box pad={3} radius={2}>Item 3</Box>
+</Flex>`}
+          >
+            <Flex direction="column" gap={4}>
+              <Box pad={3} radius={2} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text>Item 1</Text>
+              </Box>
+              <Box pad={3} radius={2} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text>Item 2</Text>
+              </Box>
+              <Box pad={3} radius={2} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text>Item 3</Text>
+              </Box>
+            </Flex>
+          </CodeExample>
+          <CodeExample
+            title="Multi-line Flex with alignContent"
+            code={`<Flex wrap="wrap" gap={3} alignContent="center" style={{ height: "200px" }}>
+  <Box pad={2} radius={1}>1</Box>
+  <Box pad={2} radius={1}>2</Box>
+  <Box pad={2} radius={1}>3</Box>
+  <Box pad={2} radius={1}>4</Box>
+</Flex>`}
+          >
+            <Flex wrap="wrap" gap={3} alignContent="center" style={{ height: "200px", backgroundColor: "var(--st-color-surface-raised)", borderRadius: "var(--st-radius-2)" }}>
+              <Box pad={2} radius={1} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text as="span" size={1}>1</Text>
+              </Box>
+              <Box pad={2} radius={1} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text as="span" size={1}>2</Text>
+              </Box>
+              <Box pad={2} radius={1} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text as="span" size={1}>3</Text>
+              </Box>
+              <Box pad={2} radius={1} style={{ backgroundColor: "var(--st-color-surface)" }}>
+                <Text as="span" size={1}>4</Text>
+              </Box>
+            </Flex>
+          </CodeExample>
+          <PropsTable
+            props={[
+              { name: "direction", type: "row | column | row-reverse | column-reverse", description: "Flex direction (responsive)" },
+              { name: "gap", type: "0-8 | Responsive<0-8>", description: "Gap between items" },
+              { name: "align", type: "start | center | end | stretch | baseline", description: "Cross-axis alignment (align-items)" },
+              { name: "justify", type: "start | center | end | between | around | evenly", description: "Main-axis justification (justify-content)" },
+              { name: "alignContent", type: "start | center | end | ... | evenly", description: "Multi-line alignment (responsive)" },
+              { name: "wrap", type: "wrap | nowrap | wrap-reverse", description: "Flex wrap behavior" },
+              { name: "inline", type: "boolean", description: "Use inline-flex instead of flex" },
+            ]}
+          />
+        </Stack>
+
+        {/* Stack (Legacy) */}
+        <Stack gap={4}>
+          <Text as="h2" size={4} weight="semibold">
+            Stack <Text as="span" size={2} tone="warn">(Deprecated)</Text>
+          </Text>
+          <Text tone="muted">
+            Stack is deprecated. Use <Text as="span" mono>&lt;Flex direction="column"&gt;</Text> instead.
+          </Text>
           <CodeExample
             title="Basic Usage"
             code={`<Stack gap={4}>
@@ -175,12 +264,14 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
           />
         </Stack>
 
-        {/* Inline */}
+        {/* Inline (Legacy) */}
         <Stack gap={4}>
           <Text as="h2" size={4} weight="semibold">
-            Inline
+            Inline <Text as="span" size={2} tone="warn">(Deprecated)</Text>
           </Text>
-          <Text>Horizontal flex layout with gap, alignment, and justify options.</Text>
+          <Text tone="muted">
+            Inline is deprecated. Use <Text as="span" mono>&lt;Flex direction="row"&gt;</Text> instead.
+          </Text>
           <CodeExample
             title="Basic Usage"
             code={`<Inline gap={3} align="center" justify="between">
@@ -212,9 +303,12 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
           <Text as="h2" size={4} weight="semibold">
             Grid
           </Text>
-          <Text>CSS Grid layout with column presets and gap.</Text>
+          <Text>
+            CSS Grid layout with full grid specification support. Control columns, rows, gaps, alignment,
+            and implicit sizing with full responsive breakpoint support.
+          </Text>
           <CodeExample
-            title="Basic Usage"
+            title="Basic Column Grid"
             code={`<Grid cols={3} gap={4}>
   <Card pad={4}>1</Card>
   <Card pad={4}>2</Card>
@@ -233,10 +327,61 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               </Card>
             </Grid>
           </CodeExample>
+          <CodeExample
+            title="Responsive Grid"
+            code={`<Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+  <Card pad={4}>1</Card>
+  <Card pad={4}>2</Card>
+  <Card pad={4}>3</Card>
+  <Card pad={4}>4</Card>
+</Grid>`}
+          >
+            <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+              <Card pad={4}>
+                <Text align="center">1</Text>
+              </Card>
+              <Card pad={4}>
+                <Text align="center">2</Text>
+              </Card>
+              <Card pad={4}>
+                <Text align="center">3</Text>
+              </Card>
+              <Card pad={4}>
+                <Text align="center">4</Text>
+              </Card>
+            </Grid>
+          </CodeExample>
+          <CodeExample
+            title="Grid with Alignment & Spacing"
+            code={`<Grid cols={2} gap={4} align="center" justify="center" style={{ minHeight: "300px" }}>
+  <Card pad={4}>Centered item</Card>
+  <Card pad={4}>Centered item</Card>
+</Grid>`}
+          >
+            <Grid cols={2} gap={4} align="center" justify="center" style={{ minHeight: "300px" }}>
+              <Card pad={4}>
+                <Text align="center">Centered item</Text>
+              </Card>
+              <Card pad={4}>
+                <Text align="center">Centered item</Text>
+              </Card>
+            </Grid>
+          </CodeExample>
           <PropsTable
             props={[
-              { name: "cols", type: "1 | 2 | 3 | 4 | 6 | 12", description: "Number of columns" },
-              { name: "gap", type: "0-8", description: "Gap between items" },
+              { name: "cols", type: "1-12 | Responsive<1-12>", description: "Number of columns (responsive)" },
+              { name: "rows", type: "1-6 | Responsive<1-6>", description: "Number of rows (responsive)" },
+              { name: "preset", type: "auto-fit-xs/sm/md/lg | auto-fill-xs/sm/md/lg", description: "Intrinsic responsive preset (auto-fit/fill with minmax)" },
+              { name: "gap", type: "0-8 | Responsive<0-8>", description: "Gap between all items" },
+              { name: "align", type: "start | center | end | ... | baseline", description: "Align items on cross-axis (responsive)" },
+              { name: "justify", type: "start | center | end | ...", description: "Justify items on main-axis (responsive)" },
+              { name: "placeItems", type: "start | center | end | ... | baseline", description: "Shorthand for align & justify items (responsive)" },
+              { name: "alignContent", type: "start | center | end | ... | evenly", description: "Align tracks on cross-axis (responsive)" },
+              { name: "justifyContent", type: "start | center | end | ... | evenly", description: "Justify tracks on main-axis (responsive)" },
+              { name: "placeContent", type: "start | center | end | ... | evenly", description: "Shorthand for align & justify content (responsive)" },
+              { name: "autoRows", type: "auto | min | max | 1fr | minmax", description: "Size implicit rows (responsive)" },
+              { name: "autoColumns", type: "auto | min | max | 1fr | minmax", description: "Size implicit columns (responsive)" },
+              { name: "flow", type: "row | column | dense | row-dense | column-dense", description: "Grid auto-flow direction (responsive)" },
             ]}
           />
         </Stack>

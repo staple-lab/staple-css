@@ -39,14 +39,32 @@ export type InlineProps<E extends ElementType = "div"> = InlineOwnProps &
 /**
  * Inline
  *
+ * @deprecated Use `<Flex direction="row">` or the `<Row>` alias instead.
+ * Inline will be removed in v2.0. For backward compatibility, it's still available
+ * but new code should use Flex for all layout needs.
+ *
  * Horizontal flex layout with consistent gap between children.
  *
  * @example
+ * // Deprecated - old way
  * <Inline gap={3} align="center">
  *   <Icon />
  *   <Text>Label</Text>
  * </Inline>
  *
+ * @example
+ * // New way (recommended)
+ * <Flex direction="row" gap={3} align="center">
+ *   <Icon />
+ *   <Text>Label</Text>
+ * </Flex>
+ * // Or use the Row alias
+ * <Row gap={3} align="center">
+ *   <Icon />
+ *   <Text>Label</Text>
+ * </Row>
+ *
+ * @example
  * <Inline gap={2} justify="between">
  *   <Text>Left</Text>
  *   <Text>Right</Text>

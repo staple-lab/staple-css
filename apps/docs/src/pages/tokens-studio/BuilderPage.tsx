@@ -5,8 +5,8 @@
  * Steps: Seeds → Harmony → Generate → Scales → Review → Overrides → Export
  */
 
-import { useState, useCallback, useMemo, useRef } from "react";
-import { Container, Stack, Text, Inline, Card, Box, Grid } from "@staple-css/primitives";
+import { useState, useCallback, useMemo, useRef, useEffect } from "react";
+import { Container, Stack, Text, Inline, Card, Box, Grid, Flex } from "@staple-css/primitives";
 import {
   type Seeds,
   type GenerationParams,
@@ -78,6 +78,43 @@ interface WorkingState {
 export function BuilderPage() {
   const [currentStep, setCurrentStep] = useState<BuilderStep>("seeds");
 
+  // Sidebar state with localStorage persistence
+  const [sidebarOpen, setSidebarOpen] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const stored = localStorage.getItem("staple-builder-sidebar");
+    return stored !== null ? stored === "true" : window.innerWidth >= 1024;
+  });
+
+  // Keyboard shortcut handler (Cmd/Ctrl + B)
+  useEffect(() => {
+    const handleKeyboard = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "b") {
+        e.preventDefault();
+        setSidebarOpen(prev => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyboard);
+    return () => window.removeEventListener("keydown", handleKeyboard);
+  }, []);
+
+  // Persist sidebar state to localStorage
+  useEffect(() => {
+    localStorage.setItem("staple-builder-sidebar", String(sidebarOpen));
+  }, [sidebarOpen]);
+
+  // Auto-collapse on mobile (<1024px)
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setSidebarOpen(window.innerWidth >= 1024);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Default breakpoints
   const defaultBreakpoints: Record<string, string> = {
     sm: "640px",
@@ -128,6 +165,9 @@ export function BuilderPage() {
 
   // Preview size (mobile, tablet, desktop)
   const [previewSize, setPreviewSize] = useState<"mobile" | "tablet" | "desktop">("desktop");
+
+  // Preview expanded state (showing full preview)
+  const [previewExpanded, setPreviewExpanded] = useState(false);
 
   // Semantic color overrides (separate for light and dark)
   const [semanticOverrides, setSemanticOverrides] = useState<{
@@ -657,7 +697,16 @@ export function BuilderPage() {
         </Card>
 
         {/* Main Content Area */}
-        <div className="builder-layout">
+        <div className={`builder-layout ${sidebarOpen ? "builder-layout--sidebar-open" : "builder-layout--sidebar-closed"}`}>
+          {/* Sidebar Toggle Button */}
+          <button
+            className="builder-sidebar-toggle"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            aria-label={sidebarOpen ? "Close sidebar (⌘B)" : "Open sidebar (⌘B)"}
+            title={`${sidebarOpen ? "Close" : "Open"} sidebar (Cmd/Ctrl + B)`}
+          >
+            {sidebarOpen ? "✕" : "≡"}
+          </button>
           {/* Left: Step Content */}
           <div className="builder-main">
             {currentStep === "seeds" && (
@@ -746,35 +795,135 @@ export function BuilderPage() {
                 <Stack gap={4}>
                   <Inline gap={2} align="center" justify="between" wrap>
                     <Text weight="semibold">Live Preview</Text>
-                    {/* Mode controls */}
-                    <Inline gap={1}>
+                    {/* View mode controls */}
+                    <Inline gap={2} wrap>
+                      <button
+                        onClick={() => setPreviewExpanded(!previewExpanded)}
+                        className="studio-btn studio-btn--sm studio-btn--primary"
+                        title={previewExpanded ? "Hide full preview" : "Show full preview"}
+                      >
+                        {previewExpanded ? "Hide Preview" : "Preview"}
+                      </button>
+                      {/* Size presets (shown when preview expanded) */}
+                      {previewExpanded && (
+                        <Inline gap={1}>
+                          <button
+                            onClick={() => setPreviewSize("mobile")}
+                            className={`studio-btn studio-btn--xs ${previewSize === "mobile" ? "studio-btn--primary" : ""}`}
+                            title="Mobile viewport (375px)"
+                          >
+                            📱
+                          </button>
+                          <button
+                            onClick={() => setPreviewSize("tablet")}
+                            className={`studio-btn studio-btn--xs ${previewSize === "tablet" ? "studio-btn--primary" : ""}`}
+                            title="Tablet viewport (768px)"
+                          >
+                            📑
+                          </button>
+                          <button
+                            onClick={() => setPreviewSize("desktop")}
+                            className={`studio-btn studio-btn--xs ${previewSize === "desktop" ? "studio-btn--primary" : ""}`}
+                            title="Desktop viewport (1024px)"
+                          >
+                            🖥️
+                          </button>
+                        </Inline>
+                      )}
+                      {/* Light/Dark mode controls */}
+                      <Inline gap={1}>
+                        <button
+                          onClick={() => setPreviewMode("light")}
+                          className={`studio-btn studio-btn--xs ${previewMode === "light" ? "studio-btn--primary" : ""}`}
+                        >
+                          Light
+                        </button>
+                        <button
+                          onClick={() => setPreviewMode("dark")}
+                          className={`studio-btn studio-btn--xs ${previewMode === "dark" ? "studio-btn--primary" : ""}`}
+                        >
+                          Dark
+                        </button>
+                      </Inline>
+                    </Inline>
+                  </Inline>
+                </Stack>
+              </Card>
+            </Stack>
+          </div>
+
+        </div>
+
+        {/* Full-screen preview modal */}
+        {previewExpanded && (
+          <div className="builder-preview-modal-overlay">
+            <div className="builder-preview-modal">
+              <div className="builder-preview-modal-header">
+                <Flex gap={2} align="center" justify="between">
+                  <Text weight="semibold" size={3}>Live Preview</Text>
+                  <Flex gap={2} align="center">
+                    {/* Size presets */}
+                    <Flex gap={1}>
+                      <button
+                        onClick={() => setPreviewSize("mobile")}
+                        className={`studio-btn studio-btn--xs ${previewSize === "mobile" ? "studio-btn--primary" : ""}`}
+                        title="Mobile viewport (375px)"
+                      >
+                        📱
+                      </button>
+                      <button
+                        onClick={() => setPreviewSize("tablet")}
+                        className={`studio-btn studio-btn--xs ${previewSize === "tablet" ? "studio-btn--primary" : ""}`}
+                        title="Tablet viewport (768px)"
+                      >
+                        📑
+                      </button>
+                      <button
+                        onClick={() => setPreviewSize("desktop")}
+                        className={`studio-btn studio-btn--xs ${previewSize === "desktop" ? "studio-btn--primary" : ""}`}
+                        title="Desktop viewport (1024px)"
+                      >
+                        🖥️
+                      </button>
+                    </Flex>
+                    {/* Light/Dark mode */}
+                    <Flex gap={1}>
                       <button
                         onClick={() => setPreviewMode("light")}
-                        className={`studio-btn studio-btn--sm ${previewMode === "light" ? "studio-btn--primary" : ""}`}
+                        className={`studio-btn studio-btn--xs ${previewMode === "light" ? "studio-btn--primary" : ""}`}
                       >
                         Light
                       </button>
                       <button
                         onClick={() => setPreviewMode("dark")}
-                        className={`studio-btn studio-btn--sm ${previewMode === "dark" ? "studio-btn--primary" : ""}`}
+                        className={`studio-btn studio-btn--xs ${previewMode === "dark" ? "studio-btn--primary" : ""}`}
                       >
                         Dark
                       </button>
-                    </Inline>
-                  </Inline>
-
-                  <LivePreview
-                    colors={resolvedColors[previewMode]}
-                    mode={previewMode}
-                    palettes={allPalettes}
-                    size={previewSize}
-                    onSizeChange={setPreviewSize}
-                  />
-                </Stack>
-              </Card>
-            </Stack>
+                    </Flex>
+                    <button
+                      onClick={() => setPreviewExpanded(false)}
+                      className="studio-btn studio-btn--sm"
+                      title="Close preview"
+                    >
+                      ✕ Close
+                    </button>
+                  </Flex>
+                </Flex>
+              </div>
+              <div className="builder-preview-modal-body">
+                <LivePreview
+                  colors={resolvedColors[previewMode]}
+                  mode={previewMode}
+                  palettes={allPalettes}
+                  size={previewSize}
+                  onSizeChange={setPreviewSize}
+                  embedded
+                />
+              </div>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Navigation Footer */}
         <Card pad={4} radius={2}>
@@ -1624,24 +1773,38 @@ function EditableSemanticColor({ label, lightColor, darkColor, onUpdateLight, on
 function AccessibilitySummary({ getColor }: { getColor: (key: string, fallback: string) => string }) {
   const score = useMemo(() => {
     const checks = [
-      // Text checks (normal text)
+      // Text on background
       wcagContrastHex(getColor("text", "#1a1a1a"), getColor("background", "#ffffff")) >= 4.5,
+      // Muted text on background
       wcagContrastHex(getColor("textMuted", "#6b7280"), getColor("background", "#ffffff")) >= 4.5,
+      // Text on surface
       wcagContrastHex(getColor("text", "#1a1a1a"), getColor("surface", "#f5f5f5")) >= 4.5,
-      wcagContrastHex(getColor("text", "#1a1a1a"), getColor("surfaceRaised", "#ffffff")) >= 4.5,
-
-      // Button text checks (normal text)
+      // Primary button text
       wcagContrastHex(getColor("primaryText", "#ffffff"), getColor("primary", "#3b82f6")) >= 4.5,
-      wcagContrastHex(getColor("secondaryText", "#ffffff"), getColor("secondary", "#6366f1")) >= 4.5,
-      wcagContrastHex(getColor("accentText", "#ffffff"), getColor("accent", "#ec4899")) >= 4.5,
-
-      // Status checks (large text - 3:1 minimum)
+      // Success status (large text)
       wcagContrastHex(getColor("success", "#22c55e"), getColor("successSurface", "#dcfce7")) >= 3,
+      // Warning status (large text)
       wcagContrastHex(getColor("warn", "#f59e0b"), getColor("warnSurface", "#fef3c7")) >= 3,
+      // Danger status (large text)
       wcagContrastHex(getColor("danger", "#ef4444"), getColor("dangerSurface", "#fee2e2")) >= 3,
-
-      // Non-text contrast (borders, UI components - 3:1 minimum)
+      // Border visibility (non-text)
       wcagContrastHex(getColor("border", "#e5e7eb"), getColor("background", "#ffffff")) >= 3,
+      // Secondary button text
+      wcagContrastHex(getColor("secondaryText", "#ffffff"), getColor("secondary", "#6366f1")) >= 4.5,
+      // Accent button text
+      wcagContrastHex(getColor("accentText", "#ffffff"), getColor("accent", "#ec4899")) >= 4.5,
+      // Text on surface-raised (cards)
+      wcagContrastHex(getColor("text", "#1a1a1a"), getColor("surfaceRaised", "#ffffff")) >= 4.5,
+      // Primary color on background (links, icons)
+      wcagContrastHex(getColor("primary", "#3b82f6"), getColor("background", "#ffffff")) >= 3,
+      // Muted text on surface
+      wcagContrastHex(getColor("textMuted", "#6b7280"), getColor("surface", "#f5f5f5")) >= 4.5,
+      // Border on surface (input borders)
+      wcagContrastHex(getColor("border", "#e5e7eb"), getColor("surface", "#f5f5f5")) >= 3,
+      // Success text on background
+      wcagContrastHex(getColor("success", "#22c55e"), getColor("background", "#ffffff")) >= 3,
+      // Danger text on background
+      wcagContrastHex(getColor("danger", "#ef4444"), getColor("background", "#ffffff")) >= 3,
     ];
     const passed = checks.filter(Boolean).length;
     const total = checks.length;
@@ -2285,7 +2448,11 @@ function ScalesStep({
 }: ScalesStepProps) {
   const [activeTab, setActiveTab] = useState<"breakpoints" | "space" | "radius" | "shadow" | "typography" | "motion">("breakpoints");
   const [playingEasing, setPlayingEasing] = useState<string | null>(null);
+
+  // Expansion state for scale categories (space, radius, shadow currently expandable)
   const [expandedSpaceKeys, setExpandedSpaceKeys] = useState<Set<string>>(() => new Set(Object.keys(scales.space)));
+  const [expandedRadiusKeys, setExpandedRadiusKeys] = useState<Set<string>>(() => new Set());
+  const [expandedShadowKeys, setExpandedShadowKeys] = useState<Set<string>>(() => new Set());
 
   // Trigger easing animation preview
   const playEasingPreview = useCallback((key: string) => {
@@ -2298,9 +2465,9 @@ function ScalesStep({
 
   const breakpointKeys = Object.keys(breakpoints);
 
-  // Toggle space item expansion
-  const toggleSpaceExpanded = useCallback((key: string) => {
-    setExpandedSpaceKeys(prev => {
+  // Generic toggle function
+  const createToggleExpanded = useCallback((setState: React.Dispatch<React.SetStateAction<Set<string>>>) => (key: string) => {
+    setState(prev => {
       const next = new Set(prev);
       if (next.has(key)) {
         next.delete(key);
@@ -2309,6 +2476,31 @@ function ScalesStep({
       }
       return next;
     });
+  }, []);
+
+  // Toggle functions for scale types
+  const toggleSpaceExpanded = createToggleExpanded(setExpandedSpaceKeys);
+  const toggleRadiusExpanded = createToggleExpanded(setExpandedRadiusKeys);
+  const toggleShadowExpanded = createToggleExpanded(setExpandedShadowKeys);
+
+  // Expand/collapse all functions
+  const expandAll = useCallback((scaleType: "space" | "radius" | "shadow") => {
+    const setState = {
+      space: setExpandedSpaceKeys,
+      radius: setExpandedRadiusKeys,
+      shadow: setExpandedShadowKeys,
+    }[scaleType];
+    const keys = Object.keys(scales[scaleType]);
+    setState(new Set(keys));
+  }, [scales]);
+
+  const collapseAll = useCallback((scaleType: "space" | "radius" | "shadow") => {
+    const setState = {
+      space: setExpandedSpaceKeys,
+      radius: setExpandedRadiusKeys,
+      shadow: setExpandedShadowKeys,
+    }[scaleType];
+    setState(new Set());
   }, []);
 
   return (
@@ -2428,6 +2620,12 @@ function ScalesStep({
                 <Text size={0} tone="muted">Click a token to set responsive values per breakpoint.</Text>
               </Stack>
                 <Inline gap={2}>
+                  <button onClick={() => expandAll("space")} className="studio-btn studio-btn--sm" title="Expand all">
+                    Expand All
+                  </button>
+                  <button onClick={() => collapseAll("space")} className="studio-btn studio-btn--sm" title="Collapse all">
+                    Collapse All
+                  </button>
                   <button onClick={() => onAddItem("space")} className="studio-btn studio-btn--sm">
                     + Add
                   </button>
@@ -2533,6 +2731,12 @@ function ScalesStep({
                 <Text size={0} tone="muted">Border radius values for rounded corners.</Text>
               </Stack>
               <Inline gap={2}>
+                <button onClick={() => expandAll("radius")} className="studio-btn studio-btn--sm" title="Expand all">
+                  Expand All
+                </button>
+                <button onClick={() => collapseAll("radius")} className="studio-btn studio-btn--sm" title="Collapse all">
+                  Collapse All
+                </button>
                 <button onClick={() => onAddItem("radius")} className="studio-btn studio-btn--sm">
                   + Add
                 </button>
@@ -2542,35 +2746,54 @@ function ScalesStep({
               </Inline>
             </Inline>
             <div className="scales-grid">
-              {Object.entries(scales.radius).map(([key, value]) => (
-                <div key={key} className="scale-item">
-                  <Inline gap={2} align="center" justify="between">
-                    <Stack gap={1}>
-                      <Text size={0} weight="medium" mono>--st-radius-{key}</Text>
-                      <div
-                        className="scale-preview-box"
-                        style={{ borderRadius: value }}
-                      />
-                    </Stack>
-                    <Inline gap={1} align="center">
-                      <input
-                        type="text"
-                        value={value}
-                        onChange={(e) => onUpdate("radius", key, e.target.value)}
-                        className="studio-text-input studio-text-input--sm"
-                        style={{ width: "80px" }}
-                      />
-                      <button
-                        onClick={() => onRemoveItem("radius", key)}
-                        className="studio-btn studio-btn--sm studio-btn--danger"
-                        title="Remove"
-                      >
-                        ×
-                      </button>
-                    </Inline>
-                  </Inline>
-                </div>
-              ))}
+              {Object.entries(scales.radius).map(([key, value]) => {
+                const isExpanded = expandedRadiusKeys.has(key);
+                return (
+                  <div key={key} className={`scale-item scale-item--expandable ${isExpanded ? "scale-item--expanded" : ""}`}>
+                    <div
+                      className="scale-item-header"
+                      onClick={() => toggleRadiusExpanded(key)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <Inline gap={2} align="center" justify="between">
+                        <Stack gap={1}>
+                          <Inline gap={2} align="center">
+                            <span className="scale-expand-icon">{isExpanded ? "▼" : "▶"}</span>
+                            <Text size={0} weight="medium" mono>--st-radius-{key}</Text>
+                          </Inline>
+                          <div
+                            className="scale-preview-box"
+                            style={{ borderRadius: value }}
+                          />
+                        </Stack>
+                        <Inline gap={1} align="center">
+                          <input
+                            type="text"
+                            value={value}
+                            onChange={(e) => {
+                              e.stopPropagation();
+                              onUpdate("radius", key, e.target.value);
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                            className="studio-text-input studio-text-input--sm"
+                            style={{ width: "80px" }}
+                          />
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onRemoveItem("radius", key);
+                            }}
+                            className="studio-btn studio-btn--sm studio-btn--danger"
+                            title="Remove"
+                          >
+                            ×
+                          </button>
+                        </Inline>
+                      </Inline>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </Stack>
         </Card>
@@ -2586,6 +2809,12 @@ function ScalesStep({
                 <Text size={0} tone="muted">Box shadow values for elevation.</Text>
               </Stack>
               <Inline gap={2}>
+                <button onClick={() => expandAll("shadow")} className="studio-btn studio-btn--sm" title="Expand all">
+                  Expand All
+                </button>
+                <button onClick={() => collapseAll("shadow")} className="studio-btn studio-btn--sm" title="Collapse all">
+                  Collapse All
+                </button>
                 <button onClick={() => onAddItem("shadow")} className="studio-btn studio-btn--sm">
                   + Add
                 </button>
@@ -2595,35 +2824,54 @@ function ScalesStep({
               </Inline>
             </Inline>
             <div className="scales-grid">
-              {Object.entries(scales.shadow).map(([key, value]) => (
-                <div key={key} className="scale-item">
-                  <Inline gap={2} align="center" justify="between">
-                    <Stack gap={1}>
-                      <Text size={0} weight="medium" mono>--st-shadow-{key}</Text>
-                      <div
-                        className="scale-preview-shadow"
-                        style={{ boxShadow: value }}
-                      />
-                    </Stack>
-                    <Inline gap={1} align="center">
-                      <input
-                        type="text"
-                        value={value}
-                        onChange={(e) => onUpdate("shadow", key, e.target.value)}
-                        className="studio-text-input studio-text-input--sm"
-                        style={{ width: "200px" }}
-                      />
-                      <button
-                        onClick={() => onRemoveItem("shadow", key)}
-                        className="studio-btn studio-btn--sm studio-btn--danger"
-                        title="Remove"
-                      >
-                        ×
-                      </button>
-                    </Inline>
-                  </Inline>
-                </div>
-              ))}
+              {Object.entries(scales.shadow).map(([key, value]) => {
+                const isExpanded = expandedShadowKeys.has(key);
+                return (
+                  <div key={key} className={`scale-item scale-item--expandable ${isExpanded ? "scale-item--expanded" : ""}`}>
+                    <div
+                      className="scale-item-header"
+                      onClick={() => toggleShadowExpanded(key)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <Inline gap={2} align="center" justify="between">
+                        <Stack gap={1}>
+                          <Inline gap={2} align="center">
+                            <span className="scale-expand-icon">{isExpanded ? "▼" : "▶"}</span>
+                            <Text size={0} weight="medium" mono>--st-shadow-{key}</Text>
+                          </Inline>
+                          <div
+                            className="scale-preview-shadow"
+                            style={{ boxShadow: value }}
+                          />
+                        </Stack>
+                        <Inline gap={1} align="center">
+                          <input
+                            type="text"
+                            value={value}
+                            onChange={(e) => {
+                              e.stopPropagation();
+                              onUpdate("shadow", key, e.target.value);
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                            className="studio-text-input studio-text-input--sm"
+                            style={{ width: "200px" }}
+                          />
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onRemoveItem("shadow", key);
+                            }}
+                            className="studio-btn studio-btn--sm studio-btn--danger"
+                            title="Remove"
+                          >
+                            ×
+                          </button>
+                        </Inline>
+                      </Inline>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </Stack>
         </Card>
@@ -3104,6 +3352,8 @@ interface LivePreviewProps {
   palettes: Palette[];
   size?: "mobile" | "tablet" | "desktop";
   onSizeChange?: (size: "mobile" | "tablet" | "desktop") => void;
+  /** When true, shows full content directly without mini preview or internal modal */
+  embedded?: boolean;
 }
 
 const PREVIEW_WIDTHS = {
@@ -3112,7 +3362,7 @@ const PREVIEW_WIDTHS = {
   desktop: "100%",
 };
 
-function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange }: LivePreviewProps) {
+function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, embedded = false }: LivePreviewProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const previewWidth = PREVIEW_WIDTHS[size];
 
@@ -3287,7 +3537,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange }:
 
         {/* Preview Content */}
         <div className="preview-modal-body" style={{ display: "flex", justifyContent: "center" }}>
-          <div style={{ width: previewWidth, maxWidth: "100%", transition: "width 0.2s ease" }}>
+          <div className="preview-container" style={{ width: previewWidth, maxWidth: "100%", transition: "width 0.2s ease" }}>
             {/* Preview Header */}
             <div
               style={{
@@ -3496,6 +3746,180 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange }:
       </div>
     </div>
   );
+
+  // Embedded content (for use inside a modal - no wrapper)
+  const embeddedContent = (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className="preview-container" style={{ width: previewWidth, maxWidth: "100%", transition: "width 0.2s ease" }}>
+        {/* Preview Header */}
+        <div
+          style={{
+            backgroundColor: surfaceColor,
+            borderBottom: `1px solid ${borderColor}`,
+            padding: "var(--st-space-3) var(--st-space-4)",
+          }}
+        >
+          <Inline gap={6} align="center">
+            <span style={{ fontWeight: 700, color: textColor }}>
+              AppName
+            </span>
+            <Inline gap={4}>
+              <span style={{ color: primaryColor }}>Dashboard</span>
+              <span style={{ color: mutedColor }}>Settings</span>
+              <span style={{ color: mutedColor }}>Profile</span>
+            </Inline>
+          </Inline>
+        </div>
+
+        {/* Preview Body */}
+        <Box pad={{ base: 3, md: 4, lg: 5 }} style={{ backgroundColor: bgColor }}>
+          <Stack gap={5}>
+            {/* Stats Row */}
+            <div className="preview-stats-grid">
+              <StatCard label="Total Revenue" value="$45,231" change="+20.1%" changeType="success" colors={colors} />
+              <StatCard label="Subscriptions" value="+2,350" change="+180.1%" changeType="success" colors={colors} />
+              <StatCard label="Sales" value="+12,234" change="+19%" changeType="success" colors={colors} />
+              <StatCard label="Active Now" value="+573" change="-4%" changeType="danger" colors={colors} />
+            </div>
+
+            {/* Content Area */}
+            <div className="preview-content-grid">
+              {/* Main Content */}
+              <Box
+                pad={{ base: 3, md: 4 }}
+                radius={2}
+                style={{
+                  backgroundColor: surfaceRaisedColor,
+                  border: `1px solid ${borderColor}`,
+                }}
+              >
+                <Stack gap={4}>
+                  <Inline gap={2} justify="between" align="center">
+                    <span style={{ fontWeight: 600, color: textColor }}>Recent Activity</span>
+                    <button
+                      style={{
+                        backgroundColor: primaryColor,
+                        color: primaryTextColor,
+                        border: "none",
+                        borderRadius: "var(--st-radius-2)",
+                        padding: "var(--st-space-1) var(--st-space-3)",
+                        fontSize: "var(--st-font-size-0)",
+                        cursor: "pointer",
+                      }}
+                    >
+                      View All
+                    </button>
+                  </Inline>
+
+                  <Stack gap={3}>
+                    <ActivityItem title="New user registered" time="2 minutes ago" colors={colors} />
+                    <ActivityItem title="Payment received" time="15 minutes ago" colors={colors} />
+                    <ActivityItem title="Server alert resolved" time="1 hour ago" colors={colors} />
+                    <ActivityItem title="Database backup completed" time="3 hours ago" colors={colors} />
+                  </Stack>
+                </Stack>
+              </Box>
+
+              {/* Sidebar */}
+              <Stack gap={3}>
+                {/* Alert Card */}
+                <Box
+                  pad={{ base: 2, md: 3 }}
+                  radius={2}
+                  style={{
+                    backgroundColor: colors.warnSurface || "rgba(217, 119, 6, 0.1)",
+                    border: `1px solid ${warnColor}`,
+                  }}
+                >
+                  <Stack gap={2}>
+                    <span style={{ fontWeight: 600, color: warnColor }}>
+                      Action Required
+                    </span>
+                    <span style={{ fontSize: "var(--st-font-size-0)", color: colors.warnText || warnColor }}>
+                      Please verify your email address to continue.
+                    </span>
+                  </Stack>
+                </Box>
+
+                {/* Quick Actions */}
+                <Box
+                  pad={{ base: 2, md: 3 }}
+                  radius={2}
+                  style={{
+                    backgroundColor: surfaceRaisedColor,
+                    border: `1px solid ${borderColor}`,
+                  }}
+                >
+                  <Stack gap={3}>
+                    <span style={{ fontWeight: 600, color: textColor }}>
+                      Quick Actions
+                    </span>
+                    <Stack gap={2}>
+                      <ActionButton label="Create New" variant="primary" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
+                      <ActionButton label="Import Data" variant="outline" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
+                      <ActionButton label="Export Report" variant="ghost" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
+                    </Stack>
+                  </Stack>
+                </Box>
+              </Stack>
+            </div>
+
+            {/* Color Badges */}
+            <Inline gap={2} wrap>
+              <span style={{ backgroundColor: colors.successSurface || "rgba(22, 163, 74, 0.1)", color: successColor, padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
+                Success
+              </span>
+              <span style={{ backgroundColor: colors.warnSurface || "rgba(217, 119, 6, 0.1)", color: warnColor, padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
+                Warning
+              </span>
+              <span style={{ backgroundColor: colors.dangerSurface || "rgba(220, 38, 38, 0.1)", color: dangerColor, padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
+                Danger
+              </span>
+              <span style={{ backgroundColor: primaryColor, color: primaryTextColor, padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
+                Primary
+              </span>
+              <span style={{ backgroundColor: secondaryColor, color: "#fff", padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
+                Secondary
+              </span>
+              <span style={{ backgroundColor: accentColor, color: "#fff", padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
+                Accent
+              </span>
+            </Inline>
+
+            {/* Typography Sample */}
+            <Box
+              pad={{ base: 3, md: 4 }}
+              radius={2}
+              style={{
+                backgroundColor: surfaceRaisedColor,
+                border: `1px solid ${borderColor}`,
+              }}
+            >
+              <Stack gap={3}>
+                <span style={{ fontSize: "var(--st-font-size-5)", fontWeight: 700, color: textColor }}>Heading 1</span>
+                <span style={{ fontSize: "var(--st-font-size-4)", fontWeight: 600, color: textColor }}>Heading 2</span>
+                <span style={{ fontSize: "var(--st-font-size-3)", fontWeight: 600, color: textColor }}>Heading 3</span>
+                <span style={{ fontSize: "var(--st-font-size-2)", color: textColor }}>
+                  Body text looks like this. It has good contrast against the background and is easy to read.
+                </span>
+                <span style={{ fontSize: "var(--st-font-size-1)", color: mutedColor }}>
+                  Muted text is used for secondary information and has less prominence.
+                </span>
+                <span style={{ fontSize: "var(--st-font-size-0)", color: mutedColor }}>
+                  Caption text for small labels and metadata.
+                </span>
+              </Stack>
+            </Box>
+          </Stack>
+        </Box>
+      </div>
+    </div>
+  );
+
+  // When embedded, just return the content directly
+  if (embedded) {
+    return embeddedContent;
+  }
 
   return (
     <>
