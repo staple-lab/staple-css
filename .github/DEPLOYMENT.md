@@ -34,7 +34,7 @@ Located at: `.github/workflows/deploy-docs.yml`
 
 The workflow:
 1. Checks out the repository
-2. Sets up Node.js 20 with npm caching
+2. Sets up Node.js 24 with npm caching
 3. Installs dependencies with `npm ci`
 4. Builds packages (@staple-css/tokens and @staple-css/primitives)
 5. Builds docs with BASE_URL=/staple-css/
