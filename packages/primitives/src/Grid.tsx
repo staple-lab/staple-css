@@ -72,6 +72,8 @@ export interface GridOwnProps {
   justifyContent?: Responsive<Justify>;
   /** Place content shorthand - sets both align and justify content (responsive) */
   placeContent?: Responsive<PlaceContent>;
+  /** Make container inline-grid (responsive) */
+  inline?: Responsive<boolean>;
   /** Additional class names */
   className?: string;
   /**

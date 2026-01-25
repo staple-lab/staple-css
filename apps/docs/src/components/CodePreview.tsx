@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
-import { Stack, Text, Inline } from "@staple-css/primitives";
+import { Column, Text, Row } from "@staple-css/primitives";
 import Prism from "prismjs";
 import "prismjs/components/prism-css";
 import "prismjs/components/prism-typescript";
@@ -59,15 +59,15 @@ export function CodePreview({
   }, [code, prismLanguage]);
 
   return (
-    <Stack gap={0}>
+    <Column gap={0}>
       {(title || collapsible) && (
-        <Inline
+        <Row
           gap={2}
           align="center"
           justify="between"
           className="code-preview-header"
         >
-          <Inline gap={2} align="center">
+          <Row gap={2} align="center">
             {collapsible && (
               <button
                 onClick={toggleCollapsed}
@@ -87,11 +87,11 @@ export function CodePreview({
                 {language}
               </Text>
             )}
-          </Inline>
+          </Row>
           <button onClick={handleCopy} className="code-preview-copy">
             {copied ? "Copied!" : "Copy"}
           </button>
-        </Inline>
+        </Row>
       )}
       {(!collapsible || !collapsed) && (
         <pre className="code-block code-preview-content">
@@ -101,7 +101,7 @@ export function CodePreview({
           />
         </pre>
       )}
-    </Stack>
+    </Column>
   );
 }
 
@@ -118,8 +118,8 @@ export function TabCodePreview({ tabs }: TabCodePreviewProps) {
   const currentTab = tabs[activeTab];
 
   return (
-    <Stack gap={0}>
-      <Inline gap={0} className="code-preview-tabs">
+    <Column gap={0}>
+      <Row gap={0} className="code-preview-tabs">
         {tabs.map((tab, i) => (
           <button
             key={i}
@@ -129,13 +129,13 @@ export function TabCodePreview({ tabs }: TabCodePreviewProps) {
             {tab.label}
           </button>
         ))}
-      </Inline>
+      </Row>
       {currentTab && (
         <CodePreview
           code={currentTab.code}
           language={currentTab.language}
         />
       )}
-    </Stack>
+    </Column>
   );
 }

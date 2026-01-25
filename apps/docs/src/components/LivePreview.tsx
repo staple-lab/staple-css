@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Stack, Text, Inline, Card, Box } from "@staple-css/primitives";
+import { Column, Text, Row, Card, Box } from "@staple-css/primitives";
 
 export interface PreviewColors {
   background: string;

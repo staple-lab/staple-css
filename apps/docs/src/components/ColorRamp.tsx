@@ -1,4 +1,4 @@
-import { Stack, Text, Inline, Box } from "@staple-css/primitives";
+import { Column, Text, Row, Box } from "@staple-css/primitives";
 import { wcagContrastHex } from "@staple-css/tokens/color";
 
 interface ColorRampProps {
@@ -15,13 +15,13 @@ export function ColorRamp({
   showContrast = false,
 }: ColorRampProps) {
   return (
-    <Stack gap={2}>
+    <Column gap={2}>
       {name && (
         <Text size={1} weight="medium">
           {name}
         </Text>
       )}
-      <Inline gap={0} className="color-ramp">
+      <Row gap={0} className="color-ramp">
         {colors.map((color, i) => (
           <div
             key={i}
@@ -43,17 +43,17 @@ export function ColorRamp({
             )}
           </div>
         ))}
-      </Inline>
+      </Row>
       {showLabels && (
-        <Inline gap={0} className="color-ramp-labels">
+        <Row gap={0} className="color-ramp-labels">
           {colors.map((color, i) => (
             <Text key={i} size={0} mono tone="muted" className="color-ramp-label">
               {i + 1}
             </Text>
           ))}
-        </Inline>
+        </Row>
       )}
-    </Stack>
+    </Column>
   );
 }
 
@@ -73,7 +73,7 @@ export function ColorSwatch({
   const sizeMap = { sm: "1.5rem", md: "2.5rem", lg: "4rem" };
 
   return (
-    <Stack gap={1} align="center">
+    <Column gap={1} align="center">
       <Box
         radius={2}
         style={{
@@ -93,6 +93,6 @@ export function ColorSwatch({
           {color}
         </Text>
       )}
-    </Stack>
+    </Column>
   );
 }

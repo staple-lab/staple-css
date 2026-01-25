@@ -1,4 +1,4 @@
-import { Container, Stack, Card, Text, Inline, Grid, Box } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Row, Grid, Box } from "@staple-css/primitives";
 
 interface StatCardProps {
   label: string;
@@ -10,17 +10,17 @@ interface StatCardProps {
 function StatCard({ label, value, change, positive }: StatCardProps) {
   return (
     <Card pad={5} radius={3}>
-      <Stack gap={2}>
+      <Column gap={2}>
         <Text size={1} tone="muted" weight="medium">
           {label}
         </Text>
-        <Inline gap={2} align="baseline">
+        <Row gap={2} align="baseline">
           <span className="stat-value">{value}</span>
           <span className={`stat-change ${positive ? "positive" : "negative"}`}>
             {positive ? "+" : ""}{change}
           </span>
-        </Inline>
-      </Stack>
+        </Row>
+      </Column>
     </Card>
   );
 }
@@ -33,33 +33,33 @@ interface ActivityItemProps {
 
 function ActivityItem({ title, description, time }: ActivityItemProps) {
   return (
-    <Inline gap={3} align="start">
+    <Row gap={3} align="start">
       <Box pad={1}>
         <div className="activity-dot" />
       </Box>
-      <Stack gap={1} style={{ flex: 1 }}>
-        <Inline justify="between" align="start">
+      <Column gap={1} style={{ flex: 1 }}>
+        <Row justify="between" align="start">
           <Text weight="medium">{title}</Text>
           <Text size={0} tone="muted">{time}</Text>
-        </Inline>
+        </Row>
         <Text size={1} tone="muted">{description}</Text>
-      </Stack>
-    </Inline>
+      </Column>
+    </Row>
   );
 }
 
 export function DashboardPage() {
   return (
     <Container size="xl">
-      <Stack gap={6}>
-        <Stack gap={2}>
+      <Column gap={6}>
+        <Column gap={2}>
           <Text as="h1" size={5} weight="bold">
             Dashboard
           </Text>
           <Text tone="muted">
             Welcome back! Here's an overview of your account.
           </Text>
-        </Stack>
+        </Column>
 
         {/* Stats Grid */}
         <Grid cols={4} gap={4}>
@@ -94,15 +94,15 @@ export function DashboardPage() {
           {/* Recent Activity */}
           <Box style={{ gridColumn: "span 2" }}>
             <Card pad={6} radius={3}>
-              <Stack gap={5}>
-                <Inline justify="between" align="center">
+              <Column gap={5}>
+                <Row justify="between" align="center">
                   <Text as="h2" size={3} weight="semibold">
                     Recent Activity
                   </Text>
                   <button className="btn btn-secondary">View All</button>
-                </Inline>
+                </Row>
 
-                <Stack gap={4}>
+                <Column gap={4}>
                   <ActivityItem
                     title="New user registration"
                     description="john@example.com signed up for a free trial"
@@ -132,20 +132,20 @@ export function DashboardPage() {
                     description="Deployed version 2.4.1 to production"
                     time="Yesterday"
                   />
-                </Stack>
-              </Stack>
+                </Column>
+              </Column>
             </Card>
           </Box>
 
           {/* Sidebar */}
-          <Stack gap={4}>
+          <Column gap={4}>
             {/* Quick Actions */}
             <Card pad={5} radius={3}>
-              <Stack gap={4}>
+              <Column gap={4}>
                 <Text as="h3" size={2} weight="semibold">
                   Quick Actions
                 </Text>
-                <Stack gap={2}>
+                <Column gap={2}>
                   <button className="btn btn-primary" style={{ width: "100%" }}>
                     Create New Project
                   </button>
@@ -155,13 +155,13 @@ export function DashboardPage() {
                   <button className="btn btn-secondary" style={{ width: "100%" }}>
                     View Reports
                   </button>
-                </Stack>
-              </Stack>
+                </Column>
+              </Column>
             </Card>
 
             {/* Alerts */}
             <Card pad={5} radius={3} tone="warn">
-              <Stack gap={2}>
+              <Column gap={2}>
                 <Text weight="semibold">Action Required</Text>
                 <Text size={1}>
                   Your subscription will expire in 5 days. Please update your payment method.
@@ -171,24 +171,24 @@ export function DashboardPage() {
                     Update Payment
                   </button>
                 </Box>
-              </Stack>
+              </Column>
             </Card>
 
             {/* Team */}
             <Card pad={5} radius={3}>
-              <Stack gap={4}>
-                <Inline justify="between" align="center">
+              <Column gap={4}>
+                <Row justify="between" align="center">
                   <Text as="h3" size={2} weight="semibold">
                     Team
                   </Text>
                   <Text size={0} tone="primary" weight="medium">
                     5 members
                   </Text>
-                </Inline>
-                <Stack gap={3}>
+                </Row>
+                <Column gap={3}>
                   {["Alice Johnson", "Bob Smith", "Carol White", "David Brown", "Eve Wilson"].map(
                     (name) => (
-                      <Inline key={name} gap={3} align="center">
+                      <Row key={name} gap={3} align="center">
                         <Box
                           radius={4}
                           style={{
@@ -205,23 +205,23 @@ export function DashboardPage() {
                           </Text>
                         </Box>
                         <Text size={1}>{name}</Text>
-                      </Inline>
+                      </Row>
                     )
                   )}
-                </Stack>
-              </Stack>
+                </Column>
+              </Column>
             </Card>
-          </Stack>
+          </Column>
         </Grid>
 
         {/* Projects */}
-        <Stack gap={4}>
-          <Inline justify="between" align="center">
+        <Column gap={4}>
+          <Row justify="between" align="center">
             <Text as="h2" size={4} weight="semibold">
               Projects
             </Text>
             <button className="btn btn-primary">New Project</button>
-          </Inline>
+          </Row>
 
           <Grid cols={3} gap={4}>
             {[
@@ -233,8 +233,8 @@ export function DashboardPage() {
               { name: "User Research", status: "Planning", progress: 10 },
             ].map((project) => (
               <Card key={project.name} pad={5} radius={3}>
-                <Stack gap={3}>
-                  <Inline justify="between" align="start">
+                <Column gap={3}>
+                  <Row justify="between" align="start">
                     <Text weight="semibold">{project.name}</Text>
                     <Text
                       size={0}
@@ -249,7 +249,7 @@ export function DashboardPage() {
                     >
                       {project.status}
                     </Text>
-                  </Inline>
+                  </Row>
                   <Box
                     radius={4}
                     style={{
@@ -273,12 +273,12 @@ export function DashboardPage() {
                   <Text size={0} tone="muted">
                     {project.progress}% complete
                   </Text>
-                </Stack>
+                </Column>
               </Card>
             ))}
           </Grid>
-        </Stack>
-      </Stack>
+        </Column>
+      </Column>
     </Container>
   );
 }

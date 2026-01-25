@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
-import { Container, Inline, Text } from "@staple-css/primitives";
+import { Container, Row, Text } from "@staple-css/primitives";
 import { SettingsPage } from "./pages/SettingsPage";
 import { DashboardPage } from "./pages/DashboardPage";
 
@@ -19,13 +19,13 @@ export function App() {
     <div data-theme={theme} data-density={density} className="app-root">
       <header className="app-header">
         <Container size="xl">
-          <Inline gap={4} align="center" justify="between">
-            <Inline gap={6} align="center">
+          <Row gap={4} align="center" justify="between">
+            <Row gap={6} align="center">
               <Text as="span" size={3} weight="bold">
                 Demo App
               </Text>
               <nav>
-                <Inline as="ul" gap={4} className="nav-list">
+                <Row as="ul" gap={4} className="nav-list">
                   <li>
                     <NavLink to="/" className="nav-link">
                       Dashboard
@@ -36,18 +36,18 @@ export function App() {
                       Settings
                     </NavLink>
                   </li>
-                </Inline>
+                </Row>
               </nav>
-            </Inline>
-            <Inline gap={2}>
+            </Row>
+            <Row gap={2}>
               <button onClick={toggleTheme} className="toggle-btn">
                 {theme === "light" ? "Dark" : "Light"}
               </button>
               <button onClick={toggleDensity} className="toggle-btn">
                 {density === "comfortable" ? "Compact" : "Comfortable"}
               </button>
-            </Inline>
-          </Inline>
+            </Row>
+          </Row>
         </Container>
       </header>
 

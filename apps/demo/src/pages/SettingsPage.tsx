@@ -1,32 +1,32 @@
-import { Container, Stack, Card, Text, Inline, Box } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Row, Box } from "@staple-css/primitives";
 
 export function SettingsPage() {
   return (
     <Container size="md">
-      <Stack gap={6}>
-        <Stack gap={2}>
+      <Column gap={6}>
+        <Column gap={2}>
           <Text as="h1" size={5} weight="bold">
             Settings
           </Text>
           <Text tone="muted">
             Manage your account settings and preferences.
           </Text>
-        </Stack>
+        </Column>
 
         {/* Profile Section */}
         <Card pad={6} radius={3}>
-          <Stack gap={5}>
-            <Stack gap={1}>
+          <Column gap={5}>
+            <Column gap={1}>
               <Text as="h2" size={3} weight="semibold">
                 Profile
               </Text>
               <Text size={1} tone="muted">
                 Your public profile information.
               </Text>
-            </Stack>
+            </Column>
 
-            <Stack gap={4}>
-              <Stack gap={2}>
+            <Column gap={4}>
+              <Column gap={2}>
                 <Text as="label" size={1} weight="medium">
                   Display Name
                 </Text>
@@ -36,9 +36,9 @@ export function SettingsPage() {
                   placeholder="Enter your name"
                   defaultValue="Jane Smith"
                 />
-              </Stack>
+              </Column>
 
-              <Stack gap={2}>
+              <Column gap={2}>
                 <Text as="label" size={1} weight="medium">
                   Email Address
                 </Text>
@@ -48,9 +48,9 @@ export function SettingsPage() {
                   placeholder="you@example.com"
                   defaultValue="jane@example.com"
                 />
-              </Stack>
+              </Column>
 
-              <Stack gap={2}>
+              <Column gap={2}>
                 <Text as="label" size={1} weight="medium">
                   Bio
                 </Text>
@@ -59,25 +59,25 @@ export function SettingsPage() {
                   placeholder="Tell us about yourself"
                   defaultValue="Product designer based in San Francisco."
                 />
-              </Stack>
-            </Stack>
-          </Stack>
+              </Column>
+            </Column>
+          </Column>
         </Card>
 
         {/* Preferences Section */}
         <Card pad={6} radius={3}>
-          <Stack gap={5}>
-            <Stack gap={1}>
+          <Column gap={5}>
+            <Column gap={1}>
               <Text as="h2" size={3} weight="semibold">
                 Preferences
               </Text>
               <Text size={1} tone="muted">
                 Customize your experience.
               </Text>
-            </Stack>
+            </Column>
 
-            <Stack gap={4}>
-              <Stack gap={2}>
+            <Column gap={4}>
+              <Column gap={2}>
                 <Text as="label" size={1} weight="medium">
                   Language
                 </Text>
@@ -87,9 +87,9 @@ export function SettingsPage() {
                   <option value="fr">French</option>
                   <option value="de">German</option>
                 </select>
-              </Stack>
+              </Column>
 
-              <Stack gap={2}>
+              <Column gap={2}>
                 <Text as="label" size={1} weight="medium">
                   Timezone
                 </Text>
@@ -99,93 +99,93 @@ export function SettingsPage() {
                   <option value="cst">Central Time (CST)</option>
                   <option value="est">Eastern Time (EST)</option>
                 </select>
-              </Stack>
-            </Stack>
-          </Stack>
+              </Column>
+            </Column>
+          </Column>
         </Card>
 
         {/* Notifications Section */}
         <Card pad={6} radius={3}>
-          <Stack gap={5}>
-            <Stack gap={1}>
+          <Column gap={5}>
+            <Column gap={1}>
               <Text as="h2" size={3} weight="semibold">
                 Notifications
               </Text>
               <Text size={1} tone="muted">
                 Choose what updates you receive.
               </Text>
-            </Stack>
+            </Column>
 
-            <Stack gap={4}>
-              <Inline gap={3} align="center" justify="between">
-                <Stack gap={1}>
+            <Column gap={4}>
+              <Row gap={3} align="center" justify="between">
+                <Column gap={1}>
                   <Text weight="medium">Email notifications</Text>
                   <Text size={1} tone="muted">
                     Receive updates via email
                   </Text>
-                </Stack>
+                </Column>
                 <input type="checkbox" className="form-checkbox" defaultChecked />
-              </Inline>
+              </Row>
 
               <Box style={{ height: "1px", backgroundColor: "var(--st-color-border)" }} />
 
-              <Inline gap={3} align="center" justify="between">
-                <Stack gap={1}>
+              <Row gap={3} align="center" justify="between">
+                <Column gap={1}>
                   <Text weight="medium">Push notifications</Text>
                   <Text size={1} tone="muted">
                     Receive push notifications
                   </Text>
-                </Stack>
+                </Column>
                 <input type="checkbox" className="form-checkbox" defaultChecked />
-              </Inline>
+              </Row>
 
               <Box style={{ height: "1px", backgroundColor: "var(--st-color-border)" }} />
 
-              <Inline gap={3} align="center" justify="between">
-                <Stack gap={1}>
+              <Row gap={3} align="center" justify="between">
+                <Column gap={1}>
                   <Text weight="medium">Weekly digest</Text>
                   <Text size={1} tone="muted">
                     Weekly summary of activity
                   </Text>
-                </Stack>
+                </Column>
                 <input type="checkbox" className="form-checkbox" />
-              </Inline>
-            </Stack>
-          </Stack>
+              </Row>
+            </Column>
+          </Column>
         </Card>
 
         {/* Danger Zone */}
         <Card pad={6} radius={3} tone="danger">
-          <Stack gap={4}>
-            <Stack gap={1}>
+          <Column gap={4}>
+            <Column gap={1}>
               <Text as="h2" size={3} weight="semibold">
                 Danger Zone
               </Text>
               <Text size={1} tone="muted">
                 Irreversible actions.
               </Text>
-            </Stack>
+            </Column>
 
-            <Inline gap={3} align="center" justify="between">
-              <Stack gap={1}>
+            <Row gap={3} align="center" justify="between">
+              <Column gap={1}>
                 <Text weight="medium">Delete account</Text>
                 <Text size={1} tone="muted">
                   Permanently delete your account and all data.
                 </Text>
-              </Stack>
+              </Column>
               <button className="btn btn-secondary" style={{ borderColor: "var(--st-color-danger)", color: "var(--st-color-danger)" }}>
                 Delete Account
               </button>
-            </Inline>
-          </Stack>
+            </Row>
+          </Column>
         </Card>
 
         {/* Actions */}
-        <Inline gap={3} justify="end">
+        <Row gap={3} justify="end">
           <button className="btn btn-secondary">Cancel</button>
           <button className="btn btn-primary">Save Changes</button>
-        </Inline>
-      </Stack>
+        </Row>
+      </Column>
     </Container>
   );
 }

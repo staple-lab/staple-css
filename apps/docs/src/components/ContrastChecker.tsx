@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Stack, Text, Inline, Card } from "@staple-css/primitives";
+import { Column, Text, Row, Card } from "@staple-css/primitives";
 import {
   wcagContrastHex,
   apcaContrastHex,
@@ -26,14 +26,14 @@ export function ContrastChecker({ foreground, background }: ContrastCheckerProps
   }, [foreground, background]);
 
   return (
-    <Stack gap={4}>
+    <Column gap={4}>
       {/* Preview */}
       <Card pad={0} radius={2} className="contrast-preview">
         <div
           className="contrast-preview-bg"
           style={{ backgroundColor: background, padding: "var(--st-space-5)" }}
         >
-          <Stack gap={3} align="center">
+          <Column gap={3} align="center">
             <span
               style={{
                 color: foreground,
@@ -49,16 +49,16 @@ export function ContrastChecker({ foreground, background }: ContrastCheckerProps
             <span style={{ color: foreground, fontSize: "var(--st-font-size-1)" }}>
               ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789
             </span>
-          </Stack>
+          </Column>
         </div>
       </Card>
 
       {/* Results */}
-      <Inline gap={4} wrap>
+      <Row gap={4} wrap>
         {/* WCAG */}
         <Card pad={4} radius={2} className="contrast-result">
-          <Stack gap={3}>
-            <Inline gap={2} align="center" justify="between">
+          <Column gap={3}>
+            <Row gap={2} align="center" justify="between">
               <Text size={1} weight="semibold">
                 WCAG 2.1
               </Text>
@@ -67,11 +67,11 @@ export function ContrastChecker({ foreground, background }: ContrastCheckerProps
               >
                 {results.wcagResult}
               </span>
-            </Inline>
+            </Row>
             <Text size={4} weight="bold" mono>
               {results.wcag.toFixed(2)}:1
             </Text>
-            <Stack gap={1}>
+            <Column gap={1}>
               <ContrastLevel
                 label="Normal Text (AA)"
                 pass={results.wcag >= 4.5}
@@ -92,14 +92,14 @@ export function ContrastChecker({ foreground, background }: ContrastCheckerProps
                 pass={results.wcag >= 4.5}
                 requirement="4.5:1"
               />
-            </Stack>
-          </Stack>
+            </Column>
+          </Column>
         </Card>
 
         {/* APCA */}
         <Card pad={4} radius={2} className="contrast-result">
-          <Stack gap={3}>
-            <Inline gap={2} align="center" justify="between">
+          <Column gap={3}>
+            <Row gap={2} align="center" justify="between">
               <Text size={1} weight="semibold">
                 APCA (WCAG 3.0 Draft)
               </Text>
@@ -108,11 +108,11 @@ export function ContrastChecker({ foreground, background }: ContrastCheckerProps
               >
                 {results.apcaResult}
               </span>
-            </Inline>
+            </Row>
             <Text size={4} weight="bold" mono>
               Lc {Math.abs(results.apca).toFixed(1)}
             </Text>
-            <Stack gap={1}>
+            <Column gap={1}>
               <ContrastLevel
                 label="Body Text (16px)"
                 pass={Math.abs(results.apca) >= 75}
@@ -133,14 +133,14 @@ export function ContrastChecker({ foreground, background }: ContrastCheckerProps
                 pass={Math.abs(results.apca) >= 30}
                 requirement="Lc 30"
               />
-            </Stack>
-          </Stack>
+            </Column>
+          </Column>
         </Card>
-      </Inline>
+      </Row>
 
       {/* Recommendation */}
       <Card pad={3} radius={2} tone="primary" className="contrast-recommendation">
-        <Inline gap={2} align="center">
+        <Row gap={2} align="center">
           <Text size={1}>Recommended text color on this background:</Text>
           <span
             className="color-swatch"
@@ -149,9 +149,9 @@ export function ContrastChecker({ foreground, background }: ContrastCheckerProps
           <Text mono size={1}>
             {bestTextColor(background)}
           </Text>
-        </Inline>
+        </Row>
       </Card>
-    </Stack>
+    </Column>
   );
 }
 
@@ -165,18 +165,18 @@ function ContrastLevel({
   requirement: string;
 }) {
   return (
-    <Inline gap={2} align="center" justify="between">
+    <Row gap={2} align="center" justify="between">
       <Text size={0} tone="muted">
         {label}
       </Text>
-      <Inline gap={1} align="center">
+      <Row gap={1} align="center">
         <Text size={0} mono tone="muted">
           {requirement}
         </Text>
         <span className={`contrast-indicator contrast-indicator--${pass ? "pass" : "fail"}`}>
           {pass ? "✓" : "✗"}
         </span>
-      </Inline>
-    </Inline>
+      </Row>
+    </Row>
   );
 }

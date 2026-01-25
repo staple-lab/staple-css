@@ -1,5 +1,5 @@
 import { useCallback, useState, useEffect, useRef, useMemo } from "react";
-import { Stack, Text, Inline } from "@staple-css/primitives";
+import { Column, Text, Row } from "@staple-css/primitives";
 import { hexToOklch, generateHarmony, type HarmonyType } from "@staple-css/tokens/color";
 
 interface ColorPickerProps {
@@ -220,14 +220,14 @@ export function ColorPicker({ value, onChange, label, showOklch = false, showHar
   const cursorY = 100 - lightness;
 
   return (
-    <Stack gap={1}>
+    <Column gap={1}>
       {label && (
         <Text as="label" size={0} weight="medium">
           {label}
         </Text>
       )}
       <div className="color-picker-container" ref={containerRef}>
-        <Inline gap={2} align="center">
+        <Row gap={2} align="center">
           <button
             type="button"
             className="color-picker-swatch"
@@ -243,7 +243,7 @@ export function ColorPicker({ value, onChange, label, showOklch = false, showHar
             placeholder="#000000"
             spellCheck={false}
           />
-        </Inline>
+        </Row>
 
         {isOpen && (
           <div className={`color-picker-popover ${showHarmony && harmonyColors ? "color-picker-popover--with-harmony" : ""}`}>
@@ -346,6 +346,6 @@ export function ColorPicker({ value, onChange, label, showOklch = false, showHar
           L: {(oklchValues.L * 100).toFixed(1)}% C: {oklchValues.C.toFixed(3)} H: {oklchValues.H.toFixed(0)}°
         </Text>
       )}
-    </Stack>
+    </Column>
   );
 }

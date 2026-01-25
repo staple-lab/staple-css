@@ -9,17 +9,13 @@
  * import "@staple-css/primitives/primitives.css";
  *
  * // Import components
- * import { Box, Flex, Grid, Container, Text, Card } from "@staple-css/primitives";
- * // Legacy: Stack and Inline still available
- * import { Stack, Inline } from "@staple-css/primitives";
+ * import { Box, Flex, Row, Column, Grid, Container, Text, Card } from "@staple-css/primitives";
  * ```
  */
 
 // Components
 export { Box } from "./Box.js";
-export { Flex } from "./Flex.js";
-export { Stack } from "./Stack.js";
-export { Inline } from "./Inline.js";
+export { Flex, Row, Column } from "./Flex.js";
 export { Grid } from "./Grid.js";
 export { Container } from "./Container.js";
 export { Text } from "./Text.js";
@@ -28,8 +24,6 @@ export { Card } from "./Card.js";
 // Types
 export type { BoxProps, BoxOwnProps } from "./Box.js";
 export type { FlexProps, FlexOwnProps } from "./Flex.js";
-export type { StackProps, StackOwnProps } from "./Stack.js";
-export type { InlineProps, InlineOwnProps } from "./Inline.js";
 export type { GridProps, GridOwnProps } from "./Grid.js";
 export type { ContainerProps, ContainerOwnProps } from "./Container.js";
 export type { TextProps } from "./Text.js";

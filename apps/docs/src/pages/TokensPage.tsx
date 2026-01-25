@@ -1,4 +1,4 @@
-import { Container, Stack, Card, Text, Box } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Box } from "@staple-css/primitives";
 import {
   spaceScale,
   radiusScale,
@@ -24,7 +24,7 @@ function TokenTable({
   renderSample?: (key: string, value: string) => React.ReactNode;
 }) {
   return (
-    <Stack gap={3}>
+    <Column gap={3}>
       <Text as="h3" size={3} weight="semibold">
         {title}
       </Text>
@@ -62,15 +62,15 @@ function TokenTable({
           </tbody>
         </table>
       </Card>
-    </Stack>
+    </Column>
   );
 }
 
 export function TokensPage() {
   return (
     <Container size="lg">
-      <Stack gap={8}>
-        <Stack gap={2}>
+      <Column gap={8}>
+        <Column gap={2}>
           <Text as="h1" size={5} weight="bold">
             Tokens
           </Text>
@@ -79,10 +79,10 @@ export function TokensPage() {
             decisions as CSS variables, ensuring consistency across your
             application.
           </Text>
-        </Stack>
+        </Column>
 
         {/* Usage */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Usage
           </Text>
@@ -97,10 +97,10 @@ import "@staple-css/tokens/density.css";  // Density variants`}
             language="typescript"
             title="Import"
           />
-        </Stack>
+        </Column>
 
         {/* Theming */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Theming
           </Text>
@@ -122,7 +122,7 @@ import "@staple-css/tokens/density.css";  // Density variants`}
             language="html"
             title="Density"
           />
-        </Stack>
+        </Column>
 
         {/* Space */}
         <TokenTable
@@ -224,7 +224,7 @@ import "@staple-css/tokens/density.css";  // Density variants`}
         />
 
         {/* Colors */}
-        <Stack gap={3}>
+        <Column gap={3}>
           <Text as="h3" size={3} weight="semibold">
             Color Tokens
           </Text>
@@ -266,8 +266,8 @@ import "@staple-css/tokens/density.css";  // Density variants`}
               </tbody>
             </table>
           </Card>
-        </Stack>
-      </Stack>
+        </Column>
+      </Column>
     </Container>
   );
 }

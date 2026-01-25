@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, NavLink, Navigate, Link } from "react-router-dom";
-import { Container, Inline, Text } from "@staple-css/primitives";
+import { Container, Row, Text } from "@staple-css/primitives";
 import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
@@ -61,15 +61,15 @@ export function App() {
     >
       <header className="app-header">
         <Container size="xl">
-          <Inline gap={4} align="center" justify="between">
-            <Inline gap={6} align="center">
+          <Row gap={4} align="center" justify="between">
+            <Row gap={6} align="center">
               <Link to="/" className="logo-link">
                 <Text as="span" size={3} weight="bold">
                   staple-css
                 </Text>
               </Link>
               <nav>
-                <Inline as="ul" gap={4} className="nav-list">
+                <Row as="ul" gap={4} className="nav-list">
                   <li>
                     <NavLink to="/tokens" className="nav-link">
                       Tokens
@@ -90,18 +90,18 @@ export function App() {
                       Studio
                     </NavLink>
                   </li>
-                </Inline>
+                </Row>
               </nav>
-            </Inline>
-            <Inline gap={2}>
+            </Row>
+            <Row gap={2}>
               <button onClick={cycleTheme} className="toggle-btn">
                 {themeLabel}
               </button>
               <button onClick={toggleDensity} className="toggle-btn">
                 {density === "comfortable" ? "Compact" : "Comfortable"}
               </button>
-            </Inline>
-          </Inline>
+            </Row>
+          </Row>
         </Container>
       </header>
 
@@ -122,11 +122,11 @@ export function App() {
 
       <footer className="app-footer">
         <Container size="xl">
-          <Inline justify="center">
+          <Row justify="center">
             <Text size={1} tone="muted">
               staple-css — Tokens are the API
             </Text>
-          </Inline>
+          </Row>
         </Container>
       </footer>
     </div>

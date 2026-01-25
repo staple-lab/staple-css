@@ -1,4 +1,4 @@
-import type { ElementType, ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ElementType, ComponentPropsWithoutRef, ReactNode, FC } from "react";
 import type {
   Space,
   Align,
@@ -118,4 +118,34 @@ export function Flex<E extends ElementType = "div">({
     </Component>
   );
 }
+
+/**
+ * Row
+ *
+ * Convenience alias for <Flex direction="row">
+ *
+ * @example
+ * <Row gap={4} align="center">
+ *   <Icon />
+ *   <Text>Label</Text>
+ * </Row>
+ */
+export const Row: FC<Omit<FlexProps<"div">, "direction">> = (props) => {
+  return <Flex direction="row" {...props} />;
+};
+
+/**
+ * Column
+ *
+ * Convenience alias for <Flex direction="column">
+ *
+ * @example
+ * <Column gap={4}>
+ *   <Text>First</Text>
+ *   <Text>Second</Text>
+ * </Column>
+ */
+export const Column: FC<Omit<FlexProps<"div">, "direction">> = (props) => {
+  return <Flex direction="column" {...props} />;
+};
 

@@ -1,4 +1,4 @@
-import { Container, Stack, Card, Text, Box, Inline, Grid, Flex } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Box, Row, Grid, Flex } from "@staple-css/primitives";
 import { CodePreview } from "../components/CodePreview";
 
 function CodeExample({
@@ -11,7 +11,7 @@ function CodeExample({
   children: React.ReactNode;
 }) {
   return (
-    <Stack gap={3}>
+    <Column gap={3}>
       <Text as="h3" size={3} weight="semibold">
         {title}
       </Text>
@@ -19,7 +19,7 @@ function CodeExample({
         <div className="example-preview">{children}</div>
         <CodePreview code={code} language="tsx" />
       </Card>
-    </Stack>
+    </Column>
   );
 }
 
@@ -67,8 +67,8 @@ function PropsTable({
 export function PrimitivesPage() {
   return (
     <Container size="lg">
-      <Stack gap={8}>
-        <Stack gap={2}>
+      <Column gap={8}>
+        <Column gap={2}>
           <Text as="h1" size={5} weight="bold">
             Primitives
           </Text>
@@ -76,10 +76,10 @@ export function PrimitivesPage() {
             Layout and typography primitives that consume tokens. Minimal
             runtime, tree-shakeable, accessible by default.
           </Text>
-        </Stack>
+        </Column>
 
         {/* Installation */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Installation
           </Text>
@@ -94,14 +94,14 @@ import "@staple-css/tokens/all.css";
 import "@staple-css/primitives/primitives.css";
 
 // Import components
-import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/primitives";`}
+import { Box, Column, Row, Grid, Container, Text, Card } from "@staple-css/primitives";`}
             language="typescript"
             title="Usage"
           />
-        </Stack>
+        </Column>
 
         {/* Box */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Box
           </Text>
@@ -139,10 +139,10 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               { name: "shadow", type: "0-2", description: "Box shadow" },
             ]}
           />
-        </Stack>
+        </Column>
 
         {/* Flex */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Flex
           </Text>
@@ -226,25 +226,27 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               { name: "inline", type: "boolean", description: "Use inline-flex instead of flex" },
             ]}
           />
-        </Stack>
+        </Column>
 
-        {/* Stack (Legacy) */}
-        <Stack gap={4}>
+        {/* Row & Column Aliases */}
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
-            Stack <Text as="span" size={2} tone="warn">(Deprecated)</Text>
+            Row & Column Aliases
           </Text>
-          <Text tone="muted">
-            Stack is deprecated. Use <Text as="span" mono>&lt;Flex direction="column"&gt;</Text> instead.
+          <Text>
+            Convenient aliases for common flex layouts. <Text as="span" mono>Column</Text> is shorthand for{" "}
+            <Text as="span" mono>&lt;Flex direction="column"&gt;</Text> and <Text as="span" mono>Row</Text> is shorthand for{" "}
+            <Text as="span" mono>&lt;Flex direction="row"&gt;</Text>. Use these for simpler, more readable code.
           </Text>
           <CodeExample
-            title="Basic Usage"
-            code={`<Stack gap={4}>
+            title="Column - Vertical Layout"
+            code={`<Column gap={4}>
   <Box pad={3} radius={2}>Item 1</Box>
   <Box pad={3} radius={2}>Item 2</Box>
   <Box pad={3} radius={2}>Item 3</Box>
-</Stack>`}
+</Column>`}
           >
-            <Stack gap={4}>
+            <Column gap={4}>
               <Box pad={3} radius={2} style={{ backgroundColor: "var(--st-color-surface)" }}>
                 <Text>Item 1</Text>
               </Box>
@@ -254,52 +256,36 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               <Box pad={3} radius={2} style={{ backgroundColor: "var(--st-color-surface)" }}>
                 <Text>Item 3</Text>
               </Box>
-            </Stack>
+            </Column>
           </CodeExample>
-          <PropsTable
-            props={[
-              { name: "gap", type: "0-8", description: "Gap between children" },
-              { name: "align", type: "start | center | end | stretch", description: "Cross-axis alignment" },
-            ]}
-          />
-        </Stack>
-
-        {/* Inline (Legacy) */}
-        <Stack gap={4}>
-          <Text as="h2" size={4} weight="semibold">
-            Inline <Text as="span" size={2} tone="warn">(Deprecated)</Text>
-          </Text>
-          <Text tone="muted">
-            Inline is deprecated. Use <Text as="span" mono>&lt;Flex direction="row"&gt;</Text> instead.
-          </Text>
           <CodeExample
-            title="Basic Usage"
-            code={`<Inline gap={3} align="center" justify="between">
+            title="Row - Horizontal Layout"
+            code={`<Row gap={3} align="center" justify="between">
   <Text>Left</Text>
   <Text>Right</Text>
-</Inline>`}
+</Row>`}
           >
-            <Inline gap={3} align="center" justify="between">
+            <Row gap={3} align="center" justify="between">
               <Box pad={2} radius={1} className="primary-box">
                 <Text as="span" className="primary-text">Left</Text>
               </Box>
               <Box pad={2} radius={1} className="primary-box">
                 <Text as="span" className="primary-text">Right</Text>
               </Box>
-            </Inline>
+            </Row>
           </CodeExample>
           <PropsTable
             props={[
               { name: "gap", type: "0-8", description: "Gap between children" },
               { name: "align", type: "start | center | end | baseline | stretch", description: "Cross-axis alignment" },
-              { name: "justify", type: "start | center | end | between", description: "Main-axis justification" },
-              { name: "wrap", type: "boolean", description: "Allow wrapping" },
+              { name: "justify", type: "start | center | end | between", description: "Main-axis justification (Row only)" },
+              { name: "wrap", type: "boolean", description: "Allow wrapping (Row only)" },
             ]}
           />
-        </Stack>
+        </Column>
 
         {/* Grid */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Grid
           </Text>
@@ -384,10 +370,10 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               { name: "flow", type: "row | column | dense | row-dense | column-dense", description: "Grid auto-flow direction (responsive)" },
             ]}
           />
-        </Stack>
+        </Column>
 
         {/* Container */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Container
           </Text>
@@ -409,10 +395,10 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               { name: "size", type: "sm | md | lg | xl", description: "Max-width preset" },
             ]}
           />
-        </Stack>
+        </Column>
 
         {/* Text */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Text
           </Text>
@@ -423,11 +409,11 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
 <Text tone="muted" size={1}>Muted small text</Text>
 <Text tone="primary" weight="semibold">Primary emphasis</Text>`}
           >
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text as="h1" size={5} weight="bold">Heading</Text>
               <Text tone="muted" size={1}>Muted small text</Text>
               <Text tone="primary" weight="semibold">Primary emphasis</Text>
-            </Stack>
+            </Column>
           </CodeExample>
           <PropsTable
             props={[
@@ -440,10 +426,10 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               { name: "mono", type: "boolean", description: "Monospace font" },
             ]}
           />
-        </Stack>
+        </Column>
 
         {/* Card */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Card
           </Text>
@@ -451,17 +437,17 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
           <CodeExample
             title="Basic Usage"
             code={`<Card pad={5} radius={3} shadow={1}>
-  <Stack gap={2}>
+  <Column gap={2}>
     <Text weight="semibold">Card Title</Text>
     <Text tone="muted">Description text</Text>
-  </Stack>
+  </Column>
 </Card>`}
           >
             <Card pad={5} radius={3} shadow={1}>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <Text weight="semibold">Card Title</Text>
                 <Text tone="muted">Description text</Text>
-              </Stack>
+              </Column>
             </Card>
           </CodeExample>
           <CodeExample
@@ -470,7 +456,7 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
 <Card tone="warn" pad={4}>Warning message</Card>
 <Card tone="danger" pad={4}>Error message</Card>`}
           >
-            <Stack gap={3}>
+            <Column gap={3}>
               <Card tone="success" pad={4}>
                 <Text>Success message</Text>
               </Card>
@@ -480,7 +466,7 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               <Card tone="danger" pad={4}>
                 <Text>Error message</Text>
               </Card>
-            </Stack>
+            </Column>
           </CodeExample>
           <PropsTable
             props={[
@@ -491,10 +477,10 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               { name: "tone", type: "neutral | primary | danger | warn | success", description: "Color tone" },
             ]}
           />
-        </Stack>
+        </Column>
 
         {/* Responsive Design */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Responsive Design
           </Text>
@@ -502,7 +488,7 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
             Primitives support responsive values through the token system. Use an object with breakpoint keys instead of a single value.
           </Text>
 
-          <Stack gap={3}>
+          <Column gap={3}>
             <Text as="h3" size={3} weight="semibold">
               Breakpoints
             </Text>
@@ -552,9 +538,9 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
                 </tbody>
               </table>
             </Card>
-          </Stack>
+          </Column>
 
-          <Stack gap={3}>
+          <Column gap={3}>
             <Text as="h3" size={3} weight="semibold">
               Responsive Props
             </Text>
@@ -579,9 +565,9 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               language="tsx"
               title="Responsive Padding Examples"
             />
-          </Stack>
+          </Column>
 
-          <Stack gap={3}>
+          <Column gap={3}>
             <Text as="h3" size={3} weight="semibold">
               How It Works
             </Text>
@@ -608,13 +594,13 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               language="css"
               title="Generated CSS"
             />
-          </Stack>
+          </Column>
 
           <CodeExample
             title="Real-World Example"
             code={`// Responsive layout wrapper
 <Box pad={{ base: 3, md: 5, xl: 7 }} radius={2} shadow={1}>
-  <Stack gap={3}>
+  <Column gap={3}>
     <Text as="h2" size={4} weight="bold">
       Responsive Container
     </Text>
@@ -622,11 +608,11 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
       This container's padding adapts to screen size for
       optimal spacing on mobile, tablet, and desktop.
     </Text>
-  </Stack>
+  </Column>
 </Box>`}
           >
             <Box pad={{ base: 3, md: 5, xl: 7 }} radius={2} shadow={1} style={{ backgroundColor: "var(--st-color-surface-raised)" }}>
-              <Stack gap={3}>
+              <Column gap={3}>
                 <Text as="h2" size={4} weight="bold">
                   Responsive Container
                 </Text>
@@ -634,19 +620,19 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
                   This container's padding adapts to screen size for optimal spacing on mobile, tablet, and desktop.
                   Try resizing your browser to see the padding change!
                 </Text>
-              </Stack>
+              </Column>
             </Box>
           </CodeExample>
-        </Stack>
+        </Column>
 
         {/* Escape Hatches */}
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Escape Hatches
           </Text>
           <Text>
             All primitives accept <Text as="span" mono>className</Text> for custom styling.
-            Layout primitives (Box, Stack, Inline, Grid, Container) also accept a
+            Layout primitives (Box, Column, Row, Grid, Container) also accept a
             limited <Text as="span" mono>style</Text> prop for dynamic sizing.
           </Text>
           <CodePreview
@@ -659,14 +645,14 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
   Fixed-width box
 </Box>
 
-<Stack style={{ flex: 1 }}>
+<Column style={{ flex: 1 }}>
   Flexible stack
-</Stack>`}
+</Column>`}
             language="tsx"
             title="Style Props"
           />
-        </Stack>
-      </Stack>
+        </Column>
+      </Column>
     </Container>
   );
 }

@@ -6,7 +6,7 @@
  */
 
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
-import { Container, Stack, Text, Inline, Card, Box, Grid, Flex } from "@staple-css/primitives";
+import { Container, Column, Text, Row, Card, Box, Grid, Flex } from "@staple-css/primitives";
 import {
   type Seeds,
   type GenerationParams,
@@ -669,20 +669,20 @@ export function BuilderPage() {
 
   return (
     <Container size="xl">
-      <Stack gap={6}>
+      <Column gap={6}>
         {/* Header */}
-        <Stack gap={2}>
+        <Column gap={2}>
           <Text as="h1" size={5} weight="bold">
             Tokens Studio
           </Text>
           <Text tone="muted">
             Build a complete design token system step by step.
           </Text>
-        </Stack>
+        </Column>
 
         {/* Step Navigation */}
         <Card pad={4} radius={2}>
-          <Inline gap={2} align="center" wrap>
+          <Row gap={2} align="center" wrap>
             {steps.map((step, index) => (
               <button
                 key={step.id}
@@ -693,7 +693,7 @@ export function BuilderPage() {
                 <span className="builder-step-label">{step.label.split(". ")[1]}</span>
               </button>
             ))}
-          </Inline>
+          </Row>
         </Card>
 
         {/* Main Content Area */}
@@ -765,15 +765,15 @@ export function BuilderPage() {
 
           {/* Right: Live Preview + Accessibility */}
           <div className="builder-preview">
-            <Stack gap={4}>
+            <Column gap={4}>
               {/* Accessibility Summary */}
               {currentStep === "seeds" && (
                 <Card pad={4} radius={2}>
-                  <Stack gap={3}>
-                    <Stack gap={1}>
+                  <Column gap={3}>
+                    <Column gap={1}>
                       <Text weight="semibold">Accessibility Check</Text>
                       <Text size={0} tone="muted">WCAG 2.1 contrast score</Text>
-                    </Stack>
+                    </Column>
                     <AccessibilitySummary
                       getColor={(key: string, fallback: string = "#888888") =>
                         resolvedColors[previewMode][key] || fallback
@@ -786,17 +786,17 @@ export function BuilderPage() {
                     >
                       View Details ↓
                     </a>
-                  </Stack>
+                  </Column>
                 </Card>
               )}
 
               {/* Live Preview */}
               <Card pad={4} radius={2}>
-                <Stack gap={4}>
-                  <Inline gap={2} align="center" justify="between" wrap>
+                <Column gap={4}>
+                  <Row gap={2} align="center" justify="between" wrap>
                     <Text weight="semibold">Live Preview</Text>
                     {/* View mode controls */}
-                    <Inline gap={2} wrap>
+                    <Row gap={2} wrap>
                       <button
                         onClick={() => setPreviewExpanded(!previewExpanded)}
                         className="studio-btn studio-btn--sm studio-btn--primary"
@@ -806,7 +806,7 @@ export function BuilderPage() {
                       </button>
                       {/* Size presets (shown when preview expanded) */}
                       {previewExpanded && (
-                        <Inline gap={1}>
+                        <Row gap={1}>
                           <button
                             onClick={() => setPreviewSize("mobile")}
                             className={`studio-btn studio-btn--xs ${previewSize === "mobile" ? "studio-btn--primary" : ""}`}
@@ -828,10 +828,10 @@ export function BuilderPage() {
                           >
                             🖥️
                           </button>
-                        </Inline>
+                        </Row>
                       )}
                       {/* Light/Dark mode controls */}
-                      <Inline gap={1}>
+                      <Row gap={1}>
                         <button
                           onClick={() => setPreviewMode("light")}
                           className={`studio-btn studio-btn--xs ${previewMode === "light" ? "studio-btn--primary" : ""}`}
@@ -844,12 +844,12 @@ export function BuilderPage() {
                         >
                           Dark
                         </button>
-                      </Inline>
-                    </Inline>
-                  </Inline>
-                </Stack>
+                      </Row>
+                    </Row>
+                  </Row>
+                </Column>
               </Card>
-            </Stack>
+            </Column>
           </div>
 
         </div>
@@ -927,7 +927,7 @@ export function BuilderPage() {
 
         {/* Navigation Footer */}
         <Card pad={4} radius={2}>
-          <Inline gap={2} align="center" justify="between">
+          <Row gap={2} align="center" justify="between">
             <button
               onClick={goBack}
               disabled={!canGoBack}
@@ -945,9 +945,9 @@ export function BuilderPage() {
             >
               Next →
             </button>
-          </Inline>
+          </Row>
         </Card>
-      </Stack>
+      </Column>
     </Container>
   );
 }
@@ -1059,18 +1059,18 @@ function SeedsStep({
   }, [newPaletteName, newPaletteColor, customPalettes, onAddCustomPalette]);
 
   return (
-    <Stack gap={4}>
+    <Column gap={4}>
       {/* Brand Colors - All with Light/Dark */}
       <Card pad={4} radius={2}>
-        <Stack gap={4}>
-          <Stack gap={2}>
+        <Column gap={4}>
+          <Column gap={2}>
             <Text as="h2" size={3} weight="semibold">
               Brand Colors
             </Text>
             <Text tone="muted">
               Set your brand colors. Each color can have different values for light and dark modes.
             </Text>
-          </Stack>
+          </Column>
 
           {/* Column headers */}
           <div className="semantic-colors-header">
@@ -1081,7 +1081,7 @@ function SeedsStep({
             </div>
           </div>
 
-          <Stack gap={0}>
+          <Column gap={0}>
             <EditableSemanticColor
               label="primary"
               lightColor={seeds.primary}
@@ -1112,7 +1112,7 @@ function SeedsStep({
             {/* Custom colors */}
             {Object.entries(customColors).map(([name]) => (
               <div key={name} className="editable-semantic-color-row editable-semantic-color-row--removable">
-                <Inline gap={2} align="center">
+                <Row gap={2} align="center">
                   <span className="editable-semantic-color-label">{name}</span>
                   <button
                     onClick={() => onRemoveCustomColor(name)}
@@ -1121,7 +1121,7 @@ function SeedsStep({
                   >
                     ×
                   </button>
-                </Inline>
+                </Row>
                 <div className="editable-semantic-color-pickers-inline">
                   <div className="editable-color-picker-cell" style={{ gridColumn: "span 2" }}>
                     <ColorPicker
@@ -1140,11 +1140,11 @@ function SeedsStep({
                 </div>
               </div>
             ))}
-          </Stack>
+          </Column>
 
           {/* Add custom color */}
-          <Inline gap={2} align="end">
-            <Stack gap={1} style={{ flex: 1 }}>
+          <Row gap={2} align="end">
+            <Column gap={1} style={{ flex: 1 }}>
               <Text size={0} weight="medium">Add Custom Color</Text>
               <input
                 type="text"
@@ -1156,7 +1156,7 @@ function SeedsStep({
                   if (e.key === "Enter") handleAddCustomColor();
                 }}
               />
-            </Stack>
+            </Column>
             <button
               onClick={handleAddCustomColor}
               disabled={!newColorName.trim()}
@@ -1164,19 +1164,19 @@ function SeedsStep({
             >
               Add Color
             </button>
-          </Inline>
-        </Stack>
+          </Row>
+        </Column>
       </Card>
 
       {/* Semantic Colors - Editable */}
       <Card pad={4} radius={2}>
-        <Stack gap={4}>
-          <Stack gap={1}>
+        <Column gap={4}>
+          <Column gap={1}>
             <Text weight="semibold">Semantic Colors</Text>
             <Text size={0} tone="muted">
               Customize colors for light and dark modes. Changes update in real time.
             </Text>
-          </Stack>
+          </Column>
 
           {/* Column headers */}
           <div className="semantic-colors-header">
@@ -1191,7 +1191,7 @@ function SeedsStep({
             {/* Backgrounds */}
             <div className="semantic-color-group">
               <Text size={0} weight="medium">Backgrounds</Text>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <EditableSemanticColor
                   label="background"
                   lightColor={resolvedColors.light.background || "#ffffff"}
@@ -1213,13 +1213,13 @@ function SeedsStep({
                   onUpdateLight={(v) => onUpdateSemanticOverride("light", "surfaceRaised", v)}
                   onUpdateDark={(v) => onUpdateSemanticOverride("dark", "surfaceRaised", v)}
                 />
-              </Stack>
+              </Column>
             </div>
 
             {/* Text */}
             <div className="semantic-color-group">
               <Text size={0} weight="medium">Text</Text>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <EditableSemanticColor
                   label="text"
                   lightColor={resolvedColors.light.text || "#1a1a1a"}
@@ -1234,13 +1234,13 @@ function SeedsStep({
                   onUpdateLight={(v) => onUpdateSemanticOverride("light", "textMuted", v)}
                   onUpdateDark={(v) => onUpdateSemanticOverride("dark", "textMuted", v)}
                 />
-              </Stack>
+              </Column>
             </div>
 
             {/* Borders */}
             <div className="semantic-color-group">
               <Text size={0} weight="medium">Borders</Text>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <EditableSemanticColor
                   label="border"
                   lightColor={resolvedColors.light.border || "#e5e7eb"}
@@ -1269,13 +1269,13 @@ function SeedsStep({
                   onUpdateLight={(v) => onUpdateSemanticOverride("light", "borderFocus", v)}
                   onUpdateDark={(v) => onUpdateSemanticOverride("dark", "borderFocus", v)}
                 />
-              </Stack>
+              </Column>
             </div>
 
             {/* Primary (Button Primary) */}
             <div className="semantic-color-group">
               <Text size={0} weight="medium">Button Primary</Text>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <EditableSemanticColor
                   label="primary"
                   lightColor={resolvedColors.light.primary || "#3b82f6"}
@@ -1304,13 +1304,13 @@ function SeedsStep({
                   onUpdateLight={(v) => onUpdateSemanticOverride("light", "primaryBorder", v)}
                   onUpdateDark={(v) => onUpdateSemanticOverride("dark", "primaryBorder", v)}
                 />
-              </Stack>
+              </Column>
             </div>
 
             {/* Secondary (Button Secondary) */}
             <div className="semantic-color-group">
               <Text size={0} weight="medium">Button Secondary</Text>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <EditableSemanticColor
                   label="secondary"
                   lightColor={resolvedColors.light.secondary || "#6366f1"}
@@ -1339,13 +1339,13 @@ function SeedsStep({
                   onUpdateLight={(v) => onUpdateSemanticOverride("light", "secondaryBorder", v)}
                   onUpdateDark={(v) => onUpdateSemanticOverride("dark", "secondaryBorder", v)}
                 />
-              </Stack>
+              </Column>
             </div>
 
             {/* Accent (Button Accent) */}
             <div className="semantic-color-group">
               <Text size={0} weight="medium">Button Accent</Text>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <EditableSemanticColor
                   label="accent"
                   lightColor={resolvedColors.light.accent || "#ec4899"}
@@ -1374,13 +1374,13 @@ function SeedsStep({
                   onUpdateLight={(v) => onUpdateSemanticOverride("light", "accentBorder", v)}
                   onUpdateDark={(v) => onUpdateSemanticOverride("dark", "accentBorder", v)}
                 />
-              </Stack>
+              </Column>
             </div>
 
             {/* Shadows */}
             <div className="semantic-color-group">
               <Text size={0} weight="medium">Shadows</Text>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <EditableSemanticColor
                   label="shadow"
                   lightColor={resolvedColors.light.shadow || "rgba(0, 0, 0, 0.1)"}
@@ -1402,13 +1402,13 @@ function SeedsStep({
                   onUpdateLight={(v) => onUpdateSemanticOverride("light", "shadowLarge", v)}
                   onUpdateDark={(v) => onUpdateSemanticOverride("dark", "shadowLarge", v)}
                 />
-              </Stack>
+              </Column>
             </div>
 
             {/* Status */}
             <div className="semantic-color-group">
               <Text size={0} weight="medium">Status</Text>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <EditableSemanticColor
                   label="success"
                   lightColor={resolvedColors.light.success || "#22c55e"}
@@ -1430,13 +1430,13 @@ function SeedsStep({
                   onUpdateLight={(v) => onUpdateSemanticOverride("light", "danger", v)}
                   onUpdateDark={(v) => onUpdateSemanticOverride("dark", "danger", v)}
                 />
-              </Stack>
+              </Column>
             </div>
 
             {/* Status Surfaces */}
             <div className="semantic-color-group">
               <Text size={0} weight="medium">Status Surfaces</Text>
-              <Stack gap={2}>
+              <Column gap={2}>
                 <EditableSemanticColor
                   label="successSurface"
                   lightColor={resolvedColors.light.successSurface || "#dcfce7"}
@@ -1458,25 +1458,25 @@ function SeedsStep({
                   onUpdateLight={(v) => onUpdateSemanticOverride("light", "dangerSurface", v)}
                   onUpdateDark={(v) => onUpdateSemanticOverride("dark", "dangerSurface", v)}
                 />
-              </Stack>
+              </Column>
             </div>
           </div>
-        </Stack>
+        </Column>
       </Card>
 
       {/* Generation Controls */}
       <Card pad={4} radius={2}>
-        <Stack gap={4}>
-          <Inline gap={2} align="center" justify="between" wrap>
-            <Stack gap={2}>
+        <Column gap={4}>
+          <Row gap={2} align="center" justify="between" wrap>
+            <Column gap={2}>
               <Text as="h2" size={3} weight="semibold">
                 Palette Generation
               </Text>
               <Text tone="muted">
                 Configure how color palettes are generated from your brand colors.
               </Text>
-            </Stack>
-            <Inline gap={1}>
+            </Column>
+            <Row gap={1}>
               <button
                 onClick={() => onSetPreviewMode("light")}
                 className={`studio-btn studio-btn--sm ${previewMode === "light" ? "studio-btn--primary" : ""}`}
@@ -1489,11 +1489,11 @@ function SeedsStep({
               >
                 Dark
               </button>
-            </Inline>
-          </Inline>
+            </Row>
+          </Row>
 
           <div className="builder-controls-grid">
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">Algorithm</Text>
               <select
                 value={generation.algorithm}
@@ -1503,9 +1503,9 @@ function SeedsStep({
                 <option value="oklch">OKLCH (Recommended)</option>
                 <option value="hct">HCT (Tonal)</option>
               </select>
-            </Stack>
+            </Column>
 
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">Step Count</Text>
               <select
                 value={generation.stepCount}
@@ -1516,9 +1516,9 @@ function SeedsStep({
                 <option value={10}>10 steps</option>
                 <option value={12}>12 steps (Recommended)</option>
               </select>
-            </Stack>
+            </Column>
 
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">
                 Chroma Scale: {generation.chromaScale.toFixed(1)}
               </Text>
@@ -1531,9 +1531,9 @@ function SeedsStep({
                 onChange={(e) => onUpdateGeneration("chromaScale", parseFloat(e.target.value))}
                 className="studio-slider"
               />
-            </Stack>
+            </Column>
 
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">
                 Contrast Target: {generation.contrastTarget.toFixed(1)}
               </Text>
@@ -1546,11 +1546,11 @@ function SeedsStep({
                 onChange={(e) => onUpdateGeneration("contrastTarget", parseFloat(e.target.value))}
                 className="studio-slider"
               />
-            </Stack>
+            </Column>
 
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">Style</Text>
-              <Inline gap={2}>
+              <Row gap={2}>
                 <button
                   onClick={() => onUpdateGeneration("vibrant", false)}
                   className={`studio-btn studio-btn--sm ${!generation.vibrant ? "studio-btn--primary" : ""}`}
@@ -1563,8 +1563,8 @@ function SeedsStep({
                 >
                   Vibrant
                 </button>
-              </Inline>
-            </Stack>
+              </Row>
+            </Column>
           </div>
 
           <button
@@ -1573,39 +1573,39 @@ function SeedsStep({
           >
             Regenerate Palettes
           </button>
-        </Stack>
+        </Column>
       </Card>
 
       {/* Custom Palettes - User-created palettes */}
       <Card pad={4} radius={2}>
-        <Stack gap={4}>
-          <Stack gap={2}>
+        <Column gap={4}>
+          <Column gap={2}>
             <Text as="h2" size={3} weight="semibold">
               Custom Palettes
             </Text>
             <Text tone="muted">
               Create additional color palettes. Each palette generates a {generation.stepCount}-step color ramp.
             </Text>
-          </Stack>
+          </Column>
 
           {/* List existing custom palettes */}
           {customPalettes.length > 0 && (
-            <Stack gap={2}>
+            <Column gap={2}>
               {customPalettes.map((palette) => {
                 // Generate the palette to get step 8
                 const generatedPalette = generateSinglePalette(palette.name, palette.baseColor, generation);
                 const step8Color = generatedPalette.lightSteps[7] || palette.baseColor; // Step 8 is index 7
 
                 return (
-                  <Inline key={palette.name} gap={2} align="center" justify="between" className="custom-palette-item">
-                    <Inline gap={2} align="center">
+                  <Row key={palette.name} gap={2} align="center" justify="between" className="custom-palette-item">
+                    <Row gap={2} align="center">
                       <div
                         className="builder-semantic-swatch"
                         style={{ backgroundColor: step8Color, width: "32px", height: "32px" }}
                         title={`Step 8: ${step8Color}`}
                       />
                       <Text size={1} weight="medium">{palette.name}</Text>
-                    </Inline>
+                    </Row>
                     <button
                       onClick={() => onRemoveCustomPalette(palette.name)}
                       className="studio-btn studio-btn--xs studio-btn--danger"
@@ -1613,15 +1613,15 @@ function SeedsStep({
                     >
                       ×
                     </button>
-                  </Inline>
+                  </Row>
                 );
               })}
-            </Stack>
+            </Column>
           )}
 
           {/* Add custom palette */}
-          <Inline gap={2} align="end">
-            <Stack gap={1} style={{ flex: 1 }}>
+          <Row gap={2} align="end">
+            <Column gap={1} style={{ flex: 1 }}>
               <Text size={0} weight="medium">Palette Name</Text>
               <input
                 type="text"
@@ -1633,16 +1633,16 @@ function SeedsStep({
                   if (e.key === "Enter") handleAddCustomPalette();
                 }}
               />
-            </Stack>
-            <Stack gap={1}>
+            </Column>
+            <Column gap={1}>
               <Text size={0} weight="medium">Base Color (Step 8)</Text>
               <ColorPicker
                 value={newPaletteColor}
                 onChange={setNewPaletteColor}
                 showHarmony
               />
-            </Stack>
-          </Inline>
+            </Column>
+          </Row>
           <button
             onClick={handleAddCustomPalette}
             disabled={!newPaletteName.trim()}
@@ -1650,25 +1650,25 @@ function SeedsStep({
           >
             Add Palette
           </button>
-        </Stack>
+        </Column>
       </Card>
 
       {/* Generated Palettes Preview */}
       {palettes.length > 0 && (
         <Card pad={4} radius={2}>
-          <Stack gap={4}>
-            <Inline gap={2} align="center" justify="between">
-              <Stack gap={1}>
+          <Column gap={4}>
+            <Row gap={2} align="center" justify="between">
+              <Column gap={1}>
                 <Text weight="semibold">Generated Palettes ({previewMode})</Text>
                 <Text size={0} tone="muted">Click any swatch to select it for fine-tuning. Use + to add a new palette from that color.</Text>
-              </Stack>
-            </Inline>
-            <Stack gap={3}>
+              </Column>
+            </Row>
+            <Column gap={3}>
               {palettes.map((palette) => {
                 const steps = previewMode === "light" ? palette.lightSteps : palette.darkSteps;
                 return (
-                  <Stack key={palette.name} gap={2}>
-                    <Inline gap={2} align="center" justify="between">
+                  <Column key={palette.name} gap={2}>
+                    <Row gap={2} align="center" justify="between">
                       <Text size={1} weight="medium" className="palette-name">
                         {palette.name}
                       </Text>
@@ -1679,7 +1679,7 @@ function SeedsStep({
                       >
                         ×
                       </button>
-                    </Inline>
+                    </Row>
                     <div className="palette-clickable-ramp">
                       {steps.map((color, index) => {
                         const isSelected = selectedPalette === palette.name && selectedStep === index;
@@ -1701,31 +1701,31 @@ function SeedsStep({
                         );
                       })}
                     </div>
-                  </Stack>
+                  </Column>
                 );
               })}
-            </Stack>
-          </Stack>
+            </Column>
+          </Column>
         </Card>
       )}
 
       {/* Accessibility Details - Full breakdown */}
       <Card pad={4} radius={2} id="accessibility-details">
-        <Stack gap={4}>
-          <Stack gap={1}>
+        <Column gap={4}>
+          <Column gap={1}>
             <Text weight="semibold">Accessibility Details ({previewMode})</Text>
             <Text size={0} tone="muted">
               Complete WCAG 2.1 contrast validation for all color combinations.
             </Text>
-          </Stack>
+          </Column>
           <SeedsContrastValidation
             getColor={(key: string, fallback: string = "#888888") =>
               colors[key] || fallback
             }
           />
-        </Stack>
+        </Column>
       </Card>
-    </Stack>
+    </Column>
   );
 }
 
@@ -2054,45 +2054,45 @@ function SeedsContrastValidation({ getColor }: SeedsContrastValidationProps) {
   const allPass = passCount === totalCount;
 
   return (
-    <Stack gap={3}>
+    <Column gap={3}>
       {/* Summary */}
       <div
         className={`contrast-summary ${allPass ? "contrast-summary--pass" : "contrast-summary--warn"}`}
       >
-        <Inline gap={2} align="center">
+        <Row gap={2} align="center">
           <span className="contrast-summary-icon">{allPass ? "✓" : "⚠"}</span>
           <Text size={1} weight="medium">
             {passCount}/{totalCount} checks passing WCAG AA
           </Text>
-        </Inline>
+        </Row>
       </div>
 
       {/* Detailed checks */}
       <div className="contrast-checks-grid">
         {checks.map((check) => (
           <div key={check.label} className="contrast-check-item">
-            <Inline gap={2} align="center" justify="between">
-              <Inline gap={2} align="center">
+            <Row gap={2} align="center" justify="between">
+              <Row gap={2} align="center">
                 <div
                   className="contrast-sample"
                   style={{ backgroundColor: check.bg }}
                 >
                   <span style={{ color: check.fg }}>Aa</span>
                 </div>
-                <Stack gap={0}>
+                <Column gap={0}>
                   <Text size={0} weight="medium">{check.label}</Text>
                   <Text size={0} mono tone="muted">{check.ratio.toFixed(2)}:1</Text>
-                </Stack>
-              </Inline>
-              <Inline gap={1}>
+                </Column>
+              </Row>
+              <Row gap={1}>
                 <span className={`contrast-level-badge ${check.passAA ? "contrast-level-badge--pass" : "contrast-level-badge--fail"}`}>
                   AA{check.level === "large" ? " (lg)" : ""}
                 </span>
                 <span className={`contrast-level-badge ${check.passAAA ? "contrast-level-badge--pass" : "contrast-level-badge--fail"}`}>
                   AAA
                 </span>
-              </Inline>
-            </Inline>
+              </Row>
+            </Row>
           </div>
         ))}
       </div>
@@ -2103,7 +2103,7 @@ function SeedsContrastValidation({ getColor }: SeedsContrastValidationProps) {
           AA: 4.5:1 for normal text, 3:1 for large text • AAA: 7:1 for normal text, 4.5:1 for large text
         </Text>
       </div>
-    </Stack>
+    </Column>
   );
 }
 
@@ -2154,19 +2154,19 @@ function GenerateStep({
   const paletteOverrides = overrides.filter(o => o.target.type === "palette");
 
   return (
-    <Stack gap={6}>
+    <Column gap={6}>
       <Card pad={4} radius={2}>
-        <Stack gap={4}>
-          <Inline gap={2} align="center" justify="between" wrap>
-            <Stack gap={2}>
+        <Column gap={4}>
+          <Row gap={2} align="center" justify="between" wrap>
+            <Column gap={2}>
               <Text as="h2" size={3} weight="semibold">
                 Generate Standard Set
               </Text>
               <Text tone="muted">
                 Configure generation parameters and create your complete token system.
               </Text>
-            </Stack>
-            <Inline gap={1}>
+            </Column>
+            <Row gap={1}>
               <button
                 onClick={() => onSetPreviewMode("light")}
                 className={`studio-btn studio-btn--sm ${previewMode === "light" ? "studio-btn--primary" : ""}`}
@@ -2179,11 +2179,11 @@ function GenerateStep({
               >
                 Dark
               </button>
-            </Inline>
-          </Inline>
+            </Row>
+          </Row>
 
           <div className="builder-controls-grid">
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">Algorithm</Text>
               <select
                 value={generation.algorithm}
@@ -2193,9 +2193,9 @@ function GenerateStep({
                 <option value="oklch">OKLCH (Recommended)</option>
                 <option value="hct">HCT (Tonal)</option>
               </select>
-            </Stack>
+            </Column>
 
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">Step Count</Text>
               <select
                 value={generation.stepCount}
@@ -2206,9 +2206,9 @@ function GenerateStep({
                 <option value={10}>10 steps</option>
                 <option value={12}>12 steps (Recommended)</option>
               </select>
-            </Stack>
+            </Column>
 
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">
                 Chroma Scale: {generation.chromaScale.toFixed(1)}
               </Text>
@@ -2221,9 +2221,9 @@ function GenerateStep({
                 onChange={(e) => onUpdate("chromaScale", parseFloat(e.target.value))}
                 className="studio-slider"
               />
-            </Stack>
+            </Column>
 
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">
                 Contrast Target: {generation.contrastTarget.toFixed(1)}
               </Text>
@@ -2236,9 +2236,9 @@ function GenerateStep({
                 onChange={(e) => onUpdate("contrastTarget", parseFloat(e.target.value))}
                 className="studio-slider"
               />
-            </Stack>
+            </Column>
 
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">
                 Warm/Cool Bias: {generation.warmCoolBias.toFixed(1)}
               </Text>
@@ -2251,11 +2251,11 @@ function GenerateStep({
                 onChange={(e) => onUpdate("warmCoolBias", parseFloat(e.target.value))}
                 className="studio-slider"
               />
-            </Stack>
+            </Column>
 
-            <Stack gap={2}>
+            <Column gap={2}>
               <Text size={0} weight="medium">Style</Text>
-              <Inline gap={2}>
+              <Row gap={2}>
                 <button
                   onClick={() => onUpdate("vibrant", false)}
                   className={`studio-btn studio-btn--sm ${!generation.vibrant ? "studio-btn--primary" : ""}`}
@@ -2268,8 +2268,8 @@ function GenerateStep({
                 >
                   Vibrant
                 </button>
-              </Inline>
-            </Stack>
+              </Row>
+            </Column>
           </div>
 
           <button
@@ -2278,22 +2278,22 @@ function GenerateStep({
           >
             Generate Standard Set
           </button>
-        </Stack>
+        </Column>
       </Card>
 
       {/* Generated Palettes Preview - Clickable for overrides */}
       {palettes.length > 0 && (
         <Card pad={4} radius={2}>
-          <Stack gap={4}>
-            <Stack gap={1}>
+          <Column gap={4}>
+            <Column gap={1}>
               <Text weight="semibold">Generated Palettes ({previewMode})</Text>
               <Text size={0} tone="muted">Click any color swatch to select it for override.</Text>
-            </Stack>
-            <Stack gap={3}>
+            </Column>
+            <Column gap={3}>
               {palettes.map((palette) => {
                 const steps = previewMode === "light" ? palette.lightSteps : palette.darkSteps;
                 return (
-                  <Stack key={palette.name} gap={2}>
+                  <Column key={palette.name} gap={2}>
                     <Text size={1} weight="medium" className="palette-name">
                       {palette.name}
                     </Text>
@@ -2318,38 +2318,38 @@ function GenerateStep({
                         );
                       })}
                     </div>
-                  </Stack>
+                  </Column>
                 );
               })}
-            </Stack>
-          </Stack>
+            </Column>
+          </Column>
         </Card>
       )}
 
       {/* Palette Override Form */}
       {palettes.length > 0 && (
         <Card pad={4} radius={2}>
-          <Stack gap={4}>
-            <Stack gap={1}>
+          <Column gap={4}>
+            <Column gap={1}>
               <Text weight="semibold">Fine-Tune Palette Colors</Text>
               <Text size={0} tone="muted">Override specific palette steps to achieve exact colors without regenerating.</Text>
-            </Stack>
+            </Column>
 
             <div className="builder-override-fields">
-              <Stack gap={2}>
+              <Column gap={2}>
                 <Text size={0} weight="medium">Selected Color</Text>
-                <Inline gap={2} align="center">
+                <Row gap={2} align="center">
                   <div
                     className="builder-semantic-swatch"
                     style={{ backgroundColor: overrideValue }}
                   />
                   <Text size={0} mono>{selectedPalette}[{selectedStep}]</Text>
-                </Inline>
-              </Stack>
+                </Row>
+              </Column>
 
-              <Stack gap={2}>
+              <Column gap={2}>
                 <Text size={0} weight="medium">Override Mode</Text>
-                <Inline gap={2}>
+                <Row gap={2}>
                   <button
                     onClick={() => setOverrideMode("light")}
                     className={`studio-btn studio-btn--sm ${overrideMode === "light" ? "studio-btn--primary" : ""}`}
@@ -2362,17 +2362,17 @@ function GenerateStep({
                   >
                     Dark
                   </button>
-                </Inline>
-              </Stack>
+                </Row>
+              </Column>
 
-              <Stack gap={2}>
+              <Column gap={2}>
                 <Text size={0} weight="medium">New Color Value</Text>
                 <ColorPicker
                   value={overrideValue}
                   onChange={setOverrideValue}
                   showHarmony
                 />
-              </Stack>
+              </Column>
             </div>
 
             <button
@@ -2384,13 +2384,13 @@ function GenerateStep({
 
             {/* Current Overrides List */}
             {paletteOverrides.length > 0 && (
-              <Stack gap={2}>
+              <Column gap={2}>
                 <Text size={0} weight="medium">Active Overrides ({paletteOverrides.length})</Text>
                 <div className="override-list">
                   {paletteOverrides.map((override) => {
                     const colorValue = typeof override.value === "string" ? override.value : "#888";
                     return (
-                      <Inline key={override.id} gap={2} align="center" className="override-item">
+                      <Row key={override.id} gap={2} align="center" className="override-item">
                         <div
                           className="builder-semantic-swatch"
                           style={{ backgroundColor: colorValue }}
@@ -2406,16 +2406,16 @@ function GenerateStep({
                         >
                           ×
                         </button>
-                      </Inline>
+                      </Row>
                     );
                   })}
                 </div>
-              </Stack>
+              </Column>
             )}
-          </Stack>
+          </Column>
         </Card>
       )}
-    </Stack>
+    </Column>
   );
 }
 
@@ -2504,20 +2504,20 @@ function ScalesStep({
   }, []);
 
   return (
-    <Stack gap={6}>
+    <Column gap={6}>
       <Card pad={4} radius={2}>
-        <Stack gap={4}>
-          <Stack gap={2}>
+        <Column gap={4}>
+          <Column gap={2}>
             <Text as="h2" size={3} weight="semibold">
               Scale Tokens
             </Text>
             <Text tone="muted">
               Configure spacing, sizing, and motion tokens. These define the rhythm and feel of your UI.
             </Text>
-          </Stack>
+          </Column>
 
           {/* Tab Navigation */}
-          <Inline gap={2} wrap>
+          <Row gap={2} wrap>
             <button
               onClick={() => setActiveTab("breakpoints")}
               className={`studio-btn studio-btn--sm ${activeTab === "breakpoints" ? "studio-btn--primary" : ""}`}
@@ -2554,28 +2554,28 @@ function ScalesStep({
             >
               Motion
             </button>
-          </Inline>
-        </Stack>
+          </Row>
+        </Column>
       </Card>
 
       {/* Breakpoints Tab */}
       {activeTab === "breakpoints" && (
         <Card pad={4} radius={2}>
-          <Stack gap={4}>
-            <Inline gap={2} align="center" justify="between">
-              <Stack gap={1}>
+          <Column gap={4}>
+            <Row gap={2} align="center" justify="between">
+              <Column gap={1}>
                 <Text weight="semibold">Breakpoints ({Object.keys(breakpoints).length})</Text>
                 <Text size={0} tone="muted">Define breakpoints used for responsive spacing. Edit the prefix name or width.</Text>
-              </Stack>
+              </Column>
               <button onClick={onAddBreakpoint} className="studio-btn studio-btn--sm">
                 + Add
               </button>
-            </Inline>
+            </Row>
             <div className="scales-grid">
               {Object.entries(breakpoints).map(([key, value]) => (
                 <div key={key} className="scale-item breakpoint-item">
-                  <Stack gap={2}>
-                    <Inline gap={2} align="center" justify="between">
+                  <Column gap={2}>
+                    <Row gap={2} align="center" justify="between">
                       <Text size={0} tone="muted">Prefix</Text>
                       <button
                         onClick={() => onRemoveBreakpoint(key)}
@@ -2584,7 +2584,7 @@ function ScalesStep({
                       >
                         ×
                       </button>
-                    </Inline>
+                    </Row>
                     <input
                       type="text"
                       value={key}
@@ -2602,24 +2602,24 @@ function ScalesStep({
                       style={{ width: "100%" }}
                       placeholder="e.g. 768px"
                     />
-                  </Stack>
+                  </Column>
                 </div>
               ))}
             </div>
-          </Stack>
+          </Column>
         </Card>
       )}
 
       {/* Space Scale */}
       {activeTab === "space" && (
         <Card pad={4} radius={2}>
-          <Stack gap={4}>
-            <Inline gap={2} align="center" justify="between">
-              <Stack gap={1}>
+          <Column gap={4}>
+            <Row gap={2} align="center" justify="between">
+              <Column gap={1}>
                 <Text weight="semibold">Space Scale ({Object.keys(scales.space).length} items)</Text>
                 <Text size={0} tone="muted">Click a token to set responsive values per breakpoint.</Text>
-              </Stack>
-                <Inline gap={2}>
+              </Column>
+                <Row gap={2}>
                   <button onClick={() => expandAll("space")} className="studio-btn studio-btn--sm" title="Expand all">
                     Expand All
                   </button>
@@ -2632,8 +2632,8 @@ function ScalesStep({
                   <button onClick={() => onReset("space")} className="studio-btn studio-btn--sm">
                     Reset
                   </button>
-                </Inline>
-              </Inline>
+                </Row>
+              </Row>
               <div className="scales-grid">
                 {Object.entries(scales.space).map(([key, responsiveValue]) => {
                   const isExpanded = expandedSpaceKeys.has(key);
@@ -2646,19 +2646,19 @@ function ScalesStep({
                         onClick={() => toggleSpaceExpanded(key)}
                         style={{ cursor: "pointer" }}
                       >
-                        <Inline gap={2} align="center" justify="between">
-                          <Stack gap={1}>
-                            <Inline gap={2} align="center">
+                        <Row gap={2} align="center" justify="between">
+                          <Column gap={1}>
+                            <Row gap={2} align="center">
                               <span className="scale-expand-icon">{isExpanded ? "▼" : "▶"}</span>
                               <Text size={0} weight="medium" mono>--st-space-{key}</Text>
                               {hasBreakpoints && <span className="scale-responsive-badge">Responsive</span>}
-                            </Inline>
+                            </Row>
                             <div
                               className="scale-preview-bar"
                               style={{ width: responsiveValue.base, height: "8px", backgroundColor: "var(--st-color-primary)" }}
                             />
-                          </Stack>
-                          <Inline gap={1} align="center">
+                          </Column>
+                          <Row gap={1} align="center">
                             <input
                               type="text"
                               value={responsiveValue.base}
@@ -2681,8 +2681,8 @@ function ScalesStep({
                             >
                               ×
                             </button>
-                          </Inline>
-                        </Inline>
+                          </Row>
+                        </Row>
                       </div>
 
                       {/* Expanded breakpoint values */}
@@ -2717,20 +2717,20 @@ function ScalesStep({
                   );
                 })}
               </div>
-            </Stack>
+            </Column>
           </Card>
       )}
 
       {/* Radius Scale */}
       {activeTab === "radius" && (
         <Card pad={4} radius={2}>
-          <Stack gap={4}>
-            <Inline gap={2} align="center" justify="between">
-              <Stack gap={1}>
+          <Column gap={4}>
+            <Row gap={2} align="center" justify="between">
+              <Column gap={1}>
                 <Text weight="semibold">Radius Scale ({Object.keys(scales.radius).length} items)</Text>
                 <Text size={0} tone="muted">Border radius values for rounded corners.</Text>
-              </Stack>
-              <Inline gap={2}>
+              </Column>
+              <Row gap={2}>
                 <button onClick={() => expandAll("radius")} className="studio-btn studio-btn--sm" title="Expand all">
                   Expand All
                 </button>
@@ -2743,8 +2743,8 @@ function ScalesStep({
                 <button onClick={() => onReset("radius")} className="studio-btn studio-btn--sm">
                   Reset
                 </button>
-              </Inline>
-            </Inline>
+              </Row>
+            </Row>
             <div className="scales-grid">
               {Object.entries(scales.radius).map(([key, value]) => {
                 const isExpanded = expandedRadiusKeys.has(key);
@@ -2755,18 +2755,18 @@ function ScalesStep({
                       onClick={() => toggleRadiusExpanded(key)}
                       style={{ cursor: "pointer" }}
                     >
-                      <Inline gap={2} align="center" justify="between">
-                        <Stack gap={1}>
-                          <Inline gap={2} align="center">
+                      <Row gap={2} align="center" justify="between">
+                        <Column gap={1}>
+                          <Row gap={2} align="center">
                             <span className="scale-expand-icon">{isExpanded ? "▼" : "▶"}</span>
                             <Text size={0} weight="medium" mono>--st-radius-{key}</Text>
-                          </Inline>
+                          </Row>
                           <div
                             className="scale-preview-box"
                             style={{ borderRadius: value }}
                           />
-                        </Stack>
-                        <Inline gap={1} align="center">
+                        </Column>
+                        <Row gap={1} align="center">
                           <input
                             type="text"
                             value={value}
@@ -2788,27 +2788,27 @@ function ScalesStep({
                           >
                             ×
                           </button>
-                        </Inline>
-                      </Inline>
+                        </Row>
+                      </Row>
                     </div>
                   </div>
                 );
               })}
             </div>
-          </Stack>
+          </Column>
         </Card>
       )}
 
       {/* Shadow Scale */}
       {activeTab === "shadow" && (
         <Card pad={4} radius={2}>
-          <Stack gap={4}>
-            <Inline gap={2} align="center" justify="between">
-              <Stack gap={1}>
+          <Column gap={4}>
+            <Row gap={2} align="center" justify="between">
+              <Column gap={1}>
                 <Text weight="semibold">Shadow Scale ({Object.keys(scales.shadow).length} items)</Text>
                 <Text size={0} tone="muted">Box shadow values for elevation.</Text>
-              </Stack>
-              <Inline gap={2}>
+              </Column>
+              <Row gap={2}>
                 <button onClick={() => expandAll("shadow")} className="studio-btn studio-btn--sm" title="Expand all">
                   Expand All
                 </button>
@@ -2821,8 +2821,8 @@ function ScalesStep({
                 <button onClick={() => onReset("shadow")} className="studio-btn studio-btn--sm">
                   Reset
                 </button>
-              </Inline>
-            </Inline>
+              </Row>
+            </Row>
             <div className="scales-grid">
               {Object.entries(scales.shadow).map(([key, value]) => {
                 const isExpanded = expandedShadowKeys.has(key);
@@ -2833,18 +2833,18 @@ function ScalesStep({
                       onClick={() => toggleShadowExpanded(key)}
                       style={{ cursor: "pointer" }}
                     >
-                      <Inline gap={2} align="center" justify="between">
-                        <Stack gap={1}>
-                          <Inline gap={2} align="center">
+                      <Row gap={2} align="center" justify="between">
+                        <Column gap={1}>
+                          <Row gap={2} align="center">
                             <span className="scale-expand-icon">{isExpanded ? "▼" : "▶"}</span>
                             <Text size={0} weight="medium" mono>--st-shadow-{key}</Text>
-                          </Inline>
+                          </Row>
                           <div
                             className="scale-preview-shadow"
                             style={{ boxShadow: value }}
                           />
-                        </Stack>
-                        <Inline gap={1} align="center">
+                        </Column>
+                        <Row gap={1} align="center">
                           <input
                             type="text"
                             value={value}
@@ -2866,45 +2866,45 @@ function ScalesStep({
                           >
                             ×
                           </button>
-                        </Inline>
-                      </Inline>
+                        </Row>
+                      </Row>
                     </div>
                   </div>
                 );
               })}
             </div>
-          </Stack>
+          </Column>
         </Card>
       )}
 
       {/* Typography */}
       {activeTab === "typography" && (
-        <Stack gap={4}>
+        <Column gap={4}>
           <Card pad={4} radius={2}>
-            <Stack gap={4}>
-              <Inline gap={2} align="center" justify="between">
-                <Stack gap={1}>
+            <Column gap={4}>
+              <Row gap={2} align="center" justify="between">
+                <Column gap={1}>
                   <Text weight="semibold">Font Size Scale ({Object.keys(scales.fontSize).length} items)</Text>
                   <Text size={0} tone="muted">Typography size scale.</Text>
-                </Stack>
-                <Inline gap={2}>
+                </Column>
+                <Row gap={2}>
                   <button onClick={() => onAddItem("fontSize")} className="studio-btn studio-btn--sm">
                     + Add
                   </button>
                   <button onClick={() => onReset("fontSize")} className="studio-btn studio-btn--sm">
                     Reset
                   </button>
-                </Inline>
-              </Inline>
+                </Row>
+              </Row>
               <div className="scales-grid">
                 {Object.entries(scales.fontSize).map(([key, value]) => (
                   <div key={key} className="scale-item">
-                    <Inline gap={2} align="center" justify="between">
-                      <Stack gap={1}>
+                    <Row gap={2} align="center" justify="between">
+                      <Column gap={1}>
                         <Text size={0} weight="medium" mono>--st-font-size-{key}</Text>
                         <span style={{ fontSize: value }}>Sample Text</span>
-                      </Stack>
-                      <Inline gap={1} align="center">
+                      </Column>
+                      <Row gap={1} align="center">
                         <input
                           type="text"
                           value={value}
@@ -2919,39 +2919,39 @@ function ScalesStep({
                         >
                           ×
                         </button>
-                      </Inline>
-                    </Inline>
+                      </Row>
+                    </Row>
                   </div>
                 ))}
               </div>
-            </Stack>
+            </Column>
           </Card>
 
           <Card pad={4} radius={2}>
-            <Stack gap={4}>
-              <Inline gap={2} align="center" justify="between">
-                <Stack gap={1}>
+            <Column gap={4}>
+              <Row gap={2} align="center" justify="between">
+                <Column gap={1}>
                   <Text weight="semibold">Font Weight ({Object.keys(scales.fontWeight).length} items)</Text>
                   <Text size={0} tone="muted">Weight values for text emphasis.</Text>
-                </Stack>
-                <Inline gap={2}>
+                </Column>
+                <Row gap={2}>
                   <button onClick={() => onAddItem("fontWeight")} className="studio-btn studio-btn--sm">
                     + Add
                   </button>
                   <button onClick={() => onReset("fontWeight")} className="studio-btn studio-btn--sm">
                     Reset
                   </button>
-                </Inline>
-              </Inline>
+                </Row>
+              </Row>
               <div className="scales-grid">
                 {Object.entries(scales.fontWeight).map(([key, value]) => (
                   <div key={key} className="scale-item">
-                    <Inline gap={2} align="center" justify="between">
-                      <Stack gap={1}>
+                    <Row gap={2} align="center" justify="between">
+                      <Column gap={1}>
                         <Text size={0} weight="medium" mono>--st-font-weight-{key}</Text>
                         <span style={{ fontWeight: value }}>Sample Text</span>
-                      </Stack>
-                      <Inline gap={1} align="center">
+                      </Column>
+                      <Row gap={1} align="center">
                         <input
                           type="text"
                           value={value}
@@ -2966,36 +2966,36 @@ function ScalesStep({
                         >
                           ×
                         </button>
-                      </Inline>
-                    </Inline>
+                      </Row>
+                    </Row>
                   </div>
                 ))}
               </div>
-            </Stack>
+            </Column>
           </Card>
 
           <Card pad={4} radius={2}>
-            <Stack gap={4}>
-              <Inline gap={2} align="center" justify="between">
-                <Stack gap={1}>
+            <Column gap={4}>
+              <Row gap={2} align="center" justify="between">
+                <Column gap={1}>
                   <Text weight="semibold">Line Height ({Object.keys(scales.lineHeight).length} items)</Text>
                   <Text size={0} tone="muted">Line height values for text density.</Text>
-                </Stack>
-                <Inline gap={2}>
+                </Column>
+                <Row gap={2}>
                   <button onClick={() => onAddItem("lineHeight")} className="studio-btn studio-btn--sm">
                     + Add
                   </button>
                   <button onClick={() => onReset("lineHeight")} className="studio-btn studio-btn--sm">
                     Reset
                   </button>
-                </Inline>
-              </Inline>
+                </Row>
+              </Row>
               <div className="scales-grid">
                 {Object.entries(scales.lineHeight).map(([key, value]) => (
                   <div key={key} className="scale-item">
-                    <Inline gap={2} align="center" justify="between">
+                    <Row gap={2} align="center" justify="between">
                       <Text size={0} weight="medium" mono>--st-leading-{key}</Text>
-                      <Inline gap={1} align="center">
+                      <Row gap={1} align="center">
                         <input
                           type="text"
                           value={value}
@@ -3010,47 +3010,47 @@ function ScalesStep({
                         >
                           ×
                         </button>
-                      </Inline>
-                    </Inline>
+                      </Row>
+                    </Row>
                   </div>
                 ))}
               </div>
-            </Stack>
+            </Column>
           </Card>
-        </Stack>
+        </Column>
       )}
 
       {/* Motion */}
       {activeTab === "motion" && (
-        <Stack gap={4}>
+        <Column gap={4}>
           <Card pad={4} radius={2}>
-            <Stack gap={4}>
-              <Inline gap={2} align="center" justify="between">
-                <Stack gap={1}>
+            <Column gap={4}>
+              <Row gap={2} align="center" justify="between">
+                <Column gap={1}>
                   <Text weight="semibold">Duration ({Object.keys(scales.duration).length} items)</Text>
                   <Text size={0} tone="muted">Animation duration values.</Text>
-                </Stack>
-                <Inline gap={2}>
+                </Column>
+                <Row gap={2}>
                   <button onClick={() => onAddItem("duration")} className="studio-btn studio-btn--sm">
                     + Add
                   </button>
                   <button onClick={() => onReset("duration")} className="studio-btn studio-btn--sm">
                     Reset
                   </button>
-                </Inline>
-              </Inline>
+                </Row>
+              </Row>
               <div className="scales-grid">
                 {Object.entries(scales.duration).map(([key, value]) => (
                   <div key={key} className="scale-item">
-                    <Inline gap={2} align="center" justify="between">
-                      <Stack gap={1}>
+                    <Row gap={2} align="center" justify="between">
+                      <Column gap={1}>
                         <Text size={0} weight="medium" mono>--st-duration-{key}</Text>
                         <div
                           className="scale-preview-motion"
                           style={{ animationDuration: value }}
                         />
-                      </Stack>
-                      <Inline gap={1} align="center">
+                      </Column>
+                      <Row gap={1} align="center">
                         <input
                           type="text"
                           value={value}
@@ -3065,37 +3065,37 @@ function ScalesStep({
                         >
                           ×
                         </button>
-                      </Inline>
-                    </Inline>
+                      </Row>
+                    </Row>
                   </div>
                 ))}
               </div>
-            </Stack>
+            </Column>
           </Card>
 
           <Card pad={4} radius={2}>
-            <Stack gap={4}>
-              <Inline gap={2} align="center" justify="between">
-                <Stack gap={1}>
+            <Column gap={4}>
+              <Row gap={2} align="center" justify="between">
+                <Column gap={1}>
                   <Text weight="semibold">Easing ({Object.keys(scales.easing).length} items)</Text>
                   <Text size={0} tone="muted">Animation easing curves. Click preview to see the curve in action.</Text>
-                </Stack>
-                <Inline gap={2}>
+                </Column>
+                <Row gap={2}>
                   <button onClick={() => onAddItem("easing")} className="studio-btn studio-btn--sm">
                     + Add
                   </button>
                   <button onClick={() => onReset("easing")} className="studio-btn studio-btn--sm">
                     Reset
                   </button>
-                </Inline>
-              </Inline>
+                </Row>
+              </Row>
               <div className="scales-grid">
                 {Object.entries(scales.easing).map(([key, value]) => (
                   <div key={key} className="scale-item scale-item--easing">
-                    <Stack gap={2}>
-                      <Inline gap={2} align="center" justify="between">
+                    <Column gap={2}>
+                      <Row gap={2} align="center" justify="between">
                         <Text size={0} weight="medium" mono>--st-easing-{key}</Text>
-                        <Inline gap={1} align="center">
+                        <Row gap={1} align="center">
                           <button
                             onClick={() => playEasingPreview(key)}
                             className="studio-btn studio-btn--sm"
@@ -3110,8 +3110,8 @@ function ScalesStep({
                           >
                             ×
                           </button>
-                        </Inline>
-                      </Inline>
+                        </Row>
+                      </Row>
                       <input
                         type="text"
                         value={value}
@@ -3128,15 +3128,15 @@ function ScalesStep({
                           }}
                         />
                       </div>
-                    </Stack>
+                    </Column>
                   </div>
                 ))}
               </div>
-            </Stack>
+            </Column>
           </Card>
-        </Stack>
+        </Column>
       )}
-    </Stack>
+    </Column>
   );
 }
 
@@ -3226,22 +3226,22 @@ After getting suggestions, I can import them into Staple CSS Tokens Studio using
 }`;
 
   return (
-    <Stack gap={6}>
+    <Column gap={6}>
       <Card pad={4} radius={2}>
-        <Stack gap={4}>
-          <Stack gap={2}>
+        <Column gap={4}>
+          <Column gap={2}>
             <Text as="h2" size={3} weight="semibold">
               Import & Export
             </Text>
             <Text tone="muted">
               Import a configuration or export your token system.
             </Text>
-          </Stack>
+          </Column>
 
           {/* Import */}
-          <Stack gap={3}>
+          <Column gap={3}>
             <Text weight="semibold">Import</Text>
-            <Inline gap={2} align="center">
+            <Row gap={2} align="center">
               <input
                 ref={fileInputRef}
                 type="file"
@@ -3258,18 +3258,18 @@ After getting suggestions, I can import them into Staple CSS Tokens Studio using
               {importError && (
                 <Text size={0} tone="danger">{importError}</Text>
               )}
-            </Inline>
-          </Stack>
+            </Row>
+          </Column>
 
           {/* Save to Config */}
           <Card pad={3} radius={1} className={hasChanges ? "builder-unsaved" : ""}>
-            <Inline gap={3} align="center" justify="between">
-              <Stack gap={1}>
+            <Row gap={3} align="center" justify="between">
+              <Column gap={1}>
                 <Text weight="semibold">Save to Config</Text>
                 <Text size={0} tone="muted">
                   {hasChanges ? "You have unsaved changes" : "Configuration is up to date"}
                 </Text>
-              </Stack>
+              </Column>
               <button
                 onClick={onSave}
                 disabled={!hasChanges}
@@ -3277,13 +3277,13 @@ After getting suggestions, I can import them into Staple CSS Tokens Studio using
               >
                 Save Changes
               </button>
-            </Inline>
+            </Row>
           </Card>
 
           {/* Export Options */}
-          <Stack gap={3}>
+          <Column gap={3}>
             <Text weight="semibold">Export</Text>
-            <Inline gap={2} wrap>
+            <Row gap={2} wrap>
               <button onClick={exportJson} className="studio-btn">
                 Export JSON Config
               </button>
@@ -3299,20 +3299,20 @@ After getting suggestions, I can import them into Staple CSS Tokens Studio using
               <button onClick={() => exportCss("palettes")} className="studio-btn">
                 Export palettes.css
               </button>
-            </Inline>
-          </Stack>
-        </Stack>
+            </Row>
+          </Column>
+        </Column>
       </Card>
 
       {/* LLM Prompt Helper */}
       <Card pad={4} radius={2}>
-        <Stack gap={4}>
-          <Stack gap={1}>
+        <Column gap={4}>
+          <Column gap={1}>
             <Text weight="semibold">AI Color Assistant Prompt</Text>
             <Text size={0} tone="muted">
               Copy this prompt to ask an AI assistant for color palette suggestions based on your current brand colors.
             </Text>
-          </Stack>
+          </Column>
           <div className="llm-prompt-box">
             <pre className="llm-prompt-text">{llmPrompt}</pre>
             <button
@@ -3322,12 +3322,12 @@ After getting suggestions, I can import them into Staple CSS Tokens Studio using
               Copy Prompt
             </button>
           </div>
-        </Stack>
+        </Column>
       </Card>
 
       {/* CSS Preview */}
       <Card pad={4} radius={2}>
-        <Stack gap={4}>
+        <Column gap={4}>
           <Text weight="semibold">Generated CSS Preview</Text>
           <CodePreview
             code={generatedCss.all}
@@ -3336,9 +3336,9 @@ After getting suggestions, I can import them into Staple CSS Tokens Studio using
             collapsible
             defaultCollapsed={false}
           />
-        </Stack>
+        </Column>
       </Card>
-    </Stack>
+    </Column>
   );
 }
 
@@ -3390,7 +3390,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
 
   // Mini preview (compact)
   const miniPreview = (
-    <Stack gap={3}>
+    <Column gap={3}>
       {/* Expand Button at top */}
       <button
         onClick={() => setIsExpanded(true)}
@@ -3408,7 +3408,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
           borderColor: borderColor,
         }}
       >
-        <Stack gap={4}>
+        <Column gap={4}>
           {/* Sample Card - Uses Responsive Padding */}
           <Box
             pad={{ base: 3, md: 4, lg: 5 }}
@@ -3416,7 +3416,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
             className="builder-preview-card"
             style={{ backgroundColor: surfaceColor, borderColor }}
           >
-            <Stack gap={2}>
+            <Column gap={2}>
               <span style={{ color: textColor, fontWeight: 600 }}>Responsive Card</span>
               <span style={{ color: mutedColor, fontSize: "var(--st-font-size-1)" }}>
                 Padding adapts: Mobile (3) → Tablet (4) → Desktop (5). Resize to see it change!
@@ -3441,7 +3441,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                   Accent
                 </button>
               </Grid>
-            </Stack>
+            </Column>
           </Box>
 
           {/* Status Colors */}
@@ -3467,14 +3467,14 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
           </Grid>
 
           {/* Text Samples */}
-          <Stack gap={1}>
+          <Column gap={1}>
             <span style={{ color: textColor }}>Primary text color</span>
             <span style={{ color: mutedColor }}>Muted text color</span>
             <span style={{ color: primaryColor }}>Link color</span>
-          </Stack>
-        </Stack>
+          </Column>
+        </Column>
       </div>
-    </Stack>
+    </Column>
   );
 
   // Full preview modal
@@ -3496,12 +3496,12 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
             borderBottom: `1px solid ${borderColor}`,
           }}
         >
-          <Inline gap={2} align="center" justify="between">
+          <Row gap={2} align="center" justify="between">
             <span style={{ fontWeight: 600 }}>Full Preview ({mode} mode)</span>
-            <Inline gap={2} align="center">
+            <Row gap={2} align="center">
               {/* Size controls */}
               {onSizeChange && (
-                <Inline gap={1}>
+                <Row gap={1}>
                   <button
                     onClick={() => onSizeChange("mobile")}
                     className={`studio-btn studio-btn--sm ${size === "mobile" ? "studio-btn--primary" : ""}`}
@@ -3523,7 +3523,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                   >
                     🖥️
                   </button>
-                </Inline>
+                </Row>
               )}
               <button
                 onClick={() => setIsExpanded(false)}
@@ -3531,8 +3531,8 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
               >
                 Close
               </button>
-            </Inline>
-          </Inline>
+            </Row>
+          </Row>
         </div>
 
         {/* Preview Content */}
@@ -3546,21 +3546,21 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
               padding: "var(--st-space-3) var(--st-space-4)",
             }}
           >
-            <Inline gap={6} align="center">
+            <Row gap={6} align="center">
               <span style={{ fontWeight: 700, color: textColor }}>
                 AppName
               </span>
-              <Inline gap={4}>
+              <Row gap={4}>
                 <span style={{ color: primaryColor }}>Dashboard</span>
                 <span style={{ color: mutedColor }}>Settings</span>
                 <span style={{ color: mutedColor }}>Profile</span>
-              </Inline>
-            </Inline>
+              </Row>
+            </Row>
           </div>
 
           {/* Preview Body - Uses Responsive Padding */}
           <Box pad={{ base: 3, md: 4, lg: 5 }}>
-            <Stack gap={5}>
+            <Column gap={5}>
               {/* Stats Row */}
               <div className="preview-stats-grid">
                 <StatCard label="Total Revenue" value="$45,231" change="+20.1%" changeType="success" colors={colors} />
@@ -3580,8 +3580,8 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                     border: `1px solid ${borderColor}`,
                   }}
                 >
-                  <Stack gap={4}>
-                    <Inline gap={2} justify="between" align="center">
+                  <Column gap={4}>
+                    <Row gap={2} justify="between" align="center">
                       <span style={{ fontWeight: 600, color: textColor }}>Recent Activity</span>
                       <button
                         style={{
@@ -3596,19 +3596,19 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                       >
                         View All
                       </button>
-                    </Inline>
+                    </Row>
 
-                    <Stack gap={3}>
+                    <Column gap={3}>
                       <ActivityItem title="New user registered" time="2 minutes ago" colors={colors} />
                       <ActivityItem title="Payment received" time="15 minutes ago" colors={colors} />
                       <ActivityItem title="Server alert resolved" time="1 hour ago" colors={colors} />
                       <ActivityItem title="Database backup completed" time="3 hours ago" colors={colors} />
-                    </Stack>
-                  </Stack>
+                    </Column>
+                  </Column>
                 </Box>
 
                 {/* Sidebar */}
-                <Stack gap={3}>
+                <Column gap={3}>
                   {/* Alert Card - Uses Responsive Padding */}
                   <Box
                     pad={{ base: 2, md: 3 }}
@@ -3618,14 +3618,14 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                       border: `1px solid ${warnColor}`,
                     }}
                   >
-                    <Stack gap={2}>
+                    <Column gap={2}>
                       <span style={{ fontWeight: 600, color: warnColor }}>
                         Action Required
                       </span>
                       <span style={{ fontSize: "var(--st-font-size-0)", color: colors.warnText || warnColor }}>
                         Please verify your email address to continue.
                       </span>
-                    </Stack>
+                    </Column>
                   </Box>
 
                   {/* Quick Actions - Uses Responsive Padding */}
@@ -3637,16 +3637,16 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                       border: `1px solid ${borderColor}`,
                     }}
                   >
-                    <Stack gap={3}>
+                    <Column gap={3}>
                       <span style={{ fontWeight: 600, color: textColor }}>
                         Quick Actions
                       </span>
-                      <Stack gap={2}>
+                      <Column gap={2}>
                         <ActionButton label="Create New" variant="primary" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
                         <ActionButton label="Import Data" variant="outline" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
                         <ActionButton label="Export Report" variant="ghost" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
-                      </Stack>
-                    </Stack>
+                      </Column>
+                    </Column>
                   </Box>
 
                   {/* Form Example - Uses Responsive Padding */}
@@ -3658,11 +3658,11 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                       border: `1px solid ${borderColor}`,
                     }}
                   >
-                    <Stack gap={3}>
+                    <Column gap={3}>
                       <span style={{ fontWeight: 600, color: textColor }}>
                         Sample Form
                       </span>
-                      <Stack gap={2}>
+                      <Column gap={2}>
                         <input
                           type="text"
                           placeholder="Enter your name"
@@ -3687,14 +3687,14 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                             fontSize: "var(--st-font-size-0)",
                           }}
                         />
-                      </Stack>
-                    </Stack>
+                      </Column>
+                    </Column>
                   </Box>
-                </Stack>
+                </Column>
               </div>
 
               {/* Status Badges */}
-              <Inline gap={3} wrap>
+              <Row gap={3} wrap>
                 <span style={{ backgroundColor: colors.successSurface || "rgba(22, 163, 74, 0.1)", color: successColor, padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
                   Success
                 </span>
@@ -3713,7 +3713,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                 <span style={{ backgroundColor: accentColor, color: "#fff", padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
                   Accent
                 </span>
-              </Inline>
+              </Row>
 
               {/* Typography Sample - Uses Responsive Padding */}
               <Box
@@ -3724,7 +3724,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                   border: `1px solid ${borderColor}`,
                 }}
               >
-                <Stack gap={3}>
+                <Column gap={3}>
                   <span style={{ fontSize: "var(--st-font-size-5)", fontWeight: 700, color: textColor }}>Heading 1</span>
                   <span style={{ fontSize: "var(--st-font-size-4)", fontWeight: 600, color: textColor }}>Heading 2</span>
                   <span style={{ fontSize: "var(--st-font-size-3)", fontWeight: 600, color: textColor }}>Heading 3</span>
@@ -3737,9 +3737,9 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                   <span style={{ fontSize: "var(--st-font-size-0)", color: mutedColor }}>
                     Caption text for small labels and metadata.
                   </span>
-                </Stack>
+                </Column>
               </Box>
-            </Stack>
+            </Column>
           </Box>
           </div>
         </div>
@@ -3759,21 +3759,21 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
             padding: "var(--st-space-3) var(--st-space-4)",
           }}
         >
-          <Inline gap={6} align="center">
+          <Row gap={6} align="center">
             <span style={{ fontWeight: 700, color: textColor }}>
               AppName
             </span>
-            <Inline gap={4}>
+            <Row gap={4}>
               <span style={{ color: primaryColor }}>Dashboard</span>
               <span style={{ color: mutedColor }}>Settings</span>
               <span style={{ color: mutedColor }}>Profile</span>
-            </Inline>
-          </Inline>
+            </Row>
+          </Row>
         </div>
 
         {/* Preview Body */}
         <Box pad={{ base: 3, md: 4, lg: 5 }} style={{ backgroundColor: bgColor }}>
-          <Stack gap={5}>
+          <Column gap={5}>
             {/* Stats Row */}
             <div className="preview-stats-grid">
               <StatCard label="Total Revenue" value="$45,231" change="+20.1%" changeType="success" colors={colors} />
@@ -3793,8 +3793,8 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                   border: `1px solid ${borderColor}`,
                 }}
               >
-                <Stack gap={4}>
-                  <Inline gap={2} justify="between" align="center">
+                <Column gap={4}>
+                  <Row gap={2} justify="between" align="center">
                     <span style={{ fontWeight: 600, color: textColor }}>Recent Activity</span>
                     <button
                       style={{
@@ -3809,19 +3809,19 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                     >
                       View All
                     </button>
-                  </Inline>
+                  </Row>
 
-                  <Stack gap={3}>
+                  <Column gap={3}>
                     <ActivityItem title="New user registered" time="2 minutes ago" colors={colors} />
                     <ActivityItem title="Payment received" time="15 minutes ago" colors={colors} />
                     <ActivityItem title="Server alert resolved" time="1 hour ago" colors={colors} />
                     <ActivityItem title="Database backup completed" time="3 hours ago" colors={colors} />
-                  </Stack>
-                </Stack>
+                  </Column>
+                </Column>
               </Box>
 
               {/* Sidebar */}
-              <Stack gap={3}>
+              <Column gap={3}>
                 {/* Alert Card */}
                 <Box
                   pad={{ base: 2, md: 3 }}
@@ -3831,14 +3831,14 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                     border: `1px solid ${warnColor}`,
                   }}
                 >
-                  <Stack gap={2}>
+                  <Column gap={2}>
                     <span style={{ fontWeight: 600, color: warnColor }}>
                       Action Required
                     </span>
                     <span style={{ fontSize: "var(--st-font-size-0)", color: colors.warnText || warnColor }}>
                       Please verify your email address to continue.
                     </span>
-                  </Stack>
+                  </Column>
                 </Box>
 
                 {/* Quick Actions */}
@@ -3850,22 +3850,22 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                     border: `1px solid ${borderColor}`,
                   }}
                 >
-                  <Stack gap={3}>
+                  <Column gap={3}>
                     <span style={{ fontWeight: 600, color: textColor }}>
                       Quick Actions
                     </span>
-                    <Stack gap={2}>
+                    <Column gap={2}>
                       <ActionButton label="Create New" variant="primary" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
                       <ActionButton label="Import Data" variant="outline" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
                       <ActionButton label="Export Report" variant="ghost" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
-                    </Stack>
-                  </Stack>
+                    </Column>
+                  </Column>
                 </Box>
-              </Stack>
+              </Column>
             </div>
 
             {/* Color Badges */}
-            <Inline gap={2} wrap>
+            <Row gap={2} wrap>
               <span style={{ backgroundColor: colors.successSurface || "rgba(22, 163, 74, 0.1)", color: successColor, padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
                 Success
               </span>
@@ -3884,7 +3884,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
               <span style={{ backgroundColor: accentColor, color: "#fff", padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
                 Accent
               </span>
-            </Inline>
+            </Row>
 
             {/* Typography Sample */}
             <Box
@@ -3895,7 +3895,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                 border: `1px solid ${borderColor}`,
               }}
             >
-              <Stack gap={3}>
+              <Column gap={3}>
                 <span style={{ fontSize: "var(--st-font-size-5)", fontWeight: 700, color: textColor }}>Heading 1</span>
                 <span style={{ fontSize: "var(--st-font-size-4)", fontWeight: 600, color: textColor }}>Heading 2</span>
                 <span style={{ fontSize: "var(--st-font-size-3)", fontWeight: 600, color: textColor }}>Heading 3</span>
@@ -3908,9 +3908,9 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
                 <span style={{ fontSize: "var(--st-font-size-0)", color: mutedColor }}>
                   Caption text for small labels and metadata.
                 </span>
-              </Stack>
+              </Column>
             </Box>
-          </Stack>
+          </Column>
         </Box>
       </div>
     </div>
@@ -3950,11 +3950,11 @@ function StatCard({ label, value, change, changeType, colors }: StatCardProps) {
         padding: "var(--st-space-3)",
       }}
     >
-      <Stack gap={1}>
+      <Column gap={1}>
         <span style={{ fontSize: "var(--st-font-size-0)", color: colors.textMuted || "#6b7280" }}>{label}</span>
         <span style={{ fontSize: "var(--st-font-size-4)", fontWeight: 700, color: colors.text || "#111827" }}>{value}</span>
         <span style={{ fontSize: "var(--st-font-size-0)", color: changeColor }}>{change}</span>
-      </Stack>
+      </Column>
     </div>
   );
 }
@@ -3974,10 +3974,10 @@ function ActivityItem({ title, time, colors }: ActivityItemProps) {
         padding: "var(--st-space-2) var(--st-space-3)",
       }}
     >
-      <Inline gap={3} align="center" justify="between">
+      <Row gap={3} align="center" justify="between">
         <span style={{ fontSize: "var(--st-font-size-1)", color: colors.text || "#111827" }}>{title}</span>
         <span style={{ fontSize: "var(--st-font-size-0)", color: colors.textMuted || "#6b7280" }}>{time}</span>
-      </Inline>
+      </Row>
     </div>
   );
 }
