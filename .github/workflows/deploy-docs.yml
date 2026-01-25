@@ -37,7 +37,7 @@ jobs:
       - name: Build docs
         run: npm run build:docs
         env:
-          BASE_URL: /staple-css/
+          BASE_URL: /
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
