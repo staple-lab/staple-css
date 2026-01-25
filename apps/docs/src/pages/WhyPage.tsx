@@ -1,4 +1,4 @@
-import { Container, Column, Card, Text, Row } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Row, Flex } from "@staple-css/primitives";
 
 export function WhyPage() {
   return (
@@ -183,14 +183,14 @@ export function WhyPage() {
           <Card pad={6} radius={3}>
             <Column gap={3}>
               <Text weight="medium">staple-css is a good fit when you want:</Text>
-              <Column as="ul" gap={2} style={{ paddingLeft: "var(--st-space-5)" }}>
+              <Flex as="ul" direction="column" gap={2} style={{ paddingLeft: "var(--st-space-5)" }}>
                 <li><Text>A consistent token system across your app</Text></li>
                 <li><Text>Layout primitives that just work</Text></li>
                 <li><Text>Minimal runtime overhead</Text></li>
                 <li><Text>Type-safe props that prevent arbitrary values</Text></li>
                 <li><Text>Easy theming via CSS variables</Text></li>
                 <li><Text>A foundation to build on, not a framework to fight</Text></li>
-              </Column>
+              </Flex>
             </Column>
           </Card>
         </Column>

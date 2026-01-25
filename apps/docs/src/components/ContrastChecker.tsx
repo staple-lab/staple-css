@@ -54,7 +54,7 @@ export function ContrastChecker({ foreground, background }: ContrastCheckerProps
       </Card>
 
       {/* Results */}
-      <Row gap={4} wrap>
+      <Row gap={4} wrap="wrap">
         {/* WCAG */}
         <Card pad={4} radius={2} className="contrast-result">
           <Column gap={3}>

@@ -682,7 +682,7 @@ export function BuilderPage() {
 
         {/* Step Navigation */}
         <Card pad={4} radius={2}>
-          <Row gap={2} align="center" wrap>
+          <Row gap={2} align="center" wrap="wrap">
             {steps.map((step, index) => (
               <button
                 key={step.id}
@@ -793,10 +793,10 @@ export function BuilderPage() {
               {/* Live Preview */}
               <Card pad={4} radius={2}>
                 <Column gap={4}>
-                  <Row gap={2} align="center" justify="between" wrap>
+                  <Row gap={2} align="center" justify="between" wrap="wrap">
                     <Text weight="semibold">Live Preview</Text>
                     {/* View mode controls */}
-                    <Row gap={2} wrap>
+                    <Row gap={2} wrap="wrap">
                       <button
                         onClick={() => setPreviewExpanded(!previewExpanded)}
                         className="studio-btn studio-btn--sm studio-btn--primary"
@@ -1467,7 +1467,7 @@ function SeedsStep({
       {/* Generation Controls */}
       <Card pad={4} radius={2}>
         <Column gap={4}>
-          <Row gap={2} align="center" justify="between" wrap>
+          <Row gap={2} align="center" justify="between" wrap="wrap">
             <Column gap={2}>
               <Text as="h2" size={3} weight="semibold">
                 Palette Generation
@@ -2157,7 +2157,7 @@ function GenerateStep({
     <Column gap={6}>
       <Card pad={4} radius={2}>
         <Column gap={4}>
-          <Row gap={2} align="center" justify="between" wrap>
+          <Row gap={2} align="center" justify="between" wrap="wrap">
             <Column gap={2}>
               <Text as="h2" size={3} weight="semibold">
                 Generate Standard Set
@@ -2517,7 +2517,7 @@ function ScalesStep({
           </Column>
 
           {/* Tab Navigation */}
-          <Row gap={2} wrap>
+          <Row gap={2} wrap="wrap">
             <button
               onClick={() => setActiveTab("breakpoints")}
               className={`studio-btn studio-btn--sm ${activeTab === "breakpoints" ? "studio-btn--primary" : ""}`}
@@ -3283,7 +3283,7 @@ After getting suggestions, I can import them into Staple CSS Tokens Studio using
           {/* Export Options */}
           <Column gap={3}>
             <Text weight="semibold">Export</Text>
-            <Row gap={2} wrap>
+            <Row gap={2} wrap="wrap">
               <button onClick={exportJson} className="studio-btn">
                 Export JSON Config
               </button>
@@ -3694,7 +3694,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
               </div>
 
               {/* Status Badges */}
-              <Row gap={3} wrap>
+              <Row gap={3} wrap="wrap">
                 <span style={{ backgroundColor: colors.successSurface || "rgba(22, 163, 74, 0.1)", color: successColor, padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
                   Success
                 </span>
@@ -3865,7 +3865,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
             </div>
 
             {/* Color Badges */}
-            <Row gap={2} wrap>
+            <Row gap={2} wrap="wrap">
               <span style={{ backgroundColor: colors.successSurface || "rgba(22, 163, 74, 0.1)", color: successColor, padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontSize: "var(--st-font-size-0)", fontWeight: 600 }}>
                 Success
               </span>

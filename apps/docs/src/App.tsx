@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, NavLink, Navigate, Link } from "react-router-dom";
-import { Container, Row, Text } from "@staple-css/primitives";
+import { Container, Row, Text, Flex } from "@staple-css/primitives";
 import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
@@ -69,7 +69,7 @@ export function App() {
                 </Text>
               </Link>
               <nav>
-                <Row as="ul" gap={4} className="nav-list">
+                <Flex as="ul" direction="row" gap={4} className="nav-list">
                   <li>
                     <NavLink to="/tokens" className="nav-link">
                       Tokens
@@ -90,7 +90,7 @@ export function App() {
                       Studio
                     </NavLink>
                   </li>
-                </Row>
+                </Flex>
               </nav>
             </Row>
             <Row gap={2}>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
-import { Container, Row, Text } from "@staple-css/primitives";
+import { Container, Row, Text, Flex } from "@staple-css/primitives";
 import { SettingsPage } from "./pages/SettingsPage";
 import { DashboardPage } from "./pages/DashboardPage";
 
@@ -25,7 +25,7 @@ export function App() {
                 Demo App
               </Text>
               <nav>
-                <Row as="ul" gap={4} className="nav-list">
+                <Flex as="ul" direction="row" gap={4} className="nav-list">
                   <li>
                     <NavLink to="/" className="nav-link">
                       Dashboard
@@ -36,7 +36,7 @@ export function App() {
                       Settings
                     </NavLink>
                   </li>
-                </Row>
+                </Flex>
               </nav>
             </Row>
             <Row gap={2}>
