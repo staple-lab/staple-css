@@ -1,6 +1,7 @@
 import type { ElementType, ComponentPropsWithoutRef, ReactNode } from "react";
-import type { Space, Align, Justify, LayoutStyleProps } from "./types.js";
+import type { Space, Align, Justify, LayoutStyleProps, Responsive } from "./types.js";
 import { cx } from "./cx.js";
+import { responsiveClasses } from "./types.js";
 
 /**
  * Props for polymorphic component
@@ -15,14 +16,14 @@ type PolymorphicProps<E extends ElementType> = {
 export interface InlineOwnProps {
   /** Content */
   children?: ReactNode;
-  /** Gap between children (space scale 0-8) */
-  gap?: Space;
-  /** Cross-axis alignment */
-  align?: Align;
-  /** Main-axis justification */
-  justify?: Justify;
-  /** Allow wrapping */
-  wrap?: boolean;
+  /** Gap between children (space scale 0-8), supports responsive values */
+  gap?: Responsive<Space>;
+  /** Cross-axis alignment, supports responsive values */
+  align?: Responsive<Align>;
+  /** Main-axis justification, supports responsive values */
+  justify?: Responsive<Justify>;
+  /** Allow wrapping, supports responsive values */
+  wrap?: Responsive<boolean>;
   /** Additional class names */
   className?: string;
   /**
@@ -66,10 +67,10 @@ export function Inline<E extends ElementType = "div">({
 
   const classes = cx(
     "st-Inline",
-    gap !== undefined && `st-Inline--gap-${gap}`,
-    align && `st-Inline--align-${align}`,
-    justify && `st-Inline--justify-${justify}`,
-    wrap && "st-Inline--wrap",
+    ...responsiveClasses("st-Inline", "gap", gap),
+    ...responsiveClasses("st-Inline", "align", align),
+    ...responsiveClasses("st-Inline", "justify", justify),
+    ...responsiveClasses("st-Inline", "wrap", wrap),
     className
   );
 

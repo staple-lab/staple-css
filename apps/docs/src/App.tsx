@@ -5,12 +5,7 @@ import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
 import { WhyPage } from "./pages/WhyPage";
-import {
-  BuilderPage,
-  PreviewPage,
-  ConfigPage,
-  PromptsPage,
-} from "./pages/tokens-studio";
+import { BuilderPage } from "./pages/tokens-studio";
 
 type Theme = "light" | "dark" | "system";
 type Density = "comfortable" | "compact";
@@ -116,13 +111,10 @@ export function App() {
           <Route path="/tokens" element={<TokensPage />} />
           <Route path="/primitives" element={<PrimitivesPage />} />
           <Route path="/why" element={<WhyPage />} />
-          {/* Tokens Studio Routes */}
+          {/* Tokens Studio */}
           <Route path="/tokens-studio" element={<BuilderPage />} />
-          <Route path="/tokens-studio/builder" element={<BuilderPage />} />
-          <Route path="/tokens-studio/preview" element={<PreviewPage />} />
-          <Route path="/tokens-studio/config" element={<ConfigPage />} />
-          <Route path="/tokens-studio/prompts" element={<PromptsPage />} />
           {/* Redirect old studio routes */}
+          <Route path="/tokens-studio/*" element={<Navigate to="/tokens-studio" replace />} />
           <Route path="/studio" element={<Navigate to="/tokens-studio" replace />} />
           <Route path="/studio/*" element={<Navigate to="/tokens-studio" replace />} />
         </Routes>

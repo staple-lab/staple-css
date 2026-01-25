@@ -78,7 +78,7 @@ export function generatePalettes(
 /**
  * Generate a single palette (light + dark modes)
  */
-function generateSinglePalette(
+export function generateSinglePalette(
   name: string,
   baseColor: string,
   params: GenerationParams

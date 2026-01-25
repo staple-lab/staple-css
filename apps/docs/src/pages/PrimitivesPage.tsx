@@ -1,4 +1,5 @@
 import { Container, Stack, Card, Text, Box, Inline, Grid } from "@staple-css/primitives";
+import { CodePreview } from "../components/CodePreview";
 
 function CodeExample({
   title,
@@ -16,9 +17,7 @@ function CodeExample({
       </Text>
       <Card pad={0} radius={2}>
         <div className="example-preview">{children}</div>
-        <pre className="code-block" style={{ borderTop: "1px solid var(--st-color-border)", borderRadius: 0 }}>
-          {code}
-        </pre>
+        <CodePreview code={code} language="tsx" />
       </Card>
     </Stack>
   );
@@ -84,17 +83,21 @@ export function PrimitivesPage() {
           <Text as="h2" size={4} weight="semibold">
             Installation
           </Text>
-          <Card pad={0} radius={2}>
-            <pre className="code-block">{`npm install @staple-css/primitives @staple-css/tokens`}</pre>
-          </Card>
-          <Card pad={0} radius={2}>
-            <pre className="code-block">{`// Import CSS
+          <CodePreview
+            code="npm install @staple-css/primitives @staple-css/tokens"
+            language="bash"
+            title="Install"
+          />
+          <CodePreview
+            code={`// Import CSS
 import "@staple-css/tokens/all.css";
 import "@staple-css/primitives/primitives.css";
 
 // Import components
-import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/primitives";`}</pre>
-          </Card>
+import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/primitives";`}
+            language="typescript"
+            title="Usage"
+          />
         </Stack>
 
         {/* Box */}
@@ -115,10 +118,23 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
               <Text>Content with padding, rounded corners, and shadow</Text>
             </Box>
           </CodeExample>
+          <CodeExample
+            title="Responsive Padding"
+            code={`<Box pad={{ base: 2, md: 4, lg: 6 }} radius={2}>
+  Padding adapts to screen size:
+  - Mobile: 2 (small padding)
+  - Tablet: 4 (medium padding)
+  - Desktop: 6 (large padding)
+</Box>`}
+          >
+            <Box pad={{ base: 2, md: 4, lg: 6 }} radius={2} style={{ backgroundColor: "var(--st-color-surface-raised)" }}>
+              <Text>Padding adapts to screen size: Mobile (2) → Tablet (4) → Desktop (6)</Text>
+            </Box>
+          </CodeExample>
           <PropsTable
             props={[
               { name: "as", type: "ElementType", description: "HTML element (default: div)" },
-              { name: "pad", type: "0-8", description: "Padding (space scale)" },
+              { name: "pad", type: "0-8 | Responsive<0-8>", description: "Padding (space scale), supports responsive object { base, sm, md, lg, xl }" },
               { name: "radius", type: "0-4", description: "Border radius" },
               { name: "shadow", type: "0-2", description: "Box shadow" },
             ]}
@@ -332,6 +348,152 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
           />
         </Stack>
 
+        {/* Responsive Design */}
+        <Stack gap={4}>
+          <Text as="h2" size={4} weight="semibold">
+            Responsive Design
+          </Text>
+          <Text>
+            Primitives support responsive values through the token system. Use an object with breakpoint keys instead of a single value.
+          </Text>
+
+          <Stack gap={3}>
+            <Text as="h3" size={3} weight="semibold">
+              Breakpoints
+            </Text>
+            <Text tone="muted">
+              The default breakpoints follow Tailwind's convention:
+            </Text>
+            <Card pad={0} radius={2}>
+              <table className="token-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Min-Width</th>
+                    <th>CSS Variable</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><Text as="span" mono>base</Text></td>
+                    <td>0px</td>
+                    <td><Text as="span" mono>-</Text></td>
+                  </tr>
+                  <tr>
+                    <td><Text as="span" mono>sm</Text></td>
+                    <td>640px</td>
+                    <td><Text as="span" mono>--st-screen-sm</Text></td>
+                  </tr>
+                  <tr>
+                    <td><Text as="span" mono>md</Text></td>
+                    <td>768px</td>
+                    <td><Text as="span" mono>--st-screen-md</Text></td>
+                  </tr>
+                  <tr>
+                    <td><Text as="span" mono>lg</Text></td>
+                    <td>1024px</td>
+                    <td><Text as="span" mono>--st-screen-lg</Text></td>
+                  </tr>
+                  <tr>
+                    <td><Text as="span" mono>xl</Text></td>
+                    <td>1280px</td>
+                    <td><Text as="span" mono>--st-screen-xl</Text></td>
+                  </tr>
+                  <tr>
+                    <td><Text as="span" mono>2xl</Text></td>
+                    <td>1536px</td>
+                    <td><Text as="span" mono>--st-screen-2xl</Text></td>
+                  </tr>
+                </tbody>
+              </table>
+            </Card>
+          </Stack>
+
+          <Stack gap={3}>
+            <Text as="h3" size={3} weight="semibold">
+              Responsive Props
+            </Text>
+            <Text tone="muted">
+              Currently, <Text as="span" mono>Box</Text> supports responsive padding. More responsive props will be added to other primitives.
+            </Text>
+            <CodePreview
+              code={`// Mobile-first: start with base, add overrides
+<Box pad={{ base: 3, md: 5, xl: 7 }}>
+  Grows from 3 → 5 → 7 as screen size increases
+</Box>
+
+// You can specify any or all breakpoints
+<Box pad={{ base: 2, lg: 6 }}>
+  Only changes at large screens
+</Box>
+
+// TypeScript support for all values
+<Box pad={{ base: 4, sm: 4, md: 5, lg: 6, xl: 7, "2xl": 8 }}>
+  Full responsive scale
+</Box>`}
+              language="tsx"
+              title="Responsive Padding Examples"
+            />
+          </Stack>
+
+          <Stack gap={3}>
+            <Text as="h3" size={3} weight="semibold">
+              How It Works
+            </Text>
+            <Text>
+              Responsive values generate multiple CSS classes with media queries:
+            </Text>
+            <CodePreview
+              code={`// This React component:
+<Box pad={{ base: 2, md: 4, lg: 6 }} />
+
+// Generates these classes:
+// st-Box st-Box--pad-2 st-Box--md-pad-4 st-Box--lg-pad-6
+
+// Which maps to this CSS:
+.st-Box--pad-2 { padding: var(--st-space-2); }
+
+@media (min-width: 768px) {
+  .st-Box--md-pad-4 { padding: var(--st-space-4); }
+}
+
+@media (min-width: 1024px) {
+  .st-Box--lg-pad-6 { padding: var(--st-space-6); }
+}`}
+              language="css"
+              title="Generated CSS"
+            />
+          </Stack>
+
+          <CodeExample
+            title="Real-World Example"
+            code={`// Responsive layout wrapper
+<Box pad={{ base: 3, md: 5, xl: 7 }} radius={2} shadow={1}>
+  <Stack gap={3}>
+    <Text as="h2" size={4} weight="bold">
+      Responsive Container
+    </Text>
+    <Text tone="muted">
+      This container's padding adapts to screen size for
+      optimal spacing on mobile, tablet, and desktop.
+    </Text>
+  </Stack>
+</Box>`}
+          >
+            <Box pad={{ base: 3, md: 5, xl: 7 }} radius={2} shadow={1} style={{ backgroundColor: "var(--st-color-surface-raised)" }}>
+              <Stack gap={3}>
+                <Text as="h2" size={4} weight="bold">
+                  Responsive Container
+                </Text>
+                <Text tone="muted">
+                  This container's padding adapts to screen size for optimal spacing on mobile, tablet, and desktop.
+                  Try resizing your browser to see the padding change!
+                </Text>
+              </Stack>
+            </Box>
+          </CodeExample>
+        </Stack>
+
         {/* Escape Hatches */}
         <Stack gap={4}>
           <Text as="h2" size={4} weight="semibold">
@@ -342,10 +504,11 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
             Layout primitives (Box, Stack, Inline, Grid, Container) also accept a
             limited <Text as="span" mono>style</Text> prop for dynamic sizing.
           </Text>
-          <Card pad={0} radius={2}>
-            <pre className="code-block">{`// Allowed style properties for layout primitives:
+          <CodePreview
+            code={`// Allowed style properties for layout primitives:
 // width, height, minWidth, maxWidth, minHeight, maxHeight
 // flex, flexGrow, flexShrink, flexBasis
+// gridTemplateColumns, gridTemplateRows, gridColumn, gridRow
 
 <Box style={{ width: "300px", minHeight: "100px" }}>
   Fixed-width box
@@ -353,8 +516,10 @@ import { Box, Stack, Inline, Grid, Container, Text, Card } from "@staple-css/pri
 
 <Stack style={{ flex: 1 }}>
   Flexible stack
-</Stack>`}</pre>
-          </Card>
+</Stack>`}
+            language="tsx"
+            title="Style Props"
+          />
         </Stack>
       </Stack>
     </Container>

@@ -10,6 +10,7 @@ import {
   easing,
   colorsLight,
 } from "@staple-css/tokens";
+import { CodePreview } from "../components/CodePreview";
 
 function TokenTable({
   title,
@@ -85,15 +86,17 @@ export function TokensPage() {
           <Text as="h2" size={4} weight="semibold">
             Usage
           </Text>
-          <Card pad={0} radius={2}>
-            <pre className="code-block">{`// Import all tokens
+          <CodePreview
+            code={`// Import all tokens
 import "@staple-css/tokens/all.css";
 
 // Or import individually
 import "@staple-css/tokens/tokens.css";   // Base tokens
 import "@staple-css/tokens/themes.css";   // Light/dark themes
-import "@staple-css/tokens/density.css";  // Density variants`}</pre>
-          </Card>
+import "@staple-css/tokens/density.css";  // Density variants`}
+            language="typescript"
+            title="Import"
+          />
         </Stack>
 
         {/* Theming */}
@@ -104,17 +107,21 @@ import "@staple-css/tokens/density.css";  // Density variants`}</pre>
           <Text>
             Apply themes using the <Text as="span" mono>data-theme</Text> attribute:
           </Text>
-          <Card pad={0} radius={2}>
-            <pre className="code-block">{`<body data-theme="light">  <!-- Light theme (default) -->
-<body data-theme="dark">   <!-- Dark theme -->`}</pre>
-          </Card>
+          <CodePreview
+            code={`<body data-theme="light">  <!-- Light theme (default) -->
+<body data-theme="dark">   <!-- Dark theme -->`}
+            language="html"
+            title="Theme"
+          />
           <Text>
             Apply density using the <Text as="span" mono>data-density</Text> attribute:
           </Text>
-          <Card pad={0} radius={2}>
-            <pre className="code-block">{`<body data-density="comfortable">  <!-- Comfortable (default) -->
-<body data-density="compact">      <!-- Compact -->`}</pre>
-          </Card>
+          <CodePreview
+            code={`<body data-density="comfortable">  <!-- Comfortable (default) -->
+<body data-density="compact">      <!-- Compact -->`}
+            language="html"
+            title="Density"
+          />
         </Stack>
 
         {/* Space */}

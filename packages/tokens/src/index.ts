@@ -168,6 +168,7 @@ export {
 // Re-export builder generator
 export {
   generatePalettes,
+  generateSinglePalette,
   generateHarmonySuggestions,
   resolveSemanticRef,
   resolveSemanticColors,
