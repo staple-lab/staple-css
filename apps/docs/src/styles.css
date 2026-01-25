@@ -2390,6 +2390,9 @@ code {
   cursor: pointer;
   border: 1px solid transparent;
   transition: all var(--st-duration-fast) var(--st-easing-default);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .builder-preview-btn--outline {
@@ -2403,6 +2406,9 @@ code {
   border-radius: var(--st-radius-1);
   font-size: 0.7rem;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Builder Override Form */

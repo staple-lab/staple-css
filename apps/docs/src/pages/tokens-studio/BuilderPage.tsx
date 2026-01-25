@@ -3195,7 +3195,7 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange }:
           </Box>
 
           {/* Status Colors */}
-          <Grid cols={{ base: 1, md: 3 }} gap={2}>
+          <Grid cols={{ base: 1, sm: 3 }} gap={2}>
             <span
               className="builder-preview-badge"
               style={{ backgroundColor: successColor, color: "#fff", width: "100%", display: "block", textAlign: "center" }}
