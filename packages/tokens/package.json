@@ -4,6 +4,9 @@
   "description": "Design tokens for staple-css - semantic CSS variables for spacing, color, typography, shadows, motion. Includes OKLCH color generation and 22 Tailwind-compatible palettes.",
   "homepage": "https://staple-lab.github.io/staple-css/",
   "type": "module",
+  "bin": {
+    "staple-tokens": "./dist/cli.js"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

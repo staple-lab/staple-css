@@ -7,6 +7,7 @@ export default defineConfig({
     "src/generator.ts",
     "src/color/index.ts",
     "src/dynamic-theme.ts",
+    "src/cli.ts",
   ],
   format: ["esm"],
   dts: true,

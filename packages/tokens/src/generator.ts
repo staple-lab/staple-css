@@ -252,6 +252,68 @@ ${generateDensityVars(config.density.compact)}
 }
 
 /**
+ * Validation result
+ */
+export interface ValidationResult {
+  valid: boolean;
+  errors?: string[];
+}
+
+/**
+ * Validate a token configuration
+ */
+export function validateConfig(config: any): ValidationResult {
+  const errors: string[] = [];
+
+  // Check for required fields
+  if (!config || typeof config !== "object") {
+    return { valid: false, errors: ["Config must be an object"] };
+  }
+
+  // Validate colors (if present)
+  if (config.colors) {
+    if (typeof config.colors !== "object") {
+      errors.push("colors must be an object");
+    } else {
+      // Check color values are valid hex colors
+      for (const [key, value] of Object.entries(config.colors)) {
+        if (typeof value !== "string") {
+          errors.push(`colors.${key} must be a string`);
+        } else if (!/^#[0-9A-Fa-f]{6}$/.test(value as string)) {
+          errors.push(`colors.${key} must be a valid hex color (e.g., #2563eb)`);
+        }
+      }
+    }
+  }
+
+  // Validate space (if present)
+  if (config.space) {
+    if (typeof config.space !== "object") {
+      errors.push("space must be an object");
+    }
+  }
+
+  // Validate radius (if present)
+  if (config.radius) {
+    if (typeof config.radius !== "object") {
+      errors.push("radius must be an object");
+    }
+  }
+
+  // Validate shadow (if present)
+  if (config.shadow) {
+    if (typeof config.shadow !== "object") {
+      errors.push("shadow must be an object");
+    }
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors: errors.length > 0 ? errors : undefined,
+  };
+}
+
+/**
  * Generate semantic color tokens from a primary color
  */
 export function generateSemanticColorsFromPrimary(
