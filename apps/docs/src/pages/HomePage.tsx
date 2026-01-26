@@ -1,5 +1,6 @@
-import { Container, Column, Card, Text, Grid } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Grid, Inline, Box } from "@staple-css/primitives";
 import { CodePreview } from "../components/CodePreview";
+import { InteractivePlayground } from "../components/InteractivePlayground";
 
 export function HomePage() {
   return (
@@ -11,20 +12,97 @@ export function HomePage() {
             staple-css
           </Text>
           <Text size={3} tone="muted" align="center">
-            A shared styling contract for apps—tokens, primitives, and accessible components.
+            The CSS variable generator for design system consistency
           </Text>
+          <Text size={2} tone="muted" align="center" style={{ maxWidth: "600px" }}>
+            Create tokens, not chaos. Build design systems with semantic CSS variables, type-safe React primitives, and AI-friendly APIs.
+          </Text>
+          <Inline gap={3} style={{ marginTop: "8px" }}>
+            <a
+              href="#playground"
+              style={{
+                padding: "12px 24px",
+                borderRadius: "6px",
+                background: "var(--st-color-primary)",
+                color: "#fff",
+                textDecoration: "none",
+                fontWeight: "600",
+              }}
+            >
+              Try it Live
+            </a>
+            <a
+              href="/storybook"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: "12px 24px",
+                borderRadius: "6px",
+                border: "2px solid var(--st-color-border)",
+                textDecoration: "none",
+                fontWeight: "600",
+              }}
+            >
+              View Storybook →
+            </a>
+            <a
+              href="/tokens-studio"
+              style={{
+                padding: "12px 24px",
+                borderRadius: "6px",
+                border: "2px solid var(--st-color-border)",
+                textDecoration: "none",
+                fontWeight: "600",
+              }}
+            >
+              Token Studio
+            </a>
+          </Inline>
         </Column>
 
-        {/* Description */}
-        <Card pad={6} radius={3}>
-          <Column gap={4}>
-            <Text>
-              Semantic CSS variables standardize spacing, color, typography, and variants.
-              Tokens are the API. Contract over customization. Consistency by default,
-              with deliberate escape hatches.
+        {/* Value Props */}
+        <Grid cols={{ base: 1, md: 3 }} gap={4}>
+          <Card pad={5} radius={3} shadow={1}>
+            <Column gap={2}>
+              <Text size={5}>🎯</Text>
+              <Text weight="bold">Token-First</Text>
+              <Text size={1} tone="muted">
+                310+ CSS variables. Space (0-8), radius (0-4), colors, motion, and more. Type-safe props prevent invalid values.
+              </Text>
+            </Column>
+          </Card>
+          <Card pad={5} radius={3} shadow={1}>
+            <Column gap={2}>
+              <Text size={5}>⚡</Text>
+              <Text weight="bold">Zero Runtime</Text>
+              <Text size={1} tone="muted">
+                ~30KB total. Static CSS, no JavaScript overhead, tree-shakeable exports. Faster than CSS-in-JS.
+              </Text>
+            </Column>
+          </Card>
+          <Card pad={5} radius={3} shadow={1}>
+            <Column gap={2}>
+              <Text size={5}>🤖</Text>
+              <Text weight="bold">AI-Friendly</Text>
+              <Text size={1} tone="muted">
+                Constrained APIs prevent hallucination. pad=&#123;4&#125; not padding: "16.7px". Perfect for AI code generation.
+              </Text>
+            </Column>
+          </Card>
+        </Grid>
+
+        {/* Interactive Playground */}
+        <Column gap={4} id="playground">
+          <Column gap={2}>
+            <Text as="h2" size={5} weight="bold">
+              Try it Live
+            </Text>
+            <Text tone="muted">
+              See how staple-css primitives work. Switch between examples, view code, and see real components in action.
             </Text>
           </Column>
-        </Card>
+          <InteractivePlayground />
+        </Column>
 
         {/* Principles */}
         <Column gap={4}>
