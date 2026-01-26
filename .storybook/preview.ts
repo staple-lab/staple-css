@@ -18,11 +18,6 @@ const preview: Preview = {
         { name: 'surface', value: '#f9fafb' },
       ],
     },
-    docs: {
-      theme: {
-        base: 'light',
-      },
-    },
   },
   globalTypes: {
     theme: {
