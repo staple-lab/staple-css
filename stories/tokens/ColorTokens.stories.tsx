@@ -13,9 +13,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const ColorGrid = ({ colors }: { colors: Record<string, string> }) => (
-  <Stack gap={2}>
+  <Column gap={2}>
     {Object.entries(colors).map(([name, value]) => (
-      <Inline key={name} gap={2} align="center">
+      <Row key={name} gap={2} align="center">
         <Box
           style={{
             width: '40px',
@@ -25,33 +25,33 @@ const ColorGrid = ({ colors }: { colors: Record<string, string> }) => (
             border: '1px solid #e5e7eb',
           }}
         />
-        <Stack gap={0}>
+        <Column gap={0}>
           <Text weight="semibold" size={1}>
             {name}
           </Text>
           <Text size={0} tone="muted" mono>
             {value}
           </Text>
-        </Stack>
-      </Inline>
+        </Column>
+      </Row>
     ))}
-  </Stack>
+  </Column>
 )
 
 export const SemanticColors: Story = {
   render: () => (
-    <Stack gap={6} maxWidth="lg">
-      <Stack gap={2}>
+    <Column gap={6} maxWidth="lg">
+      <Column gap={2}>
         <Text as="h2" size={4} weight="bold">
           Light Theme
         </Text>
         <Text tone="muted">
           These semantic colors automatically adapt to light/dark themes
         </Text>
-      </Stack>
+      </Column>
 
-      <Stack gap={4}>
-        <Stack gap={2}>
+      <Column gap={4}>
+        <Column gap={2}>
           <Text weight="bold" size={2}>
             Surfaces
           </Text>
@@ -62,9 +62,9 @@ export const SemanticColors: Story = {
               'surface-raised': '#ffffff',
             }}
           />
-        </Stack>
+        </Column>
 
-        <Stack gap={2}>
+        <Column gap={2}>
           <Text weight="bold" size={2}>
             Text
           </Text>
@@ -75,9 +75,9 @@ export const SemanticColors: Story = {
               'text-inverse': '#ffffff',
             }}
           />
-        </Stack>
+        </Column>
 
-        <Stack gap={2}>
+        <Column gap={2}>
           <Text weight="bold" size={2}>
             Borders
           </Text>
@@ -87,9 +87,9 @@ export const SemanticColors: Story = {
               'border-muted': '#f3f4f6',
             }}
           />
-        </Stack>
+        </Column>
 
-        <Stack gap={2}>
+        <Column gap={2}>
           <Text weight="bold" size={2}>
             Primary Action
           </Text>
@@ -100,9 +100,9 @@ export const SemanticColors: Story = {
               'primary-text': '#ffffff',
             }}
           />
-        </Stack>
+        </Column>
 
-        <Stack gap={2}>
+        <Column gap={2}>
           <Text weight="bold" size={2}>
             Danger State
           </Text>
@@ -114,9 +114,9 @@ export const SemanticColors: Story = {
               'danger-surface': '#fef2f2',
             }}
           />
-        </Stack>
+        </Column>
 
-        <Stack gap={2}>
+        <Column gap={2}>
           <Text weight="bold" size={2}>
             Warning State
           </Text>
@@ -128,9 +128,9 @@ export const SemanticColors: Story = {
               'warn-surface': '#fffbeb',
             }}
           />
-        </Stack>
+        </Column>
 
-        <Stack gap={2}>
+        <Column gap={2}>
           <Text weight="bold" size={2}>
             Success State
           </Text>
@@ -142,22 +142,22 @@ export const SemanticColors: Story = {
               'success-surface': '#f0fdf4',
             }}
           />
-        </Stack>
-      </Stack>
-    </Stack>
+        </Column>
+      </Column>
+    </Column>
   ),
 }
 
 export const ColorScale: Story = {
   render: () => (
-    <Stack gap={4}>
-      <Stack gap={2}>
+    <Column gap={4}>
+      <Column gap={2}>
         <Text as="h3" size={3} weight="bold">
           Blue Palette (50-950)
         </Text>
-        <Stack gap={1}>
+        <Column gap={1}>
           {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map(shade => (
-            <Inline key={shade} gap={2} align="center">
+            <Row key={shade} gap={2} align="center">
               <Box
                 style={{
                   width: '60px',
@@ -170,22 +170,22 @@ export const ColorScale: Story = {
               <Text size={1} mono>
                 --st-blue-{shade}
               </Text>
-            </Inline>
+            </Row>
           ))}
-        </Stack>
-      </Stack>
-    </Stack>
+        </Column>
+      </Column>
+    </Column>
   ),
 }
 
 export const ButtonExamples: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Text as="h3" size={3} weight="bold">
         Button Styling with Color Tokens
       </Text>
 
-      <Stack gap={2}>
+      <Column gap={2}>
         <button
           style={{
             padding: '12px 24px',
@@ -227,14 +227,14 @@ export const ButtonExamples: Story = {
         >
           Success Button
         </button>
-      </Stack>
-    </Stack>
+      </Column>
+    </Column>
   ),
 }
 
 export const StatusCards: Story = {
   render: () => (
-    <Stack gap={3}>
+    <Column gap={3}>
       <Box pad={3} radius={2} style={{ background: 'var(--st-color-success-surface)' }}>
         <Text tone="success" weight="semibold">
           ✓ Success Message
@@ -261,6 +261,6 @@ export const StatusCards: Story = {
           Something went wrong
         </Text>
       </Box>
-    </Stack>
+    </Column>
   ),
 }

@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>
 
 export const FontSizeScale: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Text size={0}>Size 0 - 12px (caption)</Text>
       <Text size={1}>Size 1 - 14px (small)</Text>
       <Text size={2}>Size 2 - 16px (body)</Text>
@@ -23,13 +23,13 @@ export const FontSizeScale: Story = {
       <Text size={4}>Size 4 - 20px (h3)</Text>
       <Text size={5}>Size 5 - 24px (h2)</Text>
       <Text size={6}>Size 6 - 32px (h1)</Text>
-    </Stack>
+    </Column>
   ),
 }
 
 export const FontWeight: Story = {
   render: () => (
-    <Stack gap={3}>
+    <Column gap={3}>
       <Text size={3} weight="normal">
         Weight: normal (400)
       </Text>
@@ -42,46 +42,46 @@ export const FontWeight: Story = {
       <Text size={3} weight="bold">
         Weight: bold (700)
       </Text>
-    </Stack>
+    </Column>
   ),
 }
 
 export const LineHeight: Story = {
   render: () => (
-    <Stack gap={4}>
-      <Stack gap={0}>
+    <Column gap={4}>
+      <Column gap={0}>
         <Text weight="semibold" size={1}>
           leading=tight
         </Text>
         <Text leading="tight">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </Text>
-      </Stack>
+      </Column>
 
-      <Stack gap={0}>
+      <Column gap={0}>
         <Text weight="semibold" size={1}>
           leading=normal
         </Text>
         <Text leading="normal">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </Text>
-      </Stack>
+      </Column>
 
-      <Stack gap={0}>
+      <Column gap={0}>
         <Text weight="semibold" size={1}>
           leading=relaxed
         </Text>
         <Text leading="relaxed">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </Text>
-      </Stack>
-    </Stack>
+      </Column>
+    </Column>
   ),
 }
 
 export const Tones: Story = {
   render: () => (
-    <Stack gap={2}>
+    <Column gap={2}>
       <Text tone="neutral" weight="semibold">
         Tone: neutral
       </Text>
@@ -98,46 +98,46 @@ export const Tones: Story = {
         Tone: success
       </Text>
       <Text tone="muted">Tone: muted</Text>
-    </Stack>
+    </Column>
   ),
 }
 
 export const TextAlignment: Story = {
   render: () => (
-    <Stack gap={4}>
-      <Stack gap={1}>
+    <Column gap={4}>
+      <Column gap={1}>
         <Text weight="semibold" size={1}>
           align=start
         </Text>
         <Text align="start">
           Left aligned text starts from here
         </Text>
-      </Stack>
+      </Column>
 
-      <Stack gap={1}>
+      <Column gap={1}>
         <Text weight="semibold" size={1}>
           align=center
         </Text>
         <Text align="center">
           Center aligned text is in the middle
         </Text>
-      </Stack>
+      </Column>
 
-      <Stack gap={1}>
+      <Column gap={1}>
         <Text weight="semibold" size={1}>
           align=end
         </Text>
         <Text align="end">
           Right aligned text ends here
         </Text>
-      </Stack>
-    </Stack>
+      </Column>
+    </Column>
   ),
 }
 
 export const SemanticElements: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Text as="h1" size={6} weight="bold">
         Heading 1 (h1)
       </Text>
@@ -153,13 +153,13 @@ export const SemanticElements: Story = {
       <Text as="label" weight="semibold" size={1}>
         Form Label
       </Text>
-    </Stack>
+    </Column>
   ),
 }
 
 export const Monospace: Story = {
   render: () => (
-    <Stack gap={3}>
+    <Column gap={3}>
       <Text weight="semibold" size={2}>
         Regular text
       </Text>
@@ -172,74 +172,74 @@ export const Monospace: Story = {
       <Text mono size={1}>
         function add(a, b) {'{'} return a + b; {'}'}
       </Text>
-    </Stack>
+    </Column>
   ),
 }
 
-export const Typography Hierarchy: Story = {
+export const TypographyHierarchy: Story = {
   render: () => (
-    <Stack gap={6}>
-      <Stack gap={2}>
+    <Column gap={6}>
+      <Column gap={2}>
         <Text as="h1" size={6} weight="bold">
           Main Title
         </Text>
         <Text tone="muted">Subheading for context</Text>
-      </Stack>
+      </Column>
 
       <Text as="p" size={2} leading="relaxed">
         This is a paragraph with regular body text. It has a comfortable line height for readability and spans multiple lines to demonstrate how text flows.
       </Text>
 
-      <Stack gap={2}>
+      <Column gap={2}>
         <Text as="h2" size={5} weight="bold">
           Section Heading
         </Text>
         <Text size={1} tone="muted">
           Section metadata or description
         </Text>
-      </Stack>
+      </Column>
 
-      <Stack gap={2}>
+      <Column gap={2}>
         <Text as="h3" size={4} weight="semibold">
           Subsection
         </Text>
         <Text size={1}>
           Supporting text with details about the subsection
         </Text>
-      </Stack>
-    </Stack>
+      </Column>
+    </Column>
   ),
 }
 
 export const Combinations: Story = {
   render: () => (
-    <Stack gap={4}>
-      <Stack gap={1}>
+    <Column gap={4}>
+      <Column gap={1}>
         <Text as="label" weight="bold" size={1} tone="primary">
           Important Label
         </Text>
         <Text size={2} leading="relaxed">
           This is descriptive text about the important label above.
         </Text>
-      </Stack>
+      </Column>
 
-      <Stack gap={1}>
+      <Column gap={1}>
         <Text as="h4" size={3} weight="bold" tone="success">
           ✓ Success Message
         </Text>
         <Text size={1} tone="muted">
           Your action completed successfully.
         </Text>
-      </Stack>
+      </Column>
 
-      <Stack gap={1}>
+      <Column gap={1}>
         <Text as="h4" size={3} weight="bold" tone="danger">
           ✗ Error Message
         </Text>
         <Text size={1} tone="muted">
           Something went wrong. Please try again.
         </Text>
-      </Stack>
-    </Stack>
+      </Column>
+    </Column>
   ),
 }

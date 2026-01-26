@@ -25,7 +25,7 @@ export const Basic: Story = {
 // Box with different padding scales
 export const PaddingScale: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Box pad={0} radius={1} style={{ background: '#f3f4f6' }}>
         <Text>pad={0}</Text>
       </Box>
@@ -44,14 +44,14 @@ export const PaddingScale: Story = {
       <Box pad={8} radius={1} style={{ background: '#f3f4f6' }}>
         <Text>pad={8}</Text>
       </Box>
-    </Stack>
+    </Column>
   ),
 }
 
 // Box with different radius scales
 export const RadiusScale: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Box pad={4} radius={0} shadow={1}>
         <Text>radius={0}</Text>
       </Box>
@@ -67,14 +67,14 @@ export const RadiusScale: Story = {
       <Box pad={4} radius={4} shadow={1}>
         <Text>radius={4}</Text>
       </Box>
-    </Stack>
+    </Column>
   ),
 }
 
 // Box with different shadow scales
 export const ShadowScale: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Box pad={4} radius={2} shadow={0}>
         <Text>shadow={0}</Text>
       </Box>
@@ -84,7 +84,7 @@ export const ShadowScale: Story = {
       <Box pad={4} radius={2} shadow={2}>
         <Text>shadow={2}</Text>
       </Box>
-    </Stack>
+    </Column>
   ),
 }
 
@@ -111,7 +111,7 @@ export const ResponsivePadding: Story = {
 // Box with aspect ratio
 export const AspectRatio: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Box aspectRatio="square" radius={2} shadow={1} style={{ background: 'lightblue' }}>
         <Text align="center">square (1/1)</Text>
       </Box>
@@ -121,14 +121,14 @@ export const AspectRatio: Story = {
       <Box aspectRatio="portrait" radius={2} shadow={1} style={{ background: 'lightgreen' }}>
         <Text align="center">portrait (3/4)</Text>
       </Box>
-    </Stack>
+    </Column>
   ),
 }
 
 // Box with maxWidth
 export const MaxWidth: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Box maxWidth="xs" pad={4} radius={2} shadow={1}>
         <Text>maxWidth=xs (320px)</Text>
       </Box>
@@ -138,14 +138,14 @@ export const MaxWidth: Story = {
       <Box maxWidth="lg" pad={4} radius={2} shadow={1}>
         <Text>maxWidth=lg (512px)</Text>
       </Box>
-    </Stack>
+    </Column>
   ),
 }
 
 // Box as different HTML elements
 export const Polymorphic: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Box as="section" pad={4} radius={2} shadow={1}>
         <Text as="h2">As Section</Text>
         <Text tone="muted">This is rendered as a section element</Text>
@@ -157,14 +157,14 @@ export const Polymorphic: Story = {
       <Box as="header" pad={4} radius={2} shadow={1}>
         <Text>Header Box</Text>
       </Box>
-    </Stack>
+    </Column>
   ),
 }
 
 // Box with opacity
 export const Opacity: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Box pad={4} radius={2} shadow={1} opacity={100}>
         <Text>opacity=100 (fully opaque)</Text>
       </Box>
@@ -177,14 +177,14 @@ export const Opacity: Story = {
       <Box pad={4} radius={2} shadow={1} opacity={25}>
         <Text>opacity=25</Text>
       </Box>
-    </Stack>
+    </Column>
   ),
 }
 
 // Box with z-index
 export const ZIndex: Story = {
   render: () => (
-    <Stack gap={4}>
+    <Column gap={4}>
       <Box pad={4} radius={2} shadow={1} zIndex={10}>
         <Text>zIndex={10}</Text>
       </Box>
@@ -194,7 +194,7 @@ export const ZIndex: Story = {
       <Box pad={4} radius={2} shadow={1} zIndex="max">
         <Text>zIndex=max</Text>
       </Box>
-    </Stack>
+    </Column>
   ),
 }
 
@@ -208,23 +208,23 @@ export const ComplexCard: Story = {
       maxWidth="md"
       marginX="auto"
     >
-      <Stack gap={4}>
-        <Stack gap={1}>
+      <Column gap={4}>
+        <Column gap={1}>
           <Text as="h2" size={5} weight="bold">
             Complex Card
           </Text>
           <Text tone="muted" size={1}>
             Showcasing multiple Box features
           </Text>
-        </Stack>
+        </Column>
 
         <Box pad={3} radius={2} style={{ background: '#f9fafb' }}>
-          <Stack gap={2}>
+          <Column gap={2}>
             <Text weight="semibold">Features:</Text>
             <Text size={1}>• Nested styling</Text>
             <Text size={1}>• Responsive padding</Text>
             <Text size={1}>• Shadow elevation</Text>
-          </Stack>
+          </Column>
         </Box>
 
         <Box pad={2} radius={2} borderWidth={1} style={{ borderColor: 'var(--st-color-border)' }}>
@@ -232,7 +232,7 @@ export const ComplexCard: Story = {
             Box with border
           </Text>
         </Box>
-      </Stack>
+      </Column>
     </Box>
   ),
 }
