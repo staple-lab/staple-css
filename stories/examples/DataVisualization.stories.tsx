@@ -8,6 +8,7 @@ import { useState } from 'react'
 const meta = {
   title: 'Examples/Data Visualization',
   parameters: {
+  tags: ['autodocs'],
     layout: 'fullscreen',
   },
 } satisfies Meta

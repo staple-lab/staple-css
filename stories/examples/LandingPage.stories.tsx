@@ -8,6 +8,7 @@ import { Container } from '../../packages/primitives/src/Container'
 const meta = {
   title: 'Examples/Landing Page',
   parameters: {
+  tags: ['autodocs'],
     layout: 'fullscreen',
   },
 } satisfies Meta

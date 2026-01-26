@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box, Stack, Inline, Text } from '@staple-css/primitives'
+import { Box, Column, Row, Text } from '@staple-css/primitives'
 
 const meta = {
   title: 'Tokens/Colors',

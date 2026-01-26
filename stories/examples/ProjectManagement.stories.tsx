@@ -9,6 +9,7 @@ import { useState } from 'react'
 const meta = {
   title: 'Examples/Project Management',
   parameters: {
+  tags: ['autodocs'],
     layout: 'fullscreen',
   },
 } satisfies Meta
