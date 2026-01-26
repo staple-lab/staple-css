@@ -428,7 +428,7 @@ export function BuilderPage() {
 
   // Update scale token (handles both simple and responsive values)
   const updateScaleToken = useCallback((
-    scaleType: keyof ScaleTokens,
+    scaleType: string,
     key: string,
     value: string
   ) => {
@@ -453,7 +453,7 @@ export function BuilderPage() {
         scales: {
           ...prev.scales,
           [scaleType]: {
-            ...prev.scales[scaleType],
+            ...(prev.scales as any)[scaleType],
             [key]: value,
           },
         },
@@ -498,7 +498,7 @@ export function BuilderPage() {
   }, []);
 
   // Reset scale to default
-  const resetScale = useCallback((scaleType: keyof ScaleTokens) => {
+  const resetScale = useCallback((scaleType: string) => {
     setWorking(prev => {
       if (scaleType === "space") {
         return {
@@ -509,7 +509,7 @@ export function BuilderPage() {
           },
         };
       }
-      const defaults: Record<Exclude<keyof ScaleTokens, "space">, Record<string, string>> = {
+      const defaults: Record<string, Record<string, string>> = {
         radius: { ...radiusScale },
         shadow: { ...shadowScale },
         fontSize: { ...fontSizeScale },
@@ -529,10 +529,10 @@ export function BuilderPage() {
   }, [toResponsiveSpace]);
 
   // Add scale item
-  const addScaleItem = useCallback((scaleType: keyof ScaleTokens) => {
+  const addScaleItem = useCallback((scaleType: string) => {
     setWorking(prev => {
-      const currentScale = prev.scales[scaleType];
-      const keys = Object.keys(currentScale);
+      const currentScale = (prev.scales as any)[scaleType];
+      const keys = Object.keys(currentScale || {});
       // Try to find next numeric key
       const numericKeys = keys.map(k => parseInt(k)).filter(n => !isNaN(n));
       const nextKey = numericKeys.length > 0 ? String(Math.max(...numericKeys) + 1) : String(keys.length);
@@ -551,7 +551,7 @@ export function BuilderPage() {
       }
 
       // Default values based on scale type
-      const defaultValues: Record<Exclude<keyof ScaleTokens, "space">, string> = {
+      const defaultValues: Record<string, string> = {
         radius: "0.5rem",
         shadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
         fontSize: "1rem",
@@ -575,7 +575,7 @@ export function BuilderPage() {
   }, []);
 
   // Remove scale item
-  const removeScaleItem = useCallback((scaleType: keyof ScaleTokens, key: string) => {
+  const removeScaleItem = useCallback((scaleType: string, key: string) => {
     setWorking(prev => {
       if (scaleType === "space") {
         const currentSpace = { ...prev.scales.space };
@@ -588,7 +588,7 @@ export function BuilderPage() {
           },
         };
       }
-      const currentScale = { ...prev.scales[scaleType] } as Record<string, string>;
+      const currentScale = { ...(prev.scales as any)[scaleType] } as Record<string, string>;
       delete currentScale[key];
       return {
         ...prev,
@@ -3258,10 +3258,10 @@ function ScalesStep({
       {activeTab === "transforms" && (
         <TransformEffectsEditor
           scales={scales}
-          onUpdate={onUpdate}
-          onReset={onReset}
-          onAddItem={onAddItem}
-          onRemoveItem={onRemoveItem}
+          onUpdate={onUpdate as any}
+          onReset={onReset as any}
+          onAddItem={onAddItem as any}
+          onRemoveItem={onRemoveItem as any}
         />
       )}
 
@@ -3269,10 +3269,10 @@ function ScalesStep({
       {activeTab === "borders" && (
         <BorderOutlineEditor
           scales={scales}
-          onUpdate={onUpdate}
-          onReset={onReset}
-          onAddItem={onAddItem}
-          onRemoveItem={onRemoveItem}
+          onUpdate={onUpdate as any}
+          onReset={onReset as any}
+          onAddItem={onAddItem as any}
+          onRemoveItem={onRemoveItem as any}
         />
       )}
 
@@ -3280,10 +3280,10 @@ function ScalesStep({
       {activeTab === "layout" && (
         <LayoutUtilitiesEditor
           scales={scales}
-          onUpdate={onUpdate}
-          onReset={onReset}
-          onAddItem={onAddItem}
-          onRemoveItem={onRemoveItem}
+          onUpdate={onUpdate as any}
+          onReset={onReset as any}
+          onAddItem={onAddItem as any}
+          onRemoveItem={onRemoveItem as any}
         />
       )}
 
@@ -3291,10 +3291,10 @@ function ScalesStep({
       {activeTab === "sizing" && (
         <SizingDepthEditor
           scales={scales}
-          onUpdate={onUpdate}
-          onReset={onReset}
-          onAddItem={onAddItem}
-          onRemoveItem={onRemoveItem}
+          onUpdate={onUpdate as any}
+          onReset={onReset as any}
+          onAddItem={onAddItem as any}
+          onRemoveItem={onRemoveItem as any}
         />
       )}
 
@@ -3302,10 +3302,10 @@ function ScalesStep({
       {activeTab === "text" && (
         <TextUtilitiesEditor
           scales={scales}
-          onUpdate={onUpdate}
-          onReset={onReset}
-          onAddItem={onAddItem}
-          onRemoveItem={onRemoveItem}
+          onUpdate={onUpdate as any}
+          onReset={onReset as any}
+          onAddItem={onAddItem as any}
+          onRemoveItem={onRemoveItem as any}
         />
       )}
     </Column>

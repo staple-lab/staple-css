@@ -13,7 +13,7 @@ import { Column, Card, Text, Row, Box } from "@staple-css/primitives/full";
 // ============================================================================
 
 export interface TokenScaleEditorProps {
-  scales: Record<string, Record<string, any>>;
+  scales: Record<string, any>;
   onUpdate: (scaleType: string, key: string, value: string) => void;
   onReset: (scaleType: string) => void;
   onAddItem: (scaleType: string) => void;
