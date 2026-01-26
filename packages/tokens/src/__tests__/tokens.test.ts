@@ -42,12 +42,20 @@ describe("Token Scales", () => {
   });
 
   describe("shadowScale", () => {
-    it("should have 3 shadow values (0-2)", () => {
-      expect(Object.keys(shadowScale)).toHaveLength(3);
+    it("should have 6 shadow values (0-5) - enterprise elevation system", () => {
+      expect(Object.keys(shadowScale)).toHaveLength(6);
+      expect(shadowScale).toHaveProperty("0");
+      expect(shadowScale).toHaveProperty("5");
     });
 
     it("should have none for shadow 0", () => {
       expect(shadowScale[0]).toBe("none");
+    });
+
+    it("should have increasing shadow depths", () => {
+      expect(shadowScale[1]).toBe("0 0.0625rem 0.125rem 0 rgb(0 0 0 / 0.05)");
+      expect(shadowScale[2]).toContain("rgb(0 0 0");
+      expect(shadowScale[5]).toContain("1.5rem"); // Highest elevation
     });
   });
 

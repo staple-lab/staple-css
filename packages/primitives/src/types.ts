@@ -28,7 +28,7 @@ export type Space = SpaceToken;
 export type Radius = RadiusToken;
 
 /**
- * Shadow scale tokens (0-2)
+ * Shadow scale tokens (0-5) - elevation system
  */
 export type Shadow = ShadowToken;
 

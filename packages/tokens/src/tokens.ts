@@ -36,15 +36,22 @@ export const radiusScale = {
 export type RadiusToken = keyof typeof radiusScale;
 
 // ============================================================================
-// Shadow Scale (0-2)
+// Box Shadow Scale (0-5) - Enterprise elevation system
 // ============================================================================
-export const shadowScale = {
+export const boxShadowScale = {
   0: "none",
   1: "0 0.0625rem 0.125rem 0 rgb(0 0 0 / 0.05)",
   2: "0 0.25rem 0.375rem -0.0625rem rgb(0 0 0 / 0.1), 0 0.125rem 0.25rem -0.125rem rgb(0 0 0 / 0.1)",
+  3: "0 0.5rem 0.75rem -0.1875rem rgb(0 0 0 / 0.1), 0 0.25rem 0.5rem -0.25rem rgb(0 0 0 / 0.1)",
+  4: "0 1rem 1.5rem -0.375rem rgb(0 0 0 / 0.1), 0 0.5rem 1rem -0.375rem rgb(0 0 0 / 0.1)",
+  5: "0 1.5rem 2rem -0.5rem rgb(0 0 0 / 0.1), 0 1rem 1.5rem -0.5rem rgb(0 0 0 / 0.1)",
 } as const;
 
-export type ShadowToken = keyof typeof shadowScale;
+export type BoxShadowToken = keyof typeof boxShadowScale;
+
+// Legacy alias for backwards compatibility
+export const shadowScale = boxShadowScale;
+export type ShadowToken = BoxShadowToken;
 
 // ============================================================================
 // Typography - Font Family
@@ -185,6 +192,19 @@ export const opacityScale = {
 } as const;
 
 export type OpacityToken = keyof typeof opacityScale;
+
+// ============================================================================
+// Text Shadow Scale - For typography emphasis
+// ============================================================================
+export const textShadowScale = {
+  none: "none",
+  sm: "0 1px 2px rgb(0 0 0 / 0.05)",
+  base: "0 1px 3px rgb(0 0 0 / 0.1), 0 1px 2px rgb(0 0 0 / 0.06)",
+  md: "0 4px 6px rgb(0 0 0 / 0.1), 0 2px 4px rgb(0 0 0 / 0.06)",
+  lg: "0 10px 15px rgb(0 0 0 / 0.1), 0 4px 6px rgb(0 0 0 / 0.05)",
+} as const;
+
+export type TextShadowToken = keyof typeof textShadowScale;
 
 // ============================================================================
 // Border Width Scale
@@ -575,6 +595,70 @@ export const orderScale = {
 export type OrderToken = keyof typeof orderScale;
 
 // ============================================================================
+// Transform / Translate Scale - For positioning and animations
+// ============================================================================
+export const translateScale = {
+  0: "0",
+  1: "0.25rem",  // 4px
+  2: "0.5rem",   // 8px
+  3: "0.75rem",  // 12px
+  4: "1rem",     // 16px
+  5: "1.5rem",   // 24px
+  6: "2rem",     // 32px
+  "-1": "-0.25rem",
+  "-2": "-0.5rem",
+  "-3": "-0.75rem",
+  "-4": "-1rem",
+  "-5": "-1.5rem",
+  "-6": "-2rem",
+} as const;
+
+export type TranslateToken = keyof typeof translateScale;
+
+// ============================================================================
+// Rotate Scale - For transform effects
+// ============================================================================
+export const rotateScale = {
+  0: "0deg",
+  45: "45deg",
+  90: "90deg",
+  180: "180deg",
+  "-45": "-45deg",
+  "-90": "-90deg",
+} as const;
+
+export type RotateToken = keyof typeof rotateScale;
+
+// ============================================================================
+// Backdrop Filter Scale - For frosted glass effects
+// ============================================================================
+export const backdropFilterScale = {
+  none: "none",
+  blur: "blur(20px)",
+  "blur-sm": "blur(10px)",
+  "blur-md": "blur(20px)",
+  "blur-lg": "blur(40px)",
+} as const;
+
+export type BackdropFilterToken = keyof typeof backdropFilterScale;
+
+// ============================================================================
+// Inset Scale - For positioning (absolute/fixed)
+// ============================================================================
+export const insetScale = {
+  0: "0",
+  1: "0.25rem",  // 4px
+  2: "0.5rem",   // 8px
+  3: "0.75rem",  // 12px
+  4: "1rem",     // 16px
+  5: "1.5rem",   // 24px
+  6: "2rem",     // 32px
+  auto: "auto",
+} as const;
+
+export type InsetToken = keyof typeof insetScale;
+
+// ============================================================================
 // Cursor Values
 // ============================================================================
 export const cursorScale = {
@@ -642,6 +726,8 @@ export const tokens = {
   space: spaceScale,
   radius: radiusScale,
   shadow: shadowScale,
+  boxShadow: boxShadowScale,
+  textShadow: textShadowScale,
   zIndex: zIndexScale,
   opacity: opacityScale,
   borderWidth: borderWidthScale,
@@ -656,6 +742,10 @@ export const tokens = {
   contrast: contrastScale,
   saturate: saturateScale,
   scale: scaleScale,
+  translate: translateScale,
+  rotate: rotateScale,
+  backdropFilter: backdropFilterScale,
+  inset: insetScale,
   display: displayScale,
   position: positionScale,
   overflow: overflowScale,
@@ -672,6 +762,7 @@ export const tokens = {
   fontWeight,
   duration,
   easing,
+  delay,
   colors: {
     light: colorsLight,
     dark: colorsDark,

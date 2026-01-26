@@ -117,10 +117,13 @@
 :where(.st-Box--radius-3) { border-radius: var(--st-radius-3); }
 :where(.st-Box--radius-4) { border-radius: var(--st-radius-4); }
 
-/* Shadow variants */
+/* Shadow variants (elevation scale 0-5) */
 :where(.st-Box--shadow-0) { box-shadow: var(--st-shadow-0); }
 :where(.st-Box--shadow-1) { box-shadow: var(--st-shadow-1); }
 :where(.st-Box--shadow-2) { box-shadow: var(--st-shadow-2); }
+:where(.st-Box--shadow-3) { box-shadow: var(--st-shadow-3); }
+:where(.st-Box--shadow-4) { box-shadow: var(--st-shadow-4); }
+:where(.st-Box--shadow-5) { box-shadow: var(--st-shadow-5); }
 
 /* Z-Index variants */
 :where(.st-Box--z-0) { z-index: var(--st-z-0); }
@@ -591,10 +594,13 @@
 :where(.st-Card--radius-3) { border-radius: var(--st-radius-3); }
 :where(.st-Card--radius-4) { border-radius: var(--st-radius-4); }
 
-/* Shadow variants */
+/* Shadow variants (elevation scale 0-5) */
 :where(.st-Card--shadow-0) { box-shadow: var(--st-shadow-0); }
 :where(.st-Card--shadow-1) { box-shadow: var(--st-shadow-1); }
 :where(.st-Card--shadow-2) { box-shadow: var(--st-shadow-2); }
+:where(.st-Card--shadow-3) { box-shadow: var(--st-shadow-3); }
+:where(.st-Card--shadow-4) { box-shadow: var(--st-shadow-4); }
+:where(.st-Card--shadow-5) { box-shadow: var(--st-shadow-5); }
 
 /* Tone variants */
 :where(.st-Card--tone-neutral) {
