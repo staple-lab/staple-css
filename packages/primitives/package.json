@@ -1,20 +1,20 @@
 {
   "name": "@staple-css/primitives",
   "version": "0.2.0",
-  "description": "React layout and typography primitives for staple-css - Box, Flex (Row/Column), Grid, Container, Text, Card with full responsive support and TypeScript types.",
+  "description": "Ultra-lightweight React primitives: Box, Flex, Text (2.5 KB gzip core). Optional full edition with Grid, Container, Card (8.23 KB gzip).",
   "homepage": "https://staple-lab.github.io/staple-css/primitives",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/core.js",
+  "module": "./dist/core.js",
+  "types": "./dist/core.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./core": {
       "types": "./dist/core.d.ts",
       "import": "./dist/core.js"
+    },
+    "./full": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     },
     "./primitives.css": "./dist/primitives.css",
     "./core.css": "./dist/core.css"

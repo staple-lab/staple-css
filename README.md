@@ -65,46 +65,46 @@ A semantic, token-first CSS framework with React primitives. Built for consisten
 npm install @staple-css/tokens @staple-css/primitives
 ```
 
-## Quick Start: Choose Your Edition
+## Quick Start: Pick Your Size
 
-### 🎯 Core Edition (2.5 KB gzip)
-Perfect for minimal apps, embedded systems, performance-critical projects.
+### 🎯 Default: Core Edition (2.5 KB gzip) - Quarter Tailwind ✅
+**Everything you need at minimum size.** Box, Flex, Text - compose any layout.
 
 ```tsx
-// Import minimal CSS and components
+// Import minimal CSS
 import "@staple-css/tokens/core.css";
 import "@staple-css/primitives/core.css";
 
-// Only Box, Flex (Row/Column), Text - compose to build any layout
-import { Box, Flex, Text } from "@staple-css/primitives/core";
+// Import (default is now core)
+import { Box, Flex, Text } from "@staple-css/primitives";
 
 export function App() {
   return (
     <Flex direction="column" gap={4} pad={4}>
-      <Text as="h1" size={6} weight="bold">Hello World</Text>
+      <Text as="h1" size={6} weight="bold">Quarter Tailwind Size</Text>
       <Box>Any content</Box>
     </Flex>
   );
 }
 ```
 
-### ⚡ Full Edition (8.23 KB gzip)
-Recommended for most projects. Includes all components and features.
+### ⚡ Optional: Full Edition (8.23 KB gzip)
+When you need Grid, Container, Card. Still smaller than Tailwind.
 
 ```tsx
-// Import full CSS and components
+// Import full CSS
 import "@staple-css/tokens/all.css";
 import "@staple-css/primitives/primitives.css";
 
-// All 8 primitives: Box, Flex, Grid, Container, Text, Card, etc.
-import { Container, Stack, Grid, Card, Text } from "@staple-css/primitives";
+// Import full edition
+import { Container, Stack, Grid, Card, Text } from "@staple-css/primitives/full";
 
 export function App() {
   return (
     <Container size="lg">
       <Grid cols={{ base: 1, md: 3 }} gap={4}>
         <Card pad={5} radius={3}>
-          <Text>Easier layouts with Grid + Card</Text>
+          <Text>Grid & Card available</Text>
         </Card>
       </Grid>
     </Container>
@@ -112,42 +112,40 @@ export function App() {
 }
 ```
 
-## Basic Usage (Full Edition)
+## Example: Building with Core Edition
 
 ```tsx
 // 1. Import CSS once at app root
-import "@staple-css/tokens/all.css";
-import "@staple-css/primitives/primitives.css";
+import "@staple-css/tokens/core.css";
+import "@staple-css/primitives/core.css";
 
-// 2. Import components
-import { Container, Stack, Card, Text, Inline } from "@staple-css/primitives";
+// 2. Import components (default is core: Box, Flex, Text)
+import { Box, Flex, Text } from "@staple-css/primitives";
 
 // 3. Build UI with token-driven props
 export function App() {
   return (
-    <Container size="lg">
-      <Stack gap={6}>
-        <Text as="h1" size={6} weight="bold">
-          Welcome to staple-css
-        </Text>
+    <Flex direction="column" gap={6} pad={4}>
+      <Text as="h1" size={6} weight="bold">
+        Quarter Tailwind Size
+      </Text>
 
-        <Card pad={5} radius={3} shadow={2} tone="primary">
-          <Stack gap={3}>
-            <Text size={4} weight="semibold">
-              Token-First Design
-            </Text>
-            <Text tone="muted">
-              Every prop accepts a token key, not arbitrary values.
-              This enforces consistency and makes code generation predictable.
-            </Text>
-            <Inline gap={3} justify="end">
-              <button>Cancel</button>
-              <button>Save</button>
-            </Inline>
-          </Stack>
-        </Card>
-      </Stack>
-    </Container>
+      <Box pad={5} radius={3} shadow={2}>
+        <Flex direction="column" gap={3}>
+          <Text size={4} weight="semibold">
+            Token-First Design
+          </Text>
+          <Text tone="muted">
+            Every prop accepts a token key, not arbitrary values.
+            This enforces consistency and makes code generation predictable.
+          </Text>
+          <Flex gap={3} justify="end">
+            <button>Cancel</button>
+            <button>Save</button>
+          </Flex>
+        </Flex>
+      </Box>
+    </Flex>
   );
 }
 ```
