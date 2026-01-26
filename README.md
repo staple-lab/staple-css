@@ -38,7 +38,7 @@ A semantic, token-first CSS framework with React primitives. Built for consisten
 ✅ **Zero runtime** — Static CSS, no JavaScript overhead
 ✅ **Type-safe** — TypeScript prevents `pad={999}` or `tone="banana"`
 ✅ **AI-friendly** — Constrained APIs prevent hallucination
-✅ **~75KB total** — Tokens + primitives, tree-shakeable
+✅ **8.23 KB gzip** — Full-featured bundle, tree-shakeable (Core edition: 2.5 KB)
 ✅ **Theme anywhere** — Scope themes to any element, not just root
 
 ---
@@ -50,7 +50,7 @@ A semantic, token-first CSS framework with React primitives. Built for consisten
 | **API Style** | Props (`pad={4}`) | Classes (`p-4`) | Props | CSS-in-JS |
 | **Learning Curve** | ~8 primitives | ~1000 utilities | ~100 components | CSS + JS API |
 | **Runtime Cost** | 0 KB | 0 KB | ~45 KB | ~15 KB |
-| **Bundle (min+gzip)** | ~25 KB | ~10 KB (base) | ~90 KB | ~15 KB + CSS |
+| **Bundle (min+gzip)** | 8.23 KB (full) / 2.5 KB (core) | ~10 KB (base) | ~90 KB | ~15 KB + CSS |
 | **AI-Friendly** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐ |
 | **Theming** | Scoped anywhere | Global config | Context Provider | Styled API |
 | **Type Safety** | Full TypeScript | Class strings | Props typed | Template strings |
@@ -170,6 +170,26 @@ Constrained APIs with clear allowed values make it easy for LLMs to generate cor
 // Not: gap accepts any CSS value
 <Stack gap="17.3px">  // ❌ AI hallucinates weird values
 ```
+
+---
+
+## Bundle Sizes
+
+Choose the edition that fits your needs:
+
+| Edition | Gzip | Components | Tokens | Themes | Palettes |
+|---------|------|------------|--------|--------|----------|
+| **Core** | **2.5 KB** | Box, Stack, Text | Core only | Single | None |
+| **Standard** | **5.0 KB** | All 8 primitives | Full | Light/Dark | Optional |
+| **Full** | **8.23 KB** | All + extras | Full | Light/Dark/Density | Included |
+
+**All editions:** Zero JavaScript runtime, fully typed, tree-shakeable.
+
+- **Core:** Perfect for minimal apps, embedded systems, or as a base
+- **Standard:** Recommended for most projects
+- **Full:** Complete design system with all features
+
+[📖 Detailed Bundle Breakdown →](./BUNDLE_SIZE_OPTIMIZATION.md)
 
 ---
 
