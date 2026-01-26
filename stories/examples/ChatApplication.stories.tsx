@@ -8,9 +8,9 @@ import { useState } from 'react'
 const meta = {
   title: 'Examples/Chat Application',
   parameters: {
-  tags: ['autodocs'],
     layout: 'fullscreen',
   },
+  tags: ['autodocs'],
 } satisfies Meta
 
 export default meta

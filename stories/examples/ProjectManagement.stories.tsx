@@ -9,9 +9,9 @@ import { useState } from 'react'
 const meta = {
   title: 'Examples/Project Management',
   parameters: {
-  tags: ['autodocs'],
     layout: 'fullscreen',
   },
+  tags: ['autodocs'],
 } satisfies Meta
 
 export default meta
