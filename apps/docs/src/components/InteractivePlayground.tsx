@@ -25,7 +25,7 @@ const examples = [
           </Text>
           <Text tone="muted">Start building with staple-css</Text>
           <Row gap={3} justify="end">
-            <button style={{ padding: "8px 16px", borderRadius: "4px", border: "1px solid #ddd", cursor: "pointer" }}>
+            <button style={{ padding: "var(--st-space-2) var(--st-space-4)", borderRadius: "var(--st-radius-2)", border: "1px solid var(--st-color-border)", cursor: "pointer" }}>
               Get Started
             </button>
           </Row>
@@ -113,7 +113,7 @@ const examples = [
           <input
             type="email"
             placeholder="you@example.com"
-            style={{ padding: "8px 12px", borderRadius: "4px", border: "1px solid #ddd", width: "100%" }}
+            style={{ padding: "var(--st-space-2) var(--st-space-3)", borderRadius: "var(--st-radius-2)", border: "1px solid var(--st-color-border)", width: "100%" }}
           />
         </Column>
         <Column gap={1}>
@@ -123,14 +123,14 @@ const examples = [
           <input
             type="password"
             placeholder="••••••••"
-            style={{ padding: "8px 12px", borderRadius: "4px", border: "1px solid #ddd", width: "100%" }}
+            style={{ padding: "var(--st-space-2) var(--st-space-3)", borderRadius: "var(--st-radius-2)", border: "1px solid var(--st-color-border)", width: "100%" }}
           />
         </Column>
         <Row gap={3} justify="end">
-          <button style={{ padding: "8px 16px", borderRadius: "4px", border: "1px solid #ddd", cursor: "pointer" }}>
+          <button style={{ padding: "var(--st-space-2) var(--st-space-4)", borderRadius: "var(--st-radius-2)", border: "1px solid var(--st-color-border)", cursor: "pointer" }}>
             Cancel
           </button>
-          <button style={{ padding: "8px 16px", borderRadius: "4px", border: "1px solid #2563eb", background: "#2563eb", color: "#fff", cursor: "pointer" }}>
+          <button style={{ padding: "var(--st-space-2) var(--st-space-4)", borderRadius: "var(--st-radius-2)", border: "1px solid var(--st-color-primary)", background: "var(--st-color-primary)", color: "#fff", cursor: "pointer" }}>
             Submit
           </button>
         </Row>
@@ -160,12 +160,12 @@ export function InteractivePlayground() {
                 key={index}
                 onClick={() => setSelectedIndex(index)}
                 style={{
-                  padding: "12px 20px",
+                  padding: "var(--st-space-3) var(--st-space-5)",
                   background: selectedIndex === index ? "var(--st-color-surface)" : "transparent",
                   border: "none",
                   borderBottom: selectedIndex === index ? "2px solid var(--st-color-primary)" : "2px solid transparent",
                   cursor: "pointer",
-                  fontSize: "14px",
+                  fontSize: "var(--st-font-size-1)",
                   fontWeight: selectedIndex === index ? "600" : "normal",
                   color: selectedIndex === index ? "var(--st-color-text)" : "var(--st-color-text-muted)",
                   whiteSpace: "nowrap",
@@ -187,12 +187,12 @@ export function InteractivePlayground() {
               <button
                 onClick={() => setShowCode(false)}
                 style={{
-                  padding: "6px 12px",
-                  borderRadius: "4px",
+                  padding: "var(--st-space-1) var(--st-space-3)",
+                  borderRadius: "var(--st-radius-2)",
                   border: "1px solid var(--st-color-border)",
                   background: !showCode ? "var(--st-color-surface)" : "transparent",
                   cursor: "pointer",
-                  fontSize: "13px",
+                  fontSize: "var(--st-font-size-0)",
                 }}
               >
                 Preview
@@ -200,12 +200,12 @@ export function InteractivePlayground() {
               <button
                 onClick={() => setShowCode(true)}
                 style={{
-                  padding: "6px 12px",
-                  borderRadius: "4px",
+                  padding: "var(--st-space-1) var(--st-space-3)",
+                  borderRadius: "var(--st-radius-2)",
                   border: "1px solid var(--st-color-border)",
                   background: showCode ? "var(--st-color-surface)" : "transparent",
                   cursor: "pointer",
-                  fontSize: "13px",
+                  fontSize: "var(--st-font-size-0)",
                 }}
               >
                 Code
@@ -220,11 +220,11 @@ export function InteractivePlayground() {
             <pre
               style={{
                 background: "var(--st-color-surface-raised)",
-                padding: "16px",
-                borderRadius: "8px",
+                padding: "var(--st-space-4)",
+                borderRadius: "var(--st-radius-2)",
                 overflow: "auto",
-                fontSize: "14px",
-                lineHeight: "1.5",
+                fontSize: "var(--st-font-size-1)",
+                lineHeight: "var(--st-line-height-normal)",
                 fontFamily: "var(--st-font-mono)",
               }}
             >
@@ -247,12 +247,12 @@ export function InteractivePlayground() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  padding: "6px 12px",
-                  borderRadius: "4px",
+                  padding: "var(--st-space-1) var(--st-space-3)",
+                  borderRadius: "var(--st-radius-2)",
                   border: "1px solid var(--st-color-border)",
                   background: "transparent",
                   cursor: "pointer",
-                  fontSize: "13px",
+                  fontSize: "var(--st-font-size-0)",
                   textDecoration: "none",
                   color: "var(--st-color-text)",
                 }}

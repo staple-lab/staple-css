@@ -289,7 +289,7 @@ export function EnhancedComponentExplorer() {
                   <Column gap={1} style={{ flex: 1 }}>
                     <Text weight="semibold" size={2}>{prop.name}</Text>
                     <Row gap={2} align="center">
-                      <Text size={1} tone="muted" style={{ fontFamily: "monospace", background: "rgba(0,0,0,0.05)", padding: "2px 6px", borderRadius: "3px" }}>
+                      <Text size={1} tone="muted" style={{ fontFamily: "monospace", background: "var(--st-color-surface-secondary)", padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)" }}>
                         {prop.type}
                       </Text>
                       {prop.default && <Text size={1} tone="muted">Default: {prop.default}</Text>}
@@ -305,7 +305,7 @@ export function EnhancedComponentExplorer() {
                         <Text size={1} weight="semibold">Options:</Text>
                         <Box style={{ display: "flex", flexWrap: "wrap", gap: "var(--st-space-2)", marginTop: "var(--st-space-1)" }}>
                           {prop.options.map((opt) => (
-                            <Text key={opt} size={1} style={{ background: "var(--st-color-primary)", color: "white", padding: "4px 8px", borderRadius: "3px", fontFamily: "monospace" }}>
+                            <Text key={opt} size={1} style={{ background: "var(--st-color-primary)", color: "white", padding: "var(--st-space-1) var(--st-space-2)", borderRadius: "var(--st-radius-1)", fontFamily: "monospace" }}>
                               {opt}
                             </Text>
                           ))}

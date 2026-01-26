@@ -29,22 +29,22 @@ export function ExamplesPage() {
                 </Column>
                 <Row gap={3}>
                   <button style={{
-                    padding: "12px 24px",
+                    padding: "var(--st-space-3) var(--st-space-6)",
                     background: "var(--st-color-primary)",
                     color: "white",
                     border: "none",
-                    borderRadius: "6px",
+                    borderRadius: "var(--st-radius-2)",
                     fontWeight: "600",
                     cursor: "pointer",
                   }}>
                     View Docs
                   </button>
                   <button style={{
-                    padding: "12px 24px",
+                    padding: "var(--st-space-3) var(--st-space-6)",
                     background: "transparent",
                     color: "var(--st-color-primary)",
                     border: "2px solid var(--st-color-primary)",
-                    borderRadius: "6px",
+                    borderRadius: "var(--st-radius-2)",
                     fontWeight: "600",
                     cursor: "pointer",
                   }}>
@@ -103,10 +103,10 @@ export function ExamplesPage() {
                     placeholder="user@example.com"
                     style={{
                       width: "100%",
-                      padding: "12px 16px",
-                      borderRadius: "6px",
+                      padding: "var(--st-space-3) var(--st-space-4)",
+                      borderRadius: "var(--st-radius-2)",
                       border: "1px solid var(--st-color-border)",
-                      fontSize: "14px",
+                      fontSize: "var(--st-font-size-1)",
                       fontFamily: "inherit",
                     }}
                   />
@@ -122,10 +122,10 @@ export function ExamplesPage() {
                     placeholder="••••••••"
                     style={{
                       width: "100%",
-                      padding: "12px 16px",
-                      borderRadius: "6px",
+                      padding: "var(--st-space-3) var(--st-space-4)",
+                      borderRadius: "var(--st-radius-2)",
                       border: "1px solid var(--st-color-border)",
-                      fontSize: "14px",
+                      fontSize: "var(--st-font-size-1)",
                       fontFamily: "inherit",
                     }}
                   />
@@ -139,13 +139,13 @@ export function ExamplesPage() {
 
               <button style={{
                 width: "100%",
-                padding: "14px 24px",
+                padding: "var(--st-space-3) var(--st-space-6)",
                 background: "var(--st-color-primary)",
                 color: "white",
                 border: "none",
-                borderRadius: "6px",
+                borderRadius: "var(--st-radius-2)",
                 fontWeight: "600",
-                fontSize: "16px",
+                fontSize: "var(--st-font-size-2)",
                 cursor: "pointer",
                 transition: "all 0.2s",
               }}>
@@ -254,45 +254,45 @@ export function ExamplesPage() {
             <table style={{
               width: "100%",
               borderCollapse: "collapse",
-              fontSize: "14px",
+              fontSize: "var(--st-font-size-1)",
             }}>
               <thead>
                 <tr style={{ borderBottom: "2px solid var(--st-color-border)" }}>
-                  <th style={{ padding: "12px", textAlign: "left", fontWeight: "600" }}>Framework</th>
-                  <th style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>Bundle (gzip)</th>
-                  <th style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>Runtime</th>
-                  <th style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>Components</th>
-                  <th style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>Type Safety</th>
+                  <th style={{ padding: "var(--st-space-3)", textAlign: "left", fontWeight: "600" }}>Framework</th>
+                  <th style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Bundle (gzip)</th>
+                  <th style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Runtime</th>
+                  <th style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Components</th>
+                  <th style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Type Safety</th>
                 </tr>
               </thead>
               <tbody>
                 <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
-                  <td style={{ padding: "12px", fontWeight: "600", color: "var(--st-color-success, green)" }}>staple-css</td>
-                  <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "var(--st-color-success, green)" }}>2.5 KB</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>0 KB</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>8</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>✅ Full</td>
+                  <td style={{ padding: "var(--st-space-3)", fontWeight: "600", color: "var(--st-color-success, green)" }}>staple-css</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600", color: "var(--st-color-success, green)" }}>2.5 KB</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>0 KB</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>8</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>✅ Full</td>
                 </tr>
                 <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
                   <td style={{ padding: "12px" }}>Tailwind CSS</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>~10 KB</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>0 KB</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>1000+</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>⚠️ Partial</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~10 KB</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>0 KB</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>1000+</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>⚠️ Partial</td>
                 </tr>
                 <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
                   <td style={{ padding: "12px" }}>Chakra UI</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>~45 KB</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>~15 KB</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>50+</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>✅ Full</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~45 KB</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~15 KB</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>50+</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>✅ Full</td>
                 </tr>
                 <tr>
                   <td style={{ padding: "12px" }}>Material-UI</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>~80 KB</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>~45 KB</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>100+</td>
-                  <td style={{ padding: "12px", textAlign: "center" }}>✅ Full</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~80 KB</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~45 KB</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>100+</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>✅ Full</td>
                 </tr>
               </tbody>
             </table>
