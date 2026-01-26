@@ -216,24 +216,80 @@ npm install @staple-css/primitives
 
 ### 🎨 Token Studio
 
-An **interactive visual builder** for creating custom design systems. Better than Figma tokens, better than Style Dictionary.
+An **interactive visual builder** for creating and managing complete design token systems. Professional-grade token generation with enterprise features.
+
+**Workflow:**
+1. 🎨 Define color seeds (brand colors)
+2. 🌈 Generate 11-shade palettes using OKLCH
+3. 🎯 Map semantic tokens (primary, danger, success)
+4. ✅ Validate WCAG AA contrast automatically
+5. 📦 Export as CSS, JSON, or TypeScript
 
 **Features:**
-- 🎨 Generate color palettes from base colors using OKLCH
-- 🌈 Create color harmonies (complementary, triadic, analogous)
-- 🎯 Map semantic tokens (primary, danger, success)
-- ✅ Real-time WCAG contrast validation
-- 👁️ Live component preview
-- 💾 Export to CSS, JSON, TypeScript
-- 📦 Import from Figma, Style Dictionary, etc.
+- Color palette generation from base colors
+- Color harmony creation (complementary, triadic, analogous)
+- Semantic token mapping (light + dark themes)
+- Real-time WCAG contrast validation
+- Live code preview
+- Multiple export formats
+- Local storage persistence
+- Keyboard shortcuts (`Cmd/Ctrl + B` to toggle sidebar)
 
-[**Launch Token Studio →**](https://css.staplelab.com/tokens-studio)
+**Performance:**
+- <50ms palette generation
+- <100ms preview updates
+- ~15 KB bundle size
+
+[**Launch Token Studio →**](https://css.staplelab.com/tokens-studio) • [**Full Guide →**](./TOKEN_STUDIO_GUIDE.md)
 
 ### 📖 Storybook
 
-Browse all components with **interactive controls**, view source code, and test accessibility.
+Interactive component development environment with live previews, token controls, and accessibility validation.
 
-[**View Storybook →**](https://css.staplelab.com/storybook)
+**Features:**
+- 🎛️ Interactive component controls (all props adjustable)
+- 📝 Live code preview with copy-to-clipboard
+- 🎨 Token browser (see all design tokens visualized)
+- 🌓 Theme switching (light/dark)
+- 📱 Responsive viewport simulator
+- ♿ Accessibility panel with contrast checker
+- 🏠 Real-world templates and examples
+- 🔍 Story search and favorites
+
+**Sections:**
+- **Components** — Interactive examples of all 8 primitives
+- **Token Reference** — Visual token browser (colors, spacing, typography, motion)
+- **Examples** — Real-world templates (e-commerce, dashboard, blog, etc.)
+- **Guides** — Educational content (dark mode, typography, spacing)
+
+[**Launch Storybook →**](https://css.staplelab.com/storybook) • [**Full Guide →**](./STORYBOOK_GUIDE.md)
+
+### 🏗️ Demo Templates
+
+Complete, real-world application examples using staple-css:
+
+**Templates Included:**
+- 🛍️ E-Commerce - Product listings, shopping cart
+- 📊 Analytics Dashboard - Data visualization, metrics
+- 📱 Social Feed - Posts, comments, interactions
+- 📝 Blog Platform - Articles, categories, comments
+- 💬 Chat Application - Messaging, user list
+- 📅 Calendar - Date selection, events
+- 📧 Email Client - Message list, preview
+- 📁 File Manager - File browser
+- 🏠 Landing Page - Hero, CTA, features
+- And 3 more...
+
+**Learn from Templates:**
+- Responsive layout patterns
+- Token combination best practices
+- Component composition
+- Spacing and elevation strategies
+- Typography hierarchy
+
+[**View Templates in Storybook →**](https://css.staplelab.com/storybook/?globals=showExamples:true) • [**Full Guide →**](./TEMPLATES_GUIDE.md)
+
+---
 
 ### 🎭 Advanced Theming
 
@@ -875,27 +931,44 @@ This runs:
 
 ## Comprehensive Documentation
 
-### Architecture & Design
+### 🏗️ Architecture & Design
 
-- **[TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md)** — Deep dive into the token architecture, all 30+ token categories, and design decision flow
-- **[README.md](./README.md)** (this file) — Quick start and API reference
+- **[TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md)** — Deep dive into token architecture, all 30+ categories, design decision flow
+- **[ENTERPRISE_UPGRADE.md](./ENTERPRISE_UPGRADE.md)** — Upgrade summary, breaking changes, migration guide
+- **[README.md](./README.md)** (this file) — Quick start, API reference, design principles
 
-### Token Reference
+### 🎨 Token System
 
-- **[@staple-css/tokens README](./packages/tokens/README.md)** — Token package documentation
-- **[Interactive Token Browser](https://css.staplelab.com/)** — Live token exploration
-- **[Token Studio](https://css.staplelab.com/tokens-studio)** — Visual token builder and editor
+- **[TOKEN_STUDIO_GUIDE.md](./TOKEN_STUDIO_GUIDE.md)** — Professional token builder, color generation, export workflows
+- **[Interactive Token Browser](https://css.staplelab.com/)** — Live token exploration and visualization
+- **[Token Studio](https://css.staplelab.com/tokens-studio)** — Visual builder for custom design tokens
+- **[@staple-css/tokens README](./packages/tokens/README.md)** — Token package API and customization
 
-### Component Documentation
+### 📖 Component Documentation
 
-- **[@staple-css/primitives README](./packages/primitives/README.md)** — Complete component API
-- **[Storybook](https://css.staplelab.com/storybook)** — Interactive component examples
+- **[STORYBOOK_GUIDE.md](./STORYBOOK_GUIDE.md)** — Interactive development environment, component controls, token browser
+- **[TEMPLATES_GUIDE.md](./TEMPLATES_GUIDE.md)** — Real-world templates, patterns, best practices
+- **[Storybook](https://css.staplelab.com/storybook)** — Live component examples with controls
+- **[@staple-css/primitives README](./packages/primitives/README.md)** — Complete component API and props
 - **Component Accessibility** — WCAG 2.1 AA compliance built-in
 
-### AI Integration
+### 🤖 AI & Automation
 
-- **[llms.txt](./llms.txt)** — Concise AI context file
+- **[llms.txt](./llms.txt)** — Concise AI context file (quick reference)
 - **[llms-full.txt](./llms-full.txt)** — Comprehensive examples for AI assistants
+- **AI-Friendly Development** — Constrained APIs prevent LLM hallucination
+
+### 📚 Quick Navigation
+
+| Document | Purpose | Audience |
+|----------|---------|----------|
+| **README** | Overview & getting started | Everyone |
+| **TOKEN_SYSTEM** | Token architecture deep-dive | Design system builders |
+| **ENTERPRISE_UPGRADE** | What's new, breaking changes | Existing users |
+| **TOKEN_STUDIO_GUIDE** | Token creation & customization | Token creators |
+| **STORYBOOK_GUIDE** | Component exploration | Developers |
+| **TEMPLATES_GUIDE** | Real-world patterns | Copy-paste templates |
+| **CLAUDE.md** | AI assistant instructions | AI systems |
 
 ---
 
