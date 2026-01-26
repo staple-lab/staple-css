@@ -328,7 +328,7 @@ export function HomePage() {
           </Column>
 
           <Row gap={3}>
-            <PrimaryButton href="#docs">Get Started</PrimaryButton>
+            <PrimaryButton href="/tokens">View Documentation</PrimaryButton>
             <SecondaryButton href="/tokens-studio">Token Studio</SecondaryButton>
           </Row>
 
