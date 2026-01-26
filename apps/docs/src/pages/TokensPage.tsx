@@ -1,4 +1,4 @@
-import { Container, Column, Card, Text, Box } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Box } from "@staple-css/primitives/full";
 import {
   spaceScale,
   radiusScale,

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Column, Text, Row, Card } from "@staple-css/primitives";
+import { Column, Text, Row, Card } from "@staple-css/primitives/full";
 import {
   wcagContrastHex,
   apcaContrastHex,

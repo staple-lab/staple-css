@@ -10,6 +10,7 @@ import type {
   AspectRatio,
   OutlineWidth,
   OutlineOffset,
+  Align,
   LayoutStyleProps,
   Responsive,
 } from "./types.js";
@@ -119,6 +120,11 @@ export interface BoxOwnProps {
    */
   outlineOffset?: Responsive<OutlineOffset>;
   /**
+   * Align items for flex containers (start, center, end, stretch, baseline)
+   * @example <Box align="center">Centered content</Box>
+   */
+  align?: Responsive<Align>;
+  /**
    * Additional CSS class names (escape hatch)
    * For truly custom styles not available through tokens
    */
@@ -190,6 +196,7 @@ export function Box<E extends ElementType = "div">({
   aspectRatio,
   outlineWidth,
   outlineOffset,
+  align,
   className,
   style,
   ...rest
@@ -215,6 +222,7 @@ export function Box<E extends ElementType = "div">({
     ...responsiveClasses("st-Box", "aspect", aspectRatio),
     ...responsiveClasses("st-Box", "outline-width", outlineWidth),
     ...responsiveClasses("st-Box", "outline-offset", outlineOffset),
+    ...responsiveClasses("st-Box", "align", align),
     className
   );
 

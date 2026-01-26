@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Column, Card, Text, Row, Box } from "@staple-css/primitives";
+import { Column, Card, Text, Row, Box } from "@staple-css/primitives/full";
 
 export type ExportFormat =
   | "css-variables"

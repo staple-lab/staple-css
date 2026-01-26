@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode, CSSProperties } from "react";
 import type {
   Size,
   Weight,
@@ -15,7 +15,7 @@ import { responsiveClasses } from "./types.js";
 /**
  * Allowed elements for Text
  */
-type TextElement = "p" | "span" | "label" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+type TextElement = "p" | "span" | "label" | "a" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 /**
  * Text Props
@@ -43,6 +43,10 @@ export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, "style"> {
   mono?: boolean;
   /** Additional class names */
   className?: string;
+  /** Inline styles (escape hatch for custom styling) */
+  style?: CSSProperties;
+  /** Allow extra attributes for different element types */
+  [key: string]: any;
 }
 
 /**
@@ -68,6 +72,7 @@ export function Text({
   lineClamp,
   mono,
   className,
+  style,
   ...rest
 }: TextProps) {
   const classes = cx(
@@ -84,7 +89,7 @@ export function Text({
   );
 
   return (
-    <Component className={classes} {...rest}>
+    <Component className={classes} style={style} {...rest}>
       {children}
     </Component>
   );

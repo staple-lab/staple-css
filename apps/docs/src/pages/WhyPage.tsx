@@ -1,4 +1,4 @@
-import { Container, Column, Card, Text, Row, Flex } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Row, Flex } from "@staple-css/primitives/full";
 
 export function WhyPage() {
   return (

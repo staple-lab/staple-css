@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, NavLink, Navigate, Link } from "react-router-dom";
-import { Container, Row, Text, Flex } from "@staple-css/primitives";
+import { Container, Row, Text, Flex } from "@staple-css/primitives/full";
 import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";

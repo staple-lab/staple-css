@@ -6,7 +6,7 @@
  */
 
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
-import { Container, Column, Text, Row, Card, Box, Grid, Flex } from "@staple-css/primitives";
+import { Container, Column, Text, Row, Card, Box, Grid, Flex } from "@staple-css/primitives/full";
 import {
   type Seeds,
   type GenerationParams,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Column, Card, Text, Row, Box, Grid, Flex } from "@staple-css/primitives";
+import { Column, Card, Text, Row, Box, Grid, Flex } from "@staple-css/primitives/full";
 
 interface ComponentProp {
   name: string;
@@ -70,8 +70,8 @@ const componentDemos: ComponentDemo[] = [
         description: "Box with different padding scales",
         component: (
           <Row gap={3} style={{ flexWrap: "wrap" }}>
-            {["0", "2", "4", "6", "8"].map((pad) => (
-              <Box key={pad} pad={parseInt(pad)} radius={2} shadow={1} style={{ minWidth: "80px", background: "var(--st-color-primary-light, #e3f2fd)" }}>
+            {(["0", "2", "4", "6", "8"] as const).map((pad) => (
+              <Box key={pad} pad={pad as any} radius={2} shadow={1} style={{ minWidth: "80px", background: "var(--st-color-primary-light, #e3f2fd)" }}>
                 <Text size={1} align="center">{`pad={${pad}}`}</Text>
               </Box>
             ))}
@@ -83,8 +83,8 @@ const componentDemos: ComponentDemo[] = [
         description: "Different elevation levels",
         component: (
           <Row gap={3} style={{ flexWrap: "wrap" }}>
-            {["0", "1", "2"].map((shadow) => (
-              <Box key={shadow} pad={4} shadow={parseInt(shadow)} radius={2} style={{ minWidth: "100px" }}>
+            {(["0", "1", "2"] as const).map((shadow) => (
+              <Box key={shadow} pad={4} shadow={shadow as any} radius={2} style={{ minWidth: "100px" }}>
                 <Text size={1} align="center">{`shadow={${shadow}}`}</Text>
               </Box>
             ))}
@@ -236,7 +236,7 @@ export function EnhancedComponentExplorer() {
   const [selectedComponent, setSelectedComponent] = useState(0);
   const [expandedProp, setExpandedProp] = useState<string | null>(null);
 
-  const component = componentDemos[selectedComponent];
+  const component = componentDemos[selectedComponent]!;
 
   return (
     <Column gap={6} style={{ background: "var(--st-color-surface)" }}>

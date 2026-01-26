@@ -1,4 +1,4 @@
-import { Container, Column, Card, Text, Grid, Row, Box } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Grid, Row, Box } from "@staple-css/primitives/full";
 import { CodePreview } from "../components/CodePreview";
 import { InteractivePlayground } from "../components/InteractivePlayground";
 

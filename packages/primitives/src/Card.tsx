@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode, CSSProperties } from "react";
 import type { Space, Radius, Shadow, Tone, Responsive } from "./types.js";
 import { cx } from "./cx.js";
 import { responsiveClasses } from "./types.js";
@@ -26,6 +26,8 @@ export interface CardProps extends Omit<ComponentPropsWithoutRef<"div">, "style"
   tone?: Responsive<Exclude<Tone, "muted">>;
   /** Additional class names */
   className?: string;
+  /** Inline styles (escape hatch for custom styling) */
+  style?: CSSProperties;
 }
 
 /**
@@ -53,6 +55,7 @@ export function Card({
   shadow,
   tone = "neutral",
   className,
+  style,
   ...rest
 }: CardProps) {
   const classes = cx(
@@ -65,7 +68,7 @@ export function Card({
   );
 
   return (
-    <Component className={classes} {...rest}>
+    <Component className={classes} style={style} {...rest}>
       {children}
     </Component>
   );

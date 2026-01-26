@@ -1,4 +1,4 @@
-import { Container, Column, Card, Text, Grid, Row, Box, Flex } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Grid, Row, Box, Flex } from "@staple-css/primitives/full";
 
 export function ExamplesPage() {
   return (
