@@ -1,0 +1,239 @@
+- generic [ref=e3]:
+  - banner "Storybook" [ref=e6]:
+    - heading "Storybook" [level=1] [ref=e7]
+    - img
+    - generic [ref=e11]:
+      - generic [ref=e13]:
+        - link "Skip to content" [ref=e14] [cursor=pointer]:
+          - /url: "#storybook-preview-wrapper"
+        - link "Storybook" [ref=e16] [cursor=pointer]:
+          - /url: ./
+          - img "Storybook" [ref=e17]
+        - switch "Settings" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+      - generic [ref=e26]: Search for components
+      - search [ref=e27]:
+        - combobox "Search for components" [ref=e28]:
+          - generic:
+            - img
+          - searchbox "Search for components" [ref=e29]
+          - code:
+            - generic: ⌘
+            - text: K
+          - button "Tag filters" [ref=e31] [cursor=pointer]:
+            - img [ref=e32]
+      - navigation "Stories" [ref=e35]:
+        - heading "Stories" [level=2] [ref=e36]
+        - generic [ref=e38]:
+          - link "Configure your project" [ref=e40] [cursor=pointer]:
+            - /url: /storybook/?path=/docs/configure-your-project--docs
+            - img [ref=e42]
+            - text: Configure your project
+          - generic [ref=e44]:
+            - button "Collapse" [expanded] [ref=e45] [cursor=pointer]:
+              - img [ref=e47]
+              - text: Example
+            - button "Expand all" [ref=e49] [cursor=pointer]:
+              - img [ref=e50]
+          - button "Button" [ref=e53] [cursor=pointer]:
+            - generic [ref=e54]:
+              - img [ref=e56]
+              - img [ref=e58]
+            - text: Button
+          - button "Header" [ref=e61] [cursor=pointer]:
+            - generic [ref=e62]:
+              - img [ref=e64]
+              - img [ref=e66]
+            - text: Header
+          - button "Page" [ref=e69] [cursor=pointer]:
+            - generic [ref=e70]:
+              - img [ref=e72]
+              - img [ref=e74]
+            - text: Page
+          - generic [ref=e76]:
+            - button "Collapse" [expanded] [ref=e77] [cursor=pointer]:
+              - img [ref=e79]
+              - text: Examples
+            - button "Expand all" [ref=e81] [cursor=pointer]:
+              - img [ref=e82]
+          - button "Blog Platform" [ref=e85] [cursor=pointer]:
+            - generic [ref=e86]:
+              - img [ref=e88]
+              - img [ref=e90]
+            - text: Blog Platform
+          - button "Calendar" [ref=e93] [cursor=pointer]:
+            - generic [ref=e94]:
+              - img [ref=e96]
+              - img [ref=e98]
+            - text: Calendar
+          - button "Chat Application" [expanded] [ref=e101] [cursor=pointer]:
+            - generic [ref=e102]:
+              - img [ref=e104]
+              - img [ref=e106]
+            - text: Chat Application
+          - generic [ref=e108]:
+            - link "Docs" [ref=e109] [cursor=pointer]:
+              - /url: /storybook/?path=/docs/examples-chat-application--docs
+              - img [ref=e111]
+              - text: Docs
+            - link "Skip to content" [ref=e113] [cursor=pointer]:
+              - /url: "#storybook-preview-wrapper"
+          - link "Complete Chat" [ref=e115] [cursor=pointer]:
+            - /url: /storybook/?path=/story/examples-chat-application--complete-chat
+            - img [ref=e117]
+            - text: Complete Chat
+          - link "Mobile Chat" [ref=e120] [cursor=pointer]:
+            - /url: /storybook/?path=/story/examples-chat-application--mobile-chat
+            - img [ref=e122]
+            - text: Mobile Chat
+          - button "Dashboard App" [ref=e125] [cursor=pointer]:
+            - generic [ref=e126]:
+              - img [ref=e128]
+              - img [ref=e130]
+            - text: Dashboard App
+          - button "Data Visualization" [ref=e133] [cursor=pointer]:
+            - generic [ref=e134]:
+              - img [ref=e136]
+              - img [ref=e138]
+            - text: Data Visualization
+          - button "E-Commerce Site" [ref=e141] [cursor=pointer]:
+            - generic [ref=e142]:
+              - img [ref=e144]
+              - img [ref=e146]
+            - text: E-Commerce Site
+          - button "Email Client" [ref=e149] [cursor=pointer]:
+            - generic [ref=e150]:
+              - img [ref=e152]
+              - img [ref=e154]
+            - text: Email Client
+          - button "File Manager" [ref=e157] [cursor=pointer]:
+            - generic [ref=e158]:
+              - img [ref=e160]
+              - img [ref=e162]
+            - text: File Manager
+          - button "Landing Page" [ref=e165] [cursor=pointer]:
+            - generic [ref=e166]:
+              - img [ref=e168]
+              - img [ref=e170]
+            - text: Landing Page
+          - button "Music Player" [ref=e173] [cursor=pointer]:
+            - generic [ref=e174]:
+              - img [ref=e176]
+              - img [ref=e178]
+            - text: Music Player
+          - button "Project Management" [ref=e181] [cursor=pointer]:
+            - generic [ref=e182]:
+              - img [ref=e184]
+              - img [ref=e186]
+            - text: Project Management
+          - button "Settings Panel" [ref=e189] [cursor=pointer]:
+            - generic [ref=e190]:
+              - img [ref=e192]
+              - img [ref=e194]
+            - text: Settings Panel
+          - button "Social Media Feed" [ref=e197] [cursor=pointer]:
+            - generic [ref=e198]:
+              - img [ref=e200]
+              - img [ref=e202]
+            - text: Social Media Feed
+          - generic [ref=e204]:
+            - button "Collapse" [expanded] [ref=e205] [cursor=pointer]:
+              - img [ref=e207]
+              - text: Guides
+            - button "Expand all" [ref=e209] [cursor=pointer]:
+              - img [ref=e210]
+          - button "Dark Mode" [ref=e213] [cursor=pointer]:
+            - generic [ref=e214]:
+              - img [ref=e216]
+              - img [ref=e218]
+            - text: Dark Mode
+          - generic [ref=e220]:
+            - button "Collapse" [expanded] [ref=e221] [cursor=pointer]:
+              - img [ref=e223]
+              - text: Primitives
+            - button "Expand all" [ref=e225] [cursor=pointer]:
+              - img [ref=e226]
+          - button "Box" [ref=e229] [cursor=pointer]:
+            - generic [ref=e230]:
+              - img [ref=e232]
+              - img [ref=e234]
+            - text: Box
+          - button "Card" [ref=e237] [cursor=pointer]:
+            - generic [ref=e238]:
+              - img [ref=e240]
+              - img [ref=e242]
+            - text: Card
+          - button "Container" [ref=e245] [cursor=pointer]:
+            - generic [ref=e246]:
+              - img [ref=e248]
+              - img [ref=e250]
+            - text: Container
+          - button "Flex" [ref=e253] [cursor=pointer]:
+            - generic [ref=e254]:
+              - img [ref=e256]
+              - img [ref=e258]
+            - text: Flex
+          - button "Grid" [ref=e261] [cursor=pointer]:
+            - generic [ref=e262]:
+              - img [ref=e264]
+              - img [ref=e266]
+            - text: Grid
+          - button "Column (Column)" [ref=e269] [cursor=pointer]:
+            - generic [ref=e270]:
+              - img [ref=e272]
+              - img [ref=e274]
+            - text: Column (Column)
+          - button "Text" [ref=e277] [cursor=pointer]:
+            - generic [ref=e278]:
+              - img [ref=e280]
+              - img [ref=e282]
+            - text: Text
+          - generic [ref=e284]:
+            - button "Collapse" [expanded] [ref=e285] [cursor=pointer]:
+              - img [ref=e287]
+              - text: Tokens
+            - button "Expand all" [ref=e289] [cursor=pointer]:
+              - img [ref=e290]
+          - button "Colors" [ref=e293] [cursor=pointer]:
+            - generic [ref=e294]:
+              - img [ref=e296]
+              - img [ref=e298]
+            - text: Colors
+          - button "Motion" [ref=e301] [cursor=pointer]:
+            - generic [ref=e302]:
+              - img [ref=e304]
+              - img [ref=e306]
+            - text: Motion
+          - button "Spacing" [ref=e309] [cursor=pointer]:
+            - generic [ref=e310]:
+              - img [ref=e312]
+              - img [ref=e314]
+            - text: Spacing
+          - button "Typography" [ref=e317] [cursor=pointer]:
+            - generic [ref=e318]:
+              - img [ref=e320]
+              - img [ref=e322]
+            - text: Typography
+  - generic [ref=e325]:
+    - region "Toolbar" [ref=e326]:
+      - heading "Toolbar" [level=2] [ref=e327]
+      - toolbar [ref=e328]:
+        - generic [ref=e329]:
+          - switch "Grid visibility" [ref=e348] [cursor=pointer]:
+            - img [ref=e349]
+          - button "Preview background" [ref=e351] [cursor=pointer]:
+            - img [ref=e352]
+          - switch "Outline tool" [ref=e330] [cursor=pointer]:
+            - img [ref=e331]
+          - button "Global theme for components light" [ref=e356] [cursor=pointer]:
+            - img [ref=e357]
+            - text: light
+        - button "Enter full screen" [ref=e334] [cursor=pointer]:
+          - img [ref=e335]
+    - main "Main preview area" [ref=e337]:
+      - heading "Main preview area" [level=2] [ref=e338]
+      - generic [ref=e342]:
+        - link "Skip to sidebar" [ref=e343] [cursor=pointer]:
+          - /url: "#examples-chat-application--docs"
+        - iframe [ref=e347]:
+          
