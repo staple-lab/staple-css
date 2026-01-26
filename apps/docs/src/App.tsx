@@ -5,6 +5,7 @@ import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
 import { WhyPage } from "./pages/WhyPage";
+import { ExamplesPage } from "./pages/ExamplesPage";
 import { BuilderPage } from "./pages/tokens-studio";
 
 type Theme = "light" | "dark" | "system";
@@ -86,6 +87,11 @@ export function App() {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink to="/examples" className="nav-link">
+                      Examples
+                    </NavLink>
+                  </li>
+                  <li>
                     <NavLink to="/tokens-studio" className="nav-link">
                       Studio
                     </NavLink>
@@ -116,6 +122,7 @@ export function App() {
           <Route path="/tokens" element={<TokensPage />} />
           <Route path="/primitives" element={<PrimitivesPage />} />
           <Route path="/why" element={<WhyPage />} />
+          <Route path="/examples" element={<ExamplesPage />} />
           {/* Tokens Studio */}
           <Route path="/tokens-studio" element={<BuilderPage />} />
           {/* Redirect old studio routes */}

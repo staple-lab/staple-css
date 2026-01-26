@@ -1,5 +1,6 @@
 import { Container, Column, Card, Text, Box, Row, Grid, Flex } from "@staple-css/primitives";
 import { CodePreview } from "../components/CodePreview";
+import { EnhancedComponentExplorer } from "../components/EnhancedComponentExplorer";
 
 function CodeExample({
   title,
@@ -77,6 +78,11 @@ export function PrimitivesPage() {
             All layout props (direction, gap, alignment, sizing) can be responsive objects.
           </Text>
         </Column>
+
+        {/* Enhanced Component Explorer */}
+        <Card pad={6} radius={3} shadow={1}>
+          <EnhancedComponentExplorer />
+        </Card>
 
         {/* Installation */}
         <Column gap={4}>
