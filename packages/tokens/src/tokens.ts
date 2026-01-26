@@ -465,6 +465,137 @@ export const densityCompact = {
 export type DensityToken = keyof typeof densityComfortable;
 
 // ============================================================================
+// Display Values
+// ============================================================================
+export const displayScale = {
+  block: "block",
+  "inline-block": "inline-block",
+  inline: "inline",
+  flex: "flex",
+  "inline-flex": "inline-flex",
+  grid: "grid",
+  "inline-grid": "inline-grid",
+  none: "none",
+  contents: "contents",
+} as const;
+
+export type DisplayToken = keyof typeof displayScale;
+
+// ============================================================================
+// Position Values
+// ============================================================================
+export const positionScale = {
+  static: "static",
+  relative: "relative",
+  absolute: "absolute",
+  fixed: "fixed",
+  sticky: "sticky",
+} as const;
+
+export type PositionToken = keyof typeof positionScale;
+
+// ============================================================================
+// Overflow Values
+// ============================================================================
+export const overflowScale = {
+  visible: "visible",
+  hidden: "hidden",
+  scroll: "scroll",
+  auto: "auto",
+  clip: "clip",
+} as const;
+
+export type OverflowToken = keyof typeof overflowScale;
+
+// ============================================================================
+// Flex Grow Scale
+// ============================================================================
+export const flexGrowScale = {
+  0: "0",
+  1: "1",
+} as const;
+
+export type FlexGrowToken = keyof typeof flexGrowScale;
+
+// ============================================================================
+// Flex Shrink Scale
+// ============================================================================
+export const flexShrinkScale = {
+  0: "0",
+  1: "1",
+} as const;
+
+export type FlexShrinkToken = keyof typeof flexShrinkScale;
+
+// ============================================================================
+// Order Scale (for flex items)
+// ============================================================================
+export const orderScale = {
+  "-1": "-1",
+  0: "0",
+  1: "1",
+  2: "2",
+  3: "3",
+} as const;
+
+export type OrderToken = keyof typeof orderScale;
+
+// ============================================================================
+// Cursor Values
+// ============================================================================
+export const cursorScale = {
+  auto: "auto",
+  default: "default",
+  pointer: "pointer",
+  wait: "wait",
+  text: "text",
+  move: "move",
+  "not-allowed": "not-allowed",
+  grab: "grab",
+  grabbing: "grabbing",
+} as const;
+
+export type CursorToken = keyof typeof cursorScale;
+
+// ============================================================================
+// Text Transform Values
+// ============================================================================
+export const textTransformScale = {
+  none: "none",
+  uppercase: "uppercase",
+  lowercase: "lowercase",
+  capitalize: "capitalize",
+} as const;
+
+export type TextTransformToken = keyof typeof textTransformScale;
+
+// ============================================================================
+// White Space Values
+// ============================================================================
+export const whiteSpaceScale = {
+  normal: "normal",
+  nowrap: "nowrap",
+  pre: "pre",
+  "pre-line": "pre-line",
+  "pre-wrap": "pre-wrap",
+} as const;
+
+export type WhiteSpaceToken = keyof typeof whiteSpaceScale;
+
+// ============================================================================
+// Object Fit Values
+// ============================================================================
+export const objectFitScale = {
+  contain: "contain",
+  cover: "cover",
+  fill: "fill",
+  none: "none",
+  "scale-down": "scale-down",
+} as const;
+
+export type ObjectFitToken = keyof typeof objectFitScale;
+
+// ============================================================================
 // Tone Variants (for primitives)
 // ============================================================================
 export const tones = ["neutral", "primary", "danger", "warn", "success"] as const;
@@ -491,6 +622,16 @@ export const tokens = {
   contrast: contrastScale,
   saturate: saturateScale,
   scale: scaleScale,
+  display: displayScale,
+  position: positionScale,
+  overflow: overflowScale,
+  flexGrow: flexGrowScale,
+  flexShrink: flexShrinkScale,
+  order: orderScale,
+  cursor: cursorScale,
+  textTransform: textTransformScale,
+  whiteSpace: whiteSpaceScale,
+  objectFit: objectFitScale,
   fontFamily,
   fontSize: fontSizeScale,
   lineHeight,

@@ -1,0 +1,242 @@
+# staple-css: Token-Based Design System for Humans and AI
+
+## Overview
+
+staple-css is a **token-based design system** that enforces visual consistency through semantic CSS variables. It provides React primitives that accept token keys (like `pad={4}`) rather than arbitrary values.
+
+**Core Philosophy:**
+- Tokens are the API - components consume token keys, not raw pixel values
+- Contract over customization - a stable, constrained API enables consistency
+- Consistency by default - escape hatches via `className` and `style` props
+
+## Token Categories and Allowed Values
+
+### Space Tokens (0-8 scale)
+Used for: `pad`, `gap`, `margin`
+- **0** = 0 (no spacing)
+- **1** = 4px (tight spacing)
+- **2** = 8px (compact)
+- **3** = 12px (default)
+- **4** = 16px (comfortable)
+- **5** = 24px (generous)
+- **6** = 32px (section)
+- **7** = 48px (large section)
+- **8** = 64px (hero)
+
+### Radius Tokens (0-4 scale)
+Used for: `radius`
+- **0** = 0px (sharp corners)
+- **1** = 2px (subtle rounding)
+- **2** = 4px (standard rounding)
+- **3** = 8px (prominent rounding)
+- **4** = 16px (pill shape)
+
+### Shadow Tokens (0-2 scale)
+Used for: `shadow`
+- **0** = none
+- **1** = subtle elevation
+- **2** = prominent elevation
+
+### Font Size Tokens (0-6 scale)
+Used for: Text `size` prop
+- **0** = 12px (caption)
+- **1** = 14px (small)
+- **2** = 16px (body default)
+- **3** = 18px (large body)
+- **4** = 20px (heading 3)
+- **5** = 24px (heading 2)
+- **6** = 32px (heading 1)
+
+### Font Weight Tokens
+Allowed: `normal` (400), `medium` (500), `semibold` (600), `bold` (700)
+
+### Line Height Tokens
+Allowed: `tight` (1.25), `normal` (1.5), `relaxed` (1.75)
+
+### Color Tokens
+**Semantic colors** (adapt to light/dark theme):
+- `text`, `textMuted`, `textInverse`
+- `background`, `surface`, `surfaceRaised`
+- `border`, `borderMuted`
+- `primary`, `primaryHover`, `primaryText`
+- `danger`, `dangerHover`, `dangerText`, `dangerSurface`
+- `warn`, `warnHover`, `warnText`, `warnSurface`
+- `success`, `successHover`, `successText`, `successSurface`
+
+### Display Tokens
+Allowed: `block`, `inline-block`, `inline`, `flex`, `inline-flex`, `grid`, `inline-grid`, `none`, `contents`
+
+### Position Tokens
+Allowed: `static`, `relative`, `absolute`, `fixed`, `sticky`
+
+### Overflow Tokens
+Allowed: `visible`, `hidden`, `scroll`, `auto`, `clip`
+
+### Flex Layout Tokens
+- **Flex Grow:** `0`, `1`
+- **Flex Shrink:** `0`, `1`
+- **Order:** `-1`, `0`, `1`, `2`, `3`
+- **Align (items):** `start`, `center`, `end`, `stretch`, `baseline`
+- **Justify (content):** `start`, `center`, `end`, `between`, `around`, `evenly`
+
+### Grid Tokens
+- **Columns:** `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `none`
+- **Rows:** `1`, `2`, `3`, `4`, `5`, `6`, `none`
+- **Auto Flow:** `row`, `column`, `dense`, `row-dense`, `column-dense`
+
+### Cursor Tokens
+Allowed: `auto`, `default`, `pointer`, `wait`, `text`, `move`, `not-allowed`, `grab`, `grabbing`
+
+### Text Transform Tokens
+Allowed: `none`, `uppercase`, `lowercase`, `capitalize`
+
+### White Space Tokens
+Allowed: `normal`, `nowrap`, `pre`, `pre-line`, `pre-wrap`
+
+### Object Fit Tokens (images/video)
+Allowed: `contain`, `cover`, `fill`, `none`, `scale-down`
+
+### Z-Index Tokens
+Allowed: `0`, `10`, `20`, `30`, `40`, `50`, `max` (9999)
+
+### Opacity Tokens (0-100)
+Allowed: `0`, `5`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `100`
+
+### Duration Tokens (motion)
+Allowed: `fast` (100ms), `normal` (200ms), `slow` (300ms)
+
+### Easing Tokens (motion)
+Allowed: `default`, `in`, `out`, `inOut`
+
+## Component API Reference
+
+### Box
+**Props:** `pad`, `margin`, `marginX`, `marginY`, `marginTop`, `marginBottom`, `marginLeft`, `marginRight`, `radius`, `shadow`, `zIndex`, `opacity`, `borderWidth`, `maxWidth`, `aspectRatio`, `outlineWidth`, `outlineOffset`, `className`, `style`
+**Token types:** space, radius, shadow, opacity, zIndex, borderWidth, maxWidth, aspectRatio, outlineWidth, outlineOffset
+
+### Stack (vertical layout)
+**Props:** `gap`, `align`, `className`, `style`
+**Token types:** space (gap), flex alignment
+
+### Inline (horizontal layout)
+**Props:** `gap`, `align`, `justify`, `wrap`, `className`, `style`
+**Token types:** space (gap), flex alignment and justify
+
+### Grid (CSS Grid layout)
+**Props:** `cols`, `rows`, `gap`, `rowGap`, `columnGap`, `flow`, `align`, `justify`, `className`, `style`
+**Token types:** grid, space (gap), grid alignment
+
+### Container (centered max-width)
+**Props:** `size` (`sm`, `md`, `lg`, `xl`), `className`, `style`
+
+### Text (typography)
+**Props:** `as`, `size`, `weight`, `tone`, `align`, `leading`, `mono`, `className`, `style`
+**Token types:** fontSize, fontWeight, tone, lineHeight
+
+### Card (surface wrapper)
+**Props:** `pad`, `radius`, `shadow`, `tone`, `as`, `className`, `style`
+**Token types:** space, radius, shadow, tone
+
+### Flex (raw flex container)
+**Props:** `direction`, `wrap`, `align`, `justify`, `gap`, `className`, `style`
+**Token types:** space (gap), flex controls
+
+## Responsive Design
+
+All layout props support responsive objects using breakpoints:
+- `base` - Default (mobile-first)
+- `sm` - 640px and up
+- `md` - 768px and up
+- `lg` - 1024px and up
+- `xl` - 1280px and up
+- `2xl` - 1536px and up
+
+**Example:**
+```tsx
+<Box pad={{ base: 2, md: 4, lg: 6 }} />
+<Grid cols={{ base: 1, sm: 2, md: 4 }} gap={{ base: 2, md: 4 }} />
+```
+
+## Common UI Patterns
+
+### Card Layout
+```tsx
+<Box pad={4} radius={2} shadow={1}>
+  <Stack gap={2}>
+    <Text size={4} weight="bold">Title</Text>
+    <Text tone="muted">Description</Text>
+  </Stack>
+</Box>
+```
+
+### Button Group
+```tsx
+<Inline gap={2} align="center">
+  <button>Cancel</button>
+  <button>Save</button>
+</Inline>
+```
+
+### Form Field
+```tsx
+<Stack gap={2}>
+  <Text as="label" size={1} weight="semibold">Email</Text>
+  <input type="email" />
+  <Text tone="muted" size={0}>Help text</Text>
+</Stack>
+```
+
+### Responsive Grid
+```tsx
+<Grid cols={{ base: 1, md: 2, lg: 4 }} gap={4}>
+  <Card />
+  <Card />
+  <Card />
+</Grid>
+```
+
+## Theme System
+
+### Static Themes (build-time)
+Export custom themes as CSS or JavaScript from Token Studio.
+
+### Dynamic Themes (runtime)
+```tsx
+import { applyDynamicTheme } from '@staple-css/tokens/dynamic-theme';
+import { ThemeProvider } from '@staple-css/primitives';
+
+// Apply globally
+applyDynamicTheme(customTheme);
+
+// Or use React provider
+<ThemeProvider theme={customTheme}>
+  <App />
+</ThemeProvider>
+```
+
+## Performance Notes
+
+- **Zero runtime CSS generation** - All CSS is static
+- **Tree-shakeable** - Import only what you use
+- **Minimal dependencies** - Just React peer dependency
+- **Stable class names** - Never change per render
+- **Bundle size** - Tokens: ~50KB, Primitives: ~25KB (uncompressed)
+
+## LLM Usage Guidelines
+
+When generating code with staple-css:
+1. Always use token values from the allowed lists above
+2. Use space tokens (0-8) for all spacing - never use pixels or arbitrary values
+3. Use semantic color tokens - never use hex colors directly (except in overrides)
+4. Use responsive objects for responsive layouts
+5. Prefer token-based components over bare HTML with className hacks
+6. Use `className` escape hatch only for non-token styles
+7. Keep token values constrained - this is a feature, not a limitation
+
+## Links
+
+- **Documentation:** https://staple-lab.github.io/staple-css/
+- **Token Studio:** https://staple-lab.github.io/staple-css/tokens-studio
+- **GitHub:** https://github.com/staple-lab/staple-css
+- **npm @staple-css/tokens:** https://www.npmjs.com/package/@staple-css/tokens
+- **npm @staple-css/primitives:** https://www.npmjs.com/package/@staple-css/primitives

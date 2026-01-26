@@ -26,6 +26,16 @@ import {
   contrastScale,
   saturateScale,
   scaleScale,
+  displayScale,
+  positionScale,
+  overflowScale,
+  flexGrowScale,
+  flexShrinkScale,
+  orderScale,
+  cursorScale,
+  textTransformScale,
+  whiteSpaceScale,
+  objectFitScale,
   fontFamily,
   fontSizeScale,
   lineHeight,
@@ -144,6 +154,36 @@ ${generateVars("duration", duration)}
 
   /* Motion - Easing */
 ${generateVars("easing", easing)}
+
+  /* Display Values */
+${generateVars("display", displayScale)}
+
+  /* Position Values */
+${generateVars("position", positionScale)}
+
+  /* Overflow Values */
+${generateVars("overflow", overflowScale)}
+
+  /* Flex Grow */
+${generateVars("flex-grow", flexGrowScale)}
+
+  /* Flex Shrink */
+${generateVars("flex-shrink", flexShrinkScale)}
+
+  /* Order */
+${generateVars("order", orderScale)}
+
+  /* Cursor */
+${generateVars("cursor", cursorScale)}
+
+  /* Text Transform */
+${generateVars("text-transform", textTransformScale)}
+
+  /* White Space */
+${generateVars("white-space", whiteSpaceScale)}
+
+  /* Object Fit */
+${generateVars("object-fit", objectFitScale)}
 }
 `;
 
