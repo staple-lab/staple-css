@@ -33,6 +33,13 @@ import {
 import { generateHarmony, wcagContrastHex, type HarmonyType } from "@staple-css/tokens/color";
 import { ColorPicker } from "../../components/ColorPicker";
 import { CodePreview } from "../../components/CodePreview";
+import {
+  TransformEffectsEditor,
+  BorderOutlineEditor,
+  LayoutUtilitiesEditor,
+  SizingDepthEditor,
+  TextUtilitiesEditor,
+} from "./TokenScaleEditors";
 
 // ============================================================================
 // Types
@@ -47,6 +54,7 @@ interface ResponsiveValue {
 }
 
 interface ScaleTokens {
+  // Existing scales
   space: Record<string, ResponsiveValue>;
   radius: Record<string, string>;
   shadow: Record<string, string>;
@@ -55,6 +63,43 @@ interface ScaleTokens {
   lineHeight: Record<string, string>;
   duration: Record<string, string>;
   easing: Record<string, string>;
+
+  // New: Transform & Effects
+  blur?: Record<string, string>;
+  brightness?: Record<string, string>;
+  contrast?: Record<string, string>;
+  saturate?: Record<string, string>;
+  scale?: Record<string, string>;
+  translate?: Record<string, string>;
+  rotate?: Record<string, string>;
+  backdrop?: Record<string, string>;
+
+  // New: Border & Outline
+  borderWidth?: Record<string, string>;
+  outlineWidth?: Record<string, string>;
+  outlineOffset?: Record<string, string>;
+  letterSpacing?: Record<string, string>;
+  lineClamp?: Record<string, string>;
+
+  // New: Layout Utilities
+  display?: Record<string, string>;
+  position?: Record<string, string>;
+  overflow?: Record<string, string>;
+  flexGrow?: Record<string, string>;
+  flexShrink?: Record<string, string>;
+  order?: Record<string, string>;
+
+  // New: Sizing & Depth
+  maxWidth?: Record<string, string>;
+  aspectRatio?: Record<string, string>;
+  zIndex?: Record<string, string>;
+  opacity?: Record<string, string>;
+
+  // New: Text Utilities
+  textTransform?: Record<string, string>;
+  whiteSpace?: Record<string, string>;
+  objectFit?: Record<string, string>;
+  cursor?: Record<string, string>;
 }
 
 interface WorkingState {
@@ -144,6 +189,7 @@ export function BuilderPage() {
       semanticMap: defaultConfig.semanticMap,
       overrides: [],
       scales: {
+        // Existing scales
         space: toResponsiveSpace(spaceScale),
         radius: { ...radiusScale },
         shadow: { ...shadowScale },
@@ -152,6 +198,35 @@ export function BuilderPage() {
         lineHeight: { ...lineHeight },
         duration: { ...duration },
         easing: { ...easing },
+
+        // New scales - initialized as empty, users can add items
+        blur: {},
+        brightness: {},
+        contrast: {},
+        saturate: {},
+        scale: {},
+        translate: {},
+        rotate: {},
+        backdrop: {},
+        borderWidth: {},
+        outlineWidth: {},
+        outlineOffset: {},
+        letterSpacing: {},
+        lineClamp: {},
+        display: {},
+        position: {},
+        overflow: {},
+        flexGrow: {},
+        flexShrink: {},
+        order: {},
+        maxWidth: {},
+        aspectRatio: {},
+        zIndex: {},
+        opacity: {},
+        textTransform: {},
+        whiteSpace: {},
+        objectFit: {},
+        cursor: {},
       },
       breakpoints: { ...defaultBreakpoints },
     };
@@ -2446,7 +2521,10 @@ function ScalesStep({
   onAddBreakpoint,
   onRemoveBreakpoint,
 }: ScalesStepProps) {
-  const [activeTab, setActiveTab] = useState<"breakpoints" | "space" | "radius" | "shadow" | "typography" | "motion">("breakpoints");
+  const [activeTab, setActiveTab] = useState<
+    "breakpoints" | "space" | "radius" | "shadow" | "typography" | "motion" |
+    "transforms" | "borders" | "layout" | "sizing" | "text"
+  >("breakpoints");
   const [playingEasing, setPlayingEasing] = useState<string | null>(null);
 
   // Expansion state for scale categories (space, radius, shadow currently expandable)
@@ -2517,44 +2595,83 @@ function ScalesStep({
           </Column>
 
           {/* Tab Navigation */}
-          <Row gap={2} wrap="wrap">
-            <button
-              onClick={() => setActiveTab("breakpoints")}
-              className={`studio-btn studio-btn--sm ${activeTab === "breakpoints" ? "studio-btn--primary" : ""}`}
-            >
-              Breakpoints
-            </button>
-            <button
-              onClick={() => setActiveTab("space")}
-              className={`studio-btn studio-btn--sm ${activeTab === "space" ? "studio-btn--primary" : ""}`}
-            >
-              Space
-            </button>
-            <button
-              onClick={() => setActiveTab("radius")}
-              className={`studio-btn studio-btn--sm ${activeTab === "radius" ? "studio-btn--primary" : ""}`}
-            >
-              Radius
-            </button>
-            <button
-              onClick={() => setActiveTab("shadow")}
-              className={`studio-btn studio-btn--sm ${activeTab === "shadow" ? "studio-btn--primary" : ""}`}
-            >
-              Shadow
-            </button>
-            <button
-              onClick={() => setActiveTab("typography")}
-              className={`studio-btn studio-btn--sm ${activeTab === "typography" ? "studio-btn--primary" : ""}`}
-            >
-              Typography
-            </button>
-            <button
-              onClick={() => setActiveTab("motion")}
-              className={`studio-btn studio-btn--sm ${activeTab === "motion" ? "studio-btn--primary" : ""}`}
-            >
-              Motion
-            </button>
-          </Row>
+          <Column gap={3}>
+            <Row gap={2} wrap="wrap">
+              <button
+                onClick={() => setActiveTab("breakpoints")}
+                className={`studio-btn studio-btn--sm ${activeTab === "breakpoints" ? "studio-btn--primary" : ""}`}
+              >
+                Breakpoints
+              </button>
+              <button
+                onClick={() => setActiveTab("space")}
+                className={`studio-btn studio-btn--sm ${activeTab === "space" ? "studio-btn--primary" : ""}`}
+              >
+                Space
+              </button>
+              <button
+                onClick={() => setActiveTab("radius")}
+                className={`studio-btn studio-btn--sm ${activeTab === "radius" ? "studio-btn--primary" : ""}`}
+              >
+                Radius
+              </button>
+              <button
+                onClick={() => setActiveTab("shadow")}
+                className={`studio-btn studio-btn--sm ${activeTab === "shadow" ? "studio-btn--primary" : ""}`}
+              >
+                Shadow
+              </button>
+              <button
+                onClick={() => setActiveTab("typography")}
+                className={`studio-btn studio-btn--sm ${activeTab === "typography" ? "studio-btn--primary" : ""}`}
+              >
+                Typography
+              </button>
+              <button
+                onClick={() => setActiveTab("motion")}
+                className={`studio-btn studio-btn--sm ${activeTab === "motion" ? "studio-btn--primary" : ""}`}
+              >
+                Motion
+              </button>
+            </Row>
+            <Row gap={2} wrap="wrap">
+              <button
+                onClick={() => setActiveTab("transforms")}
+                className={`studio-btn studio-btn--sm ${activeTab === "transforms" ? "studio-btn--primary" : ""}`}
+                title="Blur, brightness, contrast, saturate, scale, translate, rotate, backdrop"
+              >
+                ✨ Transforms & Effects
+              </button>
+              <button
+                onClick={() => setActiveTab("borders")}
+                className={`studio-btn studio-btn--sm ${activeTab === "borders" ? "studio-btn--primary" : ""}`}
+                title="Border width, outline, letter spacing, line clamp"
+              >
+                ◻️ Borders & Text
+              </button>
+              <button
+                onClick={() => setActiveTab("layout")}
+                className={`studio-btn studio-btn--sm ${activeTab === "layout" ? "studio-btn--primary" : ""}`}
+                title="Display, position, overflow, flex, order"
+              >
+                📐 Layout Utils
+              </button>
+              <button
+                onClick={() => setActiveTab("sizing")}
+                className={`studio-btn studio-btn--sm ${activeTab === "sizing" ? "studio-btn--primary" : ""}`}
+                title="Max width, aspect ratio, z-index, opacity"
+              >
+                📏 Sizing & Depth
+              </button>
+              <button
+                onClick={() => setActiveTab("text")}
+                className={`studio-btn studio-btn--sm ${activeTab === "text" ? "studio-btn--primary" : ""}`}
+                title="Text transform, white space, object fit, cursor"
+              >
+                ✏️ Text Utils
+              </button>
+            </Row>
+          </Column>
         </Column>
       </Card>
 
@@ -3135,6 +3252,61 @@ function ScalesStep({
             </Column>
           </Card>
         </Column>
+      )}
+
+      {/* Transform & Effects */}
+      {activeTab === "transforms" && (
+        <TransformEffectsEditor
+          scales={scales}
+          onUpdate={onUpdate}
+          onReset={onReset}
+          onAddItem={onAddItem}
+          onRemoveItem={onRemoveItem}
+        />
+      )}
+
+      {/* Border & Outline */}
+      {activeTab === "borders" && (
+        <BorderOutlineEditor
+          scales={scales}
+          onUpdate={onUpdate}
+          onReset={onReset}
+          onAddItem={onAddItem}
+          onRemoveItem={onRemoveItem}
+        />
+      )}
+
+      {/* Layout Utilities */}
+      {activeTab === "layout" && (
+        <LayoutUtilitiesEditor
+          scales={scales}
+          onUpdate={onUpdate}
+          onReset={onReset}
+          onAddItem={onAddItem}
+          onRemoveItem={onRemoveItem}
+        />
+      )}
+
+      {/* Sizing & Depth */}
+      {activeTab === "sizing" && (
+        <SizingDepthEditor
+          scales={scales}
+          onUpdate={onUpdate}
+          onReset={onReset}
+          onAddItem={onAddItem}
+          onRemoveItem={onRemoveItem}
+        />
+      )}
+
+      {/* Text Utilities */}
+      {activeTab === "text" && (
+        <TextUtilitiesEditor
+          scales={scales}
+          onUpdate={onUpdate}
+          onReset={onReset}
+          onAddItem={onAddItem}
+          onRemoveItem={onRemoveItem}
+        />
       )}
     </Column>
   );

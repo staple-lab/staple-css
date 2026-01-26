@@ -100,12 +100,15 @@ export function HomePage() {
             </Box>
 
             {/* CTA Buttons */}
-            <Row gap={3} style={{ marginTop: "var(--st-space-2)" }}>
+            <Row gap={3} style={{ marginTop: "var(--st-space-2)", flexWrap: "wrap" }}>
               <PrimaryButton href="#playground" style={{ background: "white", color: "var(--st-color-primary)" }}>
                 Try it Live →
               </PrimaryButton>
+              <SecondaryButton href="/examples" style={{ borderColor: "white", color: "white" }}>
+                View Examples
+              </SecondaryButton>
               <SecondaryButton href="/storybook" target="_blank" rel="noopener noreferrer" style={{ borderColor: "white", color: "white" }}>
-                View Components
+                Storybook
               </SecondaryButton>
             </Row>
 
