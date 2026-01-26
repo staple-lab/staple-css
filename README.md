@@ -8,7 +8,7 @@ A semantic, token-first CSS framework with React primitives. Built for consisten
 
 <div align="center">
 
-**[📚 Documentation](https://staple-lab.github.io/staple-css/)** • **[🎨 Token Studio](https://staple-lab.github.io/staple-css/tokens-studio)** • **[📖 Storybook](https://staple-lab.github.io/staple-css/storybook)** • **[💬 GitHub](https://github.com/staple-lab/staple-css)**
+**[📚 Documentation](https://css.staplelab.com/)** • **[🎨 Token Studio](https://css.staplelab.com/tokens-studio)** • **[📖 Storybook](https://css.staplelab.com/storybook)** • **[💬 GitHub](https://github.com/staple-lab/staple-css)**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![npm: @staple-css/tokens](https://img.shields.io/npm/v/@staple-css/tokens)](https://www.npmjs.com/package/@staple-css/tokens)
@@ -227,13 +227,13 @@ An **interactive visual builder** for creating custom design systems. Better tha
 - 💾 Export to CSS, JSON, TypeScript
 - 📦 Import from Figma, Style Dictionary, etc.
 
-[**Launch Token Studio →**](https://staple-lab.github.io/staple-css/tokens-studio)
+[**Launch Token Studio →**](https://css.staplelab.com/tokens-studio)
 
 ### 📖 Storybook
 
 Browse all components with **interactive controls**, view source code, and test accessibility.
 
-[**View Storybook →**](https://staple-lab.github.io/staple-css/storybook)
+[**View Storybook →**](https://css.staplelab.com/storybook)
 
 ### 🎭 Advanced Theming
 
@@ -742,9 +742,9 @@ const Card = styled.div`
 The docs, Token Studio, and Storybook are automatically deployed to GitHub Pages on every push to `main`.
 
 **Live URLs:**
-- Docs: https://staple-lab.github.io/staple-css/
-- Token Studio: https://staple-lab.github.io/staple-css/tokens-studio
-- Storybook: https://staple-lab.github.io/staple-css/storybook
+- Docs: https://css.staplelab.com/
+- Token Studio: https://css.staplelab.com/tokens-studio
+- Storybook: https://css.staplelab.com/storybook
 
 ### Manual Build
 
@@ -885,9 +885,9 @@ MIT © [staple-lab](https://github.com/staple-lab)
 
 ## Links
 
-- **[Documentation](https://staple-lab.github.io/staple-css/)**
-- **[Token Studio](https://staple-lab.github.io/staple-css/tokens-studio)**
-- **[Storybook](https://staple-lab.github.io/staple-css/storybook)**
+- **[Documentation](https://css.staplelab.com/)**
+- **[Token Studio](https://css.staplelab.com/tokens-studio)**
+- **[Storybook](https://css.staplelab.com/storybook)**
 - **[GitHub](https://github.com/staple-lab/staple-css)**
 - **[npm: @staple-css/tokens](https://www.npmjs.com/package/@staple-css/tokens)**
 - **[npm: @staple-css/primitives](https://www.npmjs.com/package/@staple-css/primitives)**
