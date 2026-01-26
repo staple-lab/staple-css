@@ -78,9 +78,9 @@ export function HomePage() {
           <Card pad={5} radius={3} shadow={1}>
             <Column gap={2}>
               <Text size={5}>⚡</Text>
-              <Text weight="bold">Zero Runtime</Text>
+              <Text weight="bold">Ultra-Lightweight</Text>
               <Text size={1} tone="muted">
-                ~30KB total. Static CSS, no JavaScript overhead, tree-shakeable exports. Faster than CSS-in-JS.
+                Core: 2.5 KB. Full: 8.23 KB gzip. Zero JavaScript. Static CSS, tree-shakeable exports.
               </Text>
             </Column>
           </Card>

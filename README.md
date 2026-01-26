@@ -65,7 +65,54 @@ A semantic, token-first CSS framework with React primitives. Built for consisten
 npm install @staple-css/tokens @staple-css/primitives
 ```
 
-## Basic Usage
+## Quick Start: Choose Your Edition
+
+### 🎯 Core Edition (2.5 KB gzip)
+Perfect for minimal apps, embedded systems, performance-critical projects.
+
+```tsx
+// Import minimal CSS and components
+import "@staple-css/tokens/core.css";
+import "@staple-css/primitives/core.css";
+
+// Only Box, Flex (Row/Column), Text - compose to build any layout
+import { Box, Flex, Text } from "@staple-css/primitives/core";
+
+export function App() {
+  return (
+    <Flex direction="column" gap={4} pad={4}>
+      <Text as="h1" size={6} weight="bold">Hello World</Text>
+      <Box>Any content</Box>
+    </Flex>
+  );
+}
+```
+
+### ⚡ Full Edition (8.23 KB gzip)
+Recommended for most projects. Includes all components and features.
+
+```tsx
+// Import full CSS and components
+import "@staple-css/tokens/all.css";
+import "@staple-css/primitives/primitives.css";
+
+// All 8 primitives: Box, Flex, Grid, Container, Text, Card, etc.
+import { Container, Stack, Grid, Card, Text } from "@staple-css/primitives";
+
+export function App() {
+  return (
+    <Container size="lg">
+      <Grid cols={{ base: 1, md: 3 }} gap={4}>
+        <Card pad={5} radius={3}>
+          <Text>Easier layouts with Grid + Card</Text>
+        </Card>
+      </Grid>
+    </Container>
+  );
+}
+```
+
+## Basic Usage (Full Edition)
 
 ```tsx
 // 1. Import CSS once at app root
@@ -749,9 +796,14 @@ staple-css is built for **maximum performance**:
 
 ### Bundle Size (min+gzip)
 
-- `@staple-css/tokens`: ~18 KB CSS
-- `@staple-css/primitives`: ~4 KB JS + ~8 KB CSS
-- **Total: ~30 KB** (tokens + primitives)
+**Core Edition (2.5 KB gzip):**
+- `@staple-css/tokens` (core): ~1.2 KB
+- `@staple-css/primitives/core`: ~1.3 KB (3 components: Box, Flex, Text)
+
+**Full Edition (8.23 KB gzip):**
+- `@staple-css/tokens`: ~2.13 KB
+- `@staple-css/primitives`: ~2.25 KB JS + ~2.87 KB CSS
+- Includes: 8 components, all tokens, themes, density modes
 
 ### Runtime Performance
 
@@ -765,7 +817,8 @@ staple-css is built for **maximum performance**:
 
 | Library | Min+Gzip | Runtime Cost | Style Generation |
 |---------|----------|--------------|------------------|
-| **staple-css** | ~30 KB | 0 KB | Static |
+| **staple-css (core)** | **2.5 KB** | 0 KB | Static |
+| **staple-css (full)** | **8.23 KB** | 0 KB | Static |
 | Tailwind CSS | ~10 KB (base) | 0 KB | Static |
 | Chakra UI | ~90 KB | ~45 KB | Runtime |
 | Emotion | ~15 KB + CSS | ~15 KB | Runtime |
@@ -822,7 +875,7 @@ staple-css is built for **maximum performance**:
 ```
 
 **Benefits:**
-- ✅ Smaller bundle (~30 KB vs ~90 KB)
+- ✅ Smaller bundle (2.5 KB core, 8.23 KB full vs ~90 KB for UI libraries)
 - ✅ Zero runtime overhead
 - ✅ Simpler mental model
 - ✅ Faster to learn
@@ -1016,7 +1069,7 @@ All component props are fully typed. TypeScript prevents invalid values at compi
 
 ### Performance Specifications
 
-- ✅ **Bundle size:** ~30 KB (tokens + primitives, min+gzip)
+- ✅ **Bundle size:** 2.5 KB (core) or 8.23 KB (full, min+gzip)
 - ✅ **Runtime cost:** 0 KB — All CSS is static
 - ✅ **Class names:** Stable per-prop (never changes)
 - ✅ **Tree-shaking:** Import only components you use
@@ -1077,9 +1130,9 @@ All component props are fully typed. TypeScript prevents invalid values at compi
 ### Bundle Size Tracking
 ```bash
 npm run bundle-size
-# @staple-css/tokens: ~18 KB (gzip)
-# @staple-css/primitives: ~12 KB (gzip)
-# Total: ~30 KB (gzip)
+# Core Edition: 2.5 KB gzip (Box, Flex, Text)
+# Full Edition: 8.23 KB gzip (all components + features)
+# Default imports full edition - use /core for minimal size
 ```
 
 ### Code Quality

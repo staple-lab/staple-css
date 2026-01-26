@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  entry: ["src/index.ts"],
+  entry: ["src/index.ts", "src/core.ts"],
   format: ["esm"],
   dts: true,
   clean: true,
@@ -15,11 +15,16 @@ export default defineConfig({
   treeshake: true,
   external: ["react", "@staple-css/tokens"],
   onSuccess: async () => {
-    // Copy CSS file to dist
-    const srcCss = join(__dirname, "src", "primitives.css");
-    const distCss = join(__dirname, "dist", "primitives.css");
-    mkdirSync(dirname(distCss), { recursive: true });
-    copyFileSync(srcCss, distCss);
+    // Copy CSS files to dist
+    const srcPrimitives = join(__dirname, "src", "primitives.css");
+    const distPrimitives = join(__dirname, "dist", "primitives.css");
+    mkdirSync(dirname(distPrimitives), { recursive: true });
+    copyFileSync(srcPrimitives, distPrimitives);
     console.log("Copied primitives.css to dist/");
+
+    const srcCore = join(__dirname, "src", "core.css");
+    const distCore = join(__dirname, "dist", "core.css");
+    copyFileSync(srcCore, distCore);
+    console.log("Copied core.css to dist/");
   },
 });

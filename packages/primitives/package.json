@@ -12,7 +12,12 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./primitives.css": "./dist/primitives.css"
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.js"
+    },
+    "./primitives.css": "./dist/primitives.css",
+    "./core.css": "./dist/core.css"
   },
   "files": [
     "dist"
