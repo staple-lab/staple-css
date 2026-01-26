@@ -6,6 +6,7 @@ export default defineConfig({
     "src/config.ts",
     "src/generator.ts",
     "src/color/index.ts",
+    "src/dynamic-theme.ts",
   ],
   format: ["esm"],
   dts: true,

@@ -251,3 +251,17 @@ export {
   type ThemeCollection,
   type ThemeExportFormat,
 } from "./theme-manager.js";
+
+// Re-export dynamic theme system
+export {
+  applyDynamicTheme,
+  removeDynamicTheme,
+  getCurrentTheme,
+  watchTheme,
+  mergeThemes,
+  loadThemeFromStorage,
+  saveThemeToStorage,
+  themeToJson as dynamicThemeToJson,
+  themeFromJson as dynamicThemeFromJson,
+  type DynamicTheme,
+} from "./dynamic-theme.js";

@@ -20,6 +20,10 @@ export { Grid } from "./Grid.js";
 export { Container } from "./Container.js";
 export { Text } from "./Text.js";
 export { Card } from "./Card.js";
+export { ThemeProvider } from "./ThemeProvider.js";
+
+// Hooks
+export { useTheme } from "./useTheme.js";
 
 // Types
 export type { BoxProps, BoxOwnProps } from "./Box.js";
@@ -28,6 +32,8 @@ export type { GridProps, GridOwnProps } from "./Grid.js";
 export type { ContainerProps, ContainerOwnProps } from "./Container.js";
 export type { TextProps } from "./Text.js";
 export type { CardProps } from "./Card.js";
+export type { ThemeProviderProps } from "./ThemeProvider.js";
+export type { UseThemeOptions } from "./useTheme.js";
 
 // Shared types
 export type {

@@ -1,13 +1,23 @@
 # staple-css
 
-**A shared styling contract for apps—tokens, primitives, and accessible components.**
+**Design tokens for consistency. Built for humans and AI.**
 
-Semantic CSS variables standardize spacing, color, typography, and variants. Tokens are the API. Contract over customization. Consistency by default, with deliberate escape hatches.
+staple-css is a **token-based design system** that provides semantic CSS variables, React primitives, and comprehensive documentation. It enforces design consistency through constrained token APIs—with deliberate escape hatches.
 
-📚 **[Live Documentation & Token Studio](https://staple-lab.github.io/staple-css/)** | 🎨 [Try the Token Builder](https://staple-lab.github.io/staple-css/tokens-studio)
+- 🎨 **Token-First**: CSS variables as the API, not arbitrary values
+- 🤖 **LLM-Friendly**: Clear allowed values and patterns for AI-assisted code generation
+- 📱 **Responsive**: Mobile-first breakpoint system (sm, md, lg, xl, 2xl)
+- 🌓 **Theme System**: Static and dynamic theming with full tree-shaking support
+- 🚀 **Zero Runtime**: All CSS is static—no style generation overhead
+- ♿ **Accessible**: WCAG compliant colors, semantic HTML, built-in focus states
+- 📦 **Minimal**: ~75KB total (tokens + primitives), tree-shakeable ESM exports
+
+📚 **[Documentation](https://staple-lab.github.io/staple-css/)** | 🎨 **[Token Studio](https://staple-lab.github.io/staple-css/tokens-studio)** | 📖 **[Storybook](https://staple-lab.github.io/staple-css/storybook)** | 📄 **[LLM Guide](./llms.txt)**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/)
+[![npm: @staple-css/tokens](https://img.shields.io/npm/v/@staple-css/tokens)](https://www.npmjs.com/package/@staple-css/tokens)
+[![npm: @staple-css/primitives](https://img.shields.io/npm/v/@staple-css/primitives)](https://www.npmjs.com/package/@staple-css/primitives)
 
 ## ✨ Features
 
@@ -98,6 +108,73 @@ function ResponsiveLayout() {
 - `xl` - 1280px and up
 - `2xl` - 1536px and up
 
+## 🤖 Perfect for LLM-Assisted Development
+
+staple-css is specifically designed to work well with AI code generation tools. See **[llms.txt](./llms.txt)** for a concise reference of allowed token values and **[llms-full.txt](./llms-full.txt)** for comprehensive examples.
+
+**LLM-Friendly Features:**
+- ✅ Constrained token values prevent hallucination of arbitrary CSS values
+- ✅ Clear, documented API surfaces for consistent code generation
+- ✅ Responsive patterns that are easy for LLMs to understand and implement
+- ✅ Common patterns documented with copy-paste ready examples
+- ✅ Type safety ensures generated code is correct TypeScript
+
+**Example: AI generates consistent layouts**
+```tsx
+// LLM knows spacing tokens are 0-8, not arbitrary pixels
+<Stack gap={4}>  // ✓ Generates 16px gap
+  <Card pad={5} radius={2} shadow={1}>
+    <Text size={4} weight="bold">Heading</Text>
+  </Card>
+</Stack>
+```
+
+## 📐 Theme System
+
+### Static Themes (Build-Time)
+Export custom themes as static CSS for production:
+```tsx
+import { createTheme, themeToCSS } from '@staple-css/tokens';
+
+const brandTheme = createTheme({
+  colors: { primary: '#007bff', text: '#212529' },
+  space: { /* custom spacing scale */ },
+});
+
+const css = themeToCSS(brandTheme);
+// Use in your build process
+```
+
+### Dynamic Themes (Runtime)
+Apply and switch themes at runtime:
+```tsx
+import { applyDynamicTheme } from '@staple-css/tokens/dynamic-theme';
+import { ThemeProvider, useTheme } from '@staple-css/primitives';
+
+// Apply globally
+applyDynamicTheme(customTheme);
+
+// Or use React Provider
+<ThemeProvider theme={customTheme}>
+  <App />
+</ThemeProvider>
+
+// Or hook-based
+const { apply, remove } = useTheme();
+apply(darkTheme);
+```
+
+### Theme Scoping
+Apply different themes to different parts of your UI:
+```tsx
+<Box data-theme="brand-primary">
+  Primary brand UI
+</Box>
+<Box data-theme="brand-secondary">
+  Secondary brand UI
+</Box>
+```
+
 ## 🎨 Token Studio
 
 The **[Token Studio](https://staple-lab.github.io/staple-css/tokens-studio)** is an interactive visual builder that lets you:
@@ -154,9 +231,32 @@ function ThemeToggle() {
 
 ## 📐 Core Principles
 
-- **Tokens are the API.** Design decisions are encoded in tokens. Components consume token keys, not arbitrary values.
-- **Contract over customization.** A stable API enables consistency. Override by design, not by default.
-- **Consistency by default, escape hatches by design.** The happy path keeps you in the token system. `className` is always available for overrides.
+1. **Tokens are the API** - Design decisions are encoded in tokens. Components consume token keys (`pad={4}`), not raw values (`padding: 16px`).
+2. **Contract over customization** - A stable, constrained API enables consistency. Override by design, not by default.
+3. **Consistency by default** - The happy path keeps you in the token system. Escape hatches via `className` and `style` props for exceptions.
+4. **Zero runtime overhead** - All CSS is static. No JavaScript style generation, no CSS-in-JS overhead.
+5. **LLM-aware design** - Constrained APIs that prevent AI hallucination and enable consistent code generation.
+
+## 🎯 Why staple-css?
+
+### vs. Tailwind CSS
+- **Token-first instead of utility-first**: Semantic APIs (`pad={4}`) instead of class names (`p-4`)
+- **Built-in theming**: Static and dynamic themes with scoping
+- **Type-safe by default**: TypeScript props prevent invalid values
+- **Smaller API surface**: Easier for LLMs to generate correct code
+- **Works great with AI**: Constrained values prevent hallucination
+
+### vs. CSS-in-JS (Emotion, Styled Components)
+- **Zero runtime overhead**: Static CSS generated at build time
+- **Better bundle size**: ~75KB total vs. runtime libraries
+- **Native CSS variables**: Works everywhere, no custom API
+- **Works with any framework**: Not tied to React internals
+
+### vs. Material-UI / Chakra UI
+- **Lightweight primitives**: Box, Stack, Grid, not 100+ components
+- **Token-first philosophy**: Consistency through constraints, not component variants
+- **Better for AI**: Clearer patterns for code generation
+- **Simpler learning curve**: Fewer options = faster onboarding
 
 ## 🎯 Primitives Reference
 
@@ -276,6 +376,28 @@ Surface wrapper for grouped content with elevation.
 ```
 
 **Props:** `pad`, `radius`, `shadow`, `tone`, `as`, `className`, `style`
+
+## 📚 Complete Token Reference
+
+**Quick lookup:** See [llms.txt](./llms.txt) for concise reference or [llms-full.txt](./llms-full.txt) for comprehensive examples.
+
+### All Token Categories
+
+| Category | Values | CSS Variable | Usage |
+|----------|--------|--------------|-------|
+| **Space** | 0-8 | `--st-space-{n}` | `pad`, `gap`, `margin` |
+| **Radius** | 0-4 | `--st-radius-{n}` | `radius` |
+| **Shadow** | 0-2 | `--st-shadow-{n}` | `shadow` |
+| **Font Size** | 0-6 | `--st-font-size-{n}` | Text `size` |
+| **Font Weight** | normal, medium, semibold, bold | `--st-font-weight-{name}` | Text `weight` |
+| **Line Height** | tight, normal, relaxed | `--st-leading-{name}` | Text `leading` |
+| **Z-Index** | 0, 10, 20, 30, 40, 50, max | `--st-z-{n}` | `zIndex` |
+| **Opacity** | 0-100 | `--st-opacity-{n}` | `opacity` |
+| **Display** | block, flex, grid, none, etc. | `--st-display-{name}` | *Available via CSS* |
+| **Position** | static, relative, absolute, fixed, sticky | `--st-position-{name}` | *Available via CSS* |
+| **Overflow** | visible, hidden, scroll, auto | `--st-overflow-{name}` | *Available via CSS* |
+| **Cursor** | auto, pointer, wait, grab, etc. | `--st-cursor-{name}` | *Available via CSS* |
+| **Colors** | Semantic + 22 Tailwind palettes | `--st-color-{name}` | Text `tone`, CSS backgrounds |
 
 ## 🎨 Token Reference
 

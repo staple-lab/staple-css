@@ -24,6 +24,10 @@
       "types": "./dist/generator.d.ts",
       "import": "./dist/generator.js"
     },
+    "./dynamic-theme": {
+      "types": "./dist/dynamic-theme.d.ts",
+      "import": "./dist/dynamic-theme.js"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./themes.css": "./dist/themes.css",
     "./density.css": "./dist/density.css",
