@@ -42,6 +42,7 @@ import {
   fontWeight,
   duration,
   easing,
+  delay,
   colorsLight,
   colorsDark,
   densityComfortable,
@@ -154,6 +155,9 @@ ${generateVars("duration", duration)}
 
   /* Motion - Easing */
 ${generateVars("easing", easing)}
+
+  /* Motion - Delays */
+${generateVars("delay", delay)}
 
   /* Display Values */
 ${generateVars("display", displayScale)}

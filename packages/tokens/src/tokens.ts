@@ -98,24 +98,58 @@ export type FontWeightToken = keyof typeof fontWeight;
 // Motion - Duration
 // ============================================================================
 export const duration = {
-  fast: "100ms",
-  normal: "200ms",
-  slow: "300ms",
+  instant: "75ms",      // Near-instant transitions
+  fast: "150ms",        // Fast micro-interactions
+  normal: "200ms",      // Standard transitions (Tailwind default)
+  moderate: "300ms",    // Moderate transitions
+  slow: "500ms",        // Slow, deliberate transitions
+  slower: "700ms",      // Very slow transitions
+  slowest: "1000ms",    // Ultra-slow, cinematic
 } as const;
 
 export type DurationToken = keyof typeof duration;
 
 // ============================================================================
-// Motion - Easing
+// Motion - Easing (Timing Functions)
 // ============================================================================
 export const easing = {
-  default: "cubic-bezier(0.4, 0, 0.2, 1)",
-  in: "cubic-bezier(0.4, 0, 1, 1)",
-  out: "cubic-bezier(0, 0, 0.2, 1)",
-  inOut: "cubic-bezier(0.4, 0, 0.2, 1)",
+  // Standard easing curves
+  default: "cubic-bezier(0.4, 0, 0.2, 1)",    // Tailwind default (ease-in-out variant)
+  linear: "linear",
+  in: "cubic-bezier(0.4, 0, 1, 1)",           // Ease in (accelerate)
+  out: "cubic-bezier(0, 0, 0.2, 1)",          // Ease out (decelerate)
+  inOut: "cubic-bezier(0.4, 0, 0.2, 1)",      // Ease in-out (smooth both ends)
+
+  // Expressive easing curves (Material Design inspired)
+  emphasized: "cubic-bezier(0.2, 0, 0, 1)",   // Material emphasized
+  standard: "cubic-bezier(0.4, 0, 0.2, 1)",   // Material standard
+  decelerate: "cubic-bezier(0, 0, 0.2, 1)",   // Strong deceleration
+  accelerate: "cubic-bezier(0.4, 0, 1, 1)",   // Strong acceleration
+
+  // Snappy/bouncy effects
+  bounce: "cubic-bezier(0.68, -0.55, 0.265, 1.55)",    // Bounce effect
+  snap: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",        // Snappy feel
+  elastic: "cubic-bezier(0.68, -0.6, 0.32, 1.6)",      // Elastic/spring effect
 } as const;
 
 export type EasingToken = keyof typeof easing;
+
+// ============================================================================
+// Motion - Delays
+// ============================================================================
+export const delay = {
+  0: "0ms",
+  75: "75ms",
+  100: "100ms",
+  150: "150ms",
+  200: "200ms",
+  300: "300ms",
+  500: "500ms",
+  700: "700ms",
+  1000: "1000ms",
+} as const;
+
+export type DelayToken = keyof typeof delay;
 
 // ============================================================================
 // Z-Index Scale (Layering)

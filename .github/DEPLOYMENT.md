@@ -37,9 +37,11 @@ The workflow:
 2. Sets up Node.js 24 with npm caching
 3. Installs dependencies with `npm ci`
 4. Builds packages (@staple-css/tokens and @staple-css/primitives)
-5. Builds docs with BASE_URL=/staple-css/
-6. Uploads build artifacts
-7. Deploys to GitHub Pages
+5. Builds docs with BASE_URL=/
+6. Builds Storybook
+7. Combines docs and Storybook (Storybook at /storybook path)
+8. Uploads build artifacts
+9. Deploys to GitHub Pages
 
 ### SPA Routing
 

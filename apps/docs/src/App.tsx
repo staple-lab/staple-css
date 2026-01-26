@@ -90,6 +90,11 @@ export function App() {
                       Studio
                     </NavLink>
                   </li>
+                  <li>
+                    <a href="/storybook" className="nav-link" target="_blank" rel="noopener noreferrer">
+                      Storybook
+                    </a>
+                  </li>
                 </Flex>
               </nav>
             </Row>
