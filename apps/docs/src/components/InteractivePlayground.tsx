@@ -1,35 +1,35 @@
 import { useState } from "react";
-import { Stack, Card, Text, Inline, Box, Grid } from "@staple-css/primitives";
+import { Column, Card, Text, Row, Box, Grid } from "@staple-css/primitives";
 
 const examples = [
   {
     title: "Card with Button",
     code: `<Card pad={5} radius={3} shadow={1}>
-  <Stack gap={3}>
+  <Column gap={3}>
     <Text size={4} weight="semibold">
       Welcome!
     </Text>
     <Text tone="muted">
       Start building with staple-css
     </Text>
-    <Inline gap={3} justify="end">
+    <Row gap={3} justify="end">
       <button>Get Started</button>
-    </Inline>
-  </Stack>
+    </Row>
+  </Column>
 </Card>`,
     component: (
       <Card pad={5} radius={3} shadow={1}>
-        <Stack gap={3}>
+        <Column gap={3}>
           <Text size={4} weight="semibold">
             Welcome!
           </Text>
           <Text tone="muted">Start building with staple-css</Text>
-          <Inline gap={3} justify="end">
+          <Row gap={3} justify="end">
             <button style={{ padding: "8px 16px", borderRadius: "4px", border: "1px solid #ddd", cursor: "pointer" }}>
               Get Started
             </button>
-          </Inline>
-        </Stack>
+          </Row>
+        </Column>
       </Card>
     ),
   },
@@ -59,7 +59,7 @@ const examples = [
   },
   {
     title: "Status Cards",
-    code: `<Stack gap={3}>
+    code: `<Column gap={3}>
   <Card pad={4} radius={2} tone="primary">
     <Text weight="medium">Primary</Text>
   </Card>
@@ -69,9 +69,9 @@ const examples = [
   <Card pad={4} radius={2} tone="success">
     <Text weight="medium">Success</Text>
   </Card>
-</Stack>`,
+</Column>`,
     component: (
-      <Stack gap={3}>
+      <Column gap={3}>
         <Card pad={4} radius={2} tone="primary">
           <Text weight="medium">Primary</Text>
         </Card>
@@ -81,32 +81,32 @@ const examples = [
         <Card pad={4} radius={2} tone="success">
           <Text weight="medium">Success</Text>
         </Card>
-      </Stack>
+      </Column>
     ),
   },
   {
     title: "Form Layout",
-    code: `<Stack gap={4}>
-  <Stack gap={1}>
+    code: `<Column gap={4}>
+  <Column gap={1}>
     <Text as="label" weight="medium">
       Email
     </Text>
     <input type="email" />
-  </Stack>
-  <Stack gap={1}>
+  </Column>
+  <Column gap={1}>
     <Text as="label" weight="medium">
       Password
     </Text>
     <input type="password" />
-  </Stack>
-  <Inline gap={3} justify="end">
+  </Column>
+  <Row gap={3} justify="end">
     <button>Cancel</button>
     <button>Submit</button>
-  </Inline>
-</Stack>`,
+  </Row>
+</Column>`,
     component: (
-      <Stack gap={4}>
-        <Stack gap={1}>
+      <Column gap={4}>
+        <Column gap={1}>
           <Text as="label" weight="medium">
             Email
           </Text>
@@ -115,8 +115,8 @@ const examples = [
             placeholder="you@example.com"
             style={{ padding: "8px 12px", borderRadius: "4px", border: "1px solid #ddd", width: "100%" }}
           />
-        </Stack>
-        <Stack gap={1}>
+        </Column>
+        <Column gap={1}>
           <Text as="label" weight="medium">
             Password
           </Text>
@@ -125,16 +125,16 @@ const examples = [
             placeholder="••••••••"
             style={{ padding: "8px 12px", borderRadius: "4px", border: "1px solid #ddd", width: "100%" }}
           />
-        </Stack>
-        <Inline gap={3} justify="end">
+        </Column>
+        <Row gap={3} justify="end">
           <button style={{ padding: "8px 16px", borderRadius: "4px", border: "1px solid #ddd", cursor: "pointer" }}>
             Cancel
           </button>
           <button style={{ padding: "8px 16px", borderRadius: "4px", border: "1px solid #2563eb", background: "#2563eb", color: "#fff", cursor: "pointer" }}>
             Submit
           </button>
-        </Inline>
-      </Stack>
+        </Row>
+      </Column>
     ),
   },
 ];
@@ -145,12 +145,16 @@ export function InteractivePlayground() {
 
   const currentExample = examples[selectedIndex];
 
+  if (!currentExample) {
+    return null;
+  }
+
   return (
     <Card pad={0} radius={3} shadow={2}>
-      <Stack gap={0}>
+      <Column gap={0}>
         {/* Tabs */}
-        <Box style={{ borderBottom: "1px solid var(--st-color-border)" }}>
-          <Inline gap={0} style={{ overflowX: "auto" }}>
+        <Box style={{ borderBottom: "1px solid var(--st-color-border)", overflowX: "auto" }}>
+          <Row gap={0}>
             {examples.map((example, index) => (
               <button
                 key={index}
@@ -170,16 +174,16 @@ export function InteractivePlayground() {
                 {example.title}
               </button>
             ))}
-          </Inline>
+          </Row>
         </Box>
 
         {/* Controls */}
         <Box pad={3} style={{ borderBottom: "1px solid var(--st-color-border)" }}>
-          <Inline gap={3} justify="between" align="center">
+          <Row gap={3} justify="between" align="center">
             <Text size={1} weight="medium">
               {showCode ? "Code" : "Preview"}
             </Text>
-            <Inline gap={2}>
+            <Row gap={2}>
               <button
                 onClick={() => setShowCode(false)}
                 style={{
@@ -206,8 +210,8 @@ export function InteractivePlayground() {
               >
                 Code
               </button>
-            </Inline>
-          </Inline>
+            </Row>
+          </Row>
         </Box>
 
         {/* Content */}
@@ -233,11 +237,11 @@ export function InteractivePlayground() {
 
         {/* Footer */}
         <Box pad={3} style={{ borderTop: "1px solid var(--st-color-border)", background: "var(--st-color-surface-raised)" }}>
-          <Inline gap={3} justify="between" align="center">
+          <Row gap={3} justify="between" align="center">
             <Text size={0} tone="muted">
               Try resizing your browser to see responsive behavior
             </Text>
-            <Inline gap={2}>
+            <Row gap={2}>
               <a
                 href="/storybook"
                 target="_blank"
@@ -255,10 +259,10 @@ export function InteractivePlayground() {
               >
                 View in Storybook →
               </a>
-            </Inline>
-          </Inline>
+            </Row>
+          </Row>
         </Box>
-      </Stack>
+      </Column>
     </Card>
   );
 }

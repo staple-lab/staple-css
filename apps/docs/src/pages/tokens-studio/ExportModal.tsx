@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Stack, Card, Text, Inline, Box } from "@staple-css/primitives";
+import { Column, Card, Text, Row, Box } from "@staple-css/primitives";
 
 export type ExportFormat =
   | "css-variables"
@@ -97,25 +97,25 @@ export function ExportModal({ isOpen, onClose, onExport, themeName }: ExportModa
       }}
       onClick={onClose}
     >
-      <Card
-        pad={0}
-        radius={3}
-        shadow={2}
-        style={{ maxWidth: "800px", width: "90%", maxHeight: "90vh", overflow: "auto" }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <Stack gap={0}>
+      <Box style={{ maxWidth: "800px", width: "90%", maxHeight: "90vh", overflow: "auto" }}>
+        <Card
+          pad={0}
+          radius={3}
+          shadow={2}
+          onClick={(e) => e.stopPropagation()}
+        >
+        <Column gap={0}>
           {/* Header */}
           <Box pad={5} style={{ borderBottom: "1px solid var(--st-color-border)" }}>
-            <Inline justify="between" align="center">
-              <Stack gap={1}>
+            <Row justify="between" align="center">
+              <Column gap={1}>
                 <Text size={4} weight="bold">
                   Export Theme: {themeName}
                 </Text>
                 <Text size={1} tone="muted">
                   Choose your export format
                 </Text>
-              </Stack>
+              </Column>
               <button
                 onClick={onClose}
                 style={{
@@ -129,17 +129,15 @@ export function ExportModal({ isOpen, onClose, onExport, themeName }: ExportModa
               >
                 ×
               </button>
-            </Inline>
+            </Row>
           </Box>
 
           {/* Format Grid */}
           <Box pad={5}>
-            <Stack gap={3}>
+            <Column gap={3}>
               {exportFormats.map((format) => (
-                <Card
+                <Box
                   key={format.id}
-                  pad={4}
-                  radius={2}
                   style={{
                     border: `2px solid ${
                       selectedFormat === format.id
@@ -151,23 +149,25 @@ export function ExportModal({ isOpen, onClose, onExport, themeName }: ExportModa
                   }}
                   onClick={() => setSelectedFormat(format.id)}
                 >
-                  <Inline gap={3} align="start">
+                  <Card pad={4} radius={2}>
+                  <Row gap={3} align="start">
                     <Text size={5}>{format.icon}</Text>
-                    <Stack gap={1} style={{ flex: 1 }}>
+                    <Column gap={1} style={{ flex: 1 }}>
                       <Text weight="semibold">{format.name}</Text>
                       <Text size={1} tone="muted">
                         {format.description}
                       </Text>
-                    </Stack>
+                    </Column>
                     {selectedFormat === format.id && (
-                      <Text size={4} style={{ color: "var(--st-color-primary)" }}>
-                        ✓
-                      </Text>
+                      <Box style={{ color: "var(--st-color-primary)" }}>
+                        <Text size={4}>✓</Text>
+                      </Box>
                     )}
-                  </Inline>
-                </Card>
+                  </Row>
+                  </Card>
+                </Box>
               ))}
-            </Stack>
+            </Column>
           </Box>
 
           {/* Footer */}
@@ -178,7 +178,7 @@ export function ExportModal({ isOpen, onClose, onExport, themeName }: ExportModa
               background: "var(--st-color-surface-raised)",
             }}
           >
-            <Inline gap={3} justify="end">
+            <Row gap={3} justify="end">
               <button
                 onClick={onClose}
                 style={{
@@ -206,10 +206,11 @@ export function ExportModal({ isOpen, onClose, onExport, themeName }: ExportModa
               >
                 Export as {exportFormats.find((f) => f.id === selectedFormat)?.name}
               </button>
-            </Inline>
+            </Row>
           </Box>
-        </Stack>
-      </Card>
+        </Column>
+        </Card>
+      </Box>
     </Box>
   );
 }

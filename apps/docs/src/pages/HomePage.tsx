@@ -1,4 +1,4 @@
-import { Container, Column, Card, Text, Grid, Inline, Box } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Grid, Row, Box } from "@staple-css/primitives";
 import { CodePreview } from "../components/CodePreview";
 import { InteractivePlayground } from "../components/InteractivePlayground";
 
@@ -14,10 +14,13 @@ export function HomePage() {
           <Text size={3} tone="muted" align="center">
             The CSS variable generator for design system consistency
           </Text>
-          <Text size={2} tone="muted" align="center" style={{ maxWidth: "600px" }}>
-            Create tokens, not chaos. Build design systems with semantic CSS variables, type-safe React primitives, and AI-friendly APIs.
-          </Text>
-          <Inline gap={3} style={{ marginTop: "8px" }}>
+          <Box style={{ maxWidth: "600px" }}>
+            <Text size={2} tone="muted" align="center">
+              Create tokens, not chaos. Build design systems with semantic CSS variables, type-safe React primitives, and AI-friendly APIs.
+            </Text>
+          </Box>
+          <Box style={{ marginTop: "8px" }}>
+            <Row gap={3}>
             <a
               href="#playground"
               style={{
@@ -57,7 +60,8 @@ export function HomePage() {
             >
               Token Studio
             </a>
-          </Inline>
+            </Row>
+          </Box>
         </Column>
 
         {/* Value Props */}
