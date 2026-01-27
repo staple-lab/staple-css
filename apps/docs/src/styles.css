@@ -3,6 +3,10 @@
  * Minimal styles that extend staple-css tokens
  */
 
+/* Import custom fonts and animations */
+@import "./fonts.css";
+@import "./animations.css";
+
 * {
   box-sizing: border-box;
 }
@@ -11,7 +15,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--st-font-sans);
+  font-family: 'Geist Sans', var(--st-font-sans);
   background-color: var(--st-color-background);
   color: var(--st-color-text);
   line-height: var(--st-leading-normal);
@@ -22,12 +26,13 @@ body {
 }
 
 code {
-  font-family: var(--st-font-mono);
+  font-family: 'JetBrains Mono', var(--st-font-mono);
   font-size: 0.875em;
   padding: 0.125em 0.375em;
   background-color: var(--st-color-surface);
   border-radius: var(--st-radius-1);
   border: 1px solid var(--st-color-border-muted);
+  font-weight: 500;
 }
 
 .app-root {
@@ -42,25 +47,28 @@ code {
 
 .app-header {
   border-bottom: 1px solid var(--st-color-border);
-  padding: var(--st-space-5) var(--st-space-6);
+  padding: var(--st-space-3) var(--st-space-6);
   background-color: var(--st-color-surface);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: var(--st-shadow-1);
+  max-height: 80px;
+  display: flex;
+  align-items: center;
 }
 
 /* Responsive header padding */
 @media (max-width: 640px) {
   .app-header {
-    padding: var(--st-space-4) var(--st-space-4);
+    padding: var(--st-space-2) var(--st-space-4);
   }
 }
 
 @media (max-width: 480px) {
   .app-header {
-    padding: var(--st-space-3) var(--st-space-3);
+    padding: var(--st-space-2) var(--st-space-3);
   }
 }
 

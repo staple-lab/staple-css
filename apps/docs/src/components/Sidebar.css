@@ -63,7 +63,7 @@
 
 .sidebar {
   position: fixed;
-  top: var(--st-space-14, 56px);
+  top: 80px;
   left: 0;
   bottom: 0;
   width: 280px;
@@ -250,7 +250,7 @@
   .sidebar {
     transform: translateX(-100%);
     transition: transform var(--st-duration-normal) var(--st-easing-default);
-    top: var(--st-space-14, 56px);
+    top: 80px;
     bottom: 0;
     left: 0;
     right: auto;
