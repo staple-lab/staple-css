@@ -16,6 +16,7 @@ import { ExamplesPage } from "./pages/ExamplesPage";
 import { BuilderPage } from "./pages/tokens-studio";
 import { SearchPalette } from "./components/SearchPalette";
 import { Sidebar } from "./components/Sidebar";
+import { Breadcrumb } from "./components/Breadcrumb";
 
 type Theme = "light" | "dark" | "system";
 type Density = "comfortable" | "compact";
@@ -93,25 +94,26 @@ export function App() {
       <div className="app-content-wrapper">
         <Sidebar />
         <main className="app-main">
+          <Breadcrumb />
           <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/guides" element={<GuidesPage />} />
-          <Route path="/tokens" element={<TokensPage />} />
-          <Route path="/token-reference" element={<TokenReferencePage />} />
-          <Route path="/colors" element={<ColorSystemPage />} />
-          <Route path="/visuals" element={<VisualsPage />} />
-          <Route path="/components" element={<ComponentPatternsPage />} />
-          <Route path="/gradient-studio" element={<GradientStudioPage />} />
-          <Route path="/figma" element={<FigmaIntegrationPage />} />
-          <Route path="/primitives" element={<PrimitivesPage />} />
-          <Route path="/why" element={<WhyPage />} />
-          <Route path="/examples" element={<ExamplesPage />} />
-          {/* Tokens Studio */}
-          <Route path="/tokens-studio" element={<BuilderPage />} />
-          {/* Redirect old studio routes */}
-          <Route path="/tokens-studio/*" element={<Navigate to="/tokens-studio" replace />} />
-          <Route path="/studio" element={<Navigate to="/tokens-studio" replace />} />
-          <Route path="/studio/*" element={<Navigate to="/tokens-studio" replace />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/guides" element={<GuidesPage />} />
+            <Route path="/tokens" element={<TokensPage />} />
+            <Route path="/token-reference" element={<TokenReferencePage />} />
+            <Route path="/colors" element={<ColorSystemPage />} />
+            <Route path="/visuals" element={<VisualsPage />} />
+            <Route path="/components" element={<ComponentPatternsPage />} />
+            <Route path="/gradient-studio" element={<GradientStudioPage />} />
+            <Route path="/figma" element={<FigmaIntegrationPage />} />
+            <Route path="/primitives" element={<PrimitivesPage />} />
+            <Route path="/why" element={<WhyPage />} />
+            <Route path="/examples" element={<ExamplesPage />} />
+            {/* Tokens Studio */}
+            <Route path="/tokens-studio" element={<BuilderPage />} />
+            {/* Redirect old studio routes */}
+            <Route path="/tokens-studio/*" element={<Navigate to="/tokens-studio" replace />} />
+            <Route path="/studio" element={<Navigate to="/tokens-studio" replace />} />
+            <Route path="/studio/*" element={<Navigate to="/tokens-studio" replace />} />
           </Routes>
         </main>
       </div>
