@@ -1,8 +1,56 @@
-import { Container, Column, Row, Text, Card, Box, Grid, Flex } from "@staple-css/primitives/full";
+import { Container, Column, Row, Text, Box, Grid } from "@staple-css/primitives/full";
+import {
+  ToggleRight,
+  FormInput,
+  Grid3x3,
+  Layers,
+  AlertCircle,
+  CheckCircle2,
+  AlertTriangle,
+  Info,
+  Code2,
+} from "lucide-react";
+import "./ComponentPatternsPage.css";
 
 export function ComponentPatternsPage() {
+  const getSectionIcon = (name: string) => {
+    const iconProps = { size: 20, className: "cpp-icon" };
+    switch (name) {
+      case "buttons":
+        return <ToggleRight {...iconProps} />;
+      case "forms":
+        return <FormInput {...iconProps} />;
+      case "cards":
+        return <Layers {...iconProps} />;
+      case "alerts":
+        return <AlertCircle {...iconProps} />;
+      case "layouts":
+        return <Grid3x3 {...iconProps} />;
+      case "data":
+        return <Grid3x3 {...iconProps} />;
+      case "code":
+        return <Code2 {...iconProps} />;
+      default:
+        return null;
+    }
+  };
+
+  const getAlertIcon = (tone: string) => {
+    const iconProps = { size: 18, className: "cpp-alert-icon" };
+    switch (tone) {
+      case "success":
+        return <CheckCircle2 {...iconProps} />;
+      case "danger":
+        return <AlertCircle {...iconProps} />;
+      case "warn":
+        return <AlertTriangle {...iconProps} />;
+      default:
+        return <Info {...iconProps} />;
+    }
+  };
+
   return (
-    <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+    <Container size="xl" className="cpp-container">
       <Column gap={8}>
         {/* Header */}
         <Column gap={4}>
@@ -16,12 +64,15 @@ export function ComponentPatternsPage() {
         </Column>
 
         {/* Button Variations */}
-        <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
-            🔘 Button Patterns
-          </Text>
+        <Column gap={3}>
+          <div className="cpp-section-header">
+            <div className="cpp-icon-badge cpp-icon-badge--buttons">{getSectionIcon("buttons")}</div>
+            <Text as="h2" size={3} weight="semibold">
+              Button Patterns
+            </Text>
+          </div>
 
-          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={3}>
             {[
               { label: "Primary Solid", color: "primary", solid: true },
               { label: "Primary Outline", color: "primary", solid: false },
@@ -30,7 +81,7 @@ export function ComponentPatternsPage() {
               { label: "Small Button", size: "small", solid: true },
               { label: "Large Button", size: "large", solid: true },
             ].map((btn) => (
-              <Card key={btn.label} pad={4} radius={2} shadow={0}>
+              <div key={btn.label} className="cpp-pattern-card">
                 <Column gap={2}>
                   <Text size={0} weight="semibold">
                     {btn.label}
@@ -58,20 +109,23 @@ export function ComponentPatternsPage() {
                     {btn.label}
                   </button>
                 </Column>
-              </Card>
+              </div>
             ))}
           </Grid>
         </Column>
 
         {/* Form Components */}
-        <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
-            📋 Form Components
-          </Text>
+        <Column gap={3}>
+          <div className="cpp-section-header">
+            <div className="cpp-icon-badge cpp-icon-badge--forms">{getSectionIcon("forms")}</div>
+            <Text as="h2" size={3} weight="semibold">
+              Form Components
+            </Text>
+          </div>
 
-          <Grid cols={{ base: 1, md: 2 }} gap={4}>
+          <Grid cols={{ base: 1, md: 2 }} gap={3}>
             {/* Text Input */}
-            <Card pad={4} radius={2} shadow={0}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Text Input
@@ -93,10 +147,10 @@ export function ComponentPatternsPage() {
                   />
                 </Column>
               </Column>
-            </Card>
+            </div>
 
             {/* Select Dropdown */}
-            <Card pad={4} radius={2} shadow={0}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Select Dropdown
@@ -119,10 +173,10 @@ export function ComponentPatternsPage() {
                   </select>
                 </Column>
               </Column>
-            </Card>
+            </div>
 
             {/* Checkbox */}
-            <Card pad={4} radius={2} shadow={0}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Checkbox
@@ -142,10 +196,10 @@ export function ComponentPatternsPage() {
                   </label>
                 </Row>
               </Column>
-            </Card>
+            </div>
 
             {/* Radio */}
-            <Card pad={4} radius={2} shadow={0}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Radio Group
@@ -161,10 +215,10 @@ export function ComponentPatternsPage() {
                   ))}
                 </Column>
               </Column>
-            </Card>
+            </div>
 
             {/* Textarea */}
-            <Card pad={4} radius={2} shadow={0}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Textarea
@@ -181,16 +235,15 @@ export function ComponentPatternsPage() {
                       fontFamily: "var(--st-font-sans)",
                       fontSize: "var(--st-font-size-1)",
                       width: "100%",
-                      fontFamily: "var(--st-font-sans)",
                       resize: "vertical",
                     }}
                   />
                 </Column>
               </Column>
-            </Card>
+            </div>
 
             {/* Slider */}
-            <Card pad={4} radius={2} shadow={0}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Range Slider
@@ -202,60 +255,56 @@ export function ComponentPatternsPage() {
                   </Text>
                 </Column>
               </Column>
-            </Card>
+            </div>
           </Grid>
         </Column>
 
         {/* Card Variations */}
-        <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
-            📇 Card Patterns
-          </Text>
+        <Column gap={3}>
+          <div className="cpp-section-header">
+            <div className="cpp-icon-badge cpp-icon-badge--cards">{getSectionIcon("cards")}</div>
+            <Text as="h2" size={3} weight="semibold">
+              Card Patterns
+            </Text>
+          </div>
 
-          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={3}>
             {/* Simple Card */}
-            <Card pad={4} radius={2} shadow={1}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text weight="semibold">Simple Card</Text>
                 <Text size={0} tone="muted">
                   Basic card with padding and shadow
                 </Text>
               </Column>
-            </Card>
+            </div>
 
             {/* Card with Header */}
-            <Card pad={0} radius={2} shadow={1} style={{ overflow: "hidden" }}>
+            <div className="cpp-pattern-card cpp-card-header">
               <Column gap={0}>
-                <Box style={{ background: "var(--st-color-primary)", padding: "var(--st-space-4)" }}>
+                <Box style={{ background: "var(--st-color-primary)", padding: "var(--st-space-3)" }}>
                   <Text weight="semibold" style={{ color: "white" }}>
                     Header Card
                   </Text>
                 </Box>
-                <Column gap={2} pad={4}>
+                <Column gap={2} style={{ padding: "var(--st-space-3)" }}>
                   <Text size={0} tone="muted">
                     Card with colored header section
                   </Text>
                 </Column>
               </Column>
-            </Card>
+            </div>
 
             {/* Hover Card */}
-            <Card
-              pad={4}
-              radius={2}
-              shadow={0}
-              style={{
-                border: "1px solid var(--st-color-border)",
-                cursor: "pointer",
-                transition: "all var(--st-duration-fast) var(--st-easing-default)",
-              }}
+            <div
+              className="cpp-pattern-card cpp-card-hover"
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.boxShadow = "var(--st-shadow-2)";
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "";
+                (e.currentTarget as HTMLElement).style.transform = "";
               }}
             >
               <Column gap={2}>
@@ -264,10 +313,10 @@ export function ComponentPatternsPage() {
                   Lifts on hover with shadow
                 </Text>
               </Column>
-            </Card>
+            </div>
 
             {/* Feature Card */}
-            <Card pad={4} radius={2} shadow={1} tone="primary">
+            <div className="cpp-pattern-card cpp-card-feature">
               <Column gap={2}>
                 <Text size={2} weight="bold" style={{ color: "white" }}>
                   ✨
@@ -279,10 +328,10 @@ export function ComponentPatternsPage() {
                   Colored background with white text
                 </Text>
               </Column>
-            </Card>
+            </div>
 
             {/* Stats Card */}
-            <Card pad={4} radius={2} shadow={0} style={{ border: "1px solid var(--st-color-border)" }}>
+            <div className="cpp-pattern-card cpp-card-stats">
               <Column gap={3} align="center">
                 <Text size={5} weight="bold" style={{ color: "var(--st-color-primary)" }}>
                   2,547
@@ -291,10 +340,10 @@ export function ComponentPatternsPage() {
                   Active Users
                 </Text>
               </Column>
-            </Card>
+            </div>
 
             {/* Action Card */}
-            <Card pad={4} radius={2} shadow={1}>
+            <div className="cpp-pattern-card">
               <Column gap={3}>
                 <Text weight="semibold">Action Card</Text>
                 <Text size={0} tone="muted">
@@ -312,33 +361,31 @@ export function ComponentPatternsPage() {
                     fontSize: "var(--st-font-size-0)",
                   }}
                 >
-                  Learn More →
+                  Learn More
                 </button>
               </Column>
-            </Card>
+            </div>
           </Grid>
         </Column>
 
         {/* Alert/Notification Patterns */}
-        <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
-            🔔 Alerts & Notifications
-          </Text>
+        <Column gap={3}>
+          <div className="cpp-section-header">
+            <div className="cpp-icon-badge cpp-icon-badge--alerts">{getSectionIcon("alerts")}</div>
+            <Text as="h2" size={3} weight="semibold">
+              Alerts & Notifications
+            </Text>
+          </div>
 
-          <Column gap={3}>
+          <Column gap={2}>
             {["primary", "success", "danger", "warn"].map((tone) => (
-              <Card
+              <div
                 key={tone}
-                pad={4}
-                radius={2}
-                shadow={0}
-                tone={tone as any}
-                style={{ display: "flex", gap: "var(--st-space-4)" }}
+                className={`cpp-alert cpp-alert--${tone}`}
+                style={{ display: "flex", gap: "var(--st-space-3)", alignItems: "flex-start", padding: "var(--st-space-3)" }}
               >
-                <Text size={1} style={{ color: "white" }}>
-                  {tone === "success" ? "✓" : tone === "danger" ? "!" : tone === "warn" ? "⚠" : "ℹ"}
-                </Text>
-                <Column gap={1}>
+                <div style={{ flexShrink: 0, marginTop: "2px" }}>{getAlertIcon(tone)}</div>
+                <Column gap={0} style={{ flex: 1 }}>
                   <Text weight="semibold" style={{ color: "white", textTransform: "capitalize" }}>
                     {tone} Message
                   </Text>
@@ -346,46 +393,49 @@ export function ComponentPatternsPage() {
                     This is a {tone} alert with icon and message
                   </Text>
                 </Column>
-              </Card>
+              </div>
             ))}
           </Column>
         </Column>
 
         {/* Layout Patterns */}
-        <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
-            📐 Layout Patterns
-          </Text>
+        <Column gap={3}>
+          <div className="cpp-section-header">
+            <div className="cpp-icon-badge cpp-icon-badge--layouts">{getSectionIcon("layouts")}</div>
+            <Text as="h2" size={3} weight="semibold">
+              Layout Patterns
+            </Text>
+          </div>
 
-          <Grid cols={{ base: 1, md: 2 }} gap={4}>
+          <Grid cols={{ base: 1, md: 2 }} gap={3}>
             {/* Two Column Layout */}
-            <Card pad={4} radius={2} shadow={0} style={{ border: "1px solid var(--st-color-border)" }}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Two Column Layout
                 </Text>
-                <Row gap={4}>
+                <Row gap={3}>
                   <Box style={{ flex: 1, background: "var(--st-color-surface)", height: "80px", borderRadius: "var(--st-radius-2)" }} />
                   <Box style={{ flex: 1, background: "var(--st-color-surface)", height: "80px", borderRadius: "var(--st-radius-2)" }} />
                 </Row>
               </Column>
-            </Card>
+            </div>
 
             {/* Sidebar Layout */}
-            <Card pad={4} radius={2} shadow={0} style={{ border: "1px solid var(--st-color-border)" }}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Sidebar Layout
                 </Text>
-                <Row gap={4}>
+                <Row gap={3}>
                   <Box style={{ width: "80px", background: "var(--st-color-surface)", height: "80px", borderRadius: "var(--st-radius-2)" }} />
                   <Box style={{ flex: 1, background: "var(--st-color-surface)", height: "80px", borderRadius: "var(--st-radius-2)" }} />
                 </Row>
               </Column>
-            </Card>
+            </div>
 
             {/* Grid Layout */}
-            <Card pad={4} radius={2} shadow={0} style={{ border: "1px solid var(--st-color-border)" }}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Grid Layout
@@ -396,10 +446,10 @@ export function ComponentPatternsPage() {
                   ))}
                 </div>
               </Column>
-            </Card>
+            </div>
 
             {/* Stack Layout */}
-            <Card pad={4} radius={2} shadow={0} style={{ border: "1px solid var(--st-color-border)" }}>
+            <div className="cpp-pattern-card">
               <Column gap={2}>
                 <Text size={0} weight="semibold">
                   Stack Layout
@@ -410,17 +460,20 @@ export function ComponentPatternsPage() {
                   ))}
                 </Column>
               </Column>
-            </Card>
+            </div>
           </Grid>
         </Column>
 
         {/* Data Display Patterns */}
-        <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
-            📊 Data Display Patterns
-          </Text>
+        <Column gap={3}>
+          <div className="cpp-section-header">
+            <div className="cpp-icon-badge cpp-icon-badge--data">{getSectionIcon("data")}</div>
+            <Text as="h2" size={3} weight="semibold">
+              Data Display Patterns
+            </Text>
+          </div>
 
-          <Card pad={6} radius={3} shadow={1}>
+          <div className="cpp-pattern-card cpp-card-large">
             <Column gap={4}>
               <Text weight="semibold">Data Table Example</Text>
               <Box style={{ overflowX: "auto" }}>
@@ -462,15 +515,18 @@ export function ComponentPatternsPage() {
                 </table>
               </Box>
             </Column>
-          </Card>
+          </div>
         </Column>
 
         {/* Code Examples */}
-        <Card pad={6} radius={3} shadow={1}>
+        <div className="cpp-pattern-card cpp-card-large">
           <Column gap={4}>
-            <Text as="h2" size={3} weight="semibold">
-              💻 Copy-Paste Code Examples
-            </Text>
+            <div className="cpp-section-header">
+              <div className="cpp-icon-badge cpp-icon-badge--code">{getSectionIcon("code")}</div>
+              <Text as="h2" size={3} weight="semibold">
+                Copy-Paste Code Examples
+              </Text>
+            </div>
 
             <pre
               style={{
@@ -499,7 +555,7 @@ export function ComponentPatternsPage() {
 </Card>`}</code>
             </pre>
           </Column>
-        </Card>
+        </div>
       </Column>
     </Container>
   );
