@@ -218,16 +218,17 @@
   padding: var(--st-space-4) var(--st-space-4);
   background: transparent;
   border: 1px solid var(--st-color-border);
-  border-left: 4px solid var(--st-color-primary);
+  border-top: 3px solid var(--st-color-primary);
+  border-left: none;
   border-radius: 0;
   transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
 }
 
 .capability-item:hover {
-  border-left-color: #06b6d4;
+  border-top-color: #06b6d4;
   background: var(--st-color-background);
-  transform: translateY(-4px) translateX(4px);
+  transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
