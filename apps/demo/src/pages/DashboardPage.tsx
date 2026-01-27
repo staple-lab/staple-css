@@ -1,4 +1,4 @@
-import { Container, Column, Card, Text, Row, Grid, Box } from "@staple-css/primitives";
+import { Container, Column, Card, Text, Row, Grid, Box } from "@staple-css/primitives/full";
 
 interface StatCardProps {
   label: string;

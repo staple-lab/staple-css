@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
-import { Container, Row, Text, Flex } from "@staple-css/primitives";
+import { Container, Row, Text, Flex } from "@staple-css/primitives/full";
 import { SettingsPage } from "./pages/SettingsPage";
 import { DashboardPage } from "./pages/DashboardPage";
 
