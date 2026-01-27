@@ -164,7 +164,8 @@ export function HomePage() {
               gap: "16px",
               maxWidth: "900px",
               margin: "0 auto",
-              width: "100%"
+              width: "100%",
+              boxSizing: "border-box"
             }}>
               {[
                 { icon: Target, title: "Token-First Design", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
@@ -323,7 +324,9 @@ export function HomePage() {
               gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
               gap: "var(--st-space-5)",
               maxWidth: "1100px",
-              margin: "0 auto"
+              margin: "0 auto",
+              width: "100%",
+              boxSizing: "border-box"
             }}>
               {[
                 { title: "Tokens are the API", desc: "Design decisions live in tokens. Components consume token keys, not arbitrary raw values. This enforces consistency by default." },
@@ -369,7 +372,9 @@ export function HomePage() {
             <div style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: "var(--st-space-4)"
+              gap: "var(--st-space-4)",
+              width: "100%",
+              boxSizing: "border-box"
             }}>
               {/* Installation */}
               <div style={{
@@ -443,7 +448,9 @@ export function HomePage() {
             gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
             gap: "var(--st-space-4)",
             maxWidth: "1100px",
-            margin: "0 auto"
+            margin: "0 auto",
+            width: "100%",
+            boxSizing: "border-box"
           }}>
             {[
               { icon: Gauge, title: "Performance", desc: "2.5 KB zero JS overhead" },

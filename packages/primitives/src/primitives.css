@@ -344,7 +344,7 @@
  * Container - Sizes
  * ============================================================================ */
 
-:where(.st-Container) { max-width: 100%; margin-left: auto; margin-right: auto; }
+:where(.st-Container) { width: 100%; box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto; }
 :where(.st-Container--size-sm) { max-width: var(--st-maxWidth-sm); }
 :where(.st-Container--size-md) { max-width: var(--st-maxWidth-md); }
 :where(.st-Container--size-lg) { max-width: var(--st-maxWidth-lg); }
