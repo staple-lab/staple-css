@@ -191,27 +191,14 @@ code {
   }
 }
 
-.nav-link::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--st-radius-2);
-  background-color: var(--st-color-primary);
-  opacity: 0;
-  transition: opacity var(--st-duration-fast) var(--st-easing-default);
-  z-index: -1;
-}
-
 .nav-link:hover {
-  color: var(--st-color-text);
+  color: var(--st-color-primary);
+  transform: translateY(-1px);
 }
 
-.nav-link:hover::before {
-  opacity: 0.1;
-}
-
-[data-theme="dark"] .nav-link:hover::before {
-  opacity: 0.15;
+.nav-link:focus-visible {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
 }
 
 .nav-link.active {

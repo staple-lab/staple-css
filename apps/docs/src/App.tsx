@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, NavLink, Navigate, Link } from "react-router-dom";
 import { Container, Row, Text, Flex } from "@staple-css/primitives/full";
-import { HomePage } from "./pages/HomePage";
+import { HomePageNew as HomePage } from "./pages/HomePageNew";
 import { TokensPage } from "./pages/TokensPage";
 import { ColorSystemPage } from "./pages/ColorSystemPage";
 import { VisualsPage } from "./pages/VisualsPage";
