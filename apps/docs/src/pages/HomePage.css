@@ -10,7 +10,7 @@
 
 /* ===== HERO SECTION ===== */
 .hero {
-  padding: 120px var(--st-space-6) 80px;
+  padding: var(--st-space-4);
   background: linear-gradient(135deg, var(--st-color-background) 0%, var(--st-color-surface) 100%);
   border-bottom: 1px solid var(--st-color-border);
   position: relative;
