@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, Link } from "react-router-dom";
 import { Container, Row, Text } from "@staple-css/primitives/full";
+import { Monitor, Sun, Moon } from "lucide-react";
 import { HomePageNew as HomePage } from "./pages/HomePageNew";
 import { TokensPage } from "./pages/TokensPage";
 import { ColorSystemPage } from "./pages/ColorSystemPage";
@@ -76,8 +77,26 @@ export function App() {
               <SearchPalette />
             </div>
             <Row gap={2} className="header-right">
-              <button onClick={cycleTheme} className="toggle-btn" title="Toggle theme">
-                {theme === "system" ? "🖥️" : theme === "light" ? "☀️" : "🌙"}
+              <button onClick={cycleTheme} className="toggle-btn" title="Toggle theme" style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "36px",
+                height: "36px",
+                borderRadius: "6px",
+                border: "1px solid var(--st-color-border)",
+                background: "transparent",
+                cursor: "pointer",
+                color: "var(--st-color-text)",
+                transition: "all 200ms ease"
+              }} onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--st-color-surface)";
+                e.currentTarget.style.borderColor = "var(--st-color-primary)";
+              }} onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.borderColor = "var(--st-color-border)";
+              }}>
+                {theme === "system" ? <Monitor size={18} strokeWidth={1.5} /> : theme === "light" ? <Sun size={18} strokeWidth={1.5} /> : <Moon size={18} strokeWidth={1.5} />}
               </button>
             </Row>
           </Row>

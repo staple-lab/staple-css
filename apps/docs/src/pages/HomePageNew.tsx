@@ -6,6 +6,12 @@ import {
   Shield,
   Zap,
   Smartphone,
+  Layers,
+  Lightbulb,
+  Rocket,
+  Lock,
+  Package,
+  Gauge,
 } from "lucide-react";
 import "./HomePage.css";
 

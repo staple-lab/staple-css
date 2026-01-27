@@ -1,4 +1,16 @@
 import { Container, Column, Card, Text, Grid, Row, Box } from "@staple-css/primitives/full";
+import {
+  Target,
+  Zap,
+  Cpu,
+  Palette,
+  Lock,
+  Package,
+  Gauge,
+  Target as AITarget,
+  Smartphone,
+  Sparkles,
+} from "lucide-react";
 import { CodePreview } from "../components/CodePreview";
 import { InteractivePlayground } from "../components/InteractivePlayground";
 
@@ -146,7 +158,18 @@ export function HomePage() {
           <Grid cols={{ base: 1, md: 3 }} gap={6}>
             {/* Feature 1 */}
             <Column gap={3}>
-              <Box style={{ fontSize: "32px" }}>🎯</Box>
+              <Box style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "8px",
+                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white"
+              }}>
+                <Target size={20} strokeWidth={1.5} />
+              </Box>
               <Column gap={2}>
                 <Text weight="bold" size={3}>Token-First Design</Text>
                 <Text size={1} tone="muted">
@@ -157,7 +180,18 @@ export function HomePage() {
 
             {/* Feature 2 */}
             <Column gap={3}>
-              <Box style={{ fontSize: "32px" }}>⚡</Box>
+              <Box style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "8px",
+                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white"
+              }}>
+                <Zap size={20} strokeWidth={1.5} />
+              </Box>
               <Column gap={2}>
                 <Text weight="bold" size={3}>Ultra-Lightweight</Text>
                 <Text size={1} tone="muted">
@@ -168,7 +202,18 @@ export function HomePage() {
 
             {/* Feature 3 */}
             <Column gap={3}>
-              <Box style={{ fontSize: "32px" }}>🤖</Box>
+              <Box style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "8px",
+                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white"
+              }}>
+                <Cpu size={20} strokeWidth={1.5} />
+              </Box>
               <Column gap={2}>
                 <Text weight="bold" size={3}>AI-Friendly APIs</Text>
                 <Text size={1} tone="muted">
@@ -179,7 +224,18 @@ export function HomePage() {
 
             {/* Feature 4 */}
             <Column gap={3}>
-              <Box style={{ fontSize: "32px" }}>🎨</Box>
+              <Box style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "8px",
+                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white"
+              }}>
+                <Palette size={20} strokeWidth={1.5} />
+              </Box>
               <Column gap={2}>
                 <Text weight="bold" size={3}>Design System Ready</Text>
                 <Text size={1} tone="muted">
@@ -190,7 +246,18 @@ export function HomePage() {
 
             {/* Feature 5 */}
             <Column gap={3}>
-              <Box style={{ fontSize: "32px" }}>🔒</Box>
+              <Box style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "8px",
+                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white"
+              }}>
+                <Lock size={20} strokeWidth={1.5} />
+              </Box>
               <Column gap={2}>
                 <Text weight="bold" size={3}>Type-Safe</Text>
                 <Text size={1} tone="muted">
@@ -201,7 +268,18 @@ export function HomePage() {
 
             {/* Feature 6 */}
             <Column gap={3}>
-              <Box style={{ fontSize: "32px" }}>📦</Box>
+              <Box style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "8px",
+                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white"
+              }}>
+                <Package size={20} strokeWidth={1.5} />
+              </Box>
               <Column gap={2}>
                 <Text weight="bold" size={3}>Tree-Shakeable</Text>
                 <Text size={1} tone="muted">
@@ -251,9 +329,9 @@ export function HomePage() {
                   </tr>
                   <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
                     <td style={{ padding: "12px" }}>Learning Curve</td>
-                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "var(--st-color-success, green)" }}>⭐⭐</td>
-                    <td style={{ padding: "12px", textAlign: "center" }}>⭐⭐</td>
-                    <td style={{ padding: "12px", textAlign: "center" }}>⭐⭐⭐</td>
+                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "var(--st-color-success, green)" }}>Easy</td>
+                    <td style={{ padding: "12px", textAlign: "center" }}>Easy</td>
+                    <td style={{ padding: "12px", textAlign: "center" }}>Moderate</td>
                   </tr>
                   <tr>
                     <td style={{ padding: "12px" }}>Type Safety</td>
@@ -288,34 +366,34 @@ export function HomePage() {
               <Text tone="muted">Thoughtful design decisions that guide every feature.</Text>
             </Column>
 
-            <Grid cols={{ base: 1, md: 3 }} gap={6}>
-              <Card pad={6} radius={3} shadow={0}>
-                <Column gap={3}>
-                  <Text weight="bold" size={3}>Tokens are the API</Text>
-                  <Text size={1} tone="muted">
-                    Design decisions live in tokens. Components consume token keys, not arbitrary raw values. This enforces consistency by default.
-                  </Text>
-                </Column>
-              </Card>
-
-              <Card pad={6} radius={3} shadow={0}>
-                <Column gap={3}>
-                  <Text weight="bold" size={3}>Contract Over Customization</Text>
-                  <Text size={1} tone="muted">
-                    A stable, constrained API enables consistency. Override by design via className, not by default. This reduces decision fatigue.
-                  </Text>
-                </Column>
-              </Card>
-
-              <Card pad={6} radius={3} shadow={0}>
-                <Column gap={3}>
-                  <Text weight="bold" size={3}>Zero Runtime Overhead</Text>
-                  <Text size={1} tone="muted">
-                    All CSS is static. No JavaScript style generation. No CSS-in-JS overhead. Minimum bundle size, maximum performance.
-                  </Text>
-                </Column>
-              </Card>
-            </Grid>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: "var(--st-space-4)"
+            }}>
+              {[
+                { title: "Tokens are the API", desc: "Design decisions live in tokens. Components consume token keys, not arbitrary raw values. This enforces consistency by default." },
+                { title: "Contract Over Customization", desc: "A stable, constrained API enables consistency. Override by design via className, not by default. This reduces decision fatigue." },
+                { title: "Zero Runtime Overhead", desc: "All CSS is static. No JavaScript style generation. No CSS-in-JS overhead. Minimum bundle size, maximum performance." }
+              ].map((item, idx) => (
+                <div key={idx} style={{
+                  padding: "var(--st-space-4)",
+                  border: "1px solid var(--st-color-border)",
+                  borderLeft: "3px solid var(--st-color-primary)",
+                  borderRadius: "0",
+                  transition: "all 150ms ease"
+                }} onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--st-color-surface)";
+                  e.currentTarget.style.borderLeftColor = "#06b6d4";
+                }} onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderLeftColor = "var(--st-color-primary)";
+                }}>
+                  <Text weight="bold" size={2} style={{ marginBottom: "var(--st-space-2)" }}>{item.title}</Text>
+                  <Text size={1} tone="muted" style={{ lineHeight: "1.6" }}>{item.desc}</Text>
+                </div>
+              ))}
+            </div>
           </Column>
         </Container>
       </Box>
@@ -329,52 +407,66 @@ export function HomePage() {
               <Text tone="muted">Installation and setup in 3 minutes</Text>
             </Column>
 
-            <Grid cols={{ base: 1, md: 2 }} gap={6}>
-              {/* Installation Card */}
-              <Card pad={6} radius={3} shadow={1}>
-                <Column gap={4}>
-                  <Column gap={2}>
-                    <Text weight="bold" size={3}>Installation</Text>
-                    <Text size={1} tone="muted">
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: "var(--st-space-4)"
+            }}>
+              {/* Installation */}
+              <div style={{
+                padding: "var(--st-space-4)",
+                border: "1px solid var(--st-color-border)",
+                borderRadius: "0"
+              }}>
+                <Column gap={3}>
+                  <Column gap={1}>
+                    <Text weight="bold" size={2}>Installation</Text>
+                    <Text size={0} tone="muted">
                       Get started in seconds with npm
                     </Text>
                   </Column>
                   <Box style={{
                     background: "var(--st-color-background)",
-                    padding: "var(--st-space-4)",
-                    borderRadius: "var(--st-radius-2)",
+                    padding: "var(--st-space-3)",
+                    borderRadius: "2px",
                     fontFamily: "var(--st-font-mono)",
                     fontSize: "var(--st-font-size-0)",
-                    overflowX: "auto"
+                    overflowX: "auto",
+                    border: "1px solid var(--st-color-border)"
                   }}>
                     <code>npm install @staple-css/tokens</code>
                   </Box>
                 </Column>
-              </Card>
+              </div>
 
-              {/* Quick Start Card */}
-              <Card pad={6} radius={3} shadow={1}>
-                <Column gap={4}>
-                  <Column gap={2}>
-                    <Text weight="bold" size={3}>Quick Start</Text>
-                    <Text size={1} tone="muted">
+              {/* Quick Start */}
+              <div style={{
+                padding: "var(--st-space-4)",
+                border: "1px solid var(--st-color-border)",
+                borderRadius: "0"
+              }}>
+                <Column gap={3}>
+                  <Column gap={1}>
+                    <Text weight="bold" size={2}>Quick Start</Text>
+                    <Text size={0} tone="muted">
                       Import and use in your application
                     </Text>
                   </Column>
                   <Box style={{
                     background: "var(--st-color-background)",
-                    padding: "var(--st-space-4)",
-                    borderRadius: "var(--st-radius-2)",
+                    padding: "var(--st-space-3)",
+                    borderRadius: "2px",
                     fontFamily: "var(--st-font-mono)",
                     fontSize: "var(--st-font-size-0)",
                     overflowX: "auto",
-                    lineHeight: "1.6"
+                    lineHeight: "1.6",
+                    border: "1px solid var(--st-color-border)"
                   }}>
                     <code>{`import "@staple-css/tokens"\nimport { Box } from "@staple-css/primitives"`}</code>
                   </Box>
                 </Column>
-              </Card>
-            </Grid>
+              </div>
+            </div>
           </Column>
         </Container>
       </Box>
@@ -387,24 +479,60 @@ export function HomePage() {
             <Text tone="muted">Use cases where staple-css excels</Text>
           </Column>
 
-          <Grid cols={{ base: 1, md: 2, lg: 4 }} gap={4}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: "var(--st-space-4)",
+            maxWidth: "900px",
+            margin: "0 auto"
+          }}>
             {[
-              { icon: "⚡", title: "Performance", desc: "2.5 KB zero JS overhead" },
-              { icon: "🎯", title: "Design Systems", desc: "Token-first consistency" },
-              { icon: "🤖", title: "AI & Automation", desc: "Type-safe API constraints" },
-              { icon: "📱", title: "Mobile Apps", desc: "Ultra-lightweight library" },
-            ].map((item, idx) => (
-              <Card key={idx} pad={4} radius={2} shadow={0}>
-                <Column gap={3}>
-                  <Box style={{ fontSize: "28px" }}>{item.icon}</Box>
+              { icon: Gauge, title: "Performance", desc: "2.5 KB zero JS overhead" },
+              { icon: Target, title: "Design Systems", desc: "Token-first consistency" },
+              { icon: Cpu, title: "AI & Automation", desc: "Type-safe API constraints" },
+              { icon: Smartphone, title: "Mobile Apps", desc: "Ultra-lightweight library" },
+            ].map((item, idx) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={idx} style={{
+                  display: "flex",
+                  gap: "var(--st-space-3)",
+                  padding: "var(--st-space-3) var(--st-space-4)",
+                  border: "1px solid var(--st-color-border)",
+                  borderLeft: "3px solid var(--st-color-primary)",
+                  borderRadius: "0",
+                  transition: "all 150ms ease",
+                  cursor: "pointer"
+                }} onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--st-color-surface)";
+                  e.currentTarget.style.borderLeftColor = "#06b6d4";
+                  e.currentTarget.style.transform = "translateX(2px)";
+                }} onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderLeftColor = "var(--st-color-primary)";
+                  e.currentTarget.style.transform = "translateX(0)";
+                }}>
+                  <Box style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "2px",
+                    background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "white",
+                    flexShrink: 0
+                  }}>
+                    <IconComponent size={16} strokeWidth={1.5} />
+                  </Box>
                   <Column gap={1}>
-                    <Text weight="bold" size={2}>{item.title}</Text>
+                    <Text weight="bold" size={1}>{item.title}</Text>
                     <Text size={0} tone="muted">{item.desc}</Text>
                   </Column>
-                </Column>
-              </Card>
-            ))}
-          </Grid>
+                </div>
+              );
+            })}
+          </div>
         </Column>
       </Container>
 
