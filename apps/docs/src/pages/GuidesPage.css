@@ -1,0 +1,222 @@
+/**
+ * Guides Page - Clean, tight guide cards with Lucide icons
+ */
+
+.guides-page {
+  background: var(--st-color-background);
+  color: var(--st-color-text);
+  padding: var(--st-space-8) 0;
+}
+
+.guides-header {
+  margin-bottom: var(--st-space-8);
+  text-align: left;
+}
+
+.guides-header h1 {
+  font-size: clamp(32px, 6vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0 0 var(--st-space-3) 0;
+  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.guides-header p {
+  font-size: 16px;
+  color: var(--st-color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Guide Cards */
+.guide-card {
+  padding: var(--st-space-4);
+  background: var(--st-color-surface);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  transition: all 200ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-4);
+}
+
+.guide-card:hover {
+  border-color: var(--st-color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+}
+
+.guide-card-header {
+  display: flex;
+  gap: var(--st-space-3);
+  align-items: flex-start;
+}
+
+.guide-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
+  color: white;
+  border-radius: var(--st-radius-2);
+  flex-shrink: 0;
+}
+
+.guide-card-title-section {
+  flex: 1;
+}
+
+.guide-card-title-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 var(--st-space-1) 0;
+  color: var(--st-color-text);
+}
+
+.guide-card-title-section p {
+  font-size: 13px;
+  color: var(--st-color-text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Guide Card Content - Tight List */
+.guide-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-3);
+  border-top: 1px solid var(--st-color-border);
+  padding-top: var(--st-space-3);
+}
+
+.guide-section h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 var(--st-space-1) 0;
+  color: var(--st-color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.guide-section p {
+  font-size: 12px;
+  color: var(--st-color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Advanced Topics Section */
+.advanced-section {
+  margin-top: var(--st-space-8);
+  padding-top: var(--st-space-8);
+  border-top: 1px solid var(--st-color-border);
+}
+
+.advanced-section h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 var(--st-space-5) 0;
+  color: var(--st-color-text);
+}
+
+.advanced-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--st-space-4);
+}
+
+.advanced-item {
+  padding: var(--st-space-3);
+  background: var(--st-color-surface);
+  border-left: 3px solid var(--st-color-primary);
+  border-radius: 0;
+  padding-left: var(--st-space-4);
+}
+
+.advanced-item h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 var(--st-space-2) 0;
+  color: var(--st-color-text);
+}
+
+.advanced-item p {
+  font-size: 13px;
+  color: var(--st-color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Quick Reference Section */
+.quick-reference {
+  margin-top: var(--st-space-8);
+  padding-top: var(--st-space-8);
+  border-top: 1px solid var(--st-color-border);
+}
+
+.quick-reference h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 var(--st-space-5) 0;
+  color: var(--st-color-text);
+}
+
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--st-space-3);
+}
+
+.reference-item {
+  padding: var(--st-space-3);
+  background: var(--st-color-surface);
+  border-radius: var(--st-radius-2);
+  border: 1px solid var(--st-color-border);
+  transition: all 150ms ease;
+}
+
+.reference-item:hover {
+  border-color: var(--st-color-primary);
+  transform: translateY(-1px);
+}
+
+.reference-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--st-color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--st-space-1);
+}
+
+.reference-value {
+  font-size: 13px;
+  color: var(--st-color-text-muted);
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .guides-page {
+    padding: var(--st-space-6) 0;
+  }
+
+  .guides-header h1 {
+    font-size: clamp(24px, 5vw, 32px);
+  }
+
+  .guide-card-content {
+    gap: var(--st-space-2);
+  }
+
+  .advanced-grid,
+  .reference-grid {
+    grid-template-columns: 1fr;
+  }
+}
