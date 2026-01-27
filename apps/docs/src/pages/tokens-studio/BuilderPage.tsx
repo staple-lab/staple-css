@@ -1107,16 +1107,17 @@ function SeedsStep({
   return (
     <Column gap={4}>
       {/* Brand Colors - All with Light/Dark */}
+      <Column gap={2}>
+        <Text as="h2" size={3} weight="semibold">
+          Brand Colors
+        </Text>
+        <Text tone="muted">
+          Set your brand colors. Each color can have different values for light and dark modes.
+        </Text>
+      </Column>
+
       <Card pad={4} radius={2}>
         <Column gap={4}>
-          <Column gap={2}>
-            <Text as="h2" size={3} weight="semibold">
-              Brand Colors
-            </Text>
-            <Text tone="muted">
-              Set your brand colors. Each color can have different values for light and dark modes.
-            </Text>
-          </Column>
 
           {/* Column headers */}
           <div className="semantic-colors-header">
@@ -1215,14 +1216,15 @@ function SeedsStep({
       </Card>
 
       {/* Semantic Colors - Editable */}
+      <Column gap={2}>
+        <Text weight="semibold">Semantic Colors</Text>
+        <Text size={0} tone="muted">
+          Customize colors for light and dark modes. Changes update in real time.
+        </Text>
+      </Column>
+
       <Card pad={4} radius={2}>
         <Column gap={4}>
-          <Column gap={1}>
-            <Text weight="semibold">Semantic Colors</Text>
-            <Text size={0} tone="muted">
-              Customize colors for light and dark modes. Changes update in real time.
-            </Text>
-          </Column>
 
           {/* Column headers */}
           <div className="semantic-colors-header">
