@@ -160,9 +160,9 @@ export function HomePage() {
 
             <div style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
-              gap: "var(--st-space-4)",
-              maxWidth: "1200px",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 360px), 1fr))",
+              gap: "var(--st-space-3)",
+              maxWidth: "1100px",
               margin: "0 auto",
               width: "100%"
             }}>
@@ -182,20 +182,18 @@ export function HomePage() {
                     gap: "var(--st-space-3)",
                     padding: "var(--st-space-4)",
                     border: "1px solid var(--st-color-border)",
-                    borderLeft: "4px solid var(--st-color-primary)",
-                    borderRadius: "0",
+                    borderLeft: "3px solid var(--st-color-primary)",
+                    borderRadius: "2px",
                     background: "transparent",
-                    transition: "all 200ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+                    transition: "all 150ms ease",
                     cursor: "pointer"
                   }} onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--st-color-background)";
+                    e.currentTarget.style.borderLeftWidth = "4px";
                     e.currentTarget.style.borderLeftColor = "#06b6d4";
-                    e.currentTarget.style.transform = "translateY(-4px) translateX(4px)";
-                    e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.06)";
+                    e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.05)";
                   }} onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderLeftWidth = "3px";
                     e.currentTarget.style.borderLeftColor = "var(--st-color-primary)";
-                    e.currentTarget.style.transform = "translateY(0) translateX(0)";
                     e.currentTarget.style.boxShadow = "none";
                   }}>
                     <Box style={{
@@ -204,19 +202,19 @@ export function HomePage() {
                       gap: "var(--st-space-2)"
                     }}>
                       <Box style={{
-                        width: "36px",
-                        height: "36px",
+                        width: "32px",
+                        height: "32px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
                         color: "white",
-                        borderRadius: "4px",
+                        borderRadius: "3px",
                         flexShrink: 0
                       }}>
-                        <IconComponent size={18} strokeWidth={1.5} />
+                        <IconComponent size={16} strokeWidth={1.5} />
                       </Box>
-                      <Text weight="bold" size={2}>{feature.title}</Text>
+                      <Text weight="bold" size={2} style={{ fontSize: "15px" }}>{feature.title}</Text>
                     </Box>
                     <ul style={{
                       listStyle: "none",
@@ -224,17 +222,18 @@ export function HomePage() {
                       margin: 0,
                       display: "flex",
                       flexDirection: "column",
-                      gap: "var(--st-space-1)"
+                      gap: "4px"
                     }}>
                       {feature.items.map((item, i) => (
                         <li key={i} style={{
                           fontSize: "13px",
                           color: "var(--st-color-text-muted)",
                           display: "flex",
-                          gap: "var(--st-space-2)",
-                          alignItems: "center"
+                          gap: "8px",
+                          alignItems: "center",
+                          lineHeight: "1.4"
                         }}>
-                          <span style={{ color: "var(--st-color-primary)", fontWeight: "600", fontSize: "10px" }}>▸</span>
+                          <span style={{ color: "var(--st-color-primary)", fontWeight: "700", fontSize: "8px", marginTop: "2px" }}>•</span>
                           {item}
                         </li>
                       ))}
