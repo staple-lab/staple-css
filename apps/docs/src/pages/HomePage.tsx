@@ -159,9 +159,9 @@ export function HomePage() {
             </Column>
 
             <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: "var(--st-space-3)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
               maxWidth: "900px",
               margin: "0 auto",
               width: "100%"
@@ -177,68 +177,63 @@ export function HomePage() {
                 const IconComponent = feature.icon;
                 return (
                   <div key={idx} style={{
-                    padding: "var(--st-space-2) var(--st-space-3)",
-                    background: "transparent",
-                    border: "1px solid var(--st-color-border)",
-                    borderRadius: "2px",
                     display: "flex",
-                    flexDirection: "column",
-                    gap: "var(--st-space-2)",
-                    position: "relative",
-                    transition: "all 150ms ease"
-                  }} onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--st-color-surface)";
-                    e.currentTarget.style.borderColor = "var(--st-color-primary)";
-                  }} onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.borderColor = "var(--st-color-border)";
+                    gap: "16px",
+                    padding: 0,
+                    background: "transparent",
+                    border: "none",
+                    position: "relative"
                   }}>
                     <div style={{
                       display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      margin: 0
+                      alignItems: "flex-start",
+                      gap: "14px",
+                      minWidth: 0
                     }}>
                       <Box style={{
-                        width: "24px",
-                        height: "24px",
+                        width: "32px",
+                        height: "32px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         background: "var(--st-color-primary)",
                         color: "white",
-                        borderRadius: "2px",
+                        borderRadius: "6px",
                         flexShrink: 0,
-                        fontSize: "12px"
+                        fontSize: "16px",
+                        marginTop: "2px"
                       }}>
-                        <IconComponent size={12} strokeWidth={1.5} />
+                        <IconComponent size={16} strokeWidth={1.5} />
                       </Box>
-                      <Text weight="bold" size={2} style={{ fontSize: "14px", fontWeight: 800, lineHeight: "1.25", margin: 0, letterSpacing: "-0.4px" }}>{feature.title}</Text>
+                      <div>
+                        <Text weight="bold" size={2} style={{ fontSize: "17px", fontWeight: 700, margin: 0, lineHeight: "1.3", letterSpacing: "-0.3px" }}>{feature.title}</Text>
+                      </div>
                     </div>
                     <ul style={{
                       listStyle: "none",
                       margin: 0,
                       padding: 0,
+                      marginLeft: "46px",
                       display: "flex",
                       flexDirection: "column",
-                      gap: "3px"
+                      gap: "8px"
                     }}>
                       {feature.items.map((item, i) => (
                         <li key={i} style={{
-                          fontSize: "12px",
+                          fontSize: "14px",
                           color: "var(--st-color-text-muted)",
-                          lineHeight: "1.4",
+                          lineHeight: "1.6",
                           margin: 0,
                           display: "flex",
-                          gap: "6px",
+                          gap: "10px",
                           alignItems: "flex-start",
                           padding: 0
                         }}>
                           <span style={{
                             color: "var(--st-color-primary)",
-                            fontWeight: 950,
-                            fontSize: "10px",
-                            opacity: 1,
+                            fontWeight: 700,
+                            fontSize: "14px",
+                            opacity: 0.7,
                             marginTop: "2px",
                             display: "inline-block",
                             flexShrink: 0
