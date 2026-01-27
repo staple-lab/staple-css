@@ -3,6 +3,64 @@
  * Tailwind-inspired left sidebar with collapsible categories
  */
 
+/* Mobile toggle button */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  bottom: var(--st-space-4);
+  right: var(--st-space-4);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--st-radius-3);
+  background-color: var(--st-color-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 45;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--st-shadow-2);
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+}
+
+.sidebar-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: var(--st-shadow-3);
+}
+
+.sidebar-toggle:active {
+  transform: scale(0.95);
+}
+
+.toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+/* Backdrop for mobile sidebar */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 39;
+  animation: fadeIn var(--st-duration-fast) var(--st-easing-default);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .sidebar {
   position: fixed;
   top: var(--st-space-14, 56px);
@@ -183,46 +241,77 @@
   }
 }
 
-/* Hide sidebar on medium screens and below */
+/* Tablets and below: Show mobile menu toggle */
 @media (max-width: 1024px) {
-  .sidebar {
-    display: none;
+  .sidebar-toggle {
+    display: flex;
   }
-}
 
-/* Alternative: Collapse sidebar to mobile on tablets */
-@media (max-width: 768px) {
   .sidebar {
-    width: 100%;
-    position: fixed;
-    top: auto;
+    transform: translateX(-100%);
+    transition: transform var(--st-duration-normal) var(--st-easing-default);
+    top: var(--st-space-14, 56px);
     bottom: 0;
     left: 0;
-    right: 0;
+    right: auto;
+    width: 280px;
     height: auto;
-    max-height: 50vh;
-    border-right: none;
-    border-top: 1px solid var(--st-color-border);
-    overflow-x: auto;
-    overflow-y: hidden;
+    max-height: none;
+    overflow-y: auto;
+    border-right: 1px solid var(--st-color-border);
+    border-top: none;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: var(--st-shadow-2);
+  }
+
+  .sidebar-backdrop {
+    display: block;
+  }
+
+  .sidebar-backdrop.hidden {
+    display: none;
   }
 
   .sidebar-nav {
-    flex-direction: row;
-    gap: var(--st-space-4);
-    overflow-x: auto;
-    padding-bottom: var(--st-space-2);
+    flex-direction: column;
+    gap: var(--st-space-8);
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .nav-category {
-    flex-shrink: 0;
+    flex-shrink: 1;
   }
 
   .nav-items {
-    display: none;
+    display: flex;
   }
 
   .nav-category-label {
-    margin: 0;
+    margin: 0 calc(var(--st-space-3) * -1);
+  }
+}
+
+/* Mobile: Slide-in sidebar from left */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    bottom: var(--st-space-4);
+    right: var(--st-space-4);
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .sidebar-nav {
+    gap: var(--st-space-6);
+  }
+
+  .nav-category-label {
+    padding: var(--st-space-3) var(--st-space-2);
   }
 }

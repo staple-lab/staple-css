@@ -1,13 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { navigationConfig } from "../navigation";
 import "./Sidebar.css";
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen?: boolean;
+  onToggle?: (isOpen: boolean) => void;
+}
+
+export function Sidebar({ isOpen: controlledIsOpen, onToggle }: SidebarProps) {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set(["Getting Started", "Foundations", "Documentation"])
   );
   const location = useLocation();
+
+  // Handle controlled vs uncontrolled state
+  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+
+  const handleToggle = () => {
+    const newState = !isOpen;
+    setInternalIsOpen(newState);
+    onToggle?.(newState);
+  };
+
+  // Close sidebar when route changes on mobile
+  useEffect(() => {
+    if (window.innerWidth < 1024) {
+      setInternalIsOpen(false);
+    }
+  }, [location]);
 
   const toggleCategory = (categoryLabel: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -30,7 +52,31 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="sidebar">
+    <>
+      {/* Mobile menu toggle button */}
+      <button
+        className="sidebar-toggle"
+        onClick={handleToggle}
+        aria-label="Toggle navigation menu"
+        aria-expanded={isOpen}
+        title="Toggle sidebar"
+      >
+        <span className="toggle-icon">
+          {isOpen ? "✕" : "☰"}
+        </span>
+      </button>
+
+      {/* Backdrop for mobile */}
+      {isOpen && (
+        <div
+          className="sidebar-backdrop"
+          onClick={handleToggle}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`sidebar ${isOpen ? "open" : ""}`}>
       <nav className="sidebar-nav">
         {navigationConfig.map((category) => {
           const isExpanded = expandedCategories.has(category.label);
@@ -105,6 +151,7 @@ export function Sidebar() {
           );
         })}
       </nav>
-    </aside>
+      </aside>
+    </>
   );
 }
