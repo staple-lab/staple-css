@@ -17,6 +17,8 @@ body {
   line-height: var(--st-leading-normal);
   transition: background-color var(--st-duration-normal) var(--st-easing-default),
               color var(--st-duration-normal) var(--st-easing-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
@@ -33,9 +35,18 @@ code {
   display: flex;
   flex-direction: column;
   background-color: var(--st-color-background);
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
   color: var(--st-color-text);
   transition: background-color var(--st-duration-normal) var(--st-easing-default),
               color var(--st-duration-normal) var(--st-easing-default);
+}
+
+[data-theme="dark"] .app-root {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
 }
 
 .app-header {
@@ -3027,4 +3038,161 @@ code {
   .studio-card-floating:hover {
     transform: none;
   }
+}
+
+/* ============================================================================
+   Modern Content Styling
+   ============================================================================ */
+
+/* Section styling for better visual hierarchy */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Modern card elevation for content cards */
+[role="region"] > div > div {
+  transition: all var(--st-duration-normal) var(--st-easing-default);
+}
+
+/* Better heading hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  scroll-margin-top: 80px;
+  letter-spacing: -0.3px;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 600;
+  margin-top: var(--st-space-6);
+  margin-bottom: var(--st-space-3);
+}
+
+h3 {
+  font-weight: 600;
+  margin-top: var(--st-space-4);
+  margin-bottom: var(--st-space-2);
+}
+
+/* Enhanced links styling */
+a:not([class]) {
+  color: var(--st-color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+  padding-bottom: 1px;
+}
+
+a:not([class]):hover {
+  border-bottom-color: var(--st-color-primary);
+  opacity: 0.8;
+}
+
+/* Modern table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: var(--st-space-4) 0;
+}
+
+table th,
+table td {
+  padding: var(--st-space-3);
+  text-align: left;
+  border-bottom: 1px solid var(--st-color-border);
+}
+
+table th {
+  font-weight: 600;
+  background-color: var(--st-color-surface);
+  text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 0.5px;
+}
+
+table tbody tr:hover {
+  background-color: var(--st-color-surface-raised);
+}
+
+/* Modern blockquote styling */
+blockquote {
+  margin: var(--st-space-4) 0;
+  padding-left: var(--st-space-4);
+  border-left: 4px solid var(--st-color-primary);
+  color: var(--st-color-text-muted);
+  font-style: italic;
+  line-height: 1.8;
+}
+
+/* Code styling */
+code:not(.language-*) {
+  background-color: var(--st-color-surface);
+  padding: 0.25em 0.5em;
+  border-radius: var(--st-radius-1);
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+pre {
+  background-color: var(--st-color-surface);
+  border-radius: var(--st-radius-2);
+  padding: var(--st-space-4);
+  overflow-x: auto;
+  border: 1px solid var(--st-color-border);
+  line-height: 1.5;
+}
+
+/* Improved list styling */
+ul:not([class]),
+ol:not([class]) {
+  margin: var(--st-space-4) 0;
+  padding-left: var(--st-space-6);
+  line-height: 1.8;
+}
+
+li:not([class]) {
+  margin-bottom: var(--st-space-2);
+}
+
+/* Modern card containers */
+[class*="card"],
+[class*="Card"] {
+  border-radius: var(--st-radius-3);
+  transition: all var(--st-duration-normal) var(--st-easing-default);
+  border: 1px solid var(--st-color-border);
+}
+
+[class*="card"]:hover,
+[class*="Card"]:hover {
+  border-color: var(--st-color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] [class*="card"]:hover,
+[data-theme="dark"] [class*="Card"]:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better hr styling */
+hr {
+  border: none;
+  border-top: 1px solid var(--st-color-border);
+  margin: var(--st-space-6) 0;
 }
