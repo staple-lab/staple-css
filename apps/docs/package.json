@@ -12,6 +12,7 @@
     "@staple-css/primitives": "*",
     "@staple-css/tokens": "*",
     "@types/prismjs": "^1.26.5",
+    "lucide-react": "^0.563.0",
     "prismjs": "^1.30.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

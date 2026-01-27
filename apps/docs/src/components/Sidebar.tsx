@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { Menu, X, ChevronRight, ExternalLink } from "lucide-react";
 import { navigationConfig } from "../navigation";
 import "./Sidebar.css";
 
@@ -113,9 +114,11 @@ export function Sidebar({ isOpen: controlledIsOpen, onToggle }: SidebarProps) {
         aria-expanded={isOpen}
         title="Toggle sidebar"
       >
-        <span className="toggle-icon">
-          {isOpen ? "✕" : "☰"}
-        </span>
+        {isOpen ? (
+          <X size={24} strokeWidth={2} />
+        ) : (
+          <Menu size={24} strokeWidth={2} />
+        )}
       </button>
 
       {/* Backdrop for mobile */}
@@ -142,9 +145,11 @@ export function Sidebar({ isOpen: controlledIsOpen, onToggle }: SidebarProps) {
                 aria-expanded={isExpanded}
               >
                 <span>{category.label}</span>
-                <span className={`chevron ${isExpanded ? "open" : ""}`}>
-                  ▶
-                </span>
+                <ChevronRight
+                  size={18}
+                  strokeWidth={2}
+                  className={`chevron ${isExpanded ? "open" : ""}`}
+                />
               </button>
 
               {isExpanded && (
@@ -163,7 +168,7 @@ export function Sidebar({ isOpen: controlledIsOpen, onToggle }: SidebarProps) {
                               rel="noopener noreferrer"
                             >
                               {item.label}
-                              <span className="external-icon">↗</span>
+                              <ExternalLink size={14} strokeWidth={2} className="external-icon" />
                             </a>
                           ) : (
                             <NavLink

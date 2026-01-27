@@ -3,9 +3,10 @@
  * Minimal styles that extend staple-css tokens
  */
 
-/* Import custom fonts and animations */
+/* Import custom fonts, animations, and patterns */
 @import "./fonts.css";
 @import "./animations.css";
+@import "./patterns.css";
 
 /* ===== Accent Color System ===== */
 :root {

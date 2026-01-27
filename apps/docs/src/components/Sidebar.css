@@ -124,12 +124,12 @@
 
 .nav-category-label .chevron {
   display: inline-flex;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   align-items: center;
   justify-content: center;
   transition: transform var(--st-duration-fast) var(--st-easing-default);
-  font-size: 12px;
+  flex-shrink: 0;
 }
 
 .nav-category-label .chevron.open {
@@ -200,8 +200,9 @@
 /* External link icon */
 .nav-link .external-icon {
   margin-left: auto;
-  font-size: 12px;
   opacity: 0.6;
+  flex-shrink: 0;
+  transition: opacity var(--st-duration-fast) var(--st-easing-default);
 }
 
 .nav-link:hover .external-icon {

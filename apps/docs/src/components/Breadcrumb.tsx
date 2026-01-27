@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Row, Text } from "@staple-css/primitives/full";
+import { Edit2 } from "lucide-react";
 import { navigationConfig } from "../navigation";
 import "./Breadcrumb.css";
 
@@ -142,7 +143,7 @@ export function Breadcrumb() {
             title="Edit this page on GitHub"
             aria-label="Edit this page on GitHub"
           >
-            <span className="github-icon">✎</span>
+            <Edit2 size={16} strokeWidth={2} className="github-icon" />
             <Text as="span" size={0}>
               Edit
             </Text>
