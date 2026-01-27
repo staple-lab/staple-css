@@ -28,7 +28,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "color",
       query: "primary color brand",
-      icon: "🎨",
     },
     {
       id: "color-danger",
@@ -36,7 +35,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "color",
       query: "danger color red error",
-      icon: "⚠️",
     },
     {
       id: "color-success",
@@ -44,7 +42,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "color",
       query: "success color green valid",
-      icon: "✓",
     },
     {
       id: "color-warn",
@@ -52,7 +49,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "color",
       query: "warn warning color yellow",
-      icon: "⚡",
     },
     {
       id: "color-neutral",
@@ -60,7 +56,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "color",
       query: "neutral color gray",
-      icon: "⚪",
     },
 
     // Space tokens
@@ -71,7 +66,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "space",
       query: "space 0 spacing padding margin none",
-      icon: "📏",
     },
     {
       id: "space-1",
@@ -80,7 +74,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "space",
       query: "space 1 spacing padding margin",
-      icon: "📏",
     },
     {
       id: "space-2",
@@ -89,7 +82,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "space",
       query: "space 2 spacing padding margin",
-      icon: "📏",
     },
     {
       id: "space-3",
@@ -98,7 +90,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "space",
       query: "space 3 spacing padding margin",
-      icon: "📏",
     },
     {
       id: "space-4",
@@ -107,7 +98,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "space",
       query: "space 4 spacing padding margin",
-      icon: "📏",
     },
     {
       id: "space-5",
@@ -116,7 +106,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "space",
       query: "space 5 spacing padding margin",
-      icon: "📏",
     },
     {
       id: "space-6",
@@ -125,7 +114,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "space",
       query: "space 6 spacing padding margin",
-      icon: "📏",
     },
     {
       id: "space-7",
@@ -134,7 +122,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "space",
       query: "space 7 spacing padding margin",
-      icon: "📏",
     },
     {
       id: "space-8",
@@ -143,7 +130,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "space",
       query: "space 8 spacing padding margin",
-      icon: "📏",
     },
 
     // Radius tokens
@@ -154,7 +140,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "radius",
       query: "radius 0 sharp border corner",
-      icon: "🔲",
     },
     {
       id: "radius-1",
@@ -163,7 +148,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "radius",
       query: "radius 1 subtle border corner rounded",
-      icon: "🔲",
     },
     {
       id: "radius-2",
@@ -172,7 +156,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "radius",
       query: "radius 2 standard border corner",
-      icon: "🔲",
     },
     {
       id: "radius-3",
@@ -181,7 +164,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "radius",
       query: "radius 3 prominent border corner",
-      icon: "🔲",
     },
     {
       id: "radius-4",
@@ -190,7 +172,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "radius",
       query: "radius 4 pill border corner rounded",
-      icon: "🔲",
     },
 
     // Shadow tokens
@@ -201,7 +182,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "shadow",
       query: "shadow 0 elevation none",
-      icon: "🌑",
     },
     {
       id: "shadow-1",
@@ -210,7 +190,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "shadow",
       query: "shadow 1 subtle elevation",
-      icon: "🌑",
     },
     {
       id: "shadow-2",
@@ -219,7 +198,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "shadow",
       query: "shadow 2 standard elevation",
-      icon: "🌑",
     },
     {
       id: "shadow-3",
@@ -228,7 +206,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "shadow",
       query: "shadow 3 strong elevation",
-      icon: "🌑",
     },
 
     // Typography tokens
@@ -239,7 +216,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "typography",
       query: "typography size 0 extra small",
-      icon: "✍️",
     },
     {
       id: "type-size-1",
@@ -248,7 +224,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "typography",
       query: "typography size 1 small",
-      icon: "✍️",
     },
     {
       id: "type-size-2",
@@ -257,7 +232,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "typography",
       query: "typography size 2 medium",
-      icon: "✍️",
     },
     {
       id: "type-size-3",
@@ -266,7 +240,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "typography",
       query: "typography size 3 large",
-      icon: "✍️",
     },
     {
       id: "type-size-4",
@@ -275,7 +248,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "typography",
       query: "typography size 4 extra large",
-      icon: "✍️",
     },
     {
       id: "type-size-5",
@@ -284,7 +256,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "typography",
       query: "typography size 5 2xl",
-      icon: "✍️",
     },
     {
       id: "type-size-6",
@@ -293,7 +264,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "typography",
       query: "typography size 6 3xl",
-      icon: "✍️",
     },
 
     // Motion tokens
@@ -303,7 +273,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "motion",
       query: "motion animation duration fast quick",
-      icon: "⚡",
     },
     {
       id: "motion-normal",
@@ -311,7 +280,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "motion",
       query: "motion animation duration normal standard",
-      icon: "⚡",
     },
     {
       id: "motion-slow",
@@ -319,7 +287,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "motion",
       query: "motion animation duration slow",
-      icon: "⚡",
     },
     {
       id: "easing-default",
@@ -327,7 +294,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "motion",
       query: "easing animation curve default",
-      icon: "📈",
     },
     {
       id: "easing-in",
@@ -335,7 +301,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "motion",
       query: "easing animation curve in",
-      icon: "📈",
     },
     {
       id: "easing-out",
@@ -343,7 +308,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "tokens",
       type: "motion",
       query: "easing animation curve out",
-      icon: "📈",
     },
 
     // Pages
@@ -354,7 +318,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "home start welcome",
       path: "/",
-      icon: "🏠",
     },
     {
       id: "page-tokens",
@@ -363,7 +326,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "tokens design system variables",
       path: "/tokens",
-      icon: "🎨",
     },
     {
       id: "page-reference",
@@ -372,7 +334,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "reference token documentation",
       path: "/token-reference",
-      icon: "📖",
     },
     {
       id: "page-guides",
@@ -381,7 +342,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "guides documentation tutorials how-to",
       path: "/guides",
-      icon: "📚",
     },
     {
       id: "page-colors",
@@ -390,7 +350,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "colors gradients palette visual",
       path: "/colors",
-      icon: "🎨",
     },
     {
       id: "page-visuals",
@@ -399,7 +358,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "visuals imagery assets",
       path: "/visuals",
-      icon: "🖼️",
     },
     {
       id: "page-components",
@@ -408,7 +366,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "components patterns ui kit",
       path: "/components",
-      icon: "🧩",
     },
     {
       id: "page-gradient-studio",
@@ -417,7 +374,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "gradient studio tool generator",
       path: "/gradient-studio",
-      icon: "🎨",
     },
     {
       id: "page-figma",
@@ -426,7 +382,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "figma integration design tool",
       path: "/figma",
-      icon: "🎨",
     },
     {
       id: "page-primitives",
@@ -435,7 +390,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "primitives components react box text",
       path: "/primitives",
-      icon: "🧱",
     },
     {
       id: "page-why",
@@ -444,7 +398,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "why philosophy rationale",
       path: "/why",
-      icon: "❓",
     },
     {
       id: "page-examples",
@@ -453,7 +406,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "examples code samples",
       path: "/examples",
-      icon: "💡",
     },
     {
       id: "page-studio",
@@ -462,7 +414,6 @@ function buildSearchIndex(): SearchEntry[] {
       type: "page",
       query: "studio tokens builder editor",
       path: "/tokens-studio",
-      icon: "⚙️",
     },
 
     // Common patterns
@@ -473,7 +424,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "button primary action call-to-action",
-      icon: "🔵",
     },
     {
       id: "pattern-button-secondary",
@@ -482,7 +432,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "button secondary alternative",
-      icon: "⚪",
     },
     {
       id: "pattern-button-danger",
@@ -491,7 +440,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "button danger destructive delete",
-      icon: "🔴",
     },
     {
       id: "pattern-card-elevated",
@@ -500,7 +448,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "card elevated shadow surface",
-      icon: "📇",
     },
     {
       id: "pattern-card-flat",
@@ -509,7 +456,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "card flat minimal surface",
-      icon: "📇",
     },
     {
       id: "pattern-badge-primary",
@@ -518,7 +464,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "badge status label tag",
-      icon: "🏷️",
     },
     {
       id: "pattern-badge-success",
@@ -527,7 +472,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "badge success status",
-      icon: "✅",
     },
     {
       id: "pattern-alert-info",
@@ -536,7 +480,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "alert info notification message",
-      icon: "ℹ️",
     },
     {
       id: "pattern-alert-warning",
@@ -545,7 +488,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "alert warning caution",
-      icon: "⚠️",
     },
     {
       id: "pattern-alert-error",
@@ -554,7 +496,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "alert error danger failure",
-      icon: "❌",
     },
     {
       id: "pattern-form-field",
@@ -563,7 +504,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "form field input label",
-      icon: "📝",
     },
     {
       id: "pattern-modal",
@@ -572,7 +512,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "modal dialog overlay popup",
-      icon: "🪟",
     },
     {
       id: "pattern-dropdown-menu",
@@ -581,7 +520,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "dropdown menu select options",
-      icon: "📋",
     },
     {
       id: "pattern-tabs",
@@ -590,7 +528,6 @@ function buildSearchIndex(): SearchEntry[] {
       category: "patterns",
       type: "pattern",
       query: "tabs navigation tabbed interface",
-      icon: "📑",
     },
   ];
 }
@@ -857,9 +794,14 @@ export function SearchPalette({ onNavigate }: SearchPaletteProps) {
                             onMouseEnter={() => setSelectedIndex(globalIndex)}
                           >
                             <Row gap={3} align="center" className="search-item-content">
-                              <Box as="span" className="search-item-icon">
-                                {entry.icon}
-                              </Box>
+                              <Box as="span" className="search-item-icon" style={{
+                                width: "20px",
+                                height: "20px",
+                                borderRadius: "2px",
+                                background: entry.type === "color" ? "var(--st-color-primary)" : entry.type === "space" ? "var(--st-color-primary)" : entry.type === "typography" ? "var(--st-color-primary)" : entry.type === "radius" ? "var(--st-color-primary)" : entry.type === "shadow" ? "var(--st-color-primary)" : entry.type === "motion" ? "var(--st-color-primary)" : "var(--st-color-primary)",
+                                opacity: 0.2,
+                                flexShrink: 0
+                              }} />
                               <Column gap={1} className="search-item-text">
                                 <Text
                                   as="span"
