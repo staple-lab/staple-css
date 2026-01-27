@@ -264,26 +264,29 @@ code {
 
 /* Studio Buttons */
 .studio-btn {
-  padding: var(--st-space-1) var(--st-space-3);
+  padding: var(--st-space-2) var(--st-space-4);
   border: 1px solid var(--st-color-border);
   border-radius: var(--st-radius-2);
-  background-color: var(--st-color-surface-raised);
+  background-color: var(--st-color-surface);
   color: var(--st-color-text);
   font-size: var(--st-font-size-0);
   font-weight: var(--st-font-weight-medium);
   cursor: pointer;
   transition: all var(--st-duration-fast) var(--st-easing-default);
+  letter-spacing: var(--st-letter-spacing-normal);
+  text-transform: none;
 }
 
 .studio-btn:hover {
   border-color: var(--st-color-primary);
-  background-color: var(--st-color-surface);
+  background-color: var(--st-color-primary-surface);
   transform: translateY(-1px);
+  box-shadow: var(--st-shadow-1);
 }
 
 .studio-btn:active {
   transform: translateY(0);
-  background-color: var(--st-color-background);
+  box-shadow: none;
 }
 
 .studio-btn:focus-visible {
@@ -301,17 +304,19 @@ code {
   background-color: var(--st-color-primary);
   border-color: var(--st-color-primary);
   color: var(--st-color-primary-text);
+  padding: var(--st-space-2) var(--st-space-4);
 }
 
 .studio-btn--primary:hover {
   background-color: var(--st-color-primary-hover);
   border-color: var(--st-color-primary-hover);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--st-shadow-2);
+  transform: translateY(-1px);
 }
 
 .studio-btn--primary:active {
   background-color: var(--st-color-primary);
-  box-shadow: none;
+  box-shadow: var(--st-shadow-1);
 }
 
 .studio-btn--danger {
@@ -359,7 +364,7 @@ code {
 
 /* Studio Inputs */
 .studio-text-input {
-  padding: var(--st-space-1) var(--st-space-2);
+  padding: var(--st-space-2) var(--st-space-3);
   border: 1px solid var(--st-color-border);
   border-radius: var(--st-radius-2);
   background-color: var(--st-color-background);
@@ -367,12 +372,14 @@ code {
   font-size: var(--st-font-size-1);
   font-family: var(--st-font-mono);
   min-width: 100px;
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+  letter-spacing: var(--st-letter-spacing-normal);
 }
 
 .studio-text-input:focus {
   outline: none;
   border-color: var(--st-color-primary);
-  box-shadow: var(--st-color-focus-ring);
+  box-shadow: 0 0 0 3px var(--st-color-primary-surface);
 }
 
 .studio-text-input--wide {
@@ -380,27 +387,42 @@ code {
 }
 
 .studio-color-input {
-  width: 36px;
-  height: 36px;
-  padding: 2px;
-  border: 1px solid var(--st-color-border);
+  width: 44px;
+  height: 44px;
+  padding: var(--st-space-1);
+  border: 2px solid var(--st-color-border);
   border-radius: var(--st-radius-2);
   cursor: pointer;
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+}
+
+.studio-color-input:hover {
+  border-color: var(--st-color-primary);
+  transform: scale(1.05);
+}
+
+.studio-color-input:focus {
+  outline: none;
+  border-color: var(--st-color-primary);
+  box-shadow: 0 0 0 3px var(--st-color-primary-surface);
 }
 
 .studio-select {
-  padding: var(--st-space-1) var(--st-space-3);
+  padding: var(--st-space-2) var(--st-space-3);
   border: 1px solid var(--st-color-border);
   border-radius: var(--st-radius-2);
   background-color: var(--st-color-background);
   color: var(--st-color-text);
   font-size: var(--st-font-size-1);
   min-width: 150px;
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+  letter-spacing: var(--st-letter-spacing-normal);
 }
 
 .studio-select:focus {
   outline: none;
   border-color: var(--st-color-primary);
+  box-shadow: 0 0 0 3px var(--st-color-primary-surface);
 }
 
 /* Studio Navigation */
