@@ -1,5 +1,5 @@
 /**
- * Guides Page - Simple, tight, scannable list
+ * Guides Page - Colorful card grid with numbered items
  */
 
 .guides-page {
@@ -30,59 +30,72 @@
   max-width: 700px;
 }
 
-/* Main list - vertical stack */
-.guides-list {
+/* Grid layout - 2 columns */
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--st-space-4);
+}
+
+/* Card with numbered badge */
+.guide-card {
+  position: relative;
+  padding: var(--st-space-4);
+  background: var(--st-color-surface);
+  border: 2px solid var(--accent-color, var(--st-color-primary));
+  border-radius: 4px;
+  transition: all 200ms ease;
   display: flex;
   flex-direction: column;
-  gap: var(--st-space-5);
+  gap: var(--st-space-3);
 }
 
-/* Each guide item */
-.guide-item {
-  padding: var(--st-space-4);
-  background: transparent;
-  border: 1px solid var(--st-color-border);
-  border-left: 3px solid var(--st-color-primary);
-  border-radius: 0;
-  transition: all 200ms ease;
+.guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+  border-color: var(--accent-color, var(--st-color-primary));
 }
 
-.guide-item:hover {
-  border-left-color: #06b6d4;
-  background: var(--st-color-surface);
-  transform: translateX(2px);
+/* Number badge in top right */
+.guide-card-number {
+  position: absolute;
+  top: var(--st-space-2);
+  right: var(--st-space-2);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--accent-color, var(--st-color-primary));
+  opacity: 0.15;
+  line-height: 1;
 }
 
 /* Header with icon */
-.guide-header {
+.guide-card-header {
   display: flex;
   gap: var(--st-space-2);
   align-items: center;
-  margin-bottom: var(--st-space-3);
 }
 
-.guide-icon {
-  width: 32px;
-  height: 32px;
+.guide-card-icon {
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
+  background: var(--accent-color, var(--st-color-primary));
   color: white;
-  border-radius: 2px;
+  border-radius: 4px;
   flex-shrink: 0;
 }
 
-.guide-header h3 {
+.guide-card-header h3 {
   font-size: 15px;
   font-weight: 700;
   margin: 0;
   color: var(--st-color-text);
-  letter-spacing: -0.2px;
 }
 
 /* Points list */
-.guide-points {
+.guide-card-points {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -91,8 +104,8 @@
   gap: var(--st-space-2);
 }
 
-.guide-points li {
-  font-size: 13px;
+.guide-card-points li {
+  font-size: 12px;
   color: var(--st-color-text-muted);
   line-height: 1.5;
   margin: 0;
@@ -101,12 +114,12 @@
   align-items: flex-start;
 }
 
-.guide-points li::before {
+.guide-card-points li::before {
   content: "•";
-  color: var(--st-color-primary);
+  color: var(--accent-color, var(--st-color-primary));
   font-weight: bold;
   flex-shrink: 0;
-  margin-top: 0px;
+  font-size: 14px;
 }
 
 /* Responsive */
@@ -119,12 +132,11 @@
     font-size: clamp(24px, 5vw, 32px);
   }
 
-  .guide-item {
-    padding: var(--st-space-3);
+  .guides-grid {
+    grid-template-columns: 1fr;
   }
 
-  .guide-item:hover {
+  .guide-card {
     padding: var(--st-space-3);
-    margin: 0;
   }
 }
