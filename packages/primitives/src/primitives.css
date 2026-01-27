@@ -18,9 +18,34 @@
 :where(.st-Grid),
 :where(.st-Card),
 :where(.st-Container),
+:where(.st-Flex),
 :where(.st-Row),
 :where(.st-Column) {
   box-sizing: border-box;
+}
+
+/* Flex base display and directions */
+:where(.st-Flex),
+:where(.st-Stack),
+:where(.st-Inline),
+:where(.st-Row),
+:where(.st-Column) {
+  display: flex;
+}
+
+:where(.st-Flex--dir-row),
+:where(.st-Row) {
+  flex-direction: row;
+}
+
+:where(.st-Flex--dir-column),
+:where(.st-Column) {
+  flex-direction: column;
+}
+
+:where(.st-Flex--inline),
+:where(.st-Inline) {
+  display: inline-flex;
 }
 
 /* ============================================================================
@@ -266,26 +291,26 @@
  * Flex/Stack - Alignment
  * ============================================================================ */
 
-:where(.st-Stack--align-start), :where(.st-Inline--align-start), :where(.st-Row--align-start), :where(.st-Column--align-start) { align-items: flex-start; }
-:where(.st-Stack--align-center), :where(.st-Inline--align-center), :where(.st-Row--align-center), :where(.st-Column--align-center) { align-items: center; }
-:where(.st-Stack--align-end), :where(.st-Inline--align-end), :where(.st-Row--align-end), :where(.st-Column--align-end) { align-items: flex-end; }
-:where(.st-Stack--align-stretch), :where(.st-Inline--align-stretch), :where(.st-Row--align-stretch), :where(.st-Column--align-stretch) { align-items: stretch; }
-:where(.st-Stack--align-baseline), :where(.st-Inline--align-baseline), :where(.st-Row--align-baseline), :where(.st-Column--align-baseline) { align-items: baseline; }
+:where(.st-Flex--align-start), :where(.st-Stack--align-start), :where(.st-Inline--align-start), :where(.st-Row--align-start), :where(.st-Column--align-start) { align-items: flex-start; }
+:where(.st-Flex--align-center), :where(.st-Stack--align-center), :where(.st-Inline--align-center), :where(.st-Row--align-center), :where(.st-Column--align-center) { align-items: center; }
+:where(.st-Flex--align-end), :where(.st-Stack--align-end), :where(.st-Inline--align-end), :where(.st-Row--align-end), :where(.st-Column--align-end) { align-items: flex-end; }
+:where(.st-Flex--align-stretch), :where(.st-Stack--align-stretch), :where(.st-Inline--align-stretch), :where(.st-Row--align-stretch), :where(.st-Column--align-stretch) { align-items: stretch; }
+:where(.st-Flex--align-baseline), :where(.st-Stack--align-baseline), :where(.st-Inline--align-baseline), :where(.st-Row--align-baseline), :where(.st-Column--align-baseline) { align-items: baseline; }
 
 /* ============================================================================
- * Inline/Row - Justification
+ * Flex/Inline/Row - Justification
  * ============================================================================ */
 
-:where(.st-Inline--justify-start), :where(.st-Row--justify-start) { justify-content: flex-start; }
-:where(.st-Inline--justify-center), :where(.st-Row--justify-center) { justify-content: center; }
-:where(.st-Inline--justify-end), :where(.st-Row--justify-end) { justify-content: flex-end; }
-:where(.st-Inline--justify-between), :where(.st-Row--justify-between) { justify-content: space-between; }
-:where(.st-Inline--justify-around), :where(.st-Row--justify-around) { justify-content: space-around; }
-:where(.st-Inline--justify-evenly), :where(.st-Row--justify-evenly) { justify-content: space-evenly; }
+:where(.st-Flex--justify-start), :where(.st-Inline--justify-start), :where(.st-Row--justify-start) { justify-content: flex-start; }
+:where(.st-Flex--justify-center), :where(.st-Inline--justify-center), :where(.st-Row--justify-center) { justify-content: center; }
+:where(.st-Flex--justify-end), :where(.st-Inline--justify-end), :where(.st-Row--justify-end) { justify-content: flex-end; }
+:where(.st-Flex--justify-between), :where(.st-Inline--justify-between), :where(.st-Row--justify-between) { justify-content: space-between; }
+:where(.st-Flex--justify-around), :where(.st-Inline--justify-around), :where(.st-Row--justify-around) { justify-content: space-around; }
+:where(.st-Flex--justify-evenly), :where(.st-Inline--justify-evenly), :where(.st-Row--justify-evenly) { justify-content: space-evenly; }
 
 /* Wrap */
-:where(.st-Inline--wrap), :where(.st-Row--wrap) { flex-wrap: wrap; }
-:where(.st-Inline--wrap-reverse), :where(.st-Row--wrap-reverse) { flex-wrap: wrap-reverse; }
+:where(.st-Flex--wrap), :where(.st-Inline--wrap), :where(.st-Row--wrap) { flex-wrap: wrap; }
+:where(.st-Flex--wrap-reverse), :where(.st-Inline--wrap-reverse), :where(.st-Row--wrap-reverse) { flex-wrap: wrap-reverse; }
 
 /* ============================================================================
  * Grid

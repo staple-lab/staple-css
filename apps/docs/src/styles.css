@@ -3260,7 +3260,6 @@ h1 {
 
 h2 {
   font-weight: 600;
-  margin-top: var(--st-space-8);
   margin-bottom: var(--st-space-4);
   font-size: var(--st-font-size-5);
 }
@@ -3557,7 +3556,6 @@ a[class*="tertiary"][class*="btn"]:hover {
 
   h2 {
     font-size: var(--st-font-size-4);
-    margin-top: var(--st-space-6);
   }
 
   h3 {
@@ -3609,7 +3607,7 @@ a[class*="tertiary"][class*="btn"]:hover {
 
   h2 {
     font-size: var(--st-font-size-3);
-    margin-top: var(--st-space-5);
+    margin-top: var(--st-space-3);
     margin-bottom: var(--st-space-3);
   }
 
