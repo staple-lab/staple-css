@@ -74,14 +74,16 @@ export function App() {
     >
       <header className="app-header">
         <Container size="xl">
-          <Row gap={4} align="center" justify="between">
+          <Row gap={4} align="center" className="header-layout">
             <Link to="/" className="logo-link">
               <Text as="span" size={3} weight="bold">
                 staple-css
               </Text>
             </Link>
-            <Row gap={2}>
+            <div className="header-center">
               <SearchPalette />
+            </div>
+            <Row gap={2} className="header-right">
               <button onClick={cycleTheme} className="toggle-btn" title="Toggle theme">
                 {theme === "system" ? "🖥️" : theme === "light" ? "☀️" : "🌙"} {themeLabel}
               </button>

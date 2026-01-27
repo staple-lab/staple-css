@@ -88,6 +88,38 @@ code {
   }
 }
 
+/* Header layout - logo left, search center, buttons right */
+.header-layout {
+  width: 100%;
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--st-space-4);
+}
+
+.header-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.header-right {
+  display: flex;
+  gap: var(--st-space-2);
+  align-items: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .header-layout {
+    gap: var(--st-space-2);
+  }
+
+  .header-right {
+    gap: var(--st-space-1);
+  }
+}
+
 /* Content wrapper for sidebar + main layout */
 .app-content-wrapper {
   display: flex;
