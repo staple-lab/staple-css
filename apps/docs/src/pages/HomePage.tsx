@@ -158,7 +158,14 @@ export function HomePage() {
               <Text tone="muted" style={{ fontSize: "15px" }}>Complete toolkit. Start lightweight, scale to enterprise. No compromise.</Text>
             </Column>
 
-            <Grid cols={{ base: 1, md: 2 }} gap={8} style={{ maxWidth: "950px", margin: "0 auto", width: "100%" }}>
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              maxWidth: "900px",
+              margin: "0 auto",
+              width: "100%"
+            }}>
               {[
                 { icon: Target, title: "Token-First Design", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
                 { icon: Zap, title: "Ultra-Lightweight", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"] },
@@ -172,30 +179,28 @@ export function HomePage() {
                   <div key={idx} style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: 0
+                    gap: "8px"
                   }}>
                     <div style={{
                       display: "flex",
-                      alignItems: "flex-start",
-                      gap: "14px",
-                      marginBottom: "11px"
+                      alignItems: "center",
+                      gap: "12px"
                     }}>
                       <Box style={{
-                        width: "44px",
-                        height: "44px",
+                        width: "32px",
+                        height: "32px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         background: "var(--st-color-primary)",
                         color: "white",
-                        borderRadius: "7px",
+                        borderRadius: "6px",
                         flexShrink: 0,
-                        fontSize: "20px",
-                        marginTop: "-2px"
+                        fontSize: "16px"
                       }}>
-                        <IconComponent size={20} strokeWidth={1.5} />
+                        <IconComponent size={16} strokeWidth={1.5} />
                       </Box>
-                      <Text weight="bold" size={2} style={{ fontSize: "19px", fontWeight: 900, margin: 0, lineHeight: "1.1", letterSpacing: "-0.5px" }}>{feature.title}</Text>
+                      <Text weight="bold" size={2} style={{ fontSize: "17px", fontWeight: 700, margin: 0, lineHeight: "1.3", letterSpacing: "-0.2px" }}>{feature.title}</Text>
                     </div>
 
                     <ul style={{
@@ -208,23 +213,24 @@ export function HomePage() {
                     }}>
                       {feature.items.map((item, i) => (
                         <li key={i} style={{
-                          fontSize: "13px",
+                          fontSize: "14px",
                           color: "var(--st-color-text-muted)",
-                          lineHeight: "1.4",
+                          lineHeight: "1.5",
                           margin: 0,
                           display: "flex",
                           gap: "8px",
-                          alignItems: "baseline",
+                          alignItems: "flex-start",
                           padding: 0
                         }}>
                           <span style={{
                             color: "var(--st-color-primary)",
-                            fontWeight: 900,
-                            fontSize: "11px",
+                            fontWeight: 700,
+                            fontSize: "14px",
                             display: "inline-block",
                             flexShrink: 0,
-                            opacity: 0.6
-                          }}>→</span>
+                            opacity: 0.6,
+                            marginTop: "1px"
+                          }}>•</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -232,7 +238,7 @@ export function HomePage() {
                   </div>
                 );
               })}
-            </Grid>
+            </div>
           </Column>
         </Container>
       </Box>
