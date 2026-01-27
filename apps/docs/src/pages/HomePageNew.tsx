@@ -1,4 +1,12 @@
 import { Container, Column, Row, Text, Box, Grid } from "@staple-css/primitives/full";
+import {
+  Palette,
+  Layout,
+  Type,
+  Shield,
+  Zap,
+  Smartphone,
+} from "lucide-react";
 import "./HomePage.css";
 
 export function HomePageNew() {
@@ -72,7 +80,7 @@ export function HomePageNew() {
         </Container>
       </section>
 
-      {/* CAPABILITIES: Show What's Possible */}
+      {/* CAPABILITIES: Modern Icon Grid */}
       <section className="capabilities">
         <Container size="lg">
           <div className="capabilities-header">
@@ -80,21 +88,26 @@ export function HomePageNew() {
             <p>Everything needed for professional design systems</p>
           </div>
 
-          <Grid cols={{ base: 1, md: 2 }} gap={8}>
+          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={6}>
             {[
-              { icon: "🎨", title: "22 Color Palettes", desc: "Tailwind-compatible scales with semantic intent" },
-              { icon: "📏", title: "Spacing System", desc: "9-step scale from 0-64px for perfect rhythm" },
-              { icon: "🔤", title: "Typography", desc: "Font stacks, sizes, weights, and line heights" },
-              { icon: "♿", title: "Accessibility Built-In", desc: "WCAG AA compliance. Dark mode. Motion respect." },
-              { icon: "⚡", title: "Performance", desc: "<1KB runtime. Tree-shakeable. Zero deps." },
-              { icon: "📱", title: "Responsive", desc: "Intrinsic layout patterns. CSS Grid native." },
-            ].map((cap) => (
-              <div key={cap.title} className="capability">
-                <div className="capability-icon">{cap.icon}</div>
-                <h3>{cap.title}</h3>
-                <p>{cap.desc}</p>
-              </div>
-            ))}
+              { icon: Palette, title: "22 Color Palettes", desc: "Tailwind-compatible scales with semantic intent" },
+              { icon: Layout, title: "Spacing System", desc: "9-step scale from 0-64px for perfect rhythm" },
+              { icon: Type, title: "Typography", desc: "Font stacks, sizes, weights, and line heights" },
+              { icon: Shield, title: "Accessibility Built-In", desc: "WCAG AA compliance. Dark mode. Motion respect." },
+              { icon: Zap, title: "Performance", desc: "<1KB runtime. Tree-shakeable. Zero deps." },
+              { icon: Smartphone, title: "Responsive", desc: "Intrinsic layout patterns. CSS Grid native." },
+            ].map((cap, idx) => {
+              const IconComponent = cap.icon;
+              return (
+                <div key={idx} className="capability">
+                  <div className="capability-icon">
+                    <IconComponent size={28} strokeWidth={1.5} />
+                  </div>
+                  <h3>{cap.title}</h3>
+                  <p>{cap.desc}</p>
+                </div>
+              );
+            })}
           </Grid>
         </Container>
       </section>
