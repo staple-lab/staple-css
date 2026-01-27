@@ -6,82 +6,48 @@ completion_promise: null
 started_at: "2026-01-27T08:06:04Z"
 ---
 
-## Iteration 2: Add Mobile Toggle & Breadcrumb Navigation
+## Iteration 3: Add Table of Contents for Documentation
 
 ### Completed Features:
 
-#### 1. Mobile Menu Toggle (Sidebar Enhancement)
-- ✅ Created floating action button for tablets/mobile (bottom-right)
-- ✅ Slide-in sidebar animation (translateX) from left
-- ✅ Semi-transparent backdrop overlay when open
-- ✅ Auto-close sidebar on route navigation
-- ✅ Both controlled and uncontrolled state support
-- ✅ Smooth transitions with proper z-index management
+#### Table of Contents (Right Sidebar)
+- ✅ Created `TableOfContents.tsx` with intelligent heading extraction
+- ✅ Auto-generates heading IDs if not present
+- ✅ Tracks active heading during scroll with 200px offset
+- ✅ Sticky positioning at top of viewport
+- ✅ Supports h2-h4 levels with indentation
+- ✅ Smooth scroll-into-view behavior
+- ✅ Hidden on screens < 1400px (desktop only)
+- ✅ Responsive gap handling
 
-#### 2. Breadcrumb Navigation Component
-- ✅ Created `Breadcrumb.tsx` with intelligent page hierarchy
-- ✅ Automatically detects current page in navigation structure
-- ✅ Builds breadcrumb trail showing full hierarchy
-- ✅ Hidden on home page (unnecessary)
-- ✅ Created `Breadcrumb.css` with responsive styling
-- ✅ Integrated into `App.tsx` main content
-- ✅ Mobile-responsive: Shows only last 2 items on mobile
+### Files Modified/Created:
 
-#### 3. Updated Components
-- ✅ Enhanced `Sidebar.tsx` with controlled state management
-- ✅ Added responsive CSS for tablet/mobile toggle
-- ✅ Integrated `Breadcrumb` component in `App.tsx`
-- ✅ All TypeScript compilation passes without errors
+**Created:**
+- `apps/docs/src/components/TableOfContents.tsx`
+- `apps/docs/src/components/TableOfContents.css`
 
-### Implementation Details:
+**Modified:**
+- `apps/docs/src/App.tsx` - Layout restructuring
+- `apps/docs/src/styles.css` - Content wrapper flex layout
 
-**Mobile Toggle:**
-- Appears at screens ≤ 1024px
-- Floating button (48x48px) in bottom-right
-- Primary color with scale animations
-- Backdrop overlay (semi-transparent black)
-- Z-index: toggle=45, backdrop=39, sidebar=40
+### Git Commits (Iteration 3):
+- `785c096` - Add Table of Contents sidebar for documentation pages
 
-**Breadcrumb:**
-- Intelligently searches navigation structure
-- Falls back to URL path if page not in navigation
-- Links are clickable for quick navigation
-- Responsive: Full breadcrumb on desktop, condensed on mobile
-- Accessibility: Proper semantic HTML with `<nav>`
+### Navigation System Status:
 
-### Responsive Behavior:
+Complete three-part navigation:
+1. Left Sidebar (280px) - Categories
+2. Breadcrumb - Context trail
+3. Right TOC (240px) - Page sections [NEW]
 
-**Desktop (>1024px):**
-- Sidebar fixed, always visible
-- No toggle button
-- Full breadcrumb trail
-
-**Tablets (768-1024px):**
-- Sidebar hidden by default
-- Floating FAB toggle shows
-- Slide-in sidebar on click
-- Backdrop overlay prevents interaction with content
-
-**Mobile (<768px):**
-- Sidebar constrained to max-width: 280px
-- Full-height slide-in menu
-- Breadcrumb shows only last 2 items for space
-- Toggle button in bottom-right
-
-### Commits:
-1. `ab48206` - Add mobile menu toggle for sidebar
-2. `11f2b16` - Add breadcrumb navigation component
-
-### Quality Metrics:
-- ✅ All sidebar/breadcrumb TypeScript compiles cleanly
-- ✅ No regression in pre-existing code
-- ✅ Proper accessibility (aria-labels, semantic HTML)
-- ✅ Uses design tokens (no hardcoded values)
-- ✅ Smooth CSS transitions and animations
+### Quality:
+- ✅ TypeScript clean compilation
+- ✅ Passive scroll listeners (performance)
+- ✅ Responsive at all breakpoints
+- ✅ Accessibility compliant
 
 ### Next Iteration Ideas:
-- Create sub-routes for large documentation sections
-- Add sidebar page scrolling position memory
-- Integrate search palette with breadcrumb
-- Add page table of contents sidebar
-- Create edit page on GitHub link in breadcrumb
+- Add "Edit on GitHub" link
+- Create page anchor links
+- Scroll-to-top button
+- Lazy loading for large pages
