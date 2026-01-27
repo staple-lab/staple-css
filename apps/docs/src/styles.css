@@ -68,7 +68,7 @@ code {
 .app-content-wrapper {
   display: flex;
   flex: 1;
-  margin-top: var(--st-space-14, 56px);
+  position: relative;
 }
 
 .app-main {
