@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { navigationConfig } from "../navigation";
 import "./Sidebar.css";
@@ -8,12 +8,16 @@ interface SidebarProps {
   onToggle?: (isOpen: boolean) => void;
 }
 
+const SIDEBAR_SCROLL_KEY = "sidebar-scroll";
+const SIDEBAR_EXPANDED_KEY = "sidebar-expanded";
+
 export function Sidebar({ isOpen: controlledIsOpen, onToggle }: SidebarProps) {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set(["Getting Started", "Foundations", "Documentation"])
   );
   const location = useLocation();
+  const sidebarRef = useRef<HTMLElement>(null);
 
   // Handle controlled vs uncontrolled state
   const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
@@ -30,6 +34,54 @@ export function Sidebar({ isOpen: controlledIsOpen, onToggle }: SidebarProps) {
       setInternalIsOpen(false);
     }
   }, [location]);
+
+  // Save expanded categories to session storage
+  useEffect(() => {
+    const categories = Array.from(expandedCategories);
+    sessionStorage.setItem(`${SIDEBAR_EXPANDED_KEY}-${location.pathname}`, JSON.stringify(categories));
+  }, [expandedCategories, location.pathname]);
+
+  // Save scroll position to session storage
+  useEffect(() => {
+    const handleSidebarScroll = () => {
+      if (sidebarRef.current) {
+        sessionStorage.setItem(
+          `${SIDEBAR_SCROLL_KEY}-${location.pathname}`,
+          sidebarRef.current.scrollTop.toString()
+        );
+      }
+    };
+
+    const sidebar = sidebarRef.current;
+    if (sidebar) {
+      sidebar.addEventListener("scroll", handleSidebarScroll, { passive: true });
+      return () => sidebar.removeEventListener("scroll", handleSidebarScroll);
+    }
+  }, [location.pathname]);
+
+  // Restore expanded categories and scroll position on mount
+  useEffect(() => {
+    const savedExpanded = sessionStorage.getItem(`${SIDEBAR_EXPANDED_KEY}-${location.pathname}`);
+    if (savedExpanded) {
+      try {
+        setExpandedCategories(new Set(JSON.parse(savedExpanded)));
+      } catch {
+        // Ignore parse errors
+      }
+    }
+
+    // Restore scroll position
+    if (sidebarRef.current) {
+      const savedScroll = sessionStorage.getItem(`${SIDEBAR_SCROLL_KEY}-${location.pathname}`);
+      if (savedScroll) {
+        setTimeout(() => {
+          if (sidebarRef.current) {
+            sidebarRef.current.scrollTop = parseInt(savedScroll, 10);
+          }
+        }, 0);
+      }
+    }
+  }, [location.pathname]);
 
   const toggleCategory = (categoryLabel: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -76,7 +128,7 @@ export function Sidebar({ isOpen: controlledIsOpen, onToggle }: SidebarProps) {
       )}
 
       {/* Sidebar */}
-      <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+      <aside className={`sidebar ${isOpen ? "open" : ""}`} ref={sidebarRef}>
       <nav className="sidebar-nav">
         {navigationConfig.map((category) => {
           const isExpanded = expandedCategories.has(category.label);

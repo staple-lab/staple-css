@@ -51,7 +51,7 @@ export function TableOfContents() {
     }
   }, []);
 
-  // Track active heading during scroll
+  // Track active heading during scroll and update URL hash
   useEffect(() => {
     const handleScroll = () => {
       if (headings.length === 0) return;
@@ -73,10 +73,30 @@ export function TableOfContents() {
       }
 
       setActiveId(currentActive);
+
+      // Update URL hash without triggering navigation
+      if (currentActive && window.location.hash !== `#${currentActive}`) {
+        window.history.replaceState(null, "", `#${currentActive}`);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, [headings]);
+
+  // Handle hash on page load (deep linking)
+  useEffect(() => {
+    if (window.location.hash && headings.length > 0) {
+      const hashId = window.location.hash.slice(1);
+      const element = document.getElementById(hashId);
+      if (element) {
+        // Wait for layout to settle
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+          setActiveId(hashId);
+        }, 100);
+      }
+    }
   }, [headings]);
 
   if (headings.length === 0) {
