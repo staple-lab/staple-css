@@ -4,26 +4,45 @@ export function ColorSystemPage() {
   return (
     <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
       <Column gap={8}>
-        {/* Header */}
-        <Column gap={4}>
-          <Text as="h1" size={5} weight="bold">
-            Color System
-          </Text>
-          <Text size={2} tone="muted">
-            A comprehensive system for semantic colors, palettes, gradients, and accessibility.
-            Theme-aware colors that adapt to light and dark modes automatically.
-          </Text>
-        </Column>
+        {/* Distinctive Hero Section with Color Mixing Metaphor */}
+        <Box
+          className="bg-color-system"
+          style={{
+            padding: "var(--st-space-8) var(--st-space-6)",
+            borderRadius: "var(--st-radius-3)",
+            border: "1px solid var(--st-color-border)",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <Column gap={4}>
+            <Text as="h1" size={5} weight="bold">
+              Color System
+            </Text>
+            <Text size={2} tone="muted">
+              A comprehensive system for semantic colors, palettes, gradients, and accessibility.
+              Theme-aware colors that adapt to light and dark modes automatically.
+            </Text>
+          </Column>
+        </Box>
 
         {/* Semantic Colors */}
         <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
-            Semantic Colors
-          </Text>
-          <Text size={1} tone="muted">
-            Intent-based color tokens for consistent, maintainable interfaces. These colors adapt
-            automatically to light and dark themes while maintaining perfect contrast ratios.
-          </Text>
+          <Box
+            className="bg-accent-hero"
+            style={{
+              padding: "var(--st-space-4) var(--st-space-6)",
+              borderRadius: "var(--st-radius-2)",
+            }}
+          >
+            <Text as="h2" size={3} weight="semibold">
+              Semantic Colors
+            </Text>
+            <Text size={1} tone="muted">
+              Intent-based color tokens for consistent, maintainable interfaces. These colors adapt
+              automatically to light and dark themes while maintaining perfect contrast ratios.
+            </Text>
+          </Box>
 
           <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
             {[

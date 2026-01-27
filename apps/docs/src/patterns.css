@@ -213,7 +213,47 @@
   );
 }
 
-/* Darker mode patterns */
+/* ===== Page-Specific Decorative Backgrounds ===== */
+
+/* Color System page - color mixing metaphor */
+.bg-color-system {
+  background:
+    radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 50% 20%, rgba(236, 72, 153, 0.04) 0%, transparent 30%),
+    var(--st-color-background);
+}
+
+/* Vibrant accent section background */
+.bg-accent-hero {
+  background:
+    linear-gradient(135deg, var(--accent-light) 0%, rgba(20, 184, 166, 0.05) 50%),
+    var(--st-color-surface);
+  border-left: 4px solid var(--accent-color);
+  padding-left: calc(var(--st-space-6) - 4px);
+}
+
+/* Component showcase background - layered stacks */
+.bg-components {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(20, 184, 166, 0.02) 2px,
+      rgba(20, 184, 166, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 24px,
+      rgba(20, 184, 166, 0.02) 24px,
+      rgba(20, 184, 166, 0.02) 25px
+    ),
+    var(--st-color-background);
+}
+
+/* ===== Darker mode patterns */
 @media (prefers-color-scheme: dark) {
   /* Patterns remain similar but may need opacity adjustment */
   .pattern-grid-dots {
@@ -225,5 +265,13 @@
     background-image:
       linear-gradient(rgba(45, 212, 191, 0.06) 1px, transparent 1px),
       linear-gradient(90deg, rgba(45, 212, 191, 0.06) 1px, transparent 1px);
+  }
+
+  .bg-color-system {
+    background:
+      radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 50%, rgba(196, 114, 255, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 50% 20%, rgba(244, 114, 182, 0.05) 0%, transparent 30%),
+      var(--st-color-background);
   }
 }
