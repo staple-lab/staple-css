@@ -391,9 +391,9 @@ interface SectionProps {
   title: string;
   description: string;
   tokens: Array<{
-    key: string;
-    value: string;
-    usage: string;
+    key?: string;
+    value?: string;
+    usage?: string;
     category?: string;
     items?: Array<{ key: string; value: string; usage: string }>;
   }>;

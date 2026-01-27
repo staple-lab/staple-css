@@ -289,7 +289,7 @@ function GradientCard({ gradient }: { gradient: GradientDefinition }) {
         />
 
         {/* Content */}
-        <Column gap={2} pad={4}>
+        <Column gap={2} style={{ padding: "var(--st-space-4)" }}>
           <Text weight="semibold" size={1}>
             {gradient.name}
           </Text>

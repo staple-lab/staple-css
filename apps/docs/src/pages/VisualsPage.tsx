@@ -11,7 +11,7 @@ import {
   Palette,
   Type,
   Ruler,
-  ClickOff2,
+  ToggleRight,
 } from "lucide-react";
 import "./VisualsPage.css";
 
@@ -370,7 +370,7 @@ export function VisualsPage() {
         <Column gap={3}>
           <Row gap={2} align="center">
             <div className="icon-badge">
-              <ClickOff2 size={20} />
+              <ToggleRight size={20} />
             </div>
             <Text as="h2" size={3} weight="semibold">
               Interactive States
@@ -473,7 +473,7 @@ export function VisualsPage() {
                     }}
                   >
                     <Column gap={2}>
-                      <Row gap={2} align="flex-start">
+                      <Row gap={2} align="start">
                         <div
                           style={{
                             display: "flex",

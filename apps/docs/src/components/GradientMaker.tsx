@@ -70,8 +70,14 @@ export function GradientMaker() {
 
   const updateColorStop = (index: number, stop: Partial<ColorStop>) => {
     const updated = [...gradient.stops];
-    updated[index] = { ...updated[index], ...stop };
-    setGradient({ ...gradient, stops: updated });
+    const existing = updated[index];
+    if (existing) {
+      updated[index] = {
+        color: stop.color ?? existing.color,
+        position: stop.position ?? existing.position,
+      };
+      setGradient({ ...gradient, stops: updated });
+    }
   };
 
   const cssGradient = generateGradientCss();
