@@ -18,6 +18,7 @@ import { SearchPalette } from "./components/SearchPalette";
 import { Sidebar } from "./components/Sidebar";
 import { Breadcrumb } from "./components/Breadcrumb";
 import { TableOfContents } from "./components/TableOfContents";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 type Theme = "light" | "dark" | "system";
 type Density = "comfortable" | "compact";
@@ -133,6 +134,8 @@ export function App() {
           </Row>
         </Container>
       </footer>
+
+      <ScrollToTop />
     </div>
   );
 }

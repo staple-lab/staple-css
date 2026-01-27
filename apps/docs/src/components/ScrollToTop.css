@@ -1,0 +1,67 @@
+/**
+ * Scroll-to-Top Button
+ * Floating action button to return to page top
+ */
+
+.scroll-to-top {
+  position: fixed;
+  bottom: calc(var(--st-space-4) + 64px); /* Above mobile toggle */
+  right: var(--st-space-4);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--st-radius-3);
+  background-color: var(--st-color-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 44; /* Below sidebar toggle (45) */
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--st-shadow-2);
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+  animation: slideUp var(--st-duration-normal) var(--st-easing-default);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--st-shadow-3);
+}
+
+.scroll-to-top:active {
+  transform: translateY(-2px);
+}
+
+.scroll-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive: Hide on tablets if sidebar toggle visible */
+@media (max-width: 1024px) {
+  .scroll-to-top {
+    bottom: calc(var(--st-space-4) + 64px);
+  }
+}
+
+/* Mobile: Adjust position for mobile toggle */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: calc(var(--st-space-4) + 64px);
+  }
+}
