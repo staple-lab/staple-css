@@ -1,6 +1,7 @@
 /**
- * Guides Page - Nice list with dot points
- * Serif typography for editorial feel, real bullets, super tight
+ * Guides Page - Light & Dark theme variations
+ * Nice list with dot points, super tight, modern aesthetic
+ * CREATIVE: Radically different designs per theme
  */
 
 .guides-page {
@@ -20,7 +21,6 @@
   margin: 0 0 var(--st-space-3) 0;
   color: var(--st-color-text);
   line-height: 1.15;
-  font-family: Georgia, 'Times New Roman', serif;
 }
 
 .guides-header p {
@@ -28,10 +28,9 @@
   color: var(--st-color-text-muted);
   line-height: 1.6;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Vertical list */
+/* Vertical list - light theme: minimal, clean */
 .guides-grid {
   display: flex;
   flex-direction: column;
@@ -39,7 +38,7 @@
   max-width: 900px;
 }
 
-/* List item */
+/* List item - light theme: simple, transparent */
 .guide-card {
   display: flex;
   flex-direction: column;
@@ -53,7 +52,7 @@
   display: none;
 }
 
-/* Icon + title */
+/* Icon + title - light theme */
 .guide-card-header {
   display: flex;
   align-items: center;
@@ -79,10 +78,9 @@
   margin: 0;
   color: var(--st-color-text);
   line-height: 1.3;
-  font-family: Georgia, 'Times New Roman', serif;
 }
 
-/* Dot points */
+/* Dot points - light theme: subtle, clean */
 .guide-card-points {
   list-style: none;
   margin: 0;
@@ -101,7 +99,6 @@
   gap: 8px;
   align-items: flex-start;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .guide-card-points li::before {
@@ -111,6 +108,59 @@
   flex-shrink: 0;
   font-size: 14px;
   opacity: 0.6;
+}
+
+/* ========== DARK MODE - COMPLETELY DIFFERENT AESTHETIC ========== */
+@media (prefers-color-scheme: dark) {
+  /* Dark theme: structured, bold, visual */
+  .guides-grid {
+    gap: 12px;
+  }
+
+  .guide-card {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-color, var(--st-color-primary));
+  }
+
+  .guide-card-header {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .guide-card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .guide-card-header h3 {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+  }
+
+  .guide-card-points {
+    grid-column: 2;
+    gap: 3px;
+  }
+
+  .guide-card-points li {
+    font-size: 13px;
+  }
+
+  .guide-card-points li::before {
+    font-size: 13px;
+    opacity: 0.8;
+  }
 }
 
 @media (max-width: 768px) {
@@ -147,5 +197,29 @@
 
   .guide-card-points li {
     font-size: 13px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .guide-card {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .guide-card-header {
+      grid-column: 1;
+      grid-template-columns: 32px 1fr;
+      gap: 8px;
+    }
+
+    .guide-card-icon {
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+    }
+
+    .guide-card-points {
+      grid-column: 1;
+    }
   }
 }
