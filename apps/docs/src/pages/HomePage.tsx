@@ -160,9 +160,9 @@ export function HomePage() {
 
             <div style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: "var(--st-space-2)",
-              maxWidth: "1000px",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+              gap: "var(--st-space-3)",
+              maxWidth: "1200px",
               margin: "0 auto",
               width: "100%"
             }}>
@@ -175,72 +175,79 @@ export function HomePage() {
                 { icon: Package, title: "Tree-Shakeable", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
               ].map((feature, idx) => {
                 const IconComponent = feature.icon;
+                const colors = ["#3b82f6", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#06b6d4"];
                 return (
                   <div key={idx} style={{
                     display: "flex",
-                    gap: "var(--st-space-4)",
-                    padding: "var(--st-space-5)",
+                    flexDirection: "column",
+                    gap: "var(--st-space-3)",
+                    padding: "var(--st-space-4)",
                     background: "transparent",
-                    borderRadius: "0",
+                    border: "1px solid var(--st-color-border)",
+                    borderTop: `3px solid ${colors[idx]}`,
+                    borderRadius: "2px",
                     transition: "all 200ms ease",
                     cursor: "pointer",
-                    position: "relative",
-                    borderLeft: "2px solid var(--st-color-border)",
-                    borderLeftColor: ["#06b6d4", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#14b8a6"][idx] || "var(--st-color-primary)"
+                    position: "relative"
                   }} onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateX(4px)";
+                    e.currentTarget.style.background = "var(--st-color-surface)";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.08)";
                   }} onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateX(0)";
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.boxShadow = "none";
                   }}>
                     <Box style={{
-                      width: "44px",
-                      height: "44px",
-                      minWidth: "44px",
                       display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: ["#06b6d4", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#14b8a6"][idx] || "var(--st-color-primary)",
-                      color: "white",
-                      borderRadius: "3px",
-                      flexShrink: 0,
-                      fontSize: "20px"
+                      gap: "var(--st-space-2)",
+                      alignItems: "flex-start"
                     }}>
-                      <IconComponent size={22} strokeWidth={1.5} />
-                    </Box>
-                    <Box style={{ flex: 1 }}>
-                      <Text weight="bold" size={2} style={{ fontSize: "17px", marginBottom: "var(--st-space-1)" }}>{feature.title}</Text>
-                      <ul style={{
-                        listStyle: "none",
-                        padding: 0,
-                        margin: 0,
+                      <Box style={{
+                        width: "40px",
+                        height: "40px",
+                        minWidth: "40px",
                         display: "flex",
-                        flexDirection: "column",
-                        gap: "4px"
+                        alignItems: "center",
+                        justifyContent: "center",
+                        background: colors[idx],
+                        color: "white",
+                        borderRadius: "4px",
+                        flexShrink: 0,
+                        fontSize: "20px"
                       }}>
-                        {feature.items.map((item, i) => (
-                          <li key={i} style={{
-                            fontSize: "13px",
-                            color: "var(--st-color-text-muted)",
-                            display: "flex",
-                            gap: "8px",
-                            alignItems: "flex-start",
-                            lineHeight: "1.5"
-                          }}>
-                            <span style={{
-                              color: ["#06b6d4", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#14b8a6"][idx] || "var(--st-color-primary)",
-                              fontWeight: "600",
-                              fontSize: "11px",
-                              marginTop: "4px",
-                              display: "inline-block",
-                              width: "4px",
-                              height: "4px",
-                              borderRadius: "50%"
-                            }} />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                        <IconComponent size={20} strokeWidth={1.5} />
+                      </Box>
+                      <Text weight="bold" size={2} style={{ fontSize: "16px", marginTop: "2px" }}>{feature.title}</Text>
                     </Box>
+                    <ul style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "5px"
+                    }}>
+                      {feature.items.map((item, i) => (
+                        <li key={i} style={{
+                          fontSize: "13px",
+                          color: "var(--st-color-text-muted)",
+                          display: "flex",
+                          gap: "8px",
+                          alignItems: "flex-start",
+                          lineHeight: "1.5",
+                          paddingLeft: "0"
+                        }}>
+                          <span style={{
+                            color: colors[idx],
+                            fontWeight: "700",
+                            fontSize: "12px",
+                            marginTop: "2px",
+                            display: "inline-block",
+                            flexShrink: 0
+                          }}>→</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 );
               })}
