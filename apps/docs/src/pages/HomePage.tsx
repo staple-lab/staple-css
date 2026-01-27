@@ -178,71 +178,68 @@ export function HomePage() {
                 return (
                   <div key={idx} style={{
                     display: "flex",
-                    flexDirection: "column",
-                    gap: "var(--st-space-3)",
-                    padding: "var(--st-space-4) var(--st-space-4)",
-                    border: "1px solid var(--st-color-border)",
-                    borderTop: "3px solid var(--st-color-primary)",
-                    borderLeft: "none",
-                    borderRadius: "0",
+                    gap: "var(--st-space-4)",
+                    padding: "var(--st-space-5)",
                     background: "transparent",
-                    transition: "all 180ms ease",
+                    borderRadius: "0",
+                    transition: "all 200ms ease",
                     cursor: "pointer",
-                    position: "relative"
+                    position: "relative",
+                    borderLeft: "2px solid var(--st-color-border)",
+                    borderLeftColor: ["#06b6d4", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#14b8a6"][idx] || "var(--st-color-primary)"
                   }} onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--st-color-background)";
-                    e.currentTarget.style.borderTopColor = "#06b6d4";
-                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.08)";
+                    e.currentTarget.style.transform = "translateX(4px)";
                   }} onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.borderTopColor = "var(--st-color-primary)";
-                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.transform = "translateX(0)";
                   }}>
                     <Box style={{
+                      width: "44px",
+                      height: "44px",
+                      minWidth: "44px",
                       display: "flex",
-                      alignItems: "flex-start",
-                      gap: "var(--st-space-3)"
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: ["#06b6d4", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#14b8a6"][idx] || "var(--st-color-primary)",
+                      color: "white",
+                      borderRadius: "3px",
+                      flexShrink: 0,
+                      fontSize: "20px"
                     }}>
-                      <Box style={{
-                        width: "40px",
-                        height: "40px",
-                        minWidth: "40px",
+                      <IconComponent size={22} strokeWidth={1.5} />
+                    </Box>
+                    <Box style={{ flex: 1 }}>
+                      <Text weight="bold" size={2} style={{ fontSize: "17px", marginBottom: "var(--st-space-1)" }}>{feature.title}</Text>
+                      <ul style={{
+                        listStyle: "none",
+                        padding: 0,
+                        margin: 0,
                         display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
-                        color: "white",
-                        borderRadius: "0",
-                        flexShrink: 0,
-                        fontSize: "20px"
+                        flexDirection: "column",
+                        gap: "4px"
                       }}>
-                        <IconComponent size={20} strokeWidth={1.5} />
-                      </Box>
-                      <Box style={{ flex: 1, marginTop: "2px" }}>
-                        <Text weight="bold" size={2} style={{ fontSize: "16px", marginBottom: "var(--st-space-2)" }}>{feature.title}</Text>
-                        <ul style={{
-                          listStyle: "none",
-                          padding: 0,
-                          margin: 0,
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "6px"
-                        }}>
-                          {feature.items.map((item, i) => (
-                            <li key={i} style={{
-                              fontSize: "13px",
-                              color: "var(--st-color-text-muted)",
-                              display: "flex",
-                              gap: "8px",
-                              alignItems: "flex-start",
-                              lineHeight: "1.4"
-                            }}>
-                              <span style={{ color: "var(--st-color-primary)", fontWeight: "900", fontSize: "6px", marginTop: "6px", display: "block" }}>◆</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </Box>
+                        {feature.items.map((item, i) => (
+                          <li key={i} style={{
+                            fontSize: "13px",
+                            color: "var(--st-color-text-muted)",
+                            display: "flex",
+                            gap: "8px",
+                            alignItems: "flex-start",
+                            lineHeight: "1.5"
+                          }}>
+                            <span style={{
+                              color: ["#06b6d4", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#14b8a6"][idx] || "var(--st-color-primary)",
+                              fontWeight: "600",
+                              fontSize: "11px",
+                              marginTop: "4px",
+                              display: "inline-block",
+                              width: "4px",
+                              height: "4px",
+                              borderRadius: "50%"
+                            }} />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </Box>
                   </div>
                 );
