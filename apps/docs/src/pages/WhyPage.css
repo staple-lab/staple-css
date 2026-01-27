@@ -66,9 +66,35 @@
   border-bottom: none;
 }
 
-/* Accessibility features - 2x2 grid */
+/* Accessibility features - grid with checkmarks */
 .a11y-features {
-  padding: var(--st-space-6);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--st-space-6);
+}
+
+.a11y-item {
+  display: flex;
+  gap: var(--st-space-4);
+  align-items: flex-start;
+  padding: var(--st-space-4);
+  background: var(--st-color-surface);
+  border-radius: var(--st-radius-2);
+}
+
+.a11y-check {
+  font-size: 24px;
+  color: var(--st-color-primary);
+  font-weight: bold;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
+  color: white;
+  border-radius: var(--st-radius-2);
 }
 
 /* CTA section */

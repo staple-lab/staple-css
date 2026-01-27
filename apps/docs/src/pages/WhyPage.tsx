@@ -3,7 +3,7 @@ import "./WhyPage.css";
 
 export function WhyPage() {
   return (
-    <div className="why-page">
+    <div className="why-page" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
       <Container size="md">
         <Column gap={8}>
           {/* Hero */}
@@ -159,34 +159,42 @@ export function WhyPage() {
             </Text>
 
             <div className="a11y-features">
-              <Row gap={8} align="start" style={{ paddingBottom: "var(--st-space-4)", borderBottom: "1px solid var(--st-color-border)" }}>
-                <div style={{ flex: 1 }}>
-                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-2)" }}>
+              <div className="a11y-item">
+                <div className="a11y-check">✓</div>
+                <div>
+                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-1)" }}>
                     WCAG Compliance
                   </Text>
                   <Text size={0} tone="muted">All primitives built with semantic HTML and ARIA attributes. Color contrasts verified.</Text>
                 </div>
-                <div style={{ flex: 1 }}>
-                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-2)" }}>
+              </div>
+              <div className="a11y-item">
+                <div className="a11y-check">✓</div>
+                <div>
+                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-1)" }}>
                     Keyboard Navigation
                   </Text>
                   <Text size={0} tone="muted">All interactive elements fully keyboard accessible. Focus states clearly visible.</Text>
                 </div>
-              </Row>
-              <Row gap={8} align="start" style={{ paddingTop: "var(--st-space-4)" }}>
-                <div style={{ flex: 1 }}>
-                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-2)" }}>
+              </div>
+              <div className="a11y-item">
+                <div className="a11y-check">✓</div>
+                <div>
+                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-1)" }}>
                     Motion Respect
                   </Text>
                   <Text size={0} tone="muted">Animations respect prefers-reduced-motion. No vestibular triggers.</Text>
                 </div>
-                <div style={{ flex: 1 }}>
-                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-2)" }}>
+              </div>
+              <div className="a11y-item">
+                <div className="a11y-check">✓</div>
+                <div>
+                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-1)" }}>
                     Dark Mode
                   </Text>
                   <Text size={0} tone="muted">Built-in dark theme support. Respects system color-scheme preference.</Text>
                 </div>
-              </Row>
+              </div>
             </div>
           </Column>
 
