@@ -149,149 +149,103 @@ export function HomePage() {
         </Container>
       </Box>
 
-      {/* Features Section */}
-      <Container size="lg" style={{ padding: "var(--st-space-8) var(--st-space-4)" }}>
-        <Column gap={8}>
-          <Column gap={2}>
-            <Text as="h2" size={5} weight="bold">Why staple-css?</Text>
-            <Text tone="muted">Everything you need to build beautiful, consistent interfaces—nothing you don't.</Text>
+      {/* Features Section - What You Get */}
+      <Box style={{ background: "var(--st-color-surface)", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
+        <Container size="lg">
+          <Column gap={8}>
+            <Column gap={2} style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto" }}>
+              <Text as="h2" size={5} weight="bold">Everything You Need</Text>
+              <Text tone="muted">Everything for professional design systems. Start small, scale effortlessly.</Text>
+            </Column>
+
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+              gap: "var(--st-space-4)",
+              maxWidth: "1200px",
+              margin: "0 auto",
+              width: "100%"
+            }}>
+              {[
+                { icon: Target, title: "Token-First Design", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
+                { icon: Zap, title: "Ultra-Lightweight", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"] },
+                { icon: Cpu, title: "AI-Friendly APIs", items: ["Constrained props", "Prevent hallucination", "Perfect for AI code gen"] },
+                { icon: Palette, title: "Design System Ready", items: ["8 primitives", "Light/dark themes", "Multiple density"] },
+                { icon: Lock, title: "Type-Safe", items: ["Full TypeScript", "Compile-time validation", "IDE autocomplete"] },
+                { icon: Package, title: "Tree-Shakeable", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
+              ].map((feature, idx) => {
+                const IconComponent = feature.icon;
+                return (
+                  <div key={idx} style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "var(--st-space-3)",
+                    padding: "var(--st-space-4)",
+                    border: "1px solid var(--st-color-border)",
+                    borderLeft: "4px solid var(--st-color-primary)",
+                    borderRadius: "0",
+                    background: "transparent",
+                    transition: "all 200ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+                    cursor: "pointer"
+                  }} onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "var(--st-color-background)";
+                    e.currentTarget.style.borderLeftColor = "#06b6d4";
+                    e.currentTarget.style.transform = "translateY(-4px) translateX(4px)";
+                    e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.06)";
+                  }} onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderLeftColor = "var(--st-color-primary)";
+                    e.currentTarget.style.transform = "translateY(0) translateX(0)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}>
+                    <Box style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "var(--st-space-2)"
+                    }}>
+                      <Box style={{
+                        width: "36px",
+                        height: "36px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                        color: "white",
+                        borderRadius: "4px",
+                        flexShrink: 0
+                      }}>
+                        <IconComponent size={18} strokeWidth={1.5} />
+                      </Box>
+                      <Text weight="bold" size={2}>{feature.title}</Text>
+                    </Box>
+                    <ul style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "var(--st-space-1)"
+                    }}>
+                      {feature.items.map((item, i) => (
+                        <li key={i} style={{
+                          fontSize: "13px",
+                          color: "var(--st-color-text-muted)",
+                          display: "flex",
+                          gap: "var(--st-space-2)",
+                          alignItems: "center"
+                        }}>
+                          <span style={{ color: "var(--st-color-primary)", fontWeight: "600", fontSize: "10px" }}>▸</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
           </Column>
-
-          <Grid cols={{ base: 1, md: 3 }} gap={6}>
-            {/* Feature 1 */}
-            <Column gap={3}>
-              <Box style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "8px",
-                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white"
-              }}>
-                <Target size={20} strokeWidth={1.5} />
-              </Box>
-              <Column gap={2}>
-                <Text weight="bold" size={3}>Token-First Design</Text>
-                <Text size={1} tone="muted">
-                  350+ CSS variables across 25+ categories. Type-safe props prevent invalid values.
-                </Text>
-              </Column>
-            </Column>
-
-            {/* Feature 2 */}
-            <Column gap={3}>
-              <Box style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "8px",
-                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white"
-              }}>
-                <Zap size={20} strokeWidth={1.5} />
-              </Box>
-              <Column gap={2}>
-                <Text weight="bold" size={3}>Ultra-Lightweight</Text>
-                <Text size={1} tone="muted">
-                  2.5 KB by default. Full edition 8.23 KB. Zero JavaScript. Static CSS only.
-                </Text>
-              </Column>
-            </Column>
-
-            {/* Feature 3 */}
-            <Column gap={3}>
-              <Box style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "8px",
-                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white"
-              }}>
-                <Cpu size={20} strokeWidth={1.5} />
-              </Box>
-              <Column gap={2}>
-                <Text weight="bold" size={3}>AI-Friendly APIs</Text>
-                <Text size={1} tone="muted">
-                  Constrained props prevent hallucination. Perfect for AI code generation.
-                </Text>
-              </Column>
-            </Column>
-
-            {/* Feature 4 */}
-            <Column gap={3}>
-              <Box style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "8px",
-                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white"
-              }}>
-                <Palette size={20} strokeWidth={1.5} />
-              </Box>
-              <Column gap={2}>
-                <Text weight="bold" size={3}>Design System Ready</Text>
-                <Text size={1} tone="muted">
-                  8 composable primitives. Light/dark themes. Multiple density modes.
-                </Text>
-              </Column>
-            </Column>
-
-            {/* Feature 5 */}
-            <Column gap={3}>
-              <Box style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "8px",
-                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white"
-              }}>
-                <Lock size={20} strokeWidth={1.5} />
-              </Box>
-              <Column gap={2}>
-                <Text weight="bold" size={3}>Type-Safe</Text>
-                <Text size={1} tone="muted">
-                  Full TypeScript support. Compile-time validation. IDE autocomplete.
-                </Text>
-              </Column>
-            </Column>
-
-            {/* Feature 6 */}
-            <Column gap={3}>
-              <Box style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "8px",
-                background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white"
-              }}>
-                <Package size={20} strokeWidth={1.5} />
-              </Box>
-              <Column gap={2}>
-                <Text weight="bold" size={3}>Tree-Shakeable</Text>
-                <Text size={1} tone="muted">
-                  Import only what you use. ESM exports. Per-component splitting.
-                </Text>
-              </Column>
-            </Column>
-          </Grid>
-        </Column>
-      </Container>
+        </Container>
+      </Box>
 
       {/* Comparison Section */}
       <Box style={{ background: "var(--st-color-surface-secondary, rgba(0,0,0,0.02))", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
