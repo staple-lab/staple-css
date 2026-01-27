@@ -7,6 +7,7 @@ import { ColorSystemPage } from "./pages/ColorSystemPage";
 import { VisualsPage } from "./pages/VisualsPage";
 import { GradientStudioPage } from "./pages/GradientStudioPage";
 import { FigmaIntegrationPage } from "./pages/FigmaIntegrationPage";
+import { TokenReferencePage } from "./pages/TokenReferencePage";
 import { ComponentPatternsPage } from "./pages/ComponentPatternsPage";
 import { GuidesPage } from "./pages/GuidesPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
@@ -80,6 +81,11 @@ export function App() {
                   <li>
                     <NavLink to="/tokens" className="nav-link">
                       Tokens
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/token-reference" className="nav-link">
+                      Reference
                     </NavLink>
                   </li>
                   <li>
@@ -157,6 +163,7 @@ export function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/guides" element={<GuidesPage />} />
           <Route path="/tokens" element={<TokensPage />} />
+          <Route path="/token-reference" element={<TokenReferencePage />} />
           <Route path="/colors" element={<ColorSystemPage />} />
           <Route path="/visuals" element={<VisualsPage />} />
           <Route path="/components" element={<ComponentPatternsPage />} />
