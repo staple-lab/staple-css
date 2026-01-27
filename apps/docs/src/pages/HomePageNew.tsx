@@ -6,6 +6,7 @@ export function HomePageNew() {
     <Box>
       {/* Hero Section - Gradient with animations */}
       <Box
+        className="pattern-tokens"
         style={{
           background: "var(--st-gradient-sunset)",
           color: "white",
@@ -178,17 +179,18 @@ export function HomePageNew() {
               ].map((feature) => (
                 <Box
                   key={feature.title}
+                  className="pattern-components"
                   style={{
                     background: "var(--st-color-surface)",
                     padding: "var(--st-space-6)",
                     borderRadius: "var(--st-radius-3)",
-                    border: "1px solid var(--st-color-border)",
+                    border: "2px solid var(--st-color-border)",
                     transition: "all var(--st-duration-normal) var(--st-easing-default)",
                     cursor: "pointer",
                   }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = "var(--st-shadow-2)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--st-color-primary)";
+                    (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 12px rgba(20, 184, 166, 0.2)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-color)";
                     (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
                   }}
                   onMouseLeave={(e) => {

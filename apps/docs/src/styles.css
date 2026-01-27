@@ -134,6 +134,9 @@ code {
   margin-left: 280px;
   display: flex;
   flex-direction: column;
+  background:
+    linear-gradient(135deg, rgba(20, 184, 166, 0.01) 0%, transparent 40%),
+    var(--st-color-background);
 }
 
 /* Content area with TOC */
