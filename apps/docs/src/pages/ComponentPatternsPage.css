@@ -9,18 +9,18 @@
 .cpp-section-header {
   display: flex;
   align-items: center;
-  gap: var(--st-space-3);
-  margin-bottom: var(--st-space-2);
+  gap: var(--st-space-2);
+  margin-bottom: var(--st-space-3);
 }
 
-/* Icon Badge Containers - 40x40px with gradients */
+/* Icon Badge Containers - 36x36px with gradients */
 .cpp-icon-badge {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--st-radius-2);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--st-radius-1);
   color: white;
   flex-shrink: 0;
   position: relative;
@@ -60,17 +60,19 @@
 
 /* Pattern Cards - Left accent border design */
 .cpp-pattern-card {
-  padding: var(--st-space-3);
+  padding: var(--st-space-2) var(--st-space-3);
   background: var(--st-color-background);
-  border-radius: var(--st-radius-2);
+  border-radius: 0;
   border-left: 3px solid var(--st-color-primary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   transition: all var(--st-duration-fast) var(--st-easing-default);
+  padding-left: var(--st-space-4);
 }
 
 .cpp-pattern-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transform: translateY(-1px);
+  box-shadow: none;
+  transform: translateX(2px);
+  border-left-color: #06b6d4;
 }
 
 /* Large Pattern Cards */
