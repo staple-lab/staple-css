@@ -105,11 +105,11 @@ export function App() {
               </nav>
             </Row>
             <Row gap={2}>
-              <button onClick={cycleTheme} className="toggle-btn">
-                {themeLabel}
+              <button onClick={cycleTheme} className="toggle-btn" title="Toggle theme">
+                {theme === "system" ? "🖥️" : theme === "light" ? "☀️" : "🌙"} {themeLabel}
               </button>
-              <button onClick={toggleDensity} className="toggle-btn">
-                {density === "comfortable" ? "Compact" : "Comfortable"}
+              <button onClick={toggleDensity} className="toggle-btn" title="Toggle density">
+                {density === "comfortable" ? "◻️ Comfortable" : "■ Compact"}
               </button>
             </Row>
           </Row>
