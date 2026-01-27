@@ -100,9 +100,8 @@ export function HomePageNew() {
               const IconComponent = cap.icon;
               return (
                 <div key={idx} className="capability-item">
-                  <div className="capability-number">{String(idx + 1).padStart(2, '0')}</div>
                   <div className="capability-icon">
-                    <IconComponent size={20} strokeWidth={1.5} />
+                    <IconComponent size={18} strokeWidth={1.5} />
                   </div>
                   <div className="capability-text">
                     <h3>{cap.title}</h3>

@@ -1,10 +1,9 @@
 /**
- * Guides Page - Creative two-column layout with unique visual treatment
+ * Guides Page - Simple, tight, scannable list
  */
 
 .guides-page {
   background: var(--st-color-background);
-  color: var(--st-color-text);
   padding: var(--st-space-8) 0;
 }
 
@@ -16,7 +15,7 @@
   font-size: clamp(32px, 6vw, 48px);
   font-weight: 900;
   letter-spacing: -1px;
-  margin: 0 0 var(--st-space-3) 0;
+  margin: 0 0 var(--st-space-2) 0;
   background: linear-gradient(90deg, var(--st-color-primary) 0%, #0891b2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -31,159 +30,38 @@
   max-width: 700px;
 }
 
-/* MAIN GUIDES GRID - Two Column Layout */
-.guides-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--st-space-8);
-  margin-bottom: var(--st-space-8);
-}
-
-/* LEFT COLUMN - CONCEPTS */
-.guides-column-left {
+/* Main list - vertical stack */
+.guides-list {
   display: flex;
   flex-direction: column;
-  gap: var(--st-space-6);
+  gap: var(--st-space-5);
 }
 
-.guide-concept {
+/* Each guide item */
+.guide-item {
   padding: var(--st-space-4);
-  background: var(--st-color-surface);
-  border-top: 3px solid var(--st-color-primary);
-  border-radius: 0;
-  display: flex;
-  gap: var(--st-space-3);
-  align-items: flex-start;
-  transition: all 200ms ease;
-}
-
-.guide-concept:hover {
-  background: var(--st-color-background);
-  border-top-color: #06b6d4;
-  transform: translateY(-2px);
-}
-
-.concept-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
-  color: white;
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-.concept-content {
-  flex: 1;
-}
-
-.concept-content h3 {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 var(--st-space-1) 0;
-  color: var(--st-color-text);
-}
-
-.concept-subtitle {
-  font-size: 12px;
-  color: var(--st-color-text-muted);
-  margin: 0 0 var(--st-space-2) 0;
-  font-weight: 500;
-}
-
-.concept-principle {
-  font-size: 13px;
-  color: var(--st-color-primary);
-  font-weight: 600;
-  margin: 0;
-  padding: var(--st-space-2) var(--st-space-3);
-  background: rgba(59, 130, 246, 0.08);
-  border-radius: 2px;
-  letter-spacing: -0.2px;
-}
-
-/* RIGHT COLUMN - DETAILS */
-.guides-column-right {
-  display: flex;
-  flex-direction: column;
-  gap: var(--st-space-6);
-  padding: var(--st-space-4) 0;
-}
-
-.guide-details ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--st-space-3);
-}
-
-.guide-details li {
-  font-size: 13px;
-  color: var(--st-color-text-muted);
-  line-height: 1.6;
-  display: flex;
-  gap: var(--st-space-2);
-  align-items: flex-start;
-  padding: var(--st-space-2) 0;
-  border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-}
-
-.guide-details li:last-child {
-  border-bottom: none;
-}
-
-.detail-dot {
-  color: var(--st-color-primary);
-  font-weight: 700;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-/* BOTTOM SECTION - GRID STYLE */
-.guides-bottom {
-  margin-top: var(--st-space-8);
-  padding-top: var(--st-space-8);
-  border-top: 2px solid var(--st-color-border);
-}
-
-.guides-section-title {
-  font-size: 20px;
-  font-weight: 800;
-  margin: 0 0 var(--st-space-6) 0;
-  color: var(--st-color-text);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.bottom-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--st-space-4);
-}
-
-.bottom-card {
-  padding: var(--st-space-4);
-  background: var(--st-color-surface);
+  background: transparent;
   border: 1px solid var(--st-color-border);
-  border-left: 4px solid var(--st-color-primary);
+  border-left: 3px solid var(--st-color-primary);
   border-radius: 0;
   transition: all 200ms ease;
-  display: flex;
-  flex-direction: column;
-  gap: var(--st-space-2);
 }
 
-.bottom-card:hover {
+.guide-item:hover {
   border-left-color: #06b6d4;
-  transform: translateX(4px);
-  background: var(--st-color-background);
+  background: var(--st-color-surface);
+  transform: translateX(2px);
 }
 
-.bottom-card-icon {
+/* Header with icon */
+.guide-header {
+  display: flex;
+  gap: var(--st-space-2);
+  align-items: center;
+  margin-bottom: var(--st-space-3);
+}
+
+.guide-icon {
   width: 32px;
   height: 32px;
   display: flex;
@@ -191,50 +69,47 @@
   justify-content: center;
   background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
   color: white;
-  border-radius: 1px;
-}
-
-.bottom-card h4 {
-  font-size: 14px;
-  font-weight: 700;
-  margin: 0;
-  color: var(--st-color-text);
-}
-
-.bottom-card-points {
-  display: flex;
-  flex-direction: column;
-  gap: var(--st-space-1);
-}
-
-.bottom-card-points .point {
-  font-size: 11px;
-  color: var(--st-color-text-muted);
-  display: flex;
-  align-items: center;
-  gap: var(--st-space-1);
-  opacity: 0.8;
-}
-
-.bottom-card-points .point::before {
-  content: "◆";
-  color: var(--st-color-primary);
-  font-size: 6px;
+  border-radius: 2px;
   flex-shrink: 0;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .guides-grid {
-    grid-template-columns: 1fr;
-    gap: var(--st-space-6);
-  }
-
-  .guides-column-right {
-    padding: 0;
-  }
+.guide-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--st-color-text);
+  letter-spacing: -0.2px;
 }
 
+/* Points list */
+.guide-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-2);
+}
+
+.guide-points li {
+  font-size: 13px;
+  color: var(--st-color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+  display: flex;
+  gap: var(--st-space-2);
+  align-items: flex-start;
+}
+
+.guide-points li::before {
+  content: "•";
+  color: var(--st-color-primary);
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 0px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .guides-page {
     padding: var(--st-space-6) 0;
@@ -244,11 +119,12 @@
     font-size: clamp(24px, 5vw, 32px);
   }
 
-  .guides-section-title {
-    font-size: 16px;
+  .guide-item {
+    padding: var(--st-space-3);
   }
 
-  .bottom-grid {
-    grid-template-columns: 1fr;
+  .guide-item:hover {
+    padding: var(--st-space-3);
+    margin: 0;
   }
 }

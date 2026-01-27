@@ -8,7 +8,6 @@ import {
   Accessibility,
   Box,
   Settings,
-  ChevronRight,
 } from "lucide-react";
 import "./GuidesPage.css";
 
@@ -22,157 +21,99 @@ export function GuidesPage() {
           <p>Comprehensive guides for building consistent, accessible, and performant interfaces with staple-css tokens and primitives.</p>
         </div>
 
-        {/* Main Guides - Unique two-column layout with different visual treatment */}
-        <div className="guides-grid">
-          {/* LEFT COLUMN - CONCEPT / PRINCIPLE */}
-          <div className="guides-column guides-column-left">
-            {[
-              {
-                icon: Ruler,
-                title: "Spacing & Layout",
-                subtitle: "Master the spacing scale",
-                principle: "9-step scale from 0-4rem",
-                points: [
-                  "Space Scale (0-8): Predefined values for consistent visual rhythm",
-                  "Padding vs Margin: Internal vs external component spacing",
-                  "Intrinsic Responsive: CSS Grid auto-fit/fill with minmax()",
-                ]
-              },
-              {
-                icon: Palette,
-                title: "Color & Contrast",
-                subtitle: "Accessible color system",
-                principle: "Semantic intent mapping",
-                points: [
-                  "Semantic Colors: Primary, danger, warning, success tokens",
-                  "WCAG AA: All colors meet contrast standards",
-                  "Light & Dark: Adaptive colors for both themes",
-                ]
-              },
-              {
-                icon: Type,
-                title: "Typography & Text",
-                subtitle: "Readable, accessible text",
-                principle: "7-step font scale",
-                points: [
-                  "Font Scale (0-6): 12px to 32px with intentional hierarchy",
-                  "Line Height: Scales with font size (1.25-1.75)",
-                  "Readable Length: 50-75 characters optimal",
-                ]
-              },
-            ].map((guide) => {
-              const IconComponent = guide.icon;
-              return (
-                <div key={guide.title} className="guide-concept">
-                  <div className="concept-icon">
+        {/* Main Guides - Simple clean list */}
+        <div className="guides-list">
+          {[
+            {
+              icon: Ruler,
+              title: "Spacing & Layout",
+              points: [
+                "Space Scale (0-8): 9 predefined values from 0-4rem",
+                "Padding vs Margin: Internal vs component spacing",
+                "Intrinsic Responsive: CSS Grid auto-fit/auto-fill with minmax()",
+              ]
+            },
+            {
+              icon: Palette,
+              title: "Color & Contrast",
+              points: [
+                "Semantic Colors: Primary, danger, warning, success tokens",
+                "WCAG AA Compliance: All colors meet contrast standards",
+                "Light & Dark: Adaptive colors for both themes",
+              ]
+            },
+            {
+              icon: Type,
+              title: "Typography & Text",
+              points: [
+                "Font Scale (0-6): 12px to 32px with hierarchy",
+                "Line Height: Scales with font size (1.25-1.75)",
+                "Readable Length: 50-75 characters optimal",
+              ]
+            },
+            {
+              icon: Zap,
+              title: "Motion & Animation",
+              points: [
+                "Duration Scale: Fast (100ms), normal (200ms), slow (300ms)",
+                "Easing Functions: Default, in/out for motion",
+                "Accessibility: Respect prefers-reduced-motion",
+              ]
+            },
+            {
+              icon: Smartphone,
+              title: "Responsive Design",
+              points: [
+                "Mobile-First: Start with mobile, enhance for larger screens",
+                "Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)",
+                "Touch Targets: Minimum 44x44px for interactive elements",
+              ]
+            },
+            {
+              icon: Accessibility,
+              title: "Accessibility (a11y)",
+              points: [
+                "Semantic HTML: Use correct elements for screen readers",
+                "Color Contrast: 4.5:1 for normal, 3:1 for large text",
+                "Focus Management: All interactive elements keyboard accessible",
+              ]
+            },
+            {
+              icon: Box,
+              title: "Component Patterns",
+              points: [
+                "Composition: Combine primitives to create components",
+                "Props as Tokens: Accept token keys, not arbitrary values",
+                "Escape Hatches: Use className for edge cases",
+              ]
+            },
+            {
+              icon: Settings,
+              title: "Design Tokens Strategy",
+              points: [
+                "Token Hierarchy: Global → Component → Instance",
+                "Naming Convention: Semantic names, not color names",
+                "Versioning: Document changes, provide migration guides",
+              ]
+            },
+          ].map((guide) => {
+            const IconComponent = guide.icon;
+            return (
+              <div key={guide.title} className="guide-item">
+                <div className="guide-header">
+                  <div className="guide-icon">
                     <IconComponent size={20} strokeWidth={1.5} />
                   </div>
-                  <div className="concept-content">
-                    <h3>{guide.title}</h3>
-                    <p className="concept-subtitle">{guide.subtitle}</p>
-                    <div className="concept-principle">{guide.principle}</div>
-                  </div>
+                  <h3>{guide.title}</h3>
                 </div>
-              );
-            })}
-          </div>
-
-          {/* RIGHT COLUMN - DETAILS / IMPLEMENTATION */}
-          <div className="guides-column guides-column-right">
-            {[
-              {
-                details: [
-                  "Use padding for internal spacing within components",
-                  "Use margin for spacing between components",
-                  "Creates predictable, composable layouts",
-                  "Prefer CSS Grid with auto-fit/auto-fill",
-                  "Eliminates media query bloat",
-                  "Creates truly fluid designs",
-                ]
-              },
-              {
-                details: [
-                  "Use semantic colors instead of arbitrary values",
-                  "Ensures consistency and enables theme switching",
-                  "Text on backgrounds always sufficient contrast",
-                  "Staple-css provides adaptive colors",
-                  "Semantic mapping ensures consistent intent",
-                  "Don't rely on color alone for information",
-                ]
-              },
-              {
-                details: [
-                  "Higher sizes for headings, lower for body text",
-                  "Tight for headlines (1.25), normal for body (1.5), relaxed for long-form (1.75)",
-                  "Keep line length between 50-75 characters",
-                  "Use weight strategically: normal (400), medium (500), semibold (600), bold (700)",
-                  "Body text: normal weight, emphasis: medium or semibold",
-                  "Interactive elements: semibold for visual prominence",
-                ]
-              },
-            ].map((section, idx) => (
-              <div key={idx} className="guide-details">
-                <ul>
-                  {section.details.map((detail, i) => (
-                    <li key={i}>
-                      <span className="detail-dot">•</span>
-                      {detail}
-                    </li>
+                <ul className="guide-points">
+                  {guide.points.map((point, idx) => (
+                    <li key={idx}>{point}</li>
                   ))}
                 </ul>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* BOTTOM GRID - Different visual style */}
-        <div className="guides-bottom">
-          <div className="guides-section-title">More Guides</div>
-
-          <div className="bottom-grid">
-            {[
-              {
-                icon: Zap,
-                title: "Motion & Animation",
-                points: ["Duration Scale", "Easing Functions", "When to Animate", "Accessibility"]
-              },
-              {
-                icon: Smartphone,
-                title: "Responsive Design",
-                points: ["Mobile-First Approach", "Breakpoints", "Intrinsic Sizing", "Touch Targets"]
-              },
-              {
-                icon: Accessibility,
-                title: "Accessibility (a11y)",
-                points: ["Semantic HTML", "Color Contrast", "Focus Management", "ARIA & Labels"]
-              },
-              {
-                icon: Box,
-                title: "Component Patterns",
-                points: ["Composition", "Props as Tokens", "Escape Hatches", "Responsive Props"]
-              },
-              {
-                icon: Settings,
-                title: "Design Tokens Strategy",
-                points: ["Token Hierarchy", "Naming Convention", "Versioning", "Governance"]
-              },
-            ].map((guide) => {
-              const IconComponent = guide.icon;
-              return (
-                <div key={guide.title} className="bottom-card">
-                  <div className="bottom-card-icon">
-                    <IconComponent size={24} strokeWidth={1.5} />
-                  </div>
-                  <h4>{guide.title}</h4>
-                  <div className="bottom-card-points">
-                    {guide.points.map((point, i) => (
-                      <div key={i} className="point">{point}</div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+            );
+          })}
         </div>
       </Container>
     </div>
