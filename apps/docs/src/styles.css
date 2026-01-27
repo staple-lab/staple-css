@@ -136,7 +136,7 @@ code {
 
 .app-main {
   flex: 1;
-  padding: var(--st-space-8) var(--st-space-8);
+  padding: var(--st-space-8) 0 var(--st-space-8) var(--st-space-8);
   margin-left: 280px;
   display: flex;
   flex-direction: column;
