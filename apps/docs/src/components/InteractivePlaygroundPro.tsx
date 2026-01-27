@@ -308,6 +308,10 @@ export function InteractivePlaygroundPro() {
 
   const currentExample = examples[selectedIndex];
 
+  if (!currentExample) {
+    return null;
+  }
+
   return (
     <Column gap={0} style={{ borderRadius: "var(--st-radius-3)", overflow: "hidden", boxShadow: "var(--st-shadow-2)" }}>
       {/* Header */}
