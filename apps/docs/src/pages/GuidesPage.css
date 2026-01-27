@@ -90,18 +90,19 @@
 .guide-card-content {
   display: flex;
   flex-direction: column;
-  gap: var(--st-space-3);
+  gap: var(--st-space-2);
   border-top: 1px solid var(--st-color-border);
   padding-top: var(--st-space-3);
 }
 
+.guide-section {
+  display: flex;
+  gap: var(--st-space-2);
+  align-items: flex-start;
+}
+
 .guide-section h4 {
-  font-size: 13px;
-  font-weight: 600;
-  margin: 0 0 var(--st-space-1) 0;
-  color: var(--st-color-text);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  display: none;
 }
 
 .guide-section p {
@@ -109,6 +110,14 @@
   color: var(--st-color-text-muted);
   margin: 0;
   line-height: 1.5;
+}
+
+.guide-section::before {
+  content: "•";
+  color: var(--st-color-primary);
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 /* Advanced Topics Section */

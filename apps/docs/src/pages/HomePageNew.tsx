@@ -88,7 +88,7 @@ export function HomePageNew() {
             <p>Everything needed for professional design systems</p>
           </div>
 
-          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={6}>
+          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
             {[
               { icon: Palette, title: "22 Color Palettes", desc: "Tailwind-compatible scales with semantic intent" },
               { icon: Layout, title: "Spacing System", desc: "9-step scale from 0-64px for perfect rhythm" },

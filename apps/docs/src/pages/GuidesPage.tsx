@@ -308,7 +308,6 @@ function GuideCard({ icon: IconComponent, title, description, sections }: GuideC
       <div className="guide-card-content">
         {sections.map((section, idx) => (
           <div key={idx} className="guide-section">
-            <h4>{section.heading}</h4>
             <p>{section.content}</p>
           </div>
         ))}
