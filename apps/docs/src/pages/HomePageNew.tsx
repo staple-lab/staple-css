@@ -1,5 +1,5 @@
 import { Container, Column, Row, Text, Card, Box, Grid } from "@staple-css/primitives/full";
-import { InteractivePlayground } from "../components/InteractivePlayground";
+import { InteractivePlaygroundPro } from "../components/InteractivePlaygroundPro";
 
 export function HomePageNew() {
   return (
@@ -217,9 +217,9 @@ export function HomePageNew() {
               Try It Live
             </Text>
             <Text size={1} tone="muted">
-              Interactive component playground. Switch between preview and code. Explore responsive behavior.
+              Interactive component playground. Switch between preview and code. Explore responsive behavior and best practices.
             </Text>
-            <InteractivePlayground />
+            <InteractivePlaygroundPro />
           </Column>
 
           {/* Getting Started */}
