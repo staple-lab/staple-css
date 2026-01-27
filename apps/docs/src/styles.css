@@ -35,42 +35,20 @@ code {
   display: flex;
   flex-direction: column;
   background-color: var(--st-color-background);
-  background-image:
-    radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
   color: var(--st-color-text);
   transition: background-color var(--st-duration-normal) var(--st-easing-default),
               color var(--st-duration-normal) var(--st-easing-default);
 }
 
-[data-theme="dark"] .app-root {
-  background-image:
-    radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
-}
-
 .app-header {
   border-bottom: 1px solid var(--st-color-border);
   padding: var(--st-space-4) 0;
-  background: linear-gradient(
-    180deg,
-    var(--st-color-surface) 0%,
-    rgba(255, 255, 255, 0)
-  );
+  background-color: var(--st-color-surface);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="dark"] .app-header {
-  background: linear-gradient(
-    180deg,
-    var(--st-color-surface) 0%,
-    rgba(30, 30, 30, 0)
-  );
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--st-shadow-1);
 }
 
 .app-main {
@@ -176,7 +154,7 @@ code {
   background-color: var(--st-color-primary-surface);
   color: var(--st-color-primary);
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--st-shadow-1);
 }
 
 .toggle-btn:active {
