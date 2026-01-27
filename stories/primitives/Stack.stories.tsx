@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box, Column, Text } from '@staple-css/primitives'
+import { Box, Column, Text } from '@staple-css/primitives/full'
 
 /**
  * Column (Column Component)

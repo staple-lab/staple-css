@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Column, Text } from '@staple-css/primitives'
+import { Column, Text } from '@staple-css/primitives/full'
 
 const meta = {
   title: 'Primitives/Text',

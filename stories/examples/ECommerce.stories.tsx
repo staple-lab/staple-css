@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box, Column, Row, Flex, Grid, Container, Text, Card } from '@staple-css/primitives'
+import { Box, Column, Row, Flex, Grid, Container, Text, Card } from '@staple-css/primitives/full'
 import { useState } from 'react'
 
 const meta = {

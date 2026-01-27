@@ -914,7 +914,7 @@ export const MinimalHero: Story = {
             >
               <code>{`npm install @staple-css/tokens @staple-css/primitives
 
-import { Box, Text } from '@staple-css/primitives'
+import { Box, Text } from '@staple-css/primitives/full'
 
 <Box pad={4} radius={2} shadow={1}>
   <Text size={4} weight="bold">

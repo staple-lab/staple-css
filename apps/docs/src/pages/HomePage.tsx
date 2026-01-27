@@ -94,7 +94,7 @@ export function HomePage() {
 
             {/* Value Proposition */}
             <Box style={{ maxWidth: "700px" }}>
-              <Text size={2} align="center" style={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}>
+              <Text size={2} align="center" style={{ color: "rgba(255,255,255,0.85)", lineHeight: "1.6" }}>
                 2.5 KB by default. Token-first API. Zero JavaScript runtime. Build UI with 3 core primitives. Scales to enterprise with optional full edition.
               </Text>
             </Box>
