@@ -38,7 +38,7 @@
 /* Grid layout - 2 columns with intrinsic sizing */
 .guides-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: var(--st-space-5);
   max-width: 1200px;
   margin: 0 auto;

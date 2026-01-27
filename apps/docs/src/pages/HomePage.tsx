@@ -368,7 +368,7 @@ export function HomePage() {
 
             <div style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
               gap: "var(--st-space-5)",
               maxWidth: "1100px",
               margin: "0 auto"
@@ -416,7 +416,7 @@ export function HomePage() {
 
             <div style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
               gap: "var(--st-space-4)"
             }}>
               {/* Installation */}
@@ -488,7 +488,7 @@ export function HomePage() {
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
             gap: "var(--st-space-4)",
             maxWidth: "1100px",
             margin: "0 auto"
