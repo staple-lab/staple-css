@@ -158,50 +158,49 @@ export function HomePage() {
               <Text tone="muted" style={{ fontSize: "15px" }}>Complete toolkit. Start lightweight, scale to enterprise. No compromise.</Text>
             </Column>
 
-            <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={6} style={{ maxWidth: "1100px", margin: "0 auto", width: "100%" }}>
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "22px",
+              maxWidth: "850px",
+              margin: "0 auto",
+              width: "100%"
+            }}>
               {[
-                { icon: Target, title: "Token-First Design", color: "#3b82f6", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
-                { icon: Zap, title: "Ultra-Lightweight", color: "#f59e0b", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"] },
-                { icon: Cpu, title: "AI-Friendly APIs", color: "#8b5cf6", items: ["Constrained props", "Prevent hallucination", "Perfect for AI code gen"] },
-                { icon: Palette, title: "Design System Ready", color: "#ec4899", items: ["8 primitives", "Light/dark themes", "Multiple density"] },
-                { icon: Lock, title: "Type-Safe", color: "#10b981", items: ["Full TypeScript", "Compile-time validation", "IDE autocomplete"] },
-                { icon: Package, title: "Tree-Shakeable", color: "#06b6d4", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
+                { icon: Target, title: "Token-First Design", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
+                { icon: Zap, title: "Ultra-Lightweight", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"] },
+                { icon: Cpu, title: "AI-Friendly APIs", items: ["Constrained props", "Prevent hallucination", "Perfect for AI code gen"] },
+                { icon: Palette, title: "Design System Ready", items: ["8 primitives", "Light/dark themes", "Multiple density"] },
+                { icon: Lock, title: "Type-Safe", items: ["Full TypeScript", "Compile-time validation", "IDE autocomplete"] },
+                { icon: Package, title: "Tree-Shakeable", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
               ].map((feature, idx) => {
                 const IconComponent = feature.icon;
                 return (
-                  <Card key={idx} style={{
-                    padding: "20px",
-                    background: "var(--st-color-background)",
-                    border: `1px solid var(--st-color-border)`,
-                    borderRadius: "8px",
-                    position: "relative",
-                    overflow: "hidden"
+                  <div key={idx} style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "9px"
                   }}>
-                    {/* Top accent bar */}
                     <div style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: "3px",
-                      background: feature.color
-                    }} />
-
-                    <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "14px", paddingTop: "6px" }}>
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "11px"
+                    }}>
                       <Box style={{
-                        width: "36px",
-                        height: "36px",
+                        width: "32px",
+                        height: "32px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        background: feature.color,
+                        background: "var(--st-color-primary)",
                         color: "white",
-                        borderRadius: "6px",
-                        flexShrink: 0
+                        borderRadius: "5px",
+                        flexShrink: 0,
+                        fontSize: "16px"
                       }}>
-                        <IconComponent size={18} strokeWidth={1.5} />
+                        <IconComponent size={16} strokeWidth={1.5} />
                       </Box>
-                      <Text weight="bold" size={2} style={{ fontSize: "16px", fontWeight: 800, margin: 0, lineHeight: "1.2" }}>{feature.title}</Text>
+                      <Text weight="bold" size={2} style={{ fontSize: "17px", fontWeight: 800, margin: 0, lineHeight: "1.2" }}>{feature.title}</Text>
                     </div>
 
                     <ul style={{
@@ -214,31 +213,32 @@ export function HomePage() {
                     }}>
                       {feature.items.map((item, i) => (
                         <li key={i} style={{
-                          fontSize: "13px",
+                          fontSize: "14px",
                           color: "var(--st-color-text-muted)",
                           lineHeight: "1.5",
                           margin: 0,
                           display: "flex",
-                          gap: "8px",
+                          gap: "9px",
                           alignItems: "flex-start",
                           padding: 0
                         }}>
                           <span style={{
-                            color: feature.color,
-                            fontWeight: 900,
-                            fontSize: "11px",
+                            color: "var(--st-color-primary)",
+                            fontWeight: 800,
+                            fontSize: "15px",
                             display: "inline-block",
                             flexShrink: 0,
-                            marginTop: "2px"
-                          }}>●</span>
+                            opacity: 0.5,
+                            lineHeight: "1.5"
+                          }}>•</span>
                           <span>{item}</span>
                         </li>
                       ))}
                     </ul>
-                  </Card>
+                  </div>
                 );
               })}
-            </Grid>
+            </div>
           </Column>
         </Container>
       </Box>
