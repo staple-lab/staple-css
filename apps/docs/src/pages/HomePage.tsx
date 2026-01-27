@@ -320,28 +320,114 @@ export function HomePage() {
         </Container>
       </Box>
 
-      {/* CTA Section */}
+      {/* Getting Started Section */}
+      <Box style={{ background: "var(--st-color-surface)", padding: "var(--st-space-8) var(--st-space-4)" }}>
+        <Container size="lg">
+          <Column gap={6}>
+            <Column gap={2}>
+              <Text as="h2" size={5} weight="bold">Getting Started</Text>
+              <Text tone="muted">Installation and setup in 3 minutes</Text>
+            </Column>
+
+            <Grid cols={{ base: 1, md: 2 }} gap={6}>
+              {/* Installation Card */}
+              <Card pad={6} radius={3} shadow={1}>
+                <Column gap={4}>
+                  <Column gap={2}>
+                    <Text weight="bold" size={3}>Installation</Text>
+                    <Text size={1} tone="muted">
+                      Get started in seconds with npm
+                    </Text>
+                  </Column>
+                  <Box style={{
+                    background: "var(--st-color-background)",
+                    padding: "var(--st-space-4)",
+                    borderRadius: "var(--st-radius-2)",
+                    fontFamily: "var(--st-font-mono)",
+                    fontSize: "var(--st-font-size-0)",
+                    overflowX: "auto"
+                  }}>
+                    <code>npm install @staple-css/tokens</code>
+                  </Box>
+                </Column>
+              </Card>
+
+              {/* Quick Start Card */}
+              <Card pad={6} radius={3} shadow={1}>
+                <Column gap={4}>
+                  <Column gap={2}>
+                    <Text weight="bold" size={3}>Quick Start</Text>
+                    <Text size={1} tone="muted">
+                      Import and use in your application
+                    </Text>
+                  </Column>
+                  <Box style={{
+                    background: "var(--st-color-background)",
+                    padding: "var(--st-space-4)",
+                    borderRadius: "var(--st-radius-2)",
+                    fontFamily: "var(--st-font-mono)",
+                    fontSize: "var(--st-font-size-0)",
+                    overflowX: "auto",
+                    lineHeight: "1.6"
+                  }}>
+                    <code>{`import "@staple-css/tokens"\nimport { Box } from "@staple-css/primitives"`}</code>
+                  </Box>
+                </Column>
+              </Card>
+            </Grid>
+          </Column>
+        </Container>
+      </Box>
+
+      {/* Use Cases Section */}
       <Container size="lg" style={{ padding: "var(--st-space-8) var(--st-space-4)" }}>
-        <Column gap={6} align="center">
-          <Column gap={3} align="center">
-            <Text as="h2" size={5} weight="bold">Ready to start?</Text>
-            <Text tone="muted" style={{ maxWidth: "500px" }}>
-              Install staple-css and start building. Choose your edition. 2.5 KB default. 8.23 KB full.
-            </Text>
+        <Column gap={6}>
+          <Column gap={2}>
+            <Text as="h2" size={5} weight="bold">Perfect For</Text>
+            <Text tone="muted">Use cases where staple-css excels</Text>
           </Column>
 
-          <Row gap={3}>
-            <PrimaryButton href="/tokens">View Documentation</PrimaryButton>
-            <SecondaryButton href="/tokens-studio">Token Studio</SecondaryButton>
-          </Row>
-
-          <Box style={{ marginTop: "var(--st-space-4)", paddingTop: "var(--st-space-4)", borderTop: "1px solid var(--st-color-border)", width: "100%", textAlign: "center" }}>
-            <Text size={1} tone="muted">
-              Open source MIT licensed • Star on GitHub • Read the docs
-            </Text>
-          </Box>
+          <Grid cols={{ base: 1, md: 2, lg: 4 }} gap={4}>
+            {[
+              { icon: "⚡", title: "Performance", desc: "2.5 KB zero JS overhead" },
+              { icon: "🎯", title: "Design Systems", desc: "Token-first consistency" },
+              { icon: "🤖", title: "AI & Automation", desc: "Type-safe API constraints" },
+              { icon: "📱", title: "Mobile Apps", desc: "Ultra-lightweight library" },
+            ].map((item, idx) => (
+              <Card key={idx} pad={4} radius={2} shadow={0}>
+                <Column gap={3}>
+                  <Box style={{ fontSize: "28px" }}>{item.icon}</Box>
+                  <Column gap={1}>
+                    <Text weight="bold" size={2}>{item.title}</Text>
+                    <Text size={0} tone="muted">{item.desc}</Text>
+                  </Column>
+                </Column>
+              </Card>
+            ))}
+          </Grid>
         </Column>
       </Container>
+
+      {/* CTA Section */}
+      <Box style={{ background: "linear-gradient(135deg, var(--st-color-primary) 0%, #1a5a8f 100%)", padding: "var(--st-space-8) var(--st-space-4)", color: "white" }}>
+        <Container size="lg">
+          <Column gap={6} align="center">
+            <Column gap={2} align="center">
+              <Text as="h2" size={5} weight="bold" style={{ color: "white" }}>Ready to Build?</Text>
+              <Text style={{ color: "rgba(255,255,255,0.9)" }}>Choose your edition. Core or full.</Text>
+            </Column>
+
+            <Row gap={3} justify="center" style={{ flexWrap: "wrap" }}>
+              <PrimaryButton href="/tokens" style={{ background: "white", color: "var(--st-color-primary)" }}>Get Started →</PrimaryButton>
+              <SecondaryButton href="/tokens-studio" style={{ borderColor: "white", color: "white" }}>Open Studio</SecondaryButton>
+            </Row>
+
+            <Text size={1} style={{ color: "rgba(255,255,255,0.7)" }}>
+              MIT Licensed • 350+ CSS Variables • Zero Runtime
+            </Text>
+          </Column>
+        </Container>
+      </Box>
     </Box>
   );
 }
