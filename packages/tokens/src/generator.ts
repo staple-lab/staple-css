@@ -50,7 +50,7 @@ function generateDensityVars(density: DensityTokens, indent = "  "): string {
  * Generated CSS output
  */
 export interface GeneratedCss {
-  /** Base tokens (space, radius, typography, motion) */
+  /** Base tokens (space, radius, typography, motion, gradients) */
   tokens: string;
   /** Theme tokens (light/dark colors) */
   themes: string;
@@ -58,6 +58,8 @@ export interface GeneratedCss {
   density: string;
   /** Combined all.css */
   all: string;
+  /** Gradient tokens CSS */
+  gradients: string;
   /** Custom palette CSS (if any) */
   palettes?: string;
 }
@@ -71,7 +73,7 @@ export function generateCss(config: TokenConfig): GeneratedCss {
  * @staple-css/tokens - Base Tokens
  * Generated from: ${config.name} v${config.version}
  *
- * Core design tokens for spacing, typography, shadows, and motion.
+ * Core design tokens for spacing, typography, shadows, motion, and gradients.
  * Import this file once at your app root.
  */
 
@@ -103,6 +105,12 @@ ${generateVars("duration", config.motion.duration)}
   /* Motion - Easing */
 ${generateVars("easing", config.motion.easing)}
 }
+${config.gradients ? `
+
+:root {
+  /* Gradients */
+${generateVars("gradient", config.gradients)}
+}` : ""}
 `;
 
   // Generate themes.css
@@ -152,18 +160,39 @@ ${generateDensityVars(config.density.compact)}
 }
 `;
 
+  // Generate gradients.css
+  const gradients = config.gradients ? `/**
+ * @staple-css/tokens - Gradient Tokens
+ * Generated from: ${config.name} v${config.version}
+ *
+ * Pre-defined gradient values for backgrounds and visual effects.
+ * Use with background or background-image CSS properties.
+ */
+
+:root {
+${generateVars("gradient", config.gradients)}
+}
+` : `/**
+ * @staple-css/tokens - Gradient Tokens
+ * Generated from: ${config.name} v${config.version}
+ *
+ * No gradient tokens defined in configuration.
+ */
+`;
+
   // Generate all.css
   const all = `/**
  * @staple-css/tokens - All Tokens
  * Generated from: ${config.name} v${config.version}
  *
  * Convenience file that imports all token CSS files.
- * Equivalent to importing tokens.css, themes.css, and density.css separately.
+ * Equivalent to importing tokens.css, themes.css, density.css, and gradients.css separately.
  */
 
 @import "./tokens.css";
 @import "./themes.css";
 @import "./density.css";
+@import "./gradients.css";
 `;
 
   // Generate palettes.css if custom palettes exist
@@ -201,7 +230,7 @@ ${paletteVars}
     }
   }
 
-  return { tokens, themes, density, all, palettes };
+  return { tokens, themes, density, gradients, all, palettes };
 }
 
 /**

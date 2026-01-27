@@ -36,6 +36,7 @@ import {
   textTransformScale,
   whiteSpaceScale,
   objectFitScale,
+  gradients,
   fontFamily,
   fontSizeScale,
   lineHeight,
@@ -189,6 +190,11 @@ ${generateVars("white-space", whiteSpaceScale)}
   /* Object Fit */
 ${generateVars("object-fit", objectFitScale)}
 }
+
+:root {
+  /* Gradients */
+${generateVars("gradient", gradients)}
+}
 `;
 
 writeFileSync(join(distDir, "tokens.css"), tokensCss);
@@ -249,18 +255,36 @@ ${generateVars("density", densityCompact)}
 writeFileSync(join(distDir, "density.css"), densityCss);
 
 // ============================================================================
+// gradients.css - Gradient definitions
+// ============================================================================
+const gradientsCss = `/**
+ * @staple-css/tokens - Gradient Tokens
+ *
+ * Pre-defined gradient values for backgrounds and visual effects.
+ * Use with background or background-image CSS properties.
+ */
+
+:root {
+${generateVars("gradient", gradients)}
+}
+`;
+
+writeFileSync(join(distDir, "gradients.css"), gradientsCss);
+
+// ============================================================================
 // all.css - Combined import
 // ============================================================================
 const allCss = `/**
  * @staple-css/tokens - All Tokens
  *
  * Convenience file that imports all token CSS files.
- * Equivalent to importing tokens.css, themes.css, and density.css separately.
+ * Equivalent to importing tokens.css, themes.css, density.css, and gradients.css separately.
  */
 
 @import "./tokens.css";
 @import "./themes.css";
 @import "./density.css";
+@import "./gradients.css";
 `;
 
 writeFileSync(join(distDir, "all.css"), allCss);
@@ -281,6 +305,7 @@ console.log("Generated CSS files in dist/:");
 console.log("  - tokens.css");
 console.log("  - themes.css");
 console.log("  - density.css");
+console.log("  - gradients.css");
 console.log("  - palettes.css");
 console.log("  - breakpoints.css");
 console.log("  - all.css");

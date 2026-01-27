@@ -714,6 +714,53 @@ export const objectFitScale = {
 export type ObjectFitToken = keyof typeof objectFitScale;
 
 // ============================================================================
+// Gradient Definitions - Perceptually Smooth Color Gradients
+// ============================================================================
+export const gradients = {
+  // Neutral gradients (grayscale/professional)
+  neutralSoft: "linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%)",
+  neutralMedium: "linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%)",
+  neutralBold: "linear-gradient(135deg, #374151 0%, #1f2937 100%)",
+
+  // Primary gradients (brand/action)
+  primarySoft: "linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)",
+  primaryMedium: "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)",
+  primaryBold: "linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%)",
+
+  // Danger/Error gradients (alert/destructive)
+  dangerSoft: "linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%)",
+  dangerMedium: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)",
+  dangerBold: "linear-gradient(135deg, #b91c1c 0%, #991b1b 100%)",
+
+  // Warning/Caution gradients
+  warnSoft: "linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)",
+  warnMedium: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+  warnBold: "linear-gradient(135deg, #b45309 0%, #92400e 100%)",
+
+  // Success/Positive gradients
+  successSoft: "linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)",
+  successMedium: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+  successBold: "linear-gradient(135deg, #15803d 0%, #166534 100%)",
+
+  // Vibrant multi-color gradients (design showcase)
+  sunrise: "linear-gradient(90deg, #fbbf24 0%, #f97316 50%, #fb923c 100%)",
+  sunset: "linear-gradient(90deg, #f97316 0%, #ec4899 50%, #d946ef 100%)",
+  ocean: "linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #0d9488 100%)",
+  forest: "linear-gradient(135deg, #16a34a 0%, #059669 50%, #047857 100%)",
+  grape: "linear-gradient(135deg, #a855f7 0%, #d946ef 50%, #ec4899 100%)",
+  mint: "linear-gradient(135deg, #14b8a6 0%, #06b6d4 50%, #0ea5e9 100%)",
+
+  // Diagonal overlays (for cards/sections)
+  diagonalLight: "linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(249, 250, 251, 0.6) 100%)",
+  diagonalDark: "linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(17, 24, 39, 0.9) 100%)",
+
+  // Animated-ready (can be used with background-position animation)
+  shimmer: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
+} as const;
+
+export type GradientToken = keyof typeof gradients;
+
+// ============================================================================
 // Tone Variants (for primitives)
 // ============================================================================
 export const tones = ["neutral", "primary", "danger", "warn", "success"] as const;
@@ -756,6 +803,7 @@ export const tokens = {
   textTransform: textTransformScale,
   whiteSpace: whiteSpaceScale,
   objectFit: objectFitScale,
+  gradients,
   fontFamily,
   fontSize: fontSizeScale,
   lineHeight,
