@@ -19,7 +19,7 @@
 /* Principle cards - visual icons with content */
 .principles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--st-space-6);
 }
 
@@ -41,7 +41,7 @@
 /* Performance grid - metrics focused */
 .performance-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: var(--st-space-4);
 }
 
@@ -69,7 +69,7 @@
 /* Accessibility features - grid with checkmarks */
 .a11y-features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: var(--st-space-6);
 }
 
