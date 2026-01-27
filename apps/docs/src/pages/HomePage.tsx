@@ -158,94 +158,87 @@ export function HomePage() {
               <Text tone="muted" style={{ fontSize: "15px" }}>Complete toolkit. Start lightweight, scale to enterprise. No compromise.</Text>
             </Column>
 
-            <div style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              maxWidth: "900px",
-              margin: "0 auto",
-              width: "100%"
-            }}>
+            <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={6} style={{ maxWidth: "1100px", margin: "0 auto", width: "100%" }}>
               {[
-                { icon: Target, title: "Token-First Design", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
-                { icon: Zap, title: "Ultra-Lightweight", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"] },
-                { icon: Cpu, title: "AI-Friendly APIs", items: ["Constrained props", "Prevent hallucination", "Perfect for AI code gen"] },
-                { icon: Palette, title: "Design System Ready", items: ["8 primitives", "Light/dark themes", "Multiple density"] },
-                { icon: Lock, title: "Type-Safe", items: ["Full TypeScript", "Compile-time validation", "IDE autocomplete"] },
-                { icon: Package, title: "Tree-Shakeable", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
+                { icon: Target, title: "Token-First Design", color: "#3b82f6", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
+                { icon: Zap, title: "Ultra-Lightweight", color: "#f59e0b", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"] },
+                { icon: Cpu, title: "AI-Friendly APIs", color: "#8b5cf6", items: ["Constrained props", "Prevent hallucination", "Perfect for AI code gen"] },
+                { icon: Palette, title: "Design System Ready", color: "#ec4899", items: ["8 primitives", "Light/dark themes", "Multiple density"] },
+                { icon: Lock, title: "Type-Safe", color: "#10b981", items: ["Full TypeScript", "Compile-time validation", "IDE autocomplete"] },
+                { icon: Package, title: "Tree-Shakeable", color: "#06b6d4", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
               ].map((feature, idx) => {
                 const IconComponent = feature.icon;
                 return (
-                  <div key={idx} style={{
-                    display: "flex",
-                    gap: "16px",
-                    padding: 0,
-                    background: "transparent",
-                    border: "none",
-                    position: "relative"
+                  <Card key={idx} style={{
+                    padding: "20px",
+                    background: "var(--st-color-background)",
+                    border: `1px solid var(--st-color-border)`,
+                    borderRadius: "8px",
+                    position: "relative",
+                    overflow: "hidden"
                   }}>
+                    {/* Top accent bar */}
                     <div style={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      gap: "14px",
-                      minWidth: 0
-                    }}>
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: "3px",
+                      background: feature.color
+                    }} />
+
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "14px", paddingTop: "6px" }}>
                       <Box style={{
-                        width: "32px",
-                        height: "32px",
+                        width: "36px",
+                        height: "36px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        background: "var(--st-color-primary)",
+                        background: feature.color,
                         color: "white",
                         borderRadius: "6px",
-                        flexShrink: 0,
-                        fontSize: "16px",
-                        marginTop: "2px"
+                        flexShrink: 0
                       }}>
-                        <IconComponent size={16} strokeWidth={1.5} />
+                        <IconComponent size={18} strokeWidth={1.5} />
                       </Box>
-                      <div>
-                        <Text weight="bold" size={2} style={{ fontSize: "17px", fontWeight: 700, margin: 0, lineHeight: "1.3", letterSpacing: "-0.3px" }}>{feature.title}</Text>
-                      </div>
+                      <Text weight="bold" size={2} style={{ fontSize: "16px", fontWeight: 800, margin: 0, lineHeight: "1.2" }}>{feature.title}</Text>
                     </div>
+
                     <ul style={{
                       listStyle: "none",
                       margin: 0,
                       padding: 0,
-                      marginLeft: "46px",
                       display: "flex",
                       flexDirection: "column",
-                      gap: "8px"
+                      gap: "7px"
                     }}>
                       {feature.items.map((item, i) => (
                         <li key={i} style={{
-                          fontSize: "14px",
+                          fontSize: "13px",
                           color: "var(--st-color-text-muted)",
-                          lineHeight: "1.6",
+                          lineHeight: "1.5",
                           margin: 0,
                           display: "flex",
-                          gap: "10px",
+                          gap: "8px",
                           alignItems: "flex-start",
                           padding: 0
                         }}>
                           <span style={{
-                            color: "var(--st-color-primary)",
-                            fontWeight: 700,
-                            fontSize: "14px",
-                            opacity: 0.7,
-                            marginTop: "2px",
+                            color: feature.color,
+                            fontWeight: 900,
+                            fontSize: "11px",
                             display: "inline-block",
-                            flexShrink: 0
-                          }}>•</span>
+                            flexShrink: 0,
+                            marginTop: "2px"
+                          }}>●</span>
                           <span>{item}</span>
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </Card>
                 );
               })}
-            </div>
+            </Grid>
           </Column>
         </Container>
       </Box>
