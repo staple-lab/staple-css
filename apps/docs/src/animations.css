@@ -140,6 +140,33 @@
   }
 }
 
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(20, 184, 166, 0.5);
+  }
+}
+
+@keyframes colorPulse {
+  0%, 100% {
+    border-color: var(--accent-color);
+  }
+  50% {
+    border-color: var(--accent-dark);
+  }
+}
+
+@keyframes softBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
 /* ===== Accessibility: Respect prefers-reduced-motion ===== */
 
 @media (prefers-reduced-motion: reduce) {

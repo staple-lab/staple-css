@@ -89,6 +89,41 @@ code {
   }
 }
 
+/* ===== Page-Specific Section Styling ===== */
+
+/* Section header with accent underline */
+.section-header {
+  padding-bottom: var(--st-space-3);
+  border-bottom: 2px solid var(--accent-light);
+  margin-bottom: var(--st-space-4);
+}
+
+/* Highlight box with accent styling */
+.highlight-accent {
+  padding: var(--st-space-4) var(--st-space-5);
+  border-left: 4px solid var(--accent-color);
+  background: linear-gradient(90deg, var(--accent-light) 0%, transparent 100%);
+  border-radius: var(--st-radius-2);
+  margin: var(--st-space-4) 0;
+}
+
+/* Showcase grid with staggered reveals */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--st-space-4);
+}
+
+.showcase-grid > * {
+  animation: slideUpIn var(--st-duration-normal) var(--easing-smooth) backwards;
+}
+
+.showcase-grid > :nth-child(1) { animation-delay: 0ms; }
+.showcase-grid > :nth-child(2) { animation-delay: 60ms; }
+.showcase-grid > :nth-child(3) { animation-delay: 120ms; }
+.showcase-grid > :nth-child(4) { animation-delay: 180ms; }
+.showcase-grid > :nth-child(n+5) { animation-delay: 240ms; }
+
 /* Header layout - logo left, search center, buttons right */
 .header-layout {
   width: 100%;
