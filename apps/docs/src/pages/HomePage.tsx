@@ -200,7 +200,7 @@ export function HomePage() {
                       }}>
                         <IconComponent size={16} strokeWidth={1.5} />
                       </Box>
-                      <Text weight="bold" size={2} style={{ fontSize: "17px", fontWeight: 700, margin: 0, lineHeight: "1.3" }}>{feature.title}</Text>
+                      <Text weight="bold" size={2} style={{ fontSize: "17px", fontWeight: 700, margin: 0, lineHeight: "1.3", fontFamily: "'Courier New', monospace" }}>{feature.title}</Text>
                     </div>
 
                     <ul style={{
@@ -220,7 +220,8 @@ export function HomePage() {
                           display: "flex",
                           gap: "8px",
                           alignItems: "flex-start",
-                          padding: 0
+                          padding: 0,
+                          fontFamily: "'Courier New', monospace"
                         }}>
                           <span style={{
                             color: "var(--st-color-primary)",
