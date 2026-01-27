@@ -4,6 +4,7 @@ import { Container, Row, Text, Flex } from "@staple-css/primitives/full";
 import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
 import { ColorSystemPage } from "./pages/ColorSystemPage";
+import { VisualsPage } from "./pages/VisualsPage";
 import { GradientStudioPage } from "./pages/GradientStudioPage";
 import { ComponentPatternsPage } from "./pages/ComponentPatternsPage";
 import { GuidesPage } from "./pages/GuidesPage";
@@ -91,6 +92,11 @@ export function App() {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink to="/visuals" className="nav-link">
+                      Visuals
+                    </NavLink>
+                  </li>
+                  <li>
                     <NavLink to="/components" className="nav-link">
                       Components
                     </NavLink>
@@ -146,6 +152,7 @@ export function App() {
           <Route path="/guides" element={<GuidesPage />} />
           <Route path="/tokens" element={<TokensPage />} />
           <Route path="/colors" element={<ColorSystemPage />} />
+          <Route path="/visuals" element={<VisualsPage />} />
           <Route path="/components" element={<ComponentPatternsPage />} />
           <Route path="/gradient-studio" element={<GradientStudioPage />} />
           <Route path="/primitives" element={<PrimitivesPage />} />
