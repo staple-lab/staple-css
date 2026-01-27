@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, NavLink, Navigate, Link } from "react-router-dom";
-import { Container, Row, Text, Flex } from "@staple-css/primitives/full";
+import { Routes, Route, Navigate, Link } from "react-router-dom";
+import { Container, Row, Text } from "@staple-css/primitives/full";
 import { HomePageNew as HomePage } from "./pages/HomePageNew";
 import { TokensPage } from "./pages/TokensPage";
 import { ColorSystemPage } from "./pages/ColorSystemPage";
@@ -14,6 +14,8 @@ import { PrimitivesPage } from "./pages/PrimitivesPage";
 import { WhyPage } from "./pages/WhyPage";
 import { ExamplesPage } from "./pages/ExamplesPage";
 import { BuilderPage } from "./pages/tokens-studio";
+import { SearchPalette } from "./components/SearchPalette";
+import { Sidebar } from "./components/Sidebar";
 
 type Theme = "light" | "dark" | "system";
 type Density = "comfortable" | "compact";
@@ -70,83 +72,13 @@ export function App() {
       <header className="app-header">
         <Container size="xl">
           <Row gap={4} align="center" justify="between">
-            <Row gap={6} align="center">
-              <Link to="/" className="logo-link">
-                <Text as="span" size={3} weight="bold">
-                  staple-css
-                </Text>
-              </Link>
-              <nav>
-                <Flex as="ul" direction="row" gap={4} className="nav-list">
-                  <li>
-                    <NavLink to="/tokens" className="nav-link">
-                      Tokens
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/token-reference" className="nav-link">
-                      Reference
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/guides" className="nav-link">
-                      Guides
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/colors" className="nav-link">
-                      Colors & Gradients
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/visuals" className="nav-link">
-                      Visuals
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/components" className="nav-link">
-                      Components
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/gradient-studio" className="nav-link">
-                      Gradient Studio
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/figma" className="nav-link">
-                      Figma Integration
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/primitives" className="nav-link">
-                      Primitives
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/why" className="nav-link">
-                      Why
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/examples" className="nav-link">
-                      Examples
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/tokens-studio" className="nav-link">
-                      Studio
-                    </NavLink>
-                  </li>
-                  <li>
-                    <a href="/storybook" className="nav-link" target="_blank" rel="noopener noreferrer">
-                      Storybook
-                    </a>
-                  </li>
-                </Flex>
-              </nav>
-            </Row>
+            <Link to="/" className="logo-link">
+              <Text as="span" size={3} weight="bold">
+                staple-css
+              </Text>
+            </Link>
             <Row gap={2}>
+              <SearchPalette />
               <button onClick={cycleTheme} className="toggle-btn" title="Toggle theme">
                 {theme === "system" ? "🖥️" : theme === "light" ? "☀️" : "🌙"} {themeLabel}
               </button>
@@ -158,8 +90,10 @@ export function App() {
         </Container>
       </header>
 
-      <main className="app-main">
-        <Routes>
+      <div className="app-content-wrapper">
+        <Sidebar />
+        <main className="app-main">
+          <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/guides" element={<GuidesPage />} />
           <Route path="/tokens" element={<TokensPage />} />
@@ -178,8 +112,9 @@ export function App() {
           <Route path="/tokens-studio/*" element={<Navigate to="/tokens-studio" replace />} />
           <Route path="/studio" element={<Navigate to="/tokens-studio" replace />} />
           <Route path="/studio/*" element={<Navigate to="/tokens-studio" replace />} />
-        </Routes>
-      </main>
+          </Routes>
+        </main>
+      </div>
 
       <footer className="app-footer">
         <Container size="xl">

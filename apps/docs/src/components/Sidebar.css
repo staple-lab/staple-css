@@ -1,0 +1,175 @@
+/**
+ * Sidebar Navigation Styles
+ * Tailwind-inspired left sidebar with collapsible categories
+ */
+
+.sidebar {
+  position: fixed;
+  top: var(--st-space-14, 56px);
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  overflow-y: auto;
+  background: var(--st-color-surface);
+  border-right: 1px solid var(--st-color-border);
+  padding: var(--st-space-4);
+  z-index: 40;
+  font-size: var(--st-font-size-sm, 14px);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-6);
+}
+
+/* Category Section */
+.nav-category {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-category-label {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--st-space-2) 0;
+  font-weight: 600;
+  color: var(--st-color-text);
+  cursor: pointer;
+  user-select: none;
+  font-size: var(--st-font-size-sm, 14px);
+  transition: color var(--st-duration-fast) var(--st-easing-default);
+}
+
+.nav-category-label:hover {
+  color: var(--st-color-text-strong);
+}
+
+.nav-category-label.active {
+  color: var(--st-color-text-strong);
+}
+
+.nav-category-label .chevron {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--st-duration-fast) var(--st-easing-default);
+  font-size: 12px;
+}
+
+.nav-category-label .chevron.open {
+  transform: rotate(90deg);
+}
+
+/* Nav Items List */
+.nav-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-1);
+}
+
+.nav-items > li {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nav Links */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-2);
+  padding: var(--st-space-2) var(--st-space-3);
+  color: var(--st-color-text-muted);
+  text-decoration: none;
+  border-radius: var(--st-radius-1);
+  transition: background-color var(--st-duration-fast) var(--st-easing-default),
+              color var(--st-duration-fast) var(--st-easing-default);
+  font-size: inherit;
+}
+
+.nav-link:hover {
+  background-color: var(--st-color-surface-hover);
+  color: var(--st-color-text);
+}
+
+.nav-link.active {
+  background-color: var(--st-color-primary-surface);
+  color: var(--st-color-primary);
+  font-weight: 500;
+}
+
+.nav-link.child {
+  padding-left: var(--st-space-5);
+  font-size: var(--st-font-size-xs, 13px);
+}
+
+/* External link icon */
+.nav-link .external-icon {
+  margin-left: auto;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.nav-link:hover .external-icon {
+  opacity: 1;
+}
+
+/* Label (non-link) */
+.nav-label {
+  padding: var(--st-space-2) var(--st-space-3);
+  color: var(--st-color-text-muted);
+  font-size: inherit;
+}
+
+/* Subitems list */
+.nav-subitems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-1);
+  margin-top: var(--st-space-1);
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--st-color-border);
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--st-color-border-strong);
+}
+
+/* Responsive: Hide sidebar on small screens */
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: relative;
+    top: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--st-color-border);
+  }
+}
