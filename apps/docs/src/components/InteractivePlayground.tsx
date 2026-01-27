@@ -91,13 +91,13 @@ const examples = [
     <Text as="label" weight="medium">
       Email
     </Text>
-    <input type="email" />
+    <input type="email" placeholder="you@example.com" />
   </Column>
   <Column gap={1}>
     <Text as="label" weight="medium">
       Password
     </Text>
-    <input type="password" />
+    <input type="password" placeholder="••••••••" />
   </Column>
   <Row gap={3} justify="end">
     <button>Cancel</button>
@@ -150,10 +150,20 @@ export function InteractivePlayground() {
   }
 
   return (
-    <Card pad={0} radius={3} shadow={2}>
+    <Card pad={0} radius={3} shadow={3}>
       <Column gap={0}>
+        {/* Header */}
+        <Box style={{ borderBottom: "2px solid var(--st-color-border)", background: "var(--st-color-surface-raised)", padding: "var(--st-space-4)" }}>
+          <Row gap={3} justify="between" align="center">
+            <Column gap={1}>
+              <Text weight="bold" size={2}>Live Component Playground</Text>
+              <Text size={0} tone="muted">Switch tabs to explore components</Text>
+            </Column>
+          </Row>
+        </Box>
+
         {/* Tabs */}
-        <Box style={{ borderBottom: "1px solid var(--st-color-border)", overflowX: "auto" }}>
+        <Box style={{ borderBottom: "1px solid var(--st-color-border)", overflowX: "auto", background: "var(--st-color-surface)" }}>
           <Row gap={0}>
             {examples.map((example, index) => (
               <button
@@ -161,14 +171,15 @@ export function InteractivePlayground() {
                 onClick={() => setSelectedIndex(index)}
                 style={{
                   padding: "var(--st-space-3) var(--st-space-5)",
-                  background: selectedIndex === index ? "var(--st-color-surface)" : "transparent",
+                  background: selectedIndex === index ? "white" : "transparent",
                   border: "none",
-                  borderBottom: selectedIndex === index ? "2px solid var(--st-color-primary)" : "2px solid transparent",
+                  borderBottom: selectedIndex === index ? "3px solid var(--st-color-primary)" : "3px solid transparent",
                   cursor: "pointer",
                   fontSize: "var(--st-font-size-1)",
-                  fontWeight: selectedIndex === index ? "600" : "normal",
+                  fontWeight: selectedIndex === index ? "600" : "500",
                   color: selectedIndex === index ? "var(--st-color-text)" : "var(--st-color-text-muted)",
                   whiteSpace: "nowrap",
+                  transition: "all var(--st-duration-fast) var(--st-easing-default)",
                 }}
               >
                 {example.title}
@@ -178,68 +189,77 @@ export function InteractivePlayground() {
         </Box>
 
         {/* Controls */}
-        <Box pad={3} style={{ borderBottom: "1px solid var(--st-color-border)" }}>
+        <Box pad={4} style={{ borderBottom: "1px solid var(--st-color-border)", background: "var(--st-color-surface)" }}>
           <Row gap={3} justify="between" align="center">
-            <Text size={1} weight="medium">
-              {showCode ? "Code" : "Preview"}
-            </Text>
+            <Column gap={0}>
+              <Text size={0} weight="medium" tone="muted">Display</Text>
+            </Column>
             <Row gap={2}>
               <button
                 onClick={() => setShowCode(false)}
                 style={{
-                  padding: "var(--st-space-1) var(--st-space-3)",
+                  padding: "var(--st-space-2) var(--st-space-4)",
                   borderRadius: "var(--st-radius-2)",
-                  border: "1px solid var(--st-color-border)",
-                  background: !showCode ? "var(--st-color-surface)" : "transparent",
+                  border: !showCode ? "2px solid var(--st-color-primary)" : "1px solid var(--st-color-border)",
+                  background: !showCode ? "var(--st-color-primary)" : "transparent",
+                  color: !showCode ? "white" : "var(--st-color-text)",
                   cursor: "pointer",
                   fontSize: "var(--st-font-size-0)",
+                  fontWeight: "600",
+                  transition: "all var(--st-duration-fast) var(--st-easing-default)",
                 }}
               >
-                Preview
+                👁️ Preview
               </button>
               <button
                 onClick={() => setShowCode(true)}
                 style={{
-                  padding: "var(--st-space-1) var(--st-space-3)",
+                  padding: "var(--st-space-2) var(--st-space-4)",
                   borderRadius: "var(--st-radius-2)",
-                  border: "1px solid var(--st-color-border)",
-                  background: showCode ? "var(--st-color-surface)" : "transparent",
+                  border: showCode ? "2px solid var(--st-color-primary)" : "1px solid var(--st-color-border)",
+                  background: showCode ? "var(--st-color-primary)" : "transparent",
+                  color: showCode ? "white" : "var(--st-color-text)",
                   cursor: "pointer",
                   fontSize: "var(--st-font-size-0)",
+                  fontWeight: "600",
+                  transition: "all var(--st-duration-fast) var(--st-easing-default)",
                 }}
               >
-                Code
+                {'<>'} Code
               </button>
             </Row>
           </Row>
         </Box>
 
         {/* Content */}
-        <Box pad={5}>
+        <Box pad={6} style={{ minHeight: "300px", background: "var(--st-color-background)" }}>
           {showCode ? (
             <pre
               style={{
-                background: "var(--st-color-surface-raised)",
-                padding: "var(--st-space-4)",
-                borderRadius: "var(--st-radius-2)",
+                background: "var(--st-color-surface)",
+                padding: "var(--st-space-5)",
+                borderRadius: "var(--st-radius-3)",
                 overflow: "auto",
                 fontSize: "var(--st-font-size-1)",
-                lineHeight: "var(--st-line-height-normal)",
+                lineHeight: "1.7",
                 fontFamily: "var(--st-font-mono)",
+                border: "1px solid var(--st-color-border)",
               }}
             >
               <code>{currentExample.code}</code>
             </pre>
           ) : (
-            <Box>{currentExample.component}</Box>
+            <Box style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "300px", background: "var(--st-color-surface)", borderRadius: "var(--st-radius-2)", padding: "var(--st-space-6)" }}>
+              {currentExample.component}
+            </Box>
           )}
         </Box>
 
         {/* Footer */}
-        <Box pad={3} style={{ borderTop: "1px solid var(--st-color-border)", background: "var(--st-color-surface-raised)" }}>
+        <Box pad={4} style={{ borderTop: "1px solid var(--st-color-border)", background: "var(--st-color-surface)" }}>
           <Row gap={3} justify="between" align="center">
             <Text size={0} tone="muted">
-              Try resizing your browser to see responsive behavior
+              💡 Resize your browser to see responsive behavior
             </Text>
             <Row gap={2}>
               <a
@@ -247,17 +267,19 @@ export function InteractivePlayground() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  padding: "var(--st-space-1) var(--st-space-3)",
+                  padding: "var(--st-space-2) var(--st-space-4)",
                   borderRadius: "var(--st-radius-2)",
-                  border: "1px solid var(--st-color-border)",
+                  border: "1px solid var(--st-color-primary)",
                   background: "transparent",
                   cursor: "pointer",
                   fontSize: "var(--st-font-size-0)",
                   textDecoration: "none",
-                  color: "var(--st-color-text)",
+                  color: "var(--st-color-primary)",
+                  fontWeight: "600",
+                  transition: "all var(--st-duration-fast) var(--st-easing-default)",
                 }}
               >
-                View in Storybook →
+                📖 View in Storybook →
               </a>
             </Row>
           </Row>
