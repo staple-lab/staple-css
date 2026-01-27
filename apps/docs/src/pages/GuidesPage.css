@@ -1,5 +1,5 @@
 /**
- * Guides Page - Clean, tight guide cards with Lucide icons
+ * Guides Page - Creative two-column layout with unique visual treatment
  */
 
 .guides-page {
@@ -10,15 +10,14 @@
 
 .guides-header {
   margin-bottom: var(--st-space-8);
-  text-align: left;
 }
 
 .guides-header h1 {
-  font-size: clamp(32px, 6vw, 44px);
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  font-size: clamp(32px, 6vw, 48px);
+  font-weight: 900;
+  letter-spacing: -1px;
   margin: 0 0 var(--st-space-3) 0;
-  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
+  background: linear-gradient(90deg, var(--st-color-primary) 0%, #0891b2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -29,34 +28,42 @@
   color: var(--st-color-text-muted);
   line-height: 1.6;
   margin: 0;
-  max-width: 600px;
+  max-width: 700px;
 }
 
-/* Guide Cards */
-.guide-card {
-  padding: var(--st-space-4);
-  background: var(--st-color-surface);
-  border: 1px solid var(--st-color-border);
-  border-radius: var(--st-radius-2);
-  transition: all 200ms ease;
+/* MAIN GUIDES GRID - Two Column Layout */
+.guides-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--st-space-8);
+  margin-bottom: var(--st-space-8);
+}
+
+/* LEFT COLUMN - CONCEPTS */
+.guides-column-left {
   display: flex;
   flex-direction: column;
-  gap: var(--st-space-4);
+  gap: var(--st-space-6);
 }
 
-.guide-card:hover {
-  border-color: var(--st-color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
-}
-
-.guide-card-header {
+.guide-concept {
+  padding: var(--st-space-4);
+  background: var(--st-color-surface);
+  border-top: 3px solid var(--st-color-primary);
+  border-radius: 0;
   display: flex;
   gap: var(--st-space-3);
   align-items: flex-start;
+  transition: all 200ms ease;
 }
 
-.guide-icon {
+.guide-concept:hover {
+  background: var(--st-color-background);
+  border-top-color: #06b6d4;
+  transform: translateY(-2px);
+}
+
+.concept-icon {
   width: 40px;
   height: 40px;
   display: flex;
@@ -64,153 +71,170 @@
   justify-content: center;
   background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
   color: white;
-  border-radius: var(--st-radius-2);
+  border-radius: 2px;
   flex-shrink: 0;
 }
 
-.guide-card-title-section {
+.concept-content {
   flex: 1;
 }
 
-.guide-card-title-section h3 {
+.concept-content h3 {
   font-size: 16px;
   font-weight: 700;
   margin: 0 0 var(--st-space-1) 0;
   color: var(--st-color-text);
 }
 
-.guide-card-title-section p {
-  font-size: 13px;
-  color: var(--st-color-text-muted);
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Guide Card Content - Tight List */
-.guide-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--st-space-2);
-  border-top: 1px solid var(--st-color-border);
-  padding-top: var(--st-space-3);
-}
-
-.guide-section {
-  display: flex;
-  gap: var(--st-space-2);
-  align-items: flex-start;
-}
-
-.guide-section h4 {
-  display: none;
-}
-
-.guide-section p {
+.concept-subtitle {
   font-size: 12px;
   color: var(--st-color-text-muted);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.guide-section::before {
-  content: "•";
-  color: var(--st-color-primary);
-  font-weight: bold;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-/* Advanced Topics Section */
-.advanced-section {
-  margin-top: var(--st-space-8);
-  padding-top: var(--st-space-8);
-  border-top: 1px solid var(--st-color-border);
-}
-
-.advanced-section h2 {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 var(--st-space-5) 0;
-  color: var(--st-color-text);
-}
-
-.advanced-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--st-space-4);
-}
-
-.advanced-item {
-  padding: var(--st-space-3);
-  background: var(--st-color-surface);
-  border-left: 3px solid var(--st-color-primary);
-  border-radius: 0;
-  padding-left: var(--st-space-4);
-}
-
-.advanced-item h4 {
-  font-size: 14px;
-  font-weight: 700;
   margin: 0 0 var(--st-space-2) 0;
-  color: var(--st-color-text);
+  font-weight: 500;
 }
 
-.advanced-item p {
+.concept-principle {
   font-size: 13px;
-  color: var(--st-color-text-muted);
+  color: var(--st-color-primary);
+  font-weight: 600;
   margin: 0;
-  line-height: 1.5;
+  padding: var(--st-space-2) var(--st-space-3);
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 2px;
+  letter-spacing: -0.2px;
 }
 
-/* Quick Reference Section */
-.quick-reference {
-  margin-top: var(--st-space-8);
-  padding-top: var(--st-space-8);
-  border-top: 1px solid var(--st-color-border);
+/* RIGHT COLUMN - DETAILS */
+.guides-column-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-6);
+  padding: var(--st-space-4) 0;
 }
 
-.quick-reference h2 {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 var(--st-space-5) 0;
-  color: var(--st-color-text);
-}
-
-.reference-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+.guide-details ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   gap: var(--st-space-3);
 }
 
-.reference-item {
-  padding: var(--st-space-3);
-  background: var(--st-color-surface);
-  border-radius: var(--st-radius-2);
-  border: 1px solid var(--st-color-border);
-  transition: all 150ms ease;
-}
-
-.reference-item:hover {
-  border-color: var(--st-color-primary);
-  transform: translateY(-1px);
-}
-
-.reference-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--st-color-text);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: var(--st-space-1);
-}
-
-.reference-value {
+.guide-details li {
   font-size: 13px;
   color: var(--st-color-text-muted);
-  line-height: 1.4;
+  line-height: 1.6;
+  display: flex;
+  gap: var(--st-space-2);
+  align-items: flex-start;
+  padding: var(--st-space-2) 0;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.guide-details li:last-child {
+  border-bottom: none;
+}
+
+.detail-dot {
+  color: var(--st-color-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* BOTTOM SECTION - GRID STYLE */
+.guides-bottom {
+  margin-top: var(--st-space-8);
+  padding-top: var(--st-space-8);
+  border-top: 2px solid var(--st-color-border);
+}
+
+.guides-section-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 var(--st-space-6) 0;
+  color: var(--st-color-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--st-space-4);
+}
+
+.bottom-card {
+  padding: var(--st-space-4);
+  background: var(--st-color-surface);
+  border: 1px solid var(--st-color-border);
+  border-left: 4px solid var(--st-color-primary);
+  border-radius: 0;
+  transition: all 200ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-2);
+}
+
+.bottom-card:hover {
+  border-left-color: #06b6d4;
+  transform: translateX(4px);
+  background: var(--st-color-background);
+}
+
+.bottom-card-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
+  color: white;
+  border-radius: 1px;
+}
+
+.bottom-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--st-color-text);
+}
+
+.bottom-card-points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-1);
+}
+
+.bottom-card-points .point {
+  font-size: 11px;
+  color: var(--st-color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-1);
+  opacity: 0.8;
+}
+
+.bottom-card-points .point::before {
+  content: "◆";
+  color: var(--st-color-primary);
+  font-size: 6px;
+  flex-shrink: 0;
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .guides-grid {
+    grid-template-columns: 1fr;
+    gap: var(--st-space-6);
+  }
+
+  .guides-column-right {
+    padding: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .guides-page {
     padding: var(--st-space-6) 0;
@@ -220,12 +244,11 @@
     font-size: clamp(24px, 5vw, 32px);
   }
 
-  .guide-card-content {
-    gap: var(--st-space-2);
+  .guides-section-title {
+    font-size: 16px;
   }
 
-  .advanced-grid,
-  .reference-grid {
+  .bottom-grid {
     grid-template-columns: 1fr;
   }
 }
