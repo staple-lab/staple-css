@@ -1,32 +1,8 @@
 import { useMemo } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Row, Text } from "@staple-css/primitives/full";
-import { Edit2 } from "lucide-react";
 import { navigationConfig } from "../navigation";
 import "./Breadcrumb.css";
-
-function getGitHubEditUrl(pathname: string): string {
-  // Map routes to file paths
-  const routeMap: Record<string, string> = {
-    "/guides": "GuidesPage",
-    "/tokens": "TokensPage",
-    "/token-reference": "TokenReferencePage",
-    "/colors": "ColorSystemPage",
-    "/visuals": "VisualsPage",
-    "/components": "ComponentPatternsPage",
-    "/gradient-studio": "GradientStudioPage",
-    "/figma": "FigmaIntegrationPage",
-    "/primitives": "PrimitivesPage",
-    "/why": "WhyPage",
-    "/examples": "ExamplesPage",
-  };
-
-  const fileName = routeMap[pathname];
-  if (!fileName) return "";
-
-  const baseUrl = "https://github.com/anthropics/staple-css/edit/main/apps/docs/src/pages";
-  return `${baseUrl}/${fileName}.tsx`;
-}
 
 interface BreadcrumbItem {
   label: string;
@@ -105,50 +81,31 @@ export function Breadcrumb() {
     return null;
   }
 
-  const githubUrl = getGitHubEditUrl(location.pathname);
-
   return (
     <nav className="breadcrumb" aria-label="Breadcrumb">
-      <Row gap={2} align="center" justify="between" className="breadcrumb-list">
-        <Row gap={2} align="center" className="breadcrumb-items">
-          {breadcrumbs.map((item, idx) => (
-            <span key={`${item.path}-${idx}`} className="breadcrumb-item">
-              {item.isActive ? (
-                <span className="breadcrumb-current">
-                  <Text as="span" size={0} tone="muted">
+      <Row gap={2} align="center" className="breadcrumb-list">
+        {breadcrumbs.map((item, idx) => (
+          <span key={`${item.path}-${idx}`} className="breadcrumb-item">
+            {item.isActive ? (
+              <span className="breadcrumb-current">
+                <Text as="span" size={0} tone="muted">
+                  {item.label}
+                </Text>
+              </span>
+            ) : (
+              <>
+                <Link to={item.path} className="breadcrumb-link">
+                  <Text as="span" size={0}>
                     {item.label}
                   </Text>
-                </span>
-              ) : (
-                <>
-                  <Link to={item.path} className="breadcrumb-link">
-                    <Text as="span" size={0}>
-                      {item.label}
-                    </Text>
-                  </Link>
-                  <Text as="span" size={0} tone="muted" className="breadcrumb-separator">
-                    /
-                  </Text>
-                </>
-              )}
-            </span>
-          ))}
-        </Row>
-        {githubUrl && (
-          <a
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="breadcrumb-github"
-            title="Edit this page on GitHub"
-            aria-label="Edit this page on GitHub"
-          >
-            <Edit2 size={16} strokeWidth={2} className="github-icon" />
-            <Text as="span" size={0}>
-              Edit
-            </Text>
-          </a>
-        )}
+                </Link>
+                <Text as="span" size={0} tone="muted" className="breadcrumb-separator">
+                  /
+                </Text>
+              </>
+            )}
+          </span>
+        ))}
       </Row>
     </nav>
   );
