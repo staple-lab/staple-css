@@ -159,49 +159,54 @@ export function HomePage() {
             </Column>
 
             <div style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "18px",
-              maxWidth: "700px",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+              gap: "var(--st-space-3)",
+              maxWidth: "1000px",
               margin: "0 auto",
               width: "100%"
             }}>
               {[
-                { icon: Target, title: "Token-First Design", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
-                { icon: Zap, title: "Ultra-Lightweight", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"] },
-                { icon: Cpu, title: "AI-Friendly APIs", items: ["Constrained props", "Prevent hallucination", "Perfect for AI code gen"] },
-                { icon: Palette, title: "Design System Ready", items: ["8 primitives", "Light/dark themes", "Multiple density"] },
-                { icon: Lock, title: "Type-Safe", items: ["Full TypeScript", "Compile-time validation", "IDE autocomplete"] },
-                { icon: Package, title: "Tree-Shakeable", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
+                { icon: Target, title: "Token-First Design", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"], color: "#3b82f6" },
+                { icon: Zap, title: "Ultra-Lightweight", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"], color: "#f59e0b" },
+                { icon: Cpu, title: "AI-Friendly APIs", items: ["Constrained props", "Prevent hallucination", "Perfect for AI code gen"], color: "#8b5cf6" },
+                { icon: Palette, title: "Design System Ready", items: ["8 primitives", "Light/dark themes", "Multiple density"], color: "#ec4899" },
+                { icon: Lock, title: "Type-Safe", items: ["Full TypeScript", "Compile-time validation", "IDE autocomplete"], color: "#10b981" },
+                { icon: Package, title: "Tree-Shakeable", items: ["Import only what you use", "ESM exports", "Per-component splitting"], color: "#06b6d4" },
               ].map((feature, idx) => {
                 const IconComponent = feature.icon;
                 return (
                   <div key={idx} style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "8px"
+                    gap: "var(--st-space-2)",
+                    padding: "var(--st-space-3)",
+                    border: "none",
+                    borderLeft: "3px solid " + feature.color,
+                    background: "transparent",
+                    position: "relative"
                   }}>
                     <div style={{
                       display: "flex",
-                      gap: "10px",
+                      gap: "8px",
                       alignItems: "center"
                     }}>
                       <Box style={{
-                        width: "28px",
-                        height: "28px",
-                        minWidth: "28px",
+                        width: "24px",
+                        height: "24px",
+                        minWidth: "24px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        background: "var(--st-color-primary)",
+                        background: feature.color,
                         color: "white",
-                        borderRadius: "4px",
+                        borderRadius: "3px",
                         flexShrink: 0,
-                        fontSize: "14px"
+                        fontSize: "12px"
                       }}>
-                        <IconComponent size={14} strokeWidth={1.5} />
+                        <IconComponent size={12} strokeWidth={1.5} />
                       </Box>
-                      <Text weight="bold" size={2} style={{ fontSize: "15px", lineHeight: "1.2", margin: 0 }}>{feature.title}</Text>
+                      <Text weight="bold" size={2} style={{ fontSize: "14px", lineHeight: "1.3", margin: 0 }}>{feature.title}</Text>
                     </div>
                     <ul style={{
                       listStyle: "none",
@@ -209,27 +214,25 @@ export function HomePage() {
                       margin: 0,
                       display: "flex",
                       flexDirection: "column",
-                      gap: "5px",
-                      paddingLeft: "38px"
+                      gap: "4px"
                     }}>
                       {feature.items.map((item, i) => (
                         <li key={i} style={{
-                          fontSize: "13px",
+                          fontSize: "12px",
                           color: "var(--st-color-text-muted)",
                           display: "flex",
-                          gap: "8px",
+                          gap: "6px",
                           alignItems: "flex-start",
-                          lineHeight: "1.5",
+                          lineHeight: "1.4",
                           paddingLeft: "0"
                         }}>
                           <span style={{
-                            color: "var(--st-color-primary)",
+                            color: feature.color,
                             fontWeight: "900",
-                            fontSize: "12px",
-                            marginTop: "1px",
+                            fontSize: "10px",
+                            marginTop: "2px",
                             display: "inline-block",
-                            flexShrink: 0,
-                            marginLeft: "-30px"
+                            flexShrink: 0
                           }}>•</span>
                           <span>{item}</span>
                         </li>
