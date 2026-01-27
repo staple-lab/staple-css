@@ -80,7 +80,7 @@ export function HomePageNew() {
         </Container>
       </section>
 
-      {/* CAPABILITIES: Modern Icon Grid */}
+      {/* CAPABILITIES: Creative single-column list layout */}
       <section className="capabilities">
         <Container size="lg">
           <div className="capabilities-header">
@@ -88,7 +88,7 @@ export function HomePageNew() {
             <p>Everything needed for professional design systems</p>
           </div>
 
-          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+          <div className="capabilities-list">
             {[
               { icon: Palette, title: "22 Color Palettes", desc: "Tailwind-compatible scales with semantic intent" },
               { icon: Layout, title: "Spacing System", desc: "9-step scale from 0-64px for perfect rhythm" },
@@ -99,16 +99,19 @@ export function HomePageNew() {
             ].map((cap, idx) => {
               const IconComponent = cap.icon;
               return (
-                <div key={idx} className="capability">
+                <div key={idx} className="capability-item">
+                  <div className="capability-number">{String(idx + 1).padStart(2, '0')}</div>
                   <div className="capability-icon">
-                    <IconComponent size={28} strokeWidth={1.5} />
+                    <IconComponent size={20} strokeWidth={1.5} />
                   </div>
-                  <h3>{cap.title}</h3>
-                  <p>{cap.desc}</p>
+                  <div className="capability-text">
+                    <h3>{cap.title}</h3>
+                    <p>{cap.desc}</p>
+                  </div>
                 </div>
               );
             })}
-          </Grid>
+          </div>
         </Container>
       </section>
 
