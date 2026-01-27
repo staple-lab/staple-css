@@ -5,6 +5,7 @@ import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
 import { ColorSystemPage } from "./pages/ColorSystemPage";
 import { GradientStudioPage } from "./pages/GradientStudioPage";
+import { ComponentPatternsPage } from "./pages/ComponentPatternsPage";
 import { GuidesPage } from "./pages/GuidesPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
 import { WhyPage } from "./pages/WhyPage";
@@ -90,6 +91,11 @@ export function App() {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink to="/components" className="nav-link">
+                      Components
+                    </NavLink>
+                  </li>
+                  <li>
                     <NavLink to="/gradient-studio" className="nav-link">
                       Gradient Studio
                     </NavLink>
@@ -140,6 +146,7 @@ export function App() {
           <Route path="/guides" element={<GuidesPage />} />
           <Route path="/tokens" element={<TokensPage />} />
           <Route path="/colors" element={<ColorSystemPage />} />
+          <Route path="/components" element={<ComponentPatternsPage />} />
           <Route path="/gradient-studio" element={<GradientStudioPage />} />
           <Route path="/primitives" element={<PrimitivesPage />} />
           <Route path="/why" element={<WhyPage />} />
