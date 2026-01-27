@@ -6,6 +6,7 @@ import { TokensPage } from "./pages/TokensPage";
 import { ColorSystemPage } from "./pages/ColorSystemPage";
 import { VisualsPage } from "./pages/VisualsPage";
 import { GradientStudioPage } from "./pages/GradientStudioPage";
+import { FigmaIntegrationPage } from "./pages/FigmaIntegrationPage";
 import { ComponentPatternsPage } from "./pages/ComponentPatternsPage";
 import { GuidesPage } from "./pages/GuidesPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
@@ -107,6 +108,11 @@ export function App() {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink to="/figma" className="nav-link">
+                      Figma Integration
+                    </NavLink>
+                  </li>
+                  <li>
                     <NavLink to="/primitives" className="nav-link">
                       Primitives
                     </NavLink>
@@ -155,6 +161,7 @@ export function App() {
           <Route path="/visuals" element={<VisualsPage />} />
           <Route path="/components" element={<ComponentPatternsPage />} />
           <Route path="/gradient-studio" element={<GradientStudioPage />} />
+          <Route path="/figma" element={<FigmaIntegrationPage />} />
           <Route path="/primitives" element={<PrimitivesPage />} />
           <Route path="/why" element={<WhyPage />} />
           <Route path="/examples" element={<ExamplesPage />} />
