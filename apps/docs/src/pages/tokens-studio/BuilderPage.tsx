@@ -771,7 +771,67 @@ export function BuilderPage() {
           </Row>
         </Card>
 
-        {/* Main Content Area */}
+        {/* Live Preview at Top */}
+        <Card pad={4} radius={2}>
+          <Column gap={4}>
+            <Row gap={2} align="center" justify="between" wrap="wrap">
+              <Text weight="semibold">Live Preview</Text>
+              {/* View mode controls */}
+              <Row gap={2} wrap="wrap">
+                <button
+                  onClick={() => setPreviewExpanded(!previewExpanded)}
+                  className="studio-btn studio-btn--sm studio-btn--primary"
+                  title={previewExpanded ? "Hide full preview" : "Show full preview"}
+                >
+                  {previewExpanded ? "Hide Preview" : "Preview"}
+                </button>
+                {/* Size presets (shown when preview expanded) */}
+                {previewExpanded && (
+                  <Row gap={1}>
+                    <button
+                      onClick={() => setPreviewSize("mobile")}
+                      className={`studio-btn studio-btn--xs ${previewSize === "mobile" ? "studio-btn--primary" : ""}`}
+                      title="Mobile viewport (375px)"
+                    >
+                      📱
+                    </button>
+                    <button
+                      onClick={() => setPreviewSize("tablet")}
+                      className={`studio-btn studio-btn--xs ${previewSize === "tablet" ? "studio-btn--primary" : ""}`}
+                      title="Tablet viewport (768px)"
+                    >
+                      📑
+                    </button>
+                    <button
+                      onClick={() => setPreviewSize("desktop")}
+                      className={`studio-btn studio-btn--xs ${previewSize === "desktop" ? "studio-btn--primary" : ""}`}
+                      title="Desktop viewport (1024px)"
+                    >
+                      🖥️
+                    </button>
+                  </Row>
+                )}
+                {/* Light/Dark mode controls */}
+                <Row gap={1}>
+                  <button
+                    onClick={() => setPreviewMode("light")}
+                    className={`studio-btn studio-btn--xs ${previewMode === "light" ? "studio-btn--primary" : ""}`}
+                  >
+                    Light
+                  </button>
+                  <button
+                    onClick={() => setPreviewMode("dark")}
+                    className={`studio-btn studio-btn--xs ${previewMode === "dark" ? "studio-btn--primary" : ""}`}
+                  >
+                    Dark
+                  </button>
+                </Row>
+              </Row>
+            </Row>
+          </Column>
+        </Card>
+
+        {/* Main Content Area - Single Column */}
         <div className={`builder-layout ${sidebarOpen ? "builder-layout--sidebar-open" : "builder-layout--sidebar-closed"}`}>
           {/* Sidebar Toggle Button */}
           <button
@@ -782,7 +842,7 @@ export function BuilderPage() {
           >
             {sidebarOpen ? "✕" : "≡"}
           </button>
-          {/* Left: Step Content */}
+          {/* Step Content */}
           <div className="builder-main">
             {currentStep === "seeds" && (
               <SeedsStep
@@ -836,95 +896,6 @@ export function BuilderPage() {
                 onImport={importConfig}
               />
             )}
-          </div>
-
-          {/* Right: Live Preview + Accessibility */}
-          <div className="builder-preview">
-            <Column gap={4}>
-              {/* Accessibility Summary */}
-              {currentStep === "seeds" && (
-                <Card pad={4} radius={2}>
-                  <Column gap={3}>
-                    <Column gap={1}>
-                      <Text weight="semibold">Accessibility Check</Text>
-                      <Text size={0} tone="muted">WCAG 2.1 contrast score</Text>
-                    </Column>
-                    <AccessibilitySummary
-                      getColor={(key: string, fallback: string = "#888888") =>
-                        resolvedColors[previewMode][key] || fallback
-                      }
-                    />
-                    <a
-                      href="#accessibility-details"
-                      className="studio-btn studio-btn--sm"
-                      style={{ textDecoration: "none", textAlign: "center" }}
-                    >
-                      View Details ↓
-                    </a>
-                  </Column>
-                </Card>
-              )}
-
-              {/* Live Preview */}
-              <Card pad={4} radius={2}>
-                <Column gap={4}>
-                  <Row gap={2} align="center" justify="between" wrap="wrap">
-                    <Text weight="semibold">Live Preview</Text>
-                    {/* View mode controls */}
-                    <Row gap={2} wrap="wrap">
-                      <button
-                        onClick={() => setPreviewExpanded(!previewExpanded)}
-                        className="studio-btn studio-btn--sm studio-btn--primary"
-                        title={previewExpanded ? "Hide full preview" : "Show full preview"}
-                      >
-                        {previewExpanded ? "Hide Preview" : "Preview"}
-                      </button>
-                      {/* Size presets (shown when preview expanded) */}
-                      {previewExpanded && (
-                        <Row gap={1}>
-                          <button
-                            onClick={() => setPreviewSize("mobile")}
-                            className={`studio-btn studio-btn--xs ${previewSize === "mobile" ? "studio-btn--primary" : ""}`}
-                            title="Mobile viewport (375px)"
-                          >
-                            📱
-                          </button>
-                          <button
-                            onClick={() => setPreviewSize("tablet")}
-                            className={`studio-btn studio-btn--xs ${previewSize === "tablet" ? "studio-btn--primary" : ""}`}
-                            title="Tablet viewport (768px)"
-                          >
-                            📑
-                          </button>
-                          <button
-                            onClick={() => setPreviewSize("desktop")}
-                            className={`studio-btn studio-btn--xs ${previewSize === "desktop" ? "studio-btn--primary" : ""}`}
-                            title="Desktop viewport (1024px)"
-                          >
-                            🖥️
-                          </button>
-                        </Row>
-                      )}
-                      {/* Light/Dark mode controls */}
-                      <Row gap={1}>
-                        <button
-                          onClick={() => setPreviewMode("light")}
-                          className={`studio-btn studio-btn--xs ${previewMode === "light" ? "studio-btn--primary" : ""}`}
-                        >
-                          Light
-                        </button>
-                        <button
-                          onClick={() => setPreviewMode("dark")}
-                          className={`studio-btn studio-btn--xs ${previewMode === "dark" ? "studio-btn--primary" : ""}`}
-                        >
-                          Dark
-                        </button>
-                      </Row>
-                    </Row>
-                  </Row>
-                </Column>
-              </Card>
-            </Column>
           </div>
 
         </div>

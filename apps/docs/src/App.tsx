@@ -87,7 +87,9 @@ export function App() {
       <div className="app-content-wrapper">
         <Sidebar />
         <main className="app-main">
-          <Breadcrumb />
+          <div style={{ paddingBottom: "var(--st-space-4)" }}>
+            <Breadcrumb />
+          </div>
           <div className="app-main-content">
             <div style={{ flex: 1 }}>
               <Routes>
