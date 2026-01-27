@@ -2060,7 +2060,7 @@ code {
 
 @media (min-width: 1280px) {
   .builder-layout--sidebar-open {
-    grid-template-columns: 1fr 420px;
+    grid-template-columns: 1fr;
   }
 }
 
