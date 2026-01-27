@@ -3,8 +3,9 @@ import { Routes, Route, NavLink, Navigate, Link } from "react-router-dom";
 import { Container, Row, Text, Flex } from "@staple-css/primitives/full";
 import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
-import { GradientsPage } from "./pages/GradientsPage";
+import { ColorSystemPage } from "./pages/ColorSystemPage";
 import { GradientStudioPage } from "./pages/GradientStudioPage";
+import { GuidesPage } from "./pages/GuidesPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
 import { WhyPage } from "./pages/WhyPage";
 import { ExamplesPage } from "./pages/ExamplesPage";
@@ -79,8 +80,13 @@ export function App() {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/gradients" className="nav-link">
-                      Gradients
+                    <NavLink to="/guides" className="nav-link">
+                      Guides
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/colors" className="nav-link">
+                      Colors & Gradients
                     </NavLink>
                   </li>
                   <li>
@@ -131,8 +137,9 @@ export function App() {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/guides" element={<GuidesPage />} />
           <Route path="/tokens" element={<TokensPage />} />
-          <Route path="/gradients" element={<GradientsPage />} />
+          <Route path="/colors" element={<ColorSystemPage />} />
           <Route path="/gradient-studio" element={<GradientStudioPage />} />
           <Route path="/primitives" element={<PrimitivesPage />} />
           <Route path="/why" element={<WhyPage />} />
