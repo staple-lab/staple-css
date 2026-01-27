@@ -15,6 +15,11 @@
   margin: 0 auto;
   flex-wrap: wrap;
   gap: var(--st-space-1);
+  width: 100%;
+}
+
+.breadcrumb-items {
+  flex-wrap: wrap;
 }
 
 .breadcrumb-item {
@@ -50,6 +55,36 @@
 .breadcrumb-current {
   font-weight: 600;
   padding: var(--st-space-1) var(--st-space-2);
+}
+
+/* GitHub edit link */
+.breadcrumb-github {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--st-space-1);
+  padding: var(--st-space-1) var(--st-space-2);
+  color: var(--st-color-text-muted);
+  text-decoration: none;
+  border-radius: var(--st-radius-1);
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+  font-size: var(--st-font-size-0);
+  margin-left: auto;
+}
+
+.breadcrumb-github:hover {
+  color: var(--st-color-primary);
+  background-color: var(--st-color-primary-surface);
+}
+
+.breadcrumb-github:focus-visible {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+.github-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsive: Adjust breadcrumb on smaller screens */
