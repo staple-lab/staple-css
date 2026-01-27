@@ -1,6 +1,6 @@
 /**
- * Guides Page - Simple, clean list format
- * Nice typography, real bullets, super tight
+ * Guides Page - Bold, compact, creative design
+ * Typography-driven with tight visual rhythm
  */
 
 .guides-page {
@@ -10,102 +10,104 @@
 
 .guides-header {
   margin-bottom: var(--st-space-8);
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .guides-header h1 {
-  font-size: clamp(40px, 8vw, 56px);
-  font-weight: 900;
-  letter-spacing: -2px;
+  font-size: clamp(40px, 9vw, 64px);
+  font-weight: 950;
+  letter-spacing: -2.5px;
   margin: 0 0 var(--st-space-2) 0;
   color: var(--st-color-text);
-  line-height: 1.1;
+  line-height: 1.05;
+  word-spacing: 999999px;
 }
 
 .guides-header p {
   font-size: 15px;
   color: var(--st-color-text-muted);
-  line-height: 1.7;
+  line-height: 1.8;
   margin: 0;
   font-weight: 400;
+  max-width: 600px;
 }
 
-/* Clean list */
+/* 2-column compact grid */
 .guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--st-space-3);
+  max-width: 900px;
+}
+
+/* Compact item */
+.guide-card {
+  padding: var(--st-space-2) var(--st-space-3);
+  background: transparent;
+  border: 1px solid var(--st-color-border);
+  border-radius: 2px;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  max-width: 800px;
-}
-
-/* List item */
-.guide-card {
-  padding: var(--st-space-3) 0;
-  border-bottom: 1px solid var(--st-color-border);
-  background: transparent;
-  border: none;
+  gap: var(--st-space-2);
   position: relative;
 }
 
-.guide-card:last-child {
-  border-bottom: none;
-}
-
 .guide-card:hover {
-  background: transparent;
+  background: var(--st-color-surface);
+  border-color: var(--accent-color, var(--st-color-primary));
 }
 
 .guide-card-number {
   display: none;
 }
 
-/* Header with icon and title */
+/* Icon inline with title */
 .guide-card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin: 0;
 }
 
 .guide-card-icon {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--accent-color, var(--st-color-primary));
   color: white;
-  border-radius: 4px;
+  border-radius: 2px;
   flex-shrink: 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .guide-card-header h3 {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 800;
   margin: 0;
   color: var(--st-color-text);
-  line-height: 1.3;
-  letter-spacing: -0.3px;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
 }
 
-/* Bullet points - real dots, tight */
+/* Inline bullets with slashes */
 .guide-card-points {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 
 .guide-card-points li {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--st-color-text-muted);
-  line-height: 1.5;
+  line-height: 1.4;
   margin: 0;
   display: flex;
-  gap: 10px;
+  gap: 6px;
   align-items: flex-start;
   padding: 0;
 }
@@ -113,11 +115,11 @@
 .guide-card-points li::before {
   content: "•";
   color: var(--accent-color, var(--st-color-primary));
-  font-weight: 900;
+  font-weight: 950;
   flex-shrink: 0;
-  font-size: 13px;
-  opacity: 0.8;
-  margin-top: 0px;
+  font-size: 10px;
+  opacity: 1;
+  margin-top: 2px;
 }
 
 @media (max-width: 768px) {
@@ -125,30 +127,31 @@
     padding: var(--st-space-6) var(--st-space-3);
   }
 
-  .guides-header {
-    margin-bottom: var(--st-space-6);
+  .guides-header h1 {
+    font-size: clamp(32px, 8vw, 48px);
+    letter-spacing: -2px;
   }
 
-  .guides-header h1 {
-    font-size: clamp(32px, 7vw, 44px);
+  .guides-grid {
+    grid-template-columns: 1fr;
+    gap: var(--st-space-2);
   }
 
   .guide-card {
-    padding: var(--st-space-2) 0;
+    padding: var(--st-space-2);
   }
 
   .guide-card-icon {
-    width: 26px;
-    height: 26px;
-    font-size: 13px;
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
   }
 
   .guide-card-header h3 {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .guide-card-points li {
-    font-size: 12px;
-    gap: 8px;
+    font-size: 11px;
   }
 }
