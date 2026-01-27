@@ -161,8 +161,8 @@ export function HomePage() {
             <div style={{
               display: "flex",
               flexDirection: "column",
-              gap: "20px",
-              maxWidth: "900px",
+              gap: "18px",
+              maxWidth: "1000px",
               margin: "0 auto",
               width: "100%"
             }}>
@@ -179,59 +179,56 @@ export function HomePage() {
                   <div key={idx} style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "8px"
+                    gap: "6px",
+                    paddingBottom: "12px",
+                    borderBottom: "1px solid var(--st-color-border)"
                   }}>
                     <div style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "12px"
+                      gap: "10px"
                     }}>
                       <Box style={{
-                        width: "32px",
-                        height: "32px",
+                        width: "28px",
+                        height: "28px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         background: "var(--st-color-primary)",
                         color: "white",
-                        borderRadius: "6px",
+                        borderRadius: "4px",
                         flexShrink: 0,
-                        fontSize: "16px"
+                        fontSize: "14px"
                       }}>
-                        <IconComponent size={16} strokeWidth={1.5} />
+                        <IconComponent size={14} strokeWidth={1.5} />
                       </Box>
-                      <Text weight="bold" size={2} style={{ fontSize: "17px", fontWeight: 700, margin: 0, lineHeight: "1.3", letterSpacing: "-0.2px" }}>{feature.title}</Text>
+                      <Text weight="bold" size={2} style={{ fontSize: "15px", fontWeight: 700, margin: 0, lineHeight: "1.3" }}>{feature.title}</Text>
                     </div>
 
                     <ul style={{
                       listStyle: "none",
                       margin: 0,
-                      padding: 0,
+                      padding: "0 0 0 38px",
                       display: "flex",
                       flexDirection: "column",
-                      gap: "5px"
+                      gap: "3px"
                     }}>
                       {feature.items.map((item, i) => (
                         <li key={i} style={{
-                          fontSize: "14px",
+                          fontSize: "13px",
                           color: "var(--st-color-text-muted)",
-                          lineHeight: "1.5",
+                          lineHeight: "1.4",
                           margin: 0,
-                          display: "flex",
-                          gap: "8px",
-                          alignItems: "flex-start",
+                          display: "block",
                           padding: 0
                         }}>
                           <span style={{
                             color: "var(--st-color-primary)",
                             fontWeight: 700,
-                            fontSize: "14px",
-                            display: "inline-block",
-                            flexShrink: 0,
-                            opacity: 0.6,
-                            marginTop: "1px"
+                            marginRight: "6px",
+                            opacity: 0.5
                           }}>•</span>
-                          <span>{item}</span>
+                          {item}
                         </li>
                       ))}
                     </ul>
