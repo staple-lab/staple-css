@@ -159,10 +159,10 @@ export function HomePage() {
             </Column>
 
             <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
-              gap: "var(--st-space-3)",
-              maxWidth: "1200px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--st-space-4)",
+              maxWidth: "700px",
               margin: "0 auto",
               width: "100%"
             }}>
@@ -175,79 +175,61 @@ export function HomePage() {
                 { icon: Package, title: "Tree-Shakeable", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
               ].map((feature, idx) => {
                 const IconComponent = feature.icon;
-                const colors = ["#3b82f6", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#06b6d4"];
                 return (
                   <div key={idx} style={{
                     display: "flex",
-                    flexDirection: "column",
                     gap: "var(--st-space-3)",
-                    padding: "var(--st-space-4)",
-                    background: "transparent",
-                    border: "1px solid var(--st-color-border)",
-                    borderTop: `3px solid ${colors[idx]}`,
-                    borderRadius: "2px",
-                    transition: "all 200ms ease",
-                    cursor: "pointer",
-                    position: "relative"
-                  }} onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--st-color-surface)";
-                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.08)";
-                  }} onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.boxShadow = "none";
+                    alignItems: "flex-start"
                   }}>
                     <Box style={{
+                      width: "36px",
+                      height: "36px",
+                      minWidth: "36px",
                       display: "flex",
-                      gap: "var(--st-space-2)",
-                      alignItems: "flex-start"
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "var(--st-color-primary)",
+                      color: "white",
+                      borderRadius: "3px",
+                      flexShrink: 0,
+                      fontSize: "18px",
+                      marginTop: "1px"
                     }}>
-                      <Box style={{
-                        width: "40px",
-                        height: "40px",
-                        minWidth: "40px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        background: colors[idx],
-                        color: "white",
-                        borderRadius: "4px",
-                        flexShrink: 0,
-                        fontSize: "20px"
-                      }}>
-                        <IconComponent size={20} strokeWidth={1.5} />
-                      </Box>
-                      <Text weight="bold" size={2} style={{ fontSize: "16px", marginTop: "2px" }}>{feature.title}</Text>
+                      <IconComponent size={18} strokeWidth={1.5} />
                     </Box>
-                    <ul style={{
-                      listStyle: "none",
-                      padding: 0,
-                      margin: 0,
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "5px"
-                    }}>
-                      {feature.items.map((item, i) => (
-                        <li key={i} style={{
-                          fontSize: "13px",
-                          color: "var(--st-color-text-muted)",
-                          display: "flex",
-                          gap: "8px",
-                          alignItems: "flex-start",
-                          lineHeight: "1.5",
-                          paddingLeft: "0"
-                        }}>
-                          <span style={{
-                            color: colors[idx],
-                            fontWeight: "700",
-                            fontSize: "12px",
-                            marginTop: "2px",
-                            display: "inline-block",
-                            flexShrink: 0
-                          }}>→</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <Box style={{ flex: 1 }}>
+                      <Text weight="bold" size={2} style={{ fontSize: "16px", marginBottom: "6px", display: "block" }}>{feature.title}</Text>
+                      <ul style={{
+                        listStyle: "none",
+                        padding: 0,
+                        margin: 0,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "6px"
+                      }}>
+                        {feature.items.map((item, i) => (
+                          <li key={i} style={{
+                            fontSize: "13px",
+                            color: "var(--st-color-text-muted)",
+                            display: "flex",
+                            gap: "8px",
+                            alignItems: "flex-start",
+                            lineHeight: "1.5",
+                            paddingLeft: "0"
+                          }}>
+                            <span style={{
+                              color: "var(--st-color-primary)",
+                              fontWeight: "700",
+                              fontSize: "10px",
+                              marginTop: "4px",
+                              display: "inline-block",
+                              flexShrink: 0
+                            }}>•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </Box>
                   </div>
                 );
               })}
