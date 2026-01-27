@@ -1,4 +1,10 @@
-import { Container, Column, Text, Row } from "@staple-css/primitives/full";
+import { Container, Column, Text, Row, Box } from "@staple-css/primitives/full";
+import {
+  Package,
+  Handshake,
+  Sparkles,
+  Check,
+} from "lucide-react";
 import "./WhyPage.css";
 
 export function WhyPage() {
@@ -46,29 +52,44 @@ export function WhyPage() {
                 {
                   title: "Tokens are the API",
                   desc: "Design decisions live in tokens, not scattered across components. Components accept token keys, not arbitrary values.",
-                  icon: "📦",
+                  icon: Package,
                 },
                 {
                   title: "Contract over customization",
                   desc: "A stable, predictable API enables teams to build consistent interfaces. Override mechanisms are deliberate, not default.",
-                  icon: "🤝",
+                  icon: Handshake,
                 },
                 {
                   title: "Consistency by default",
                   desc: "The happy path keeps you in the token system. Escape hatches are explicit and visible in code review.",
-                  icon: "✨",
+                  icon: Sparkles,
                 },
-              ].map((principle) => (
-                <div key={principle.title} className="principle-card">
-                  <div className="principle-icon">{principle.icon}</div>
-                  <Text weight="semibold" size={2} style={{ marginBottom: "var(--st-space-2)" }}>
-                    {principle.title}
-                  </Text>
-                  <Text tone="muted" size={0} style={{ lineHeight: "1.5" }}>
-                    {principle.desc}
-                  </Text>
-                </div>
-              ))}
+              ].map((principle) => {
+                const IconComponent = principle.icon;
+                return (
+                  <div key={principle.title} className="principle-card">
+                    <Box style={{
+                      width: "32px",
+                      height: "32px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                      color: "white",
+                      borderRadius: "2px",
+                      marginBottom: "var(--st-space-2)"
+                    }}>
+                      <IconComponent size={16} strokeWidth={1.5} />
+                    </Box>
+                    <Text weight="semibold" size={2} style={{ marginBottom: "var(--st-space-2)" }}>
+                      {principle.title}
+                    </Text>
+                    <Text tone="muted" size={0} style={{ lineHeight: "1.5" }}>
+                      {principle.desc}
+                    </Text>
+                  </div>
+                );
+              })}
             </div>
           </Column>
 
@@ -159,42 +180,36 @@ export function WhyPage() {
             </Text>
 
             <div className="a11y-features">
-              <div className="a11y-item">
-                <div className="a11y-check">✓</div>
-                <div>
-                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-1)" }}>
-                    WCAG Compliance
-                  </Text>
-                  <Text size={0} tone="muted">All primitives built with semantic HTML and ARIA attributes. Color contrasts verified.</Text>
+              {[
+                {
+                  title: "WCAG Compliance",
+                  desc: "All primitives built with semantic HTML and ARIA attributes. Color contrasts verified."
+                },
+                {
+                  title: "Keyboard Navigation",
+                  desc: "All interactive elements fully keyboard accessible. Focus states clearly visible."
+                },
+                {
+                  title: "Motion Respect",
+                  desc: "Animations respect prefers-reduced-motion. No vestibular triggers."
+                },
+                {
+                  title: "Dark Mode",
+                  desc: "Built-in dark theme support. Respects system color-scheme preference."
+                }
+              ].map((item) => (
+                <div key={item.title} className="a11y-item">
+                  <Box className="a11y-check">
+                    <Check size={18} strokeWidth={2} />
+                  </Box>
+                  <div>
+                    <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-1)" }}>
+                      {item.title}
+                    </Text>
+                    <Text size={0} tone="muted">{item.desc}</Text>
+                  </div>
                 </div>
-              </div>
-              <div className="a11y-item">
-                <div className="a11y-check">✓</div>
-                <div>
-                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-1)" }}>
-                    Keyboard Navigation
-                  </Text>
-                  <Text size={0} tone="muted">All interactive elements fully keyboard accessible. Focus states clearly visible.</Text>
-                </div>
-              </div>
-              <div className="a11y-item">
-                <div className="a11y-check">✓</div>
-                <div>
-                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-1)" }}>
-                    Motion Respect
-                  </Text>
-                  <Text size={0} tone="muted">Animations respect prefers-reduced-motion. No vestibular triggers.</Text>
-                </div>
-              </div>
-              <div className="a11y-item">
-                <div className="a11y-check">✓</div>
-                <div>
-                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-1)" }}>
-                    Dark Mode
-                  </Text>
-                  <Text size={0} tone="muted">Built-in dark theme support. Respects system color-scheme preference.</Text>
-                </div>
-              </div>
+              ))}
             </div>
           </Column>
 

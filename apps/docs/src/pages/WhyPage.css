@@ -83,18 +83,15 @@
 }
 
 .a11y-check {
-  font-size: 24px;
-  color: var(--st-color-primary);
-  font-weight: bold;
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
   background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
   color: white;
-  border-radius: var(--st-radius-2);
+  border-radius: 2px;
 }
 
 /* CTA section */
