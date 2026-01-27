@@ -153,16 +153,16 @@ export function HomePage() {
       <Box style={{ background: "var(--st-color-surface)", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={8}>
-            <Column gap={2} style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto" }}>
-              <Text as="h2" size={5} weight="bold">Everything You Need</Text>
-              <Text tone="muted">Everything for professional design systems. Start small, scale effortlessly.</Text>
+            <Column gap={2} style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto" }}>
+              <Text as="h2" size={5} weight="bold" style={{ fontSize: "36px", letterSpacing: "-1px" }}>Everything needed for professional design systems</Text>
+              <Text tone="muted" style={{ fontSize: "15px" }}>Complete toolkit. Start lightweight, scale to enterprise. No compromise.</Text>
             </Column>
 
             <div style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 360px), 1fr))",
-              gap: "var(--st-space-3)",
-              maxWidth: "1100px",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
+              gap: "var(--st-space-2)",
+              maxWidth: "1000px",
               margin: "0 auto",
               width: "100%"
             }}>
@@ -180,64 +180,70 @@ export function HomePage() {
                     display: "flex",
                     flexDirection: "column",
                     gap: "var(--st-space-3)",
-                    padding: "var(--st-space-4)",
+                    padding: "var(--st-space-4) var(--st-space-4)",
                     border: "1px solid var(--st-color-border)",
-                    borderLeft: "3px solid var(--st-color-primary)",
-                    borderRadius: "2px",
+                    borderTop: "3px solid var(--st-color-primary)",
+                    borderLeft: "none",
+                    borderRadius: "0",
                     background: "transparent",
-                    transition: "all 150ms ease",
-                    cursor: "pointer"
+                    transition: "all 180ms ease",
+                    cursor: "pointer",
+                    position: "relative"
                   }} onMouseEnter={(e) => {
-                    e.currentTarget.style.borderLeftWidth = "4px";
-                    e.currentTarget.style.borderLeftColor = "#06b6d4";
-                    e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.05)";
+                    e.currentTarget.style.background = "var(--st-color-background)";
+                    e.currentTarget.style.borderTopColor = "#06b6d4";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.08)";
                   }} onMouseLeave={(e) => {
-                    e.currentTarget.style.borderLeftWidth = "3px";
-                    e.currentTarget.style.borderLeftColor = "var(--st-color-primary)";
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderTopColor = "var(--st-color-primary)";
                     e.currentTarget.style.boxShadow = "none";
                   }}>
                     <Box style={{
                       display: "flex",
-                      alignItems: "center",
-                      gap: "var(--st-space-2)"
+                      alignItems: "flex-start",
+                      gap: "var(--st-space-3)"
                     }}>
                       <Box style={{
-                        width: "32px",
-                        height: "32px",
+                        width: "40px",
+                        height: "40px",
+                        minWidth: "40px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
                         color: "white",
-                        borderRadius: "3px",
-                        flexShrink: 0
+                        borderRadius: "0",
+                        flexShrink: 0,
+                        fontSize: "20px"
                       }}>
-                        <IconComponent size={16} strokeWidth={1.5} />
+                        <IconComponent size={20} strokeWidth={1.5} />
                       </Box>
-                      <Text weight="bold" size={2} style={{ fontSize: "15px" }}>{feature.title}</Text>
-                    </Box>
-                    <ul style={{
-                      listStyle: "none",
-                      padding: 0,
-                      margin: 0,
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "4px"
-                    }}>
-                      {feature.items.map((item, i) => (
-                        <li key={i} style={{
-                          fontSize: "13px",
-                          color: "var(--st-color-text-muted)",
+                      <Box style={{ flex: 1, marginTop: "2px" }}>
+                        <Text weight="bold" size={2} style={{ fontSize: "16px", marginBottom: "var(--st-space-2)" }}>{feature.title}</Text>
+                        <ul style={{
+                          listStyle: "none",
+                          padding: 0,
+                          margin: 0,
                           display: "flex",
-                          gap: "8px",
-                          alignItems: "center",
-                          lineHeight: "1.4"
+                          flexDirection: "column",
+                          gap: "6px"
                         }}>
-                          <span style={{ color: "var(--st-color-primary)", fontWeight: "700", fontSize: "8px", marginTop: "2px" }}>•</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                          {feature.items.map((item, i) => (
+                            <li key={i} style={{
+                              fontSize: "13px",
+                              color: "var(--st-color-text-muted)",
+                              display: "flex",
+                              gap: "8px",
+                              alignItems: "flex-start",
+                              lineHeight: "1.4"
+                            }}>
+                              <span style={{ color: "var(--st-color-primary)", fontWeight: "900", fontSize: "6px", marginTop: "6px", display: "block" }}>◆</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </Box>
+                    </Box>
                   </div>
                 );
               })}
