@@ -5,8 +5,8 @@
 
 .table-of-contents {
   position: sticky;
-  top: calc(var(--st-space-14, 56px) + var(--st-space-4));
-  max-height: calc(100vh - var(--st-space-14, 56px) - var(--st-space-8));
+  top: calc(80px + var(--st-space-4));
+  max-height: calc(100vh - 80px - var(--st-space-8));
   overflow-y: auto;
   width: 240px;
   padding-left: var(--st-space-6);
@@ -28,7 +28,8 @@
   text-transform: uppercase;
   letter-spacing: var(--st-letter-spacing-wide);
   color: var(--st-color-text-muted);
-  border-bottom: 1px solid var(--st-color-border);
+  border-bottom: 2px solid var(--accent-light);
+  position: relative;
 }
 
 .toc-list {
@@ -72,15 +73,17 @@
 }
 
 .toc-link:hover {
-  color: var(--st-color-text);
-  background-color: var(--st-color-surface-hover);
+  color: var(--accent-color);
+  background: linear-gradient(90deg, var(--accent-light) 0%, transparent 100%);
+  border-left-color: var(--accent-color);
 }
 
 .toc-link.active {
-  color: var(--st-color-primary);
-  border-left-color: var(--st-color-primary);
-  font-weight: 500;
-  background-color: var(--st-color-primary-surface);
+  color: var(--accent-color);
+  border-left-color: var(--accent-color);
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-light) 0%, transparent 100%);
+  box-shadow: inset -2px 0 4px rgba(20, 184, 166, 0.1);
 }
 
 .toc-text {

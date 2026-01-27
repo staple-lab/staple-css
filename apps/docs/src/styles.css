@@ -7,6 +7,20 @@
 @import "./fonts.css";
 @import "./animations.css";
 
+/* ===== Accent Color System ===== */
+:root {
+  /* Light theme accents */
+  --accent-color: #14b8a6;           /* Teal primary */
+  --accent-light: #ccfbf1;           /* Teal very light */
+  --accent-dark: #0d9488;            /* Teal dark */
+  --accent-darker: #115e59;          /* Teal very dark */
+
+  /* Dark theme accents */
+  --accent-color-dark: #2dd4bf;      /* Teal lighter for dark mode */
+  --accent-light-dark: #134e4a;      /* Teal light adjusted for dark mode */
+  --accent-dark-dark: #0f766e;       /* Teal dark adjusted for dark mode */
+}
+
 * {
   box-sizing: border-box;
 }
