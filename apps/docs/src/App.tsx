@@ -21,7 +21,6 @@ import { TableOfContents } from "./components/TableOfContents";
 import { ScrollToTop } from "./components/ScrollToTop";
 
 type Theme = "light" | "dark" | "system";
-type Density = "comfortable" | "compact";
 
 function getSystemTheme(): "light" | "dark" {
   if (typeof window !== "undefined" && window.matchMedia) {
@@ -33,7 +32,6 @@ function getSystemTheme(): "light" | "dark" {
 export function App() {
   const [theme, setTheme] = useState<Theme>("system");
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(getSystemTheme);
-  const [density, setDensity] = useState<Density>("comfortable");
 
   // Listen for system theme changes
   useEffect(() => {
@@ -61,15 +59,9 @@ export function App() {
     });
   };
 
-  const toggleDensity = () =>
-    setDensity((d) => (d === "comfortable" ? "compact" : "comfortable"));
-
-  const themeLabel = theme === "system" ? `System (${resolvedTheme})` : theme === "light" ? "Light" : "Dark";
-
   return (
     <div
       data-theme={resolvedTheme}
-      data-density={density}
       className="app-root"
     >
       <header className="app-header">
@@ -85,10 +77,7 @@ export function App() {
             </div>
             <Row gap={2} className="header-right">
               <button onClick={cycleTheme} className="toggle-btn" title="Toggle theme">
-                {theme === "system" ? "🖥️" : theme === "light" ? "☀️" : "🌙"} {themeLabel}
-              </button>
-              <button onClick={toggleDensity} className="toggle-btn" title="Toggle density">
-                {density === "comfortable" ? "◻️ Comfortable" : "■ Compact"}
+                {theme === "system" ? "🖥️" : theme === "light" ? "☀️" : "🌙"}
               </button>
             </Row>
           </Row>

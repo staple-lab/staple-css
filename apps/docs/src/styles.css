@@ -102,12 +102,15 @@ code {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--st-space-4);
+  justify-items: stretch;
 }
 
 .header-center {
   display: flex;
   justify-content: center;
   width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .header-right {
