@@ -3,6 +3,7 @@ import { Routes, Route, NavLink, Navigate, Link } from "react-router-dom";
 import { Container, Row, Text, Flex } from "@staple-css/primitives/full";
 import { HomePage } from "./pages/HomePage";
 import { TokensPage } from "./pages/TokensPage";
+import { GradientsPage } from "./pages/GradientsPage";
 import { PrimitivesPage } from "./pages/PrimitivesPage";
 import { WhyPage } from "./pages/WhyPage";
 import { ExamplesPage } from "./pages/ExamplesPage";
@@ -77,6 +78,11 @@ export function App() {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink to="/gradients" className="nav-link">
+                      Gradients
+                    </NavLink>
+                  </li>
+                  <li>
                     <NavLink to="/primitives" className="nav-link">
                       Primitives
                     </NavLink>
@@ -120,6 +126,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/tokens" element={<TokensPage />} />
+          <Route path="/gradients" element={<GradientsPage />} />
           <Route path="/primitives" element={<PrimitivesPage />} />
           <Route path="/why" element={<WhyPage />} />
           <Route path="/examples" element={<ExamplesPage />} />

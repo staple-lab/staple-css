@@ -137,6 +137,39 @@ const examples = [
       </Column>
     ),
   },
+  {
+    title: "Gradient Showcase",
+    code: `<Grid cols={{ base: 1, md: 2 }} gap={4}>
+  <Box style={{ background: "var(--st-gradient-sunrise)", borderRadius: "var(--st-radius-3)", height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <Text weight="semibold" color="white">Sunrise</Text>
+  </Box>
+  <Box style={{ background: "var(--st-gradient-ocean)", borderRadius: "var(--st-radius-3)", height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <Text weight="semibold" color="white">Ocean</Text>
+  </Box>
+  <Box style={{ background: "var(--st-gradient-forest)", borderRadius: "var(--st-radius-3)", height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <Text weight="semibold" color="white">Forest</Text>
+  </Box>
+  <Box style={{ background: "var(--st-gradient-grape)", borderRadius: "var(--st-radius-3)", height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <Text weight="semibold" color="white">Grape</Text>
+  </Box>
+</Grid>`,
+    component: (
+      <Grid cols={{ base: 1, md: 2 }} gap={4}>
+        <Box style={{ background: "var(--st-gradient-sunrise)", borderRadius: "var(--st-radius-3)", height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Text weight="semibold" style={{ color: "white" }}>Sunrise</Text>
+        </Box>
+        <Box style={{ background: "var(--st-gradient-ocean)", borderRadius: "var(--st-radius-3)", height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Text weight="semibold" style={{ color: "white" }}>Ocean</Text>
+        </Box>
+        <Box style={{ background: "var(--st-gradient-forest)", borderRadius: "var(--st-radius-3)", height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Text weight="semibold" style={{ color: "white" }}>Forest</Text>
+        </Box>
+        <Box style={{ background: "var(--st-gradient-grape)", borderRadius: "var(--st-radius-3)", height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Text weight="semibold" style={{ color: "white" }}>Grape</Text>
+        </Box>
+      </Grid>
+    ),
+  },
 ];
 
 export function InteractivePlayground() {
