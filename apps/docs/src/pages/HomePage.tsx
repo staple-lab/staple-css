@@ -368,8 +368,10 @@ export function HomePage() {
 
             <div style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: "var(--st-space-4)"
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "var(--st-space-5)",
+              maxWidth: "1100px",
+              margin: "0 auto"
             }}>
               {[
                 { title: "Tokens are the API", desc: "Design decisions live in tokens. Components consume token keys, not arbitrary raw values. This enforces consistency by default." },
@@ -377,19 +379,24 @@ export function HomePage() {
                 { title: "Zero Runtime Overhead", desc: "All CSS is static. No JavaScript style generation. No CSS-in-JS overhead. Minimum bundle size, maximum performance." }
               ].map((item, idx) => (
                 <div key={idx} style={{
-                  padding: "var(--st-space-4)",
+                  padding: "var(--st-space-5)",
                   border: "1px solid var(--st-color-border)",
-                  borderLeft: "3px solid var(--st-color-primary)",
+                  borderLeft: "4px solid var(--st-color-primary)",
                   borderRadius: "0",
-                  transition: "all 150ms ease"
+                  transition: "all 200ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  background: "transparent"
                 }} onMouseEnter={(e) => {
                   e.currentTarget.style.background = "var(--st-color-surface)";
                   e.currentTarget.style.borderLeftColor = "#06b6d4";
+                  e.currentTarget.style.transform = "translateY(-4px) translateX(4px)";
+                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.06)";
                 }} onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
                   e.currentTarget.style.borderLeftColor = "var(--st-color-primary)";
+                  e.currentTarget.style.transform = "translateY(0) translateX(0)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}>
-                  <Text weight="bold" size={2} style={{ marginBottom: "var(--st-space-2)" }}>{item.title}</Text>
+                  <Text weight="bold" size={2} style={{ marginBottom: "var(--st-space-3)" }}>{item.title}</Text>
                   <Text size={1} tone="muted" style={{ lineHeight: "1.6" }}>{item.desc}</Text>
                 </div>
               ))}
@@ -481,9 +488,9 @@ export function HomePage() {
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "var(--st-space-4)",
-            maxWidth: "900px",
+            maxWidth: "1100px",
             margin: "0 auto"
           }}>
             {[
@@ -496,38 +503,42 @@ export function HomePage() {
               return (
                 <div key={idx} style={{
                   display: "flex",
-                  gap: "var(--st-space-3)",
-                  padding: "var(--st-space-3) var(--st-space-4)",
+                  gap: "var(--st-space-4)",
+                  padding: "var(--st-space-4) var(--st-space-4)",
                   border: "1px solid var(--st-color-border)",
-                  borderLeft: "3px solid var(--st-color-primary)",
+                  borderLeft: "4px solid var(--st-color-primary)",
                   borderRadius: "0",
-                  transition: "all 150ms ease",
-                  cursor: "pointer"
+                  transition: "all 200ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  cursor: "pointer",
+                  background: "transparent"
                 }} onMouseEnter={(e) => {
                   e.currentTarget.style.background = "var(--st-color-surface)";
                   e.currentTarget.style.borderLeftColor = "#06b6d4";
-                  e.currentTarget.style.transform = "translateX(2px)";
+                  e.currentTarget.style.transform = "translateY(-4px) translateX(4px)";
+                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.06)";
                 }} onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
                   e.currentTarget.style.borderLeftColor = "var(--st-color-primary)";
-                  e.currentTarget.style.transform = "translateX(0)";
+                  e.currentTarget.style.transform = "translateY(0) translateX(0)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}>
                   <Box style={{
-                    width: "32px",
-                    height: "32px",
-                    borderRadius: "2px",
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "4px",
                     background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     color: "white",
-                    flexShrink: 0
+                    flexShrink: 0,
+                    marginTop: "2px"
                   }}>
-                    <IconComponent size={16} strokeWidth={1.5} />
+                    <IconComponent size={20} strokeWidth={1.5} />
                   </Box>
-                  <Column gap={1}>
-                    <Text weight="bold" size={1}>{item.title}</Text>
-                    <Text size={0} tone="muted">{item.desc}</Text>
+                  <Column gap={2}>
+                    <Text weight="bold" size={1} style={{ fontSize: "15px" }}>{item.title}</Text>
+                    <Text size={0} tone="muted" style={{ fontSize: "13px" }}>{item.desc}</Text>
                   </Column>
                 </div>
               );
