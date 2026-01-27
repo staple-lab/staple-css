@@ -3,24 +3,9 @@
  * Minimal styles that extend staple-css tokens
  */
 
-/* Import custom fonts, animations, and patterns */
+/* Import custom fonts and essential animations only */
 @import "./fonts.css";
 @import "./animations.css";
-@import "./patterns.css";
-
-/* ===== Accent Color System ===== */
-:root {
-  /* Light theme accents */
-  --accent-color: #14b8a6;           /* Teal primary */
-  --accent-light: #ccfbf1;           /* Teal very light */
-  --accent-dark: #0d9488;            /* Teal dark */
-  --accent-darker: #115e59;          /* Teal very dark */
-
-  /* Dark theme accents */
-  --accent-color-dark: #2dd4bf;      /* Teal lighter for dark mode */
-  --accent-light-dark: #134e4a;      /* Teal light adjusted for dark mode */
-  --accent-dark-dark: #0f766e;       /* Teal dark adjusted for dark mode */
-}
 
 * {
   box-sizing: border-box;
@@ -62,16 +47,11 @@ code {
 
 .app-header {
   border-bottom: 1px solid var(--st-color-border);
-  padding: var(--st-space-3) var(--st-space-6);
-  background:
-    linear-gradient(135deg, rgba(20, 184, 166, 0.02) 0%, transparent 100%),
-    var(--st-color-surface);
-  backdrop-filter: blur(10px);
+  padding: var(--st-space-4) var(--st-space-6);
+  background: var(--st-color-surface);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  max-height: 80px;
   display: flex;
   align-items: center;
 }
@@ -101,28 +81,19 @@ code {
 /* Highlight box with accent styling */
 .highlight-accent {
   padding: var(--st-space-4) var(--st-space-5);
-  border-left: 4px solid var(--accent-color);
-  background: linear-gradient(90deg, var(--accent-light) 0%, transparent 100%);
+  padding-left: calc(var(--st-space-5) - 3px);
+  border-left: 3px solid var(--st-color-primary);
+  background: var(--st-color-surface);
   border-radius: var(--st-radius-2);
   margin: var(--st-space-4) 0;
 }
 
-/* Showcase grid with staggered reveals */
+/* Showcase grid */
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--st-space-4);
 }
-
-.showcase-grid > * {
-  animation: slideUpIn var(--st-duration-normal) var(--easing-smooth) backwards;
-}
-
-.showcase-grid > :nth-child(1) { animation-delay: 0ms; }
-.showcase-grid > :nth-child(2) { animation-delay: 60ms; }
-.showcase-grid > :nth-child(3) { animation-delay: 120ms; }
-.showcase-grid > :nth-child(4) { animation-delay: 180ms; }
-.showcase-grid > :nth-child(n+5) { animation-delay: 240ms; }
 
 /* Header layout - logo left, search center, buttons right */
 .header-layout {
@@ -169,9 +140,7 @@ code {
   margin-left: 280px;
   display: flex;
   flex-direction: column;
-  background:
-    linear-gradient(135deg, rgba(20, 184, 166, 0.01) 0%, transparent 40%),
-    var(--st-color-background);
+  background: var(--st-color-background);
 }
 
 /* Content area with TOC */

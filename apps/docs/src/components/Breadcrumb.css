@@ -29,9 +29,9 @@
 }
 
 .breadcrumb-link {
-  color: var(--accent-color);
+  color: var(--st-color-primary);
   text-decoration: none;
-  transition: all var(--st-duration-fast) var(--st-easing-default);
+  transition: color var(--st-duration-fast) var(--st-easing-default);
   padding: var(--st-space-1) var(--st-space-2);
   border-radius: var(--st-radius-1);
   margin: calc(var(--st-space-1) * -1) calc(var(--st-space-2) * -1);
@@ -39,12 +39,11 @@
 }
 
 .breadcrumb-link:hover {
-  color: var(--accent-darker);
-  background: linear-gradient(135deg, var(--accent-light) 0%, transparent 100%);
+  color: var(--st-color-primary-hover);
 }
 
 .breadcrumb-link:focus-visible {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid var(--st-color-primary);
   outline-offset: 2px;
 }
 
@@ -67,20 +66,19 @@
   color: var(--st-color-text-muted);
   text-decoration: none;
   border-radius: var(--st-radius-1);
-  transition: all var(--st-duration-fast) var(--st-easing-default);
+  transition: color var(--st-duration-fast) var(--st-easing-default);
   font-size: var(--st-font-size-0);
   margin-left: auto;
   border: 1px solid transparent;
 }
 
 .breadcrumb-github:hover {
-  color: var(--accent-color);
-  background: linear-gradient(135deg, var(--accent-light) 0%, transparent 100%);
-  border-color: var(--accent-color);
+  color: var(--st-color-primary);
+  border-color: var(--st-color-primary);
 }
 
 .breadcrumb-github:focus-visible {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid var(--st-color-primary);
   outline-offset: 2px;
 }
 

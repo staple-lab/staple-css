@@ -10,7 +10,7 @@
   width: 48px;
   height: 48px;
   border-radius: var(--st-radius-3);
-  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
+  background: var(--st-color-primary);
   color: white;
   border: none;
   cursor: pointer;
@@ -19,19 +19,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
-  transition: all var(--st-duration-fast) var(--st-easing-default);
-  animation: slideUpIn var(--st-duration-normal) var(--st-easing-smooth);
+  box-shadow: var(--st-shadow-2);
+  transition: background-color var(--st-duration-fast) var(--st-easing-default), box-shadow var(--st-duration-fast) var(--st-easing-default);
 }
 
 
 .scroll-to-top:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(20, 184, 166, 0.4);
+  background-color: var(--st-color-primary-hover);
+  box-shadow: var(--st-shadow-3);
 }
 
 .scroll-to-top:active {
-  transform: translateY(-2px);
+  background-color: var(--st-color-primary);
 }
 
 .scroll-icon {
