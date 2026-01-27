@@ -75,6 +75,15 @@ code {
   flex: 1;
   padding: var(--st-space-8) var(--st-space-8);
   margin-left: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content area with TOC */
+.app-main-content {
+  display: flex;
+  gap: var(--st-space-8);
+  flex: 1;
 }
 
 /* Main content responsive padding and layout */
