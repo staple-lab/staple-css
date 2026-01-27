@@ -62,12 +62,14 @@ code {
 .app-header {
   border-bottom: 1px solid var(--st-color-border);
   padding: var(--st-space-3) var(--st-space-6);
-  background-color: var(--st-color-surface);
+  background:
+    linear-gradient(135deg, rgba(20, 184, 166, 0.02) 0%, transparent 100%),
+    var(--st-color-surface);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--st-shadow-1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   max-height: 80px;
   display: flex;
   align-items: center;
@@ -184,12 +186,13 @@ code {
 .logo-link {
   color: inherit;
   text-decoration: none;
-  transition: all var(--st-duration-fast) var(--st-easing-default);
+  transition: all var(--st-duration-fast) var(--st-easing-smooth);
   display: inline-flex;
   align-items: center;
   font-weight: 700;
   letter-spacing: var(--st-letter-spacing-tight);
   font-size: var(--st-font-size-3);
+  position: relative;
 }
 
 @media (max-width: 640px) {
@@ -199,6 +202,7 @@ code {
 }
 
 .logo-link:hover {
+  color: var(--accent-color);
   transform: scale(1.02);
 }
 
@@ -291,11 +295,11 @@ code {
 }
 
 .toggle-btn:hover {
-  background-color: var(--st-color-surface-raised);
-  color: var(--st-color-primary);
-  border-color: var(--st-color-primary);
+  background: linear-gradient(135deg, var(--accent-light) 0%, transparent 100%);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
   transform: translateY(-1px);
-  box-shadow: var(--st-shadow-1);
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.15);
 }
 
 .toggle-btn:active {
@@ -303,7 +307,7 @@ code {
 }
 
 .toggle-btn:focus-visible {
-  outline: 2px solid var(--st-color-primary);
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
