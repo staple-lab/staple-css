@@ -162,7 +162,7 @@ export function HomePage() {
               display: "flex",
               flexDirection: "column",
               gap: "18px",
-              maxWidth: "1000px",
+              maxWidth: "900px",
               margin: "0 auto",
               width: "100%"
             }}>
@@ -179,56 +179,59 @@ export function HomePage() {
                   <div key={idx} style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "6px",
-                    paddingBottom: "12px",
-                    borderBottom: "1px solid var(--st-color-border)"
+                    gap: "8px"
                   }}>
                     <div style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "10px"
+                      gap: "12px"
                     }}>
                       <Box style={{
-                        width: "28px",
-                        height: "28px",
+                        width: "32px",
+                        height: "32px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         background: "var(--st-color-primary)",
                         color: "white",
-                        borderRadius: "4px",
+                        borderRadius: "6px",
                         flexShrink: 0,
-                        fontSize: "14px"
+                        fontSize: "16px"
                       }}>
-                        <IconComponent size={14} strokeWidth={1.5} />
+                        <IconComponent size={16} strokeWidth={1.5} />
                       </Box>
-                      <Text weight="bold" size={2} style={{ fontSize: "15px", fontWeight: 700, margin: 0, lineHeight: "1.3" }}>{feature.title}</Text>
+                      <Text weight="bold" size={2} style={{ fontSize: "17px", fontWeight: 700, margin: 0, lineHeight: "1.3" }}>{feature.title}</Text>
                     </div>
 
                     <ul style={{
                       listStyle: "none",
                       margin: 0,
-                      padding: "0 0 0 38px",
+                      padding: 0,
                       display: "flex",
                       flexDirection: "column",
-                      gap: "3px"
+                      gap: "5px"
                     }}>
                       {feature.items.map((item, i) => (
                         <li key={i} style={{
-                          fontSize: "13px",
+                          fontSize: "14px",
                           color: "var(--st-color-text-muted)",
-                          lineHeight: "1.4",
+                          lineHeight: "1.5",
                           margin: 0,
-                          display: "block",
+                          display: "flex",
+                          gap: "8px",
+                          alignItems: "flex-start",
                           padding: 0
                         }}>
                           <span style={{
                             color: "var(--st-color-primary)",
                             fontWeight: 700,
-                            marginRight: "6px",
-                            opacity: 0.5
+                            fontSize: "14px",
+                            opacity: 0.6,
+                            marginTop: "1px",
+                            display: "inline-block",
+                            flexShrink: 0
                           }}>•</span>
-                          {item}
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>
