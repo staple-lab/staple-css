@@ -1,7 +1,6 @@
 /**
- * Guides Page - Bold, colorful, unexpected design
- * Numbered badges with strong visual personality
- * Completely different from What You Get
+ * Guides Page - Simple, clean list format
+ * Nice typography, real bullets, super tight
  */
 
 .guides-page {
@@ -11,7 +10,7 @@
 
 .guides-header {
   margin-bottom: var(--st-space-8);
-  max-width: 900px;
+  max-width: 800px;
 }
 
 .guides-header h1 {
@@ -28,90 +27,76 @@
   color: var(--st-color-text-muted);
   line-height: 1.7;
   margin: 0;
+  font-weight: 400;
 }
 
-/* 2-column grid layout */
+/* Clean list */
 .guides-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-  gap: var(--st-space-5);
-  max-width: 900px;
-}
-
-/* Bold numbered badge card */
-.guide-card {
   display: flex;
   flex-direction: column;
-  gap: var(--st-space-3);
-  padding: var(--st-space-4);
-  background: var(--st-color-surface);
-  border: 2px solid var(--accent-color, var(--st-color-primary));
-  border-radius: 8px;
+  gap: 0;
+  max-width: 800px;
+}
+
+/* List item */
+.guide-card {
+  padding: var(--st-space-3) 0;
+  border-bottom: 1px solid var(--st-color-border);
+  background: transparent;
+  border: none;
   position: relative;
-  transition: all 200ms ease;
+}
+
+.guide-card:last-child {
+  border-bottom: none;
 }
 
 .guide-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-color: var(--accent-color, var(--st-color-primary));
+  background: transparent;
 }
 
-/* Bold number in corner */
 .guide-card-number {
-  position: absolute;
-  top: -8px;
-  left: 16px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--accent-color, var(--st-color-primary));
-  color: white;
-  font-size: 24px;
-  font-weight: 900;
-  border-radius: 6px;
-  line-height: 1;
+  display: none;
 }
 
-/* Header - icon and title */
+/* Header with icon and title */
 .guide-card-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: var(--st-space-2);
+  margin-bottom: 8px;
 }
 
 .guide-card-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--accent-color, var(--st-color-primary));
   color: white;
-  border-radius: 6px;
+  border-radius: 4px;
   flex-shrink: 0;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .guide-card-header h3 {
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0;
   color: var(--st-color-text);
-  line-height: 1.2;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
 }
 
-/* Tight bullet list */
+/* Bullet points - real dots, tight */
 .guide-card-points {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .guide-card-points li {
@@ -120,7 +105,7 @@
   line-height: 1.5;
   margin: 0;
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: flex-start;
   padding: 0;
 }
@@ -130,9 +115,9 @@
   color: var(--accent-color, var(--st-color-primary));
   font-weight: 900;
   flex-shrink: 0;
-  font-size: 12px;
-  opacity: 0.9;
-  margin-top: 2px;
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 0px;
 }
 
 @media (max-width: 768px) {
@@ -148,19 +133,14 @@
     font-size: clamp(32px, 7vw, 44px);
   }
 
-  .guides-grid {
-    grid-template-columns: 1fr;
-    gap: var(--st-space-4);
-  }
-
   .guide-card {
-    padding: var(--st-space-3);
+    padding: var(--st-space-2) 0;
   }
 
-  .guide-card-number {
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
+  .guide-card-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
   }
 
   .guide-card-header h3 {
@@ -169,5 +149,6 @@
 
   .guide-card-points li {
     font-size: 12px;
+    gap: 8px;
   }
 }
