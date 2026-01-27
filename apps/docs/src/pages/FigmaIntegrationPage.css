@@ -1,0 +1,420 @@
+/**
+ * Figma Integration Page - Clean, tight layout with Lucide icons
+ */
+
+.figma-page {
+  background: var(--st-color-background);
+  color: var(--st-color-text);
+  padding: var(--st-space-8) 0;
+}
+
+.figma-header {
+  margin-bottom: var(--st-space-8);
+}
+
+.figma-header h1 {
+  font-size: clamp(32px, 6vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0 0 var(--st-space-3) 0;
+  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.figma-header p {
+  font-size: 16px;
+  color: var(--st-color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Sync Flow Section */
+.sync-section {
+  margin-bottom: var(--st-space-8);
+  padding-bottom: var(--st-space-8);
+  border-bottom: 1px solid var(--st-color-border);
+}
+
+.sync-flow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--st-space-6);
+  flex-wrap: wrap;
+  padding: var(--st-space-6);
+  background: var(--st-color-surface);
+  border-radius: var(--st-radius-2);
+}
+
+.sync-direction {
+  flex: 1;
+  min-width: 200px;
+}
+
+.sync-direction h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 var(--st-space-2) 0;
+  color: var(--st-color-text);
+}
+
+.sync-direction p {
+  font-size: 13px;
+  color: var(--st-color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.sync-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
+  color: white;
+  border-radius: var(--st-radius-2);
+  flex-shrink: 0;
+}
+
+/* Features Section */
+.features-section {
+  margin-bottom: var(--st-space-8);
+}
+
+.features-section h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 var(--st-space-5) 0;
+  color: var(--st-color-text);
+}
+
+.feature-card {
+  padding: var(--st-space-4);
+  background: var(--st-color-surface);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  transition: all 200ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-3);
+  align-items: flex-start;
+}
+
+.feature-card:hover {
+  border-color: var(--st-color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
+  color: white;
+  border-radius: var(--st-radius-2);
+}
+
+.feature-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--st-color-text);
+}
+
+.feature-card p {
+  font-size: 13px;
+  color: var(--st-color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Token Types Section */
+.token-types-section {
+  margin-bottom: var(--st-space-8);
+}
+
+.token-types-section h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 var(--st-space-5) 0;
+  color: var(--st-color-text);
+}
+
+.token-category {
+  padding: var(--st-space-4);
+  background: var(--st-color-surface);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  transition: all 150ms ease;
+}
+
+.token-category:hover {
+  border-color: var(--st-color-primary);
+}
+
+.token-category h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 var(--st-space-3) 0;
+  color: var(--st-color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.token-category ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-2);
+}
+
+.token-category li {
+  font-size: 12px;
+  color: var(--st-color-text-muted);
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--st-space-2);
+}
+
+.token-category li::before {
+  content: "✓";
+  color: var(--st-color-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Workflow Section */
+.workflow-section {
+  margin-bottom: var(--st-space-8);
+}
+
+.workflow-section h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 var(--st-space-5) 0;
+  color: var(--st-color-text);
+}
+
+.workflow-card {
+  padding: var(--st-space-6);
+  background: var(--st-color-surface);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+}
+
+.workflow-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 var(--st-space-1) 0;
+  color: var(--st-color-text);
+}
+
+.workflow-header p {
+  font-size: 13px;
+  color: var(--st-color-text-muted);
+  margin: 0 0 var(--st-space-4) 0;
+  line-height: 1.5;
+}
+
+.workflow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-3);
+}
+
+.step-item {
+  display: flex;
+  gap: var(--st-space-3);
+  align-items: flex-start;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--st-color-primary);
+  color: white;
+  border-radius: var(--st-radius-1);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.step-number.success {
+  background: var(--st-color-success);
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--st-color-text);
+  margin-bottom: var(--st-space-1);
+}
+
+.step-desc {
+  font-size: 12px;
+  color: var(--st-color-text-muted);
+  line-height: 1.4;
+}
+
+/* Export Formats Section */
+.export-formats-section {
+  margin-bottom: var(--st-space-8);
+}
+
+.export-formats-section h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 var(--st-space-5) 0;
+  color: var(--st-color-text);
+}
+
+.format-card {
+  padding: var(--st-space-4);
+  background: var(--st-color-surface);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+}
+
+.format-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 var(--st-space-2) 0;
+  color: var(--st-color-text);
+}
+
+.format-card p {
+  font-size: 13px;
+  color: var(--st-color-text-muted);
+  margin: 0 0 var(--st-space-3) 0;
+  line-height: 1.5;
+}
+
+.format-card pre {
+  background: var(--st-color-background);
+  padding: var(--st-space-3);
+  border-radius: var(--st-radius-1);
+  font-size: 11px;
+  font-family: var(--st-font-mono);
+  margin: 0;
+  overflow-x: auto;
+  line-height: 1.4;
+}
+
+.format-card code {
+  color: var(--st-color-text-muted);
+}
+
+/* CTA Section */
+.figma-cta {
+  padding: var(--st-space-8);
+  background: var(--st-color-surface);
+  border-radius: var(--st-radius-2);
+  text-align: center;
+  border: 1px solid var(--st-color-border);
+}
+
+.figma-cta h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 var(--st-space-2) 0;
+  color: var(--st-color-text);
+}
+
+.figma-cta p {
+  font-size: 15px;
+  color: var(--st-color-text-muted);
+  margin: 0 0 var(--st-space-5) 0;
+  line-height: 1.6;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: var(--st-space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: var(--st-space-3) var(--st-space-6);
+  border-radius: var(--st-radius-2);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 200ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--st-space-2);
+}
+
+.btn.btn-primary {
+  background: var(--st-color-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn.btn-primary:hover {
+  background: var(--st-color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn.btn-secondary {
+  background: transparent;
+  color: var(--st-color-primary);
+  border: 1px solid var(--st-color-border);
+}
+
+.btn.btn-secondary:hover {
+  background: var(--st-color-surface);
+  border-color: var(--st-color-primary);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .figma-page {
+    padding: var(--st-space-6) 0;
+  }
+
+  .figma-header h1 {
+    font-size: clamp(24px, 5vw, 32px);
+  }
+
+  .sync-flow {
+    flex-direction: column;
+    gap: var(--st-space-4);
+  }
+
+  .sync-arrow {
+    transform: rotate(90deg);
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
