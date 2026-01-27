@@ -80,6 +80,8 @@ export function HomePage() {
         padding: "var(--st-space-8) var(--st-space-4)",
         position: "relative",
         overflow: "hidden",
+        width: "100%",
+        boxSizing: "border-box",
       }}>
         <Box style={{
           position: "absolute",
@@ -292,7 +294,7 @@ export function HomePage() {
       </Container>
 
       {/* Comparison Section */}
-      <Box style={{ background: "var(--st-color-surface-secondary, rgba(0,0,0,0.02))", padding: "var(--st-space-8) var(--st-space-4)" }}>
+      <Box style={{ background: "var(--st-color-surface-secondary, rgba(0,0,0,0.02))", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={6}>
             <Column gap={2}>
@@ -300,7 +302,7 @@ export function HomePage() {
               <Text tone="muted">staple-css is smaller, faster, and more intentional.</Text>
             </Column>
 
-            <Box style={{ overflowX: "auto" }}>
+            <Box style={{ overflowX: "auto", maxWidth: "100%", width: "100%" }}>
               <table style={{
                 width: "100%",
                 borderCollapse: "collapse",
@@ -358,7 +360,7 @@ export function HomePage() {
       </Container>
 
       {/* Principles Section */}
-      <Box style={{ background: "var(--st-color-surface-secondary, rgba(0,0,0,0.02))", padding: "var(--st-space-8) var(--st-space-4)" }}>
+      <Box style={{ background: "var(--st-color-surface-secondary, rgba(0,0,0,0.02))", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={6}>
             <Column gap={2}>
@@ -406,7 +408,7 @@ export function HomePage() {
       </Box>
 
       {/* Getting Started Section */}
-      <Box style={{ background: "var(--st-color-surface)", padding: "var(--st-space-8) var(--st-space-4)" }}>
+      <Box style={{ background: "var(--st-color-surface)", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={6}>
             <Column gap={2}>
@@ -548,7 +550,7 @@ export function HomePage() {
       </Container>
 
       {/* CTA Section */}
-      <Box style={{ background: "linear-gradient(135deg, var(--st-color-primary) 0%, #1a5a8f 100%)", padding: "var(--st-space-8) var(--st-space-4)", color: "white" }}>
+      <Box style={{ background: "linear-gradient(135deg, var(--st-color-primary) 0%, #1a5a8f 100%)", padding: "var(--st-space-8) var(--st-space-4)", color: "white", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={6} align="center">
             <Column gap={2} align="center">
