@@ -1,297 +1,158 @@
-import { Container, Column, Row, Text, Card, Box, Grid } from "@staple-css/primitives/full";
+import { Container, Column, Row, Text, Box, Grid } from "@staple-css/primitives/full";
+import "./ColorSystemPage.css";
 
 export function ColorSystemPage() {
   return (
-    <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
-      <Column gap={8}>
-        {/* Distinctive Hero Section with Color Mixing Metaphor */}
-        <Box
-          className="bg-color-system"
-          style={{
-            padding: "var(--st-space-8) var(--st-space-6)",
-            borderRadius: "var(--st-radius-3)",
-            border: "1px solid var(--st-color-border)",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          <Column gap={4}>
-            <Text as="h1" size={5} weight="bold">
+    <div className="color-system-page">
+      <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+        <Column gap={8}>
+          {/* Distinctive Hero */}
+          <Box style={{ marginBottom: "var(--st-space-4)" }}>
+            <Text as="h1" size={5} weight="bold" style={{ marginBottom: "var(--st-space-3)" }}>
               Color System
             </Text>
-            <Text size={2} tone="muted">
-              A comprehensive system for semantic colors, palettes, gradients, and accessibility.
-              Theme-aware colors that adapt to light and dark modes automatically.
-            </Text>
-          </Column>
-        </Box>
-
-        {/* Semantic Colors */}
-        <Column gap={4}>
-          <Box
-            className="bg-accent-hero"
-            style={{
-              padding: "var(--st-space-4) var(--st-space-6)",
-              borderRadius: "var(--st-radius-2)",
-            }}
-          >
-            <Text as="h2" size={3} weight="semibold">
-              Semantic Colors
-            </Text>
-            <Text size={1} tone="muted">
-              Intent-based color tokens for consistent, maintainable interfaces. These colors adapt
-              automatically to light and dark themes while maintaining perfect contrast ratios.
+            <Text size={2} tone="muted" style={{ maxWidth: "60ch", lineHeight: "1.6" }}>
+              Purpose-built semantic colors that adapt across themes. A cohesive palette for consistent, accessible interfaces with built-in dark mode support.
             </Text>
           </Box>
 
-          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
-            {[
-              {
-                name: "Primary",
-                description: "Brand color for primary actions and interactions",
-                lightValue: "#2563eb",
-                darkValue: "#3b82f6",
-              },
-              {
-                name: "Danger",
-                description: "Destructive actions and critical alerts",
-                lightValue: "#dc2626",
-                darkValue: "#ef4444",
-              },
-              {
-                name: "Warning",
-                description: "Cautionary states and warnings",
-                lightValue: "#d97706",
-                darkValue: "#f59e0b",
-              },
-              {
-                name: "Success",
-                description: "Positive confirmations and success states",
-                lightValue: "#16a34a",
-                darkValue: "#22c55e",
-              },
-              {
-                name: "Neutral",
-                description: "Text, borders, and backgrounds",
-                lightValue: "#111827",
-                darkValue: "#f9fafb",
-              },
-            ].map((color) => (
-              <Card key={color.name} pad={4} radius={3} shadow={1}>
-                <Column gap={3}>
-                  <Column gap={1}>
+          {/* Semantic Colors */}
+          <Column gap={6}>
+            <div className="section-header">
+              <Text as="h2" size={3} weight="semibold">
+                Semantic Colors
+              </Text>
+              <Text size={1} tone="muted" style={{ marginTop: "var(--st-space-2)" }}>
+                Intent-based tokens. Perfect contrast ratios in light and dark modes.
+              </Text>
+            </div>
+
+            <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={6}>
+              {[
+                { name: "Primary", desc: "Primary actions and interactions", light: "#2563eb", dark: "#3b82f6" },
+                { name: "Danger", desc: "Destructive actions and critical alerts", light: "#dc2626", dark: "#ef4444" },
+                { name: "Warning", desc: "Cautionary states and warnings", light: "#d97706", dark: "#f59e0b" },
+                { name: "Success", desc: "Positive confirmations", light: "#16a34a", dark: "#22c55e" },
+                { name: "Neutral", desc: "Text, borders, backgrounds", light: "#111827", dark: "#f9fafb" },
+              ].map((color) => (
+                <div key={color.name} className="semantic-color">
+                  <div className="color-samples">
+                    <div className="sample light" style={{ backgroundColor: color.light }} />
+                    <div className="sample dark" style={{ backgroundColor: color.dark }} />
+                  </div>
+                  <div className="color-meta">
                     <Text weight="semibold" size={1}>
                       {color.name}
                     </Text>
                     <Text size={0} tone="muted">
-                      {color.description}
+                      {color.desc}
                     </Text>
-                  </Column>
+                    <Text size={0} tone="muted" style={{ fontFamily: "var(--st-font-mono)", marginTop: "var(--st-space-2)" }}>
+                      {color.light} / {color.dark}
+                    </Text>
+                  </div>
+                </div>
+              ))}
+            </Grid>
+          </Column>
 
-                  <Column gap={2}>
-                    <Row gap={2} align="center">
-                      <Box
-                        style={{
-                          width: "40px",
-                          height: "40px",
-                          background: color.lightValue,
-                          borderRadius: "var(--st-radius-2)",
-                        }}
-                      />
-                      <Column gap={0}>
-                        <Text size={0} weight="medium">
-                          Light
-                        </Text>
-                        <Text size={0} tone="muted" style={{ fontFamily: "var(--st-font-mono)" }}>
-                          {color.lightValue}
-                        </Text>
-                      </Column>
-                    </Row>
-                    <Row gap={2} align="center">
-                      <Box
-                        style={{
-                          width: "40px",
-                          height: "40px",
-                          background: color.darkValue,
-                          borderRadius: "var(--st-radius-2)",
-                        }}
-                      />
-                      <Column gap={0}>
-                        <Text size={0} weight="medium">
-                          Dark
-                        </Text>
-                        <Text size={0} tone="muted" style={{ fontFamily: "var(--st-font-mono)" }}>
-                          {color.darkValue}
-                        </Text>
-                      </Column>
-                    </Row>
-                  </Column>
-                </Column>
-              </Card>
-            ))}
-          </Grid>
-        </Column>
+          {/* Color Palettes */}
+          <Column gap={6}>
+            <div className="section-header">
+              <Text as="h2" size={3} weight="semibold">
+                Color Palettes
+              </Text>
+              <Text size={1} tone="muted" style={{ marginTop: "var(--st-space-2)" }}>
+                22 scales (50-950) for data visualization and custom components.
+              </Text>
+            </div>
 
-        {/* Color Scales & Palettes */}
-        <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
-            Color Palettes & Scales
-          </Text>
-          <Text size={1} tone="muted">
-            Tailwind-compatible 11-step color scales (50-950) for 22 color palettes. Use for custom
-            components, data visualization, and complex color needs.
-          </Text>
-
-          <Grid cols={{ base: 1, md: 2 }} gap={4}>
-            {[
-              { name: "slate", steps: 11 },
-              { name: "gray", steps: 11 },
-              { name: "zinc", steps: 11 },
-              { name: "neutral", steps: 11 },
-              { name: "stone", steps: 11 },
-              { name: "red", steps: 11 },
-              { name: "orange", steps: 11 },
-              { name: "amber", steps: 11 },
-              { name: "yellow", steps: 11 },
-              { name: "lime", steps: 11 },
-              { name: "green", steps: 11 },
-              { name: "emerald", steps: 11 },
-            ].map((palette) => (
-              <Card key={palette.name} pad={4} radius={2} shadow={0}>
-                <Column gap={2}>
-                  <Text weight="semibold" size={0} style={{ textTransform: "capitalize" }}>
-                    {palette.name}
-                  </Text>
-                  <Row gap={1}>
-                    {Array.from({ length: palette.steps }).map((_, i) => (
-                      <Box
+            <Grid cols={{ base: 2, md: 3, lg: 4 }} gap={3}>
+              {["slate", "gray", "zinc", "neutral", "stone", "red", "orange", "amber", "yellow", "lime", "green", "emerald"].map((palette) => (
+                <div key={palette} className="palette-card">
+                  <div className="palette-ramp">
+                    {Array.from({ length: 11 }).map((_, i) => (
+                      <div
                         key={i}
+                        className="palette-step"
                         style={{
-                          flex: 1,
-                          height: "20px",
-                          background: `var(--st-${palette.name}-${(i + 1) * 100})`,
-                          borderRadius: "var(--st-radius-1)",
+                          backgroundColor: `var(--st-${palette}-${(i + 1) * 100})`,
                         }}
                       />
                     ))}
-                  </Row>
-                </Column>
-              </Card>
-            ))}
-          </Grid>
+                  </div>
+                  <Text size={0} weight="medium" style={{ marginTop: "var(--st-space-2)", textTransform: "capitalize" }}>
+                    {palette}
+                  </Text>
+                </div>
+              ))}
+            </Grid>
 
-          <Card pad={4} radius={2} shadow={0} tone="primary">
-            <Column gap={2}>
-              <Text weight="semibold" size={0} style={{ color: "white" }}>
-                Access Palettes
+            <Box style={{ padding: "var(--st-space-4) var(--st-space-6)", backgroundColor: "var(--st-color-primary)", color: "white", borderRadius: "var(--st-radius-2)" }}>
+              <Text size={0} weight="semibold" style={{ marginBottom: "var(--st-space-2)" }}>
+                Using Palettes
               </Text>
-              <Text size={0} style={{ color: "white", opacity: 0.9 }}>
-                Import <code style={{ fontFamily: "var(--st-font-mono)" }}>@staple-css/tokens/palettes.css</code> to use all 22 color palettes in your projects.
+              <Text size={0} style={{ opacity: 0.9 }}>
+                Import <code style={{ fontFamily: "var(--st-font-mono)", backgroundColor: "rgba(0,0,0,0.2)", padding: "2px 4px", borderRadius: "3px" }}>@staple-css/tokens/palettes.css</code> to access all 22 color palettes.
               </Text>
-            </Column>
-          </Card>
-        </Column>
+            </Box>
+          </Column>
 
-        {/* Gradients */}
-        <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
-            Gradient Tokens
-          </Text>
-          <Text size={1} tone="muted">
-            22 pre-defined, perceptually-smooth gradients organized by category. Perfect for hero
-            sections, cards, and visual emphasis. All accessible and theme-aware.
-          </Text>
+          {/* Gradients */}
+          <Column gap={6}>
+            <div className="section-header">
+              <Text as="h2" size={3} weight="semibold">
+                Gradient Tokens
+              </Text>
+              <Text size={1} tone="muted" style={{ marginTop: "var(--st-space-2)" }}>
+                Pre-defined, perceptually-smooth gradients for hero sections and emphasis.
+              </Text>
+            </div>
 
-          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
-            {[
-              { name: "Tone-Based", description: "15 systematic gradients (neutral, primary, status)", color1: "#3b82f6", color2: "#2563eb" },
-              { name: "Vibrant", description: "6 expressive multi-color gradients (sunrise, ocean, etc)", color1: "#f97316", color2: "#ec4899" },
-              { name: "Overlays", description: "3 semi-transparent gradients for text contrast", color1: "#374151", color2: "#111827" },
-            ].map((category) => (
-              <Card key={category.name} pad={4} radius={3} shadow={1} style={{ overflow: "hidden" }}>
-                <Column gap={0}>
-                  <Box
+            <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+              {[
+                { name: "Tone-Based", desc: "15 systematic gradients", colors: ["#3b82f6", "#2563eb"] },
+                { name: "Vibrant", desc: "6 expressive multi-color", colors: ["#f97316", "#ec4899"] },
+                { name: "Overlays", desc: "3 semi-transparent", colors: ["#374151", "#111827"] },
+              ].map((cat) => (
+                <div key={cat.name} className="gradient-showcase">
+                  <div
+                    className="gradient-preview"
                     style={{
-                      height: "100px",
-                      background: `linear-gradient(135deg, ${category.color1}, ${category.color2})`,
-                      marginBottom: "var(--st-space-4)",
+                      background: `linear-gradient(135deg, ${cat.colors[0]}, ${cat.colors[1]})`,
                     }}
                   />
-                  <Column gap={1}>
-                    <Text weight="semibold" size={1}>
-                      {category.name}
-                    </Text>
-                    <Text size={0} tone="muted">
-                      {category.description}
-                    </Text>
-                  </Column>
-                </Column>
-              </Card>
-            ))}
-          </Grid>
+                  <Text weight="semibold" size={1} style={{ marginTop: "var(--st-space-3)" }}>
+                    {cat.name}
+                  </Text>
+                  <Text size={0} tone="muted">
+                    {cat.desc}
+                  </Text>
+                </div>
+              ))}
+            </Grid>
+          </Column>
 
-          <Card pad={4} radius={2} shadow={0} tone="success">
-            <Column gap={2}>
-              <Text weight="semibold" size={0} style={{ color: "white" }}>
-                Create Custom Gradients
-              </Text>
-              <Text size={0} style={{ color: "white", opacity: 0.9 }}>
-                Use the Gradient Studio to create unlimited custom gradients. Export as CSS variables and add to your design tokens.
-              </Text>
-            </Column>
-          </Card>
-        </Column>
-
-        {/* Accessibility */}
-        <Card pad={6} radius={3} shadow={1}>
-          <Column gap={4}>
-            <Text as="h2" size={3} weight="semibold">
-              ♿ Color & Accessibility
+          {/* Accessibility */}
+          <div className="accessibility-section">
+            <Text as="h2" size={3} weight="semibold" style={{ marginBottom: "var(--st-space-4)" }}>
+              ♿ Accessibility
             </Text>
-
             <Grid cols={{ base: 1, md: 2 }} gap={4}>
               {[
-                {
-                  title: "Contrast Compliance",
-                  points: [
-                    "All semantic colors meet WCAG AA standards (4.5:1 for normal text)",
-                    "Text-on-background contrast verified for both light and dark modes",
-                    "Color combinations tested for common color blindness types",
-                  ],
-                },
-                {
-                  title: "Intent Over Hue",
-                  points: [
-                    "Use semantic color names (danger, warning, success) not hex values",
-                    "Don't rely on color alone to convey meaning",
-                    "Add icons, patterns, or labels alongside colors for clarity",
-                  ],
-                },
-                {
-                  title: "Theme Switching",
-                  points: [
-                    "Colors automatically adapt to light/dark themes",
-                    "Respects system prefers-color-scheme preference",
-                    "Maintains contrast and readability in all themes",
-                  ],
-                },
-                {
-                  title: "Testing Colors",
-                  points: [
-                    "Use WebAIM Contrast Checker for custom colors",
-                    "Test with Color Blindness simulators (Deuteranopia, Protanopia)",
-                    "Validate with real users on real devices",
-                  ],
-                },
+                { title: "Contrast", points: ["WCAG AA compliance (4.5:1 for text)", "Tested for color blindness", "Light and dark mode verified"] },
+                { title: "Intent", points: ["Use semantic names, not hex values", "Never rely on color alone", "Add icons or labels for clarity"] },
+                { title: "Themes", points: ["Automatic light/dark switching", "Respects system preference", "Maintains readability in all modes"] },
+                { title: "Testing", points: ["WebAIM Contrast Checker", "Deuteranopia/Protanopia simulators", "Validate with real users"] },
               ].map((section) => (
-                <Column key={section.title} gap={2}>
-                  <Text weight="semibold" size={1}>
+                <div key={section.title} className="a11y-card">
+                  <Text weight="semibold" size={1} style={{ marginBottom: "var(--st-space-2)" }}>
                     {section.title}
                   </Text>
-                  <Column gap={1}>
+                  <Column gap={2}>
                     {section.points.map((point, idx) => (
                       <Row key={idx} gap={2} align="start">
-                        <Text size={1} style={{ minWidth: "20px" }}>
+                        <Text size={0} style={{ minWidth: "20px", color: "var(--st-color-primary)" }}>
                           ✓
                         </Text>
                         <Text size={0} tone="muted">
@@ -300,190 +161,12 @@ export function ColorSystemPage() {
                       </Row>
                     ))}
                   </Column>
-                </Column>
+                </div>
               ))}
             </Grid>
-          </Column>
-        </Card>
-
-        {/* Integration with Token Studio */}
-        <Card pad={6} radius={3} shadow={1} style={{ borderLeft: "4px solid var(--st-color-primary)" }}>
-          <Column gap={4}>
-            <Text as="h2" size={3} weight="semibold">
-              🎨 Token Studio Integration
-            </Text>
-
-            <Text size={1}>
-              The <strong>Token Studio</strong> provides complete color system management tools:
-            </Text>
-
-            <Grid cols={{ base: 1, md: 2 }} gap={3}>
-              {[
-                {
-                  icon: "🎯",
-                  title: "Palette Generator",
-                  description: "Generate color scales from a single base color using OKLCH color space",
-                },
-                {
-                  icon: "🌈",
-                  title: "Harmony Tools",
-                  description: "Create complementary, triadic, and analogous color harmonies automatically",
-                },
-                {
-                  icon: "✨",
-                  title: "Gradient Maker",
-                  description: "Craft custom gradients with full control over colors, angles, and stops",
-                },
-                {
-                  icon: "🔄",
-                  title: "Theme Manager",
-                  description: "Create unlimited color themes with light and dark variants",
-                },
-                {
-                  icon: "📊",
-                  title: "Contrast Checker",
-                  description: "Verify WCAG compliance for color combinations in real-time",
-                },
-                {
-                  icon: "💾",
-                  title: "Export & Import",
-                  description: "Work with Figma tokens, JSON, CSS, or native token format",
-                },
-              ].map((feature) => (
-                <Box key={feature.title} style={{ background: "var(--st-color-surface)", padding: "var(--st-space-4)", borderRadius: "var(--st-radius-2)" }}>
-                  <Column gap={2}>
-                    <Row gap={2} align="center">
-                      <Text size={2}>{feature.icon}</Text>
-                      <Text weight="semibold" size={0}>
-                        {feature.title}
-                      </Text>
-                    </Row>
-                    <Text size={0} tone="muted">
-                      {feature.description}
-                    </Text>
-                  </Column>
-                </Box>
-              ))}
-            </Grid>
-
-            <Row gap={3}>
-              <a
-                href="/tokens-studio"
-                style={{
-                  display: "inline-block",
-                  padding: "var(--st-space-3) var(--st-space-6)",
-                  borderRadius: "var(--st-radius-2)",
-                  background: "var(--st-color-primary)",
-                  color: "white",
-                  textDecoration: "none",
-                  fontWeight: "600",
-                  fontSize: "var(--st-font-size-0)",
-                  transition: "all var(--st-duration-fast) var(--st-easing-default)",
-                }}
-              >
-                Open Token Studio →
-              </a>
-              <a
-                href="/gradient-studio"
-                style={{
-                  display: "inline-block",
-                  padding: "var(--st-space-3) var(--st-space-6)",
-                  borderRadius: "var(--st-radius-2)",
-                  border: "1px solid var(--st-color-primary)",
-                  background: "transparent",
-                  color: "var(--st-color-primary)",
-                  textDecoration: "none",
-                  fontWeight: "600",
-                  fontSize: "var(--st-font-size-0)",
-                  transition: "all var(--st-duration-fast) var(--st-easing-default)",
-                }}
-              >
-                Gradient Studio →
-              </a>
-            </Row>
-          </Column>
-        </Card>
-
-        {/* Usage Examples */}
-        <Card pad={6} radius={3} shadow={1}>
-          <Column gap={4}>
-            <Text as="h2" size={3} weight="semibold">
-              💻 Usage Examples
-            </Text>
-
-            <Column gap={3}>
-              <Column gap={1}>
-                <Text weight="semibold" size={0}>
-                  Semantic Colors (Theme-Aware)
-                </Text>
-                <pre
-                  style={{
-                    background: "var(--st-color-surface)",
-                    padding: "var(--st-space-4)",
-                    borderRadius: "var(--st-radius-2)",
-                    overflow: "auto",
-                    fontSize: "var(--st-font-size-0)",
-                    fontFamily: "var(--st-font-mono)",
-                  }}
-                >
-                  <code>{`.button {
-  background: var(--st-color-primary);
-  color: var(--st-color-primary-text);
-}
-
-.button:hover {
-  background: var(--st-color-primary-hover);
-}`}</code>
-                </pre>
-              </Column>
-
-              <Column gap={1}>
-                <Text weight="semibold" size={0}>
-                  Color Palettes (Custom Components)
-                </Text>
-                <pre
-                  style={{
-                    background: "var(--st-color-surface)",
-                    padding: "var(--st-space-4)",
-                    borderRadius: "var(--st-radius-2)",
-                    overflow: "auto",
-                    fontSize: "var(--st-font-size-0)",
-                    fontFamily: "var(--st-font-mono)",
-                  }}
-                >
-                  <code>{`.chart-bar-1 { background: var(--st-blue-500); }
-.chart-bar-2 { background: var(--st-purple-500); }
-.chart-bar-3 { background: var(--st-pink-500); }`}</code>
-                </pre>
-              </Column>
-
-              <Column gap={1}>
-                <Text weight="semibold" size={0}>
-                  Gradients (Visual Effects)
-                </Text>
-                <pre
-                  style={{
-                    background: "var(--st-color-surface)",
-                    padding: "var(--st-space-4)",
-                    borderRadius: "var(--st-radius-2)",
-                    overflow: "auto",
-                    fontSize: "var(--st-font-size-0)",
-                    fontFamily: "var(--st-font-mono)",
-                  }}
-                >
-                  <code>{`.hero {
-  background: var(--st-gradient-sunrise);
-}
-
-.card {
-  background: linear-gradient(135deg, var(--st-gradient-primary-soft));
-}`}</code>
-                </pre>
-              </Column>
-            </Column>
-          </Column>
-        </Card>
-      </Column>
-    </Container>
+          </div>
+        </Column>
+      </Container>
+    </div>
   );
 }
