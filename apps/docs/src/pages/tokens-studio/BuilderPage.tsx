@@ -778,39 +778,30 @@ export function BuilderPage() {
               <Text weight="semibold">Live Preview</Text>
               {/* View mode controls */}
               <Row gap={2} wrap="wrap">
-                <button
-                  onClick={() => setPreviewExpanded(!previewExpanded)}
-                  className="studio-btn studio-btn--sm studio-btn--primary"
-                  title={previewExpanded ? "Hide full preview" : "Show full preview"}
-                >
-                  {previewExpanded ? "Hide Preview" : "Preview"}
-                </button>
-                {/* Size presets (shown when preview expanded) */}
-                {previewExpanded && (
-                  <Row gap={1}>
-                    <button
-                      onClick={() => setPreviewSize("mobile")}
-                      className={`studio-btn studio-btn--xs ${previewSize === "mobile" ? "studio-btn--primary" : ""}`}
-                      title="Mobile viewport (375px)"
-                    >
-                      📱
-                    </button>
-                    <button
-                      onClick={() => setPreviewSize("tablet")}
-                      className={`studio-btn studio-btn--xs ${previewSize === "tablet" ? "studio-btn--primary" : ""}`}
-                      title="Tablet viewport (768px)"
-                    >
-                      📑
-                    </button>
-                    <button
-                      onClick={() => setPreviewSize("desktop")}
-                      className={`studio-btn studio-btn--xs ${previewSize === "desktop" ? "studio-btn--primary" : ""}`}
-                      title="Desktop viewport (1024px)"
-                    >
-                      🖥️
-                    </button>
-                  </Row>
-                )}
+                {/* Size presets */}
+                <Row gap={1}>
+                  <button
+                    onClick={() => setPreviewSize("mobile")}
+                    className={`studio-btn studio-btn--xs ${previewSize === "mobile" ? "studio-btn--primary" : ""}`}
+                    title="Mobile viewport (375px)"
+                  >
+                    📱
+                  </button>
+                  <button
+                    onClick={() => setPreviewSize("tablet")}
+                    className={`studio-btn studio-btn--xs ${previewSize === "tablet" ? "studio-btn--primary" : ""}`}
+                    title="Tablet viewport (768px)"
+                  >
+                    📑
+                  </button>
+                  <button
+                    onClick={() => setPreviewSize("desktop")}
+                    className={`studio-btn studio-btn--xs ${previewSize === "desktop" ? "studio-btn--primary" : ""}`}
+                    title="Desktop viewport (1024px)"
+                  >
+                    🖥️
+                  </button>
+                </Row>
                 {/* Light/Dark mode controls */}
                 <Row gap={1}>
                   <button
@@ -828,6 +819,15 @@ export function BuilderPage() {
                 </Row>
               </Row>
             </Row>
+            {/* Inline Preview Content */}
+            <LivePreview
+              colors={resolvedColors[previewMode]}
+              mode={previewMode}
+              palettes={allPalettes}
+              size={previewSize}
+              onSizeChange={setPreviewSize}
+              embedded={false}
+            />
           </Column>
         </Card>
 
@@ -900,76 +900,6 @@ export function BuilderPage() {
 
         </div>
 
-        {/* Full-screen preview modal */}
-        {previewExpanded && (
-          <div className="builder-preview-modal-overlay">
-            <div className="builder-preview-modal">
-              <div className="builder-preview-modal-header">
-                <Flex gap={2} align="center" justify="between">
-                  <Text weight="semibold" size={3}>Live Preview</Text>
-                  <Flex gap={2} align="center">
-                    {/* Size presets */}
-                    <Flex gap={1}>
-                      <button
-                        onClick={() => setPreviewSize("mobile")}
-                        className={`studio-btn studio-btn--xs ${previewSize === "mobile" ? "studio-btn--primary" : ""}`}
-                        title="Mobile viewport (375px)"
-                      >
-                        📱
-                      </button>
-                      <button
-                        onClick={() => setPreviewSize("tablet")}
-                        className={`studio-btn studio-btn--xs ${previewSize === "tablet" ? "studio-btn--primary" : ""}`}
-                        title="Tablet viewport (768px)"
-                      >
-                        📑
-                      </button>
-                      <button
-                        onClick={() => setPreviewSize("desktop")}
-                        className={`studio-btn studio-btn--xs ${previewSize === "desktop" ? "studio-btn--primary" : ""}`}
-                        title="Desktop viewport (1024px)"
-                      >
-                        🖥️
-                      </button>
-                    </Flex>
-                    {/* Light/Dark mode */}
-                    <Flex gap={1}>
-                      <button
-                        onClick={() => setPreviewMode("light")}
-                        className={`studio-btn studio-btn--xs ${previewMode === "light" ? "studio-btn--primary" : ""}`}
-                      >
-                        Light
-                      </button>
-                      <button
-                        onClick={() => setPreviewMode("dark")}
-                        className={`studio-btn studio-btn--xs ${previewMode === "dark" ? "studio-btn--primary" : ""}`}
-                      >
-                        Dark
-                      </button>
-                    </Flex>
-                    <button
-                      onClick={() => setPreviewExpanded(false)}
-                      className="studio-btn studio-btn--sm"
-                      title="Close preview"
-                    >
-                      ✕ Close
-                    </button>
-                  </Flex>
-                </Flex>
-              </div>
-              <div className="builder-preview-modal-body">
-                <LivePreview
-                  colors={resolvedColors[previewMode]}
-                  mode={previewMode}
-                  palettes={allPalettes}
-                  size={previewSize}
-                  onSizeChange={setPreviewSize}
-                  embedded
-                />
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Navigation Footer */}
         <Card pad={4} radius={2}>
