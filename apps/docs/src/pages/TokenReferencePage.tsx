@@ -1,4 +1,4 @@
-import { Container, Column, Row, Text, Card, Box, Grid } from "@staple-css/primitives/full";
+import { Container, Column, Text, Box, Grid } from "@staple-css/primitives/full";
 
 export function TokenReferencePage() {
   return (
@@ -429,16 +429,16 @@ function Section({ id, title, description, tokens }: SectionProps) {
   return (
     <Box as="section" id={id} style={{ display: "contents" }}>
       <Column gap={4}>
-      <Column gap={2}>
+        <Column gap={2}>
         <Text as="h2" size={3} weight="semibold">
           {title}
         </Text>
         <Text size={1} tone="muted">
           {description}
         </Text>
-      </Column>
+        </Column>
 
-      <Column gap={3}>
+        <Column gap={3}>
         {tokens.map((token, idx) => (
           <div key={idx}>
             {token.category ? (
@@ -457,6 +457,7 @@ function Section({ id, title, description, tokens }: SectionProps) {
             )}
           </div>
         ))}
+        </Column>
       </Column>
     </Box>
   );
