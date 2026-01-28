@@ -1,143 +1,27 @@
 /**
- * Guides Page - RADICAL: Inline dot-list format
- * No cards, no grid, no flex - pure semantic HTML + CSS
- * Super tight, modern, genuinely unexpected
+ * Guides Page - Premium Card Layout
+ * Used with Staple components for consistent styling
  */
 
 .guides-page {
   background: var(--st-color-background);
-  padding: var(--st-space-8) var(--st-space-4);
 }
 
-.guides-header {
-  margin-bottom: var(--st-space-8);
-  max-width: 900px;
-}
-
-.guides-header h1 {
-  font-size: clamp(40px, 9vw, 56px);
-  font-weight: 900;
-  letter-spacing: -1.5px;
-  margin: 0 0 var(--st-space-3) 0;
-  color: var(--st-color-text);
-  line-height: 1.15;
-}
-
-.guides-header p {
-  font-size: 15px;
-  color: var(--st-color-text-muted);
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Inline flow - semantic list structure */
-.guides-grid {
-  display: block;
-  max-width: 900px;
-}
-
-/* Guide card - content flow */
+/* Responsive card adjustments */
 .guide-card {
-  margin-bottom: 20px;
-  padding: 0;
-  background: transparent;
-  border: none;
+  transition: all 150ms ease;
 }
 
-.guide-card-number {
-  display: none;
+.guide-card:hover {
+  transform: translateY(-2px);
 }
 
-/* Icon + title inline */
-.guide-card-header {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 6px;
-}
-
-.guide-card-icon {
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--accent-color, var(--st-color-primary));
-  color: white;
-  border-radius: 5px;
-  flex-shrink: 0;
-  font-size: 14px;
-}
-
-.guide-card-header h3 {
-  font-size: 16px;
-  font-weight: 800;
-  margin: 0;
-  color: var(--st-color-text);
-  line-height: 1.2;
-  display: inline;
-}
-
-/* Bullet list - inline after title */
-.guide-card-points {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: block;
-  font-size: 14px;
-  color: var(--st-color-text-muted);
-  line-height: 1.5;
-}
-
-.guide-card-points li {
-  margin: 0;
-  padding: 0;
-  display: inline;
-  font-size: 14px;
-  color: var(--st-color-text-muted);
-}
-
-.guide-card-points li::before {
-  content: "• ";
-  color: var(--accent-color, var(--st-color-primary));
-  font-weight: 800;
-  margin-right: 4px;
-  opacity: 0.6;
-}
-
-.guide-card-points li::after {
-  content: "  ";
-}
-
-.guide-card-points li:last-child::after {
-  content: "";
-}
-
-@media (max-width: 768px) {
-  .guides-page {
-    padding: var(--st-space-6) var(--st-space-3);
-  }
-
-  .guides-header h1 {
-    font-size: clamp(32px, 8vw, 44px);
-    margin-bottom: var(--st-space-3);
-  }
-
+@media (prefers-reduced-motion: reduce) {
   .guide-card {
-    margin-bottom: 16px;
+    transition: none;
   }
 
-  .guide-card-icon {
-    width: 24px;
-    height: 24px;
-    font-size: 12px;
-  }
-
-  .guide-card-header h3 {
-    font-size: 15px;
-  }
-
-  .guide-card-points li {
-    font-size: 13px;
+  .guide-card:hover {
+    transform: none;
   }
 }
