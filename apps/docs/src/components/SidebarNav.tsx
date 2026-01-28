@@ -1,19 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
-import { Box, Column, Row, Text } from '@staple-css/primitives/full';
-import {
-  Home,
-  Lightbulb,
-  Compass,
-  FileText,
-  Palette,
-  Layers,
-  Grid3x3,
-  Eye,
-  Zap,
-  Settings,
-  Share2,
-  Book,
-} from 'lucide-react';
+import { Box, Column, Text } from '@staple-css/primitives/full';
 import './SidebarNav.css';
 
 const navigationStructure = [
@@ -116,25 +102,18 @@ function SidebarItem({ href, label, icon: Icon, isActive }: SidebarItemProps) {
       className={`sidebar-item ${isActive ? 'active' : ''}`}
       aria-current={isActive ? 'page' : undefined}
     >
-      <Row gap={3} align="center" style={{ width: '100%' }}>
-        <div
-          className={`sidebar-icon ${isActive ? 'active' : ''}`}
-        >
-          <Icon size={18} strokeWidth={1.5} />
-        </div>
-        <Text
-          size={1}
-          weight={isActive ? 'semibold' : 'normal'}
-          style={{
-            color: isActive
-              ? 'var(--st-color-primary)'
-              : 'var(--st-color-text)',
-            transition: 'color 150ms cubic-bezier(0.2, 0, 0.38, 0.9)',
-          }}
-        >
-          {label}
-        </Text>
-      </Row>
+      <Text
+        size={1}
+        weight={isActive ? 'semibold' : 'normal'}
+        style={{
+          color: isActive
+            ? 'var(--st-color-primary)'
+            : 'var(--st-color-text)',
+          transition: 'color 150ms cubic-bezier(0.2, 0, 0.38, 0.9)',
+        }}
+      >
+        {label}
+      </Text>
     </Link>
   );
 }

@@ -96,7 +96,7 @@ export function App() {
                 border: "1px solid var(--st-color-border)",
                 background: "transparent",
                 cursor: "pointer",
-                color: "var(--st-color-text)",
+                color: "inherit",
                 transition: "all 200ms ease"
               }} onMouseEnter={(e) => {
                 e.currentTarget.style.background = "var(--st-color-surface)";

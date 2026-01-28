@@ -12,19 +12,6 @@
   z-index: 10;
 }
 
-/* Sidebar Icons */
-.sidebar-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  opacity: 0.6;
-  transition: opacity 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
-}
-
-.sidebar-icon.active {
-  opacity: 1;
-}
 
 /* Sidebar Items */
 .sidebar-item {
