@@ -826,7 +826,7 @@ export function BuilderPage() {
               palettes={allPalettes}
               size={previewSize}
               onSizeChange={setPreviewSize}
-              embedded={false}
+              embedded={true}
             />
           </Column>
         </Card>
