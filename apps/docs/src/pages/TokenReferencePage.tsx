@@ -2,8 +2,9 @@ import { Container, Column, Row, Text, Card, Box, Grid } from "@staple-css/primi
 
 export function TokenReferencePage() {
   return (
-    <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
-      <Column gap={8}>
+    <Box as="main">
+      <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+        <Column gap={8}>
         {/* Header */}
         <Column gap={4}>
           <Text as="h1" size={5} weight="bold">
@@ -61,7 +62,8 @@ export function TokenReferencePage() {
         </Grid>
 
         {/* Spacing Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="spacing"
           title="Spacing Scale (0-8)"
           description="9-step spacing scale for consistent layouts. Use for padding, margins, gaps, and whitespace."
@@ -76,10 +78,12 @@ export function TokenReferencePage() {
             { key: "space-7", value: "48px (3rem)", usage: "Extra large gaps" },
             { key: "space-8", value: "64px (4rem)", usage: "Major section breaks" },
           ]}
-        />
+          />
+        </Box>
 
         {/* Sizing Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="sizing"
           title="Max Width Scale"
           description="Container sizing for content layout. Use to constrain width at specific breakpoints."
@@ -94,10 +98,12 @@ export function TokenReferencePage() {
             { key: "max-w-prose", value: "65ch", usage: "Typography optimal line" },
             { key: "max-w-full", value: "100%", usage: "Full width (parent)" },
           ]}
-        />
+          />
+        </Box>
 
         {/* Radius Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="radius"
           title="Border Radius Scale (0-4)"
           description="4-step radius scale for consistency. Creates visual softness and approachability."
@@ -108,10 +114,12 @@ export function TokenReferencePage() {
             { key: "radius-3", value: "8px", usage: "Card/container default" },
             { key: "radius-4", value: "16px", usage: "Large, soft containers" },
           ]}
-        />
+          />
+        </Box>
 
         {/* Shadows Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="shadows"
           title="Elevation/Shadow System (0-5)"
           description="6-level elevation system for depth and visual hierarchy. Higher levels = more prominence."
@@ -123,10 +131,12 @@ export function TokenReferencePage() {
             { key: "shadow-4", value: "0 1rem 1.5rem", usage: "Modal elevation" },
             { key: "shadow-5", value: "0 1.5rem 2rem", usage: "Top-most layer" },
           ]}
-        />
+          />
+        </Box>
 
         {/* Typography Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="typography"
           title="Typography Scales"
           description="Carefully calibrated typography system for visual hierarchy and readability."
@@ -161,10 +171,12 @@ export function TokenReferencePage() {
               ],
             },
           ]}
-        />
+          />
+        </Box>
 
         {/* Motion Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="motion"
           title="Motion Tokens"
           description="Consistent timing and easing for smooth, purposeful animations."
@@ -207,10 +219,12 @@ export function TokenReferencePage() {
               ],
             },
           ]}
-        />
+          />
+        </Box>
 
         {/* Gradients Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="gradients"
           title="Gradient Tokens (22 total)"
           description="Pre-built, perceptually-smooth gradients for visual emphasis and design showcase."
@@ -252,10 +266,12 @@ export function TokenReferencePage() {
               ],
             },
           ]}
-        />
+          />
+        </Box>
 
         {/* Breakpoints Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="breakpoints"
           title="Responsive Breakpoints"
           description="Mobile-first breakpoint system. Start with mobile styles, enhance larger screens."
@@ -267,10 +283,12 @@ export function TokenReferencePage() {
             { key: "xl", value: "1280px+", usage: "Desktops" },
             { key: "2xl", value: "1536px+", usage: "Ultra-wide" },
           ]}
-        />
+          />
+        </Box>
 
         {/* Colors Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="colors"
           title="Semantic Colors"
           description="Intent-based colors that automatically adapt to light/dark themes."
@@ -311,10 +329,12 @@ export function TokenReferencePage() {
               ],
             },
           ]}
-        />
+          />
+        </Box>
 
         {/* Opacity Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="opacity"
           title="Opacity Scale"
           description="11-step opacity scale for transparency and layering effects."
@@ -325,10 +345,12 @@ export function TokenReferencePage() {
             { key: "opacity-75", value: "75%", usage: "Mostly opaque" },
             { key: "opacity-100", value: "100%", usage: "Fully opaque" },
           ]}
-        />
+          />
+        </Box>
 
         {/* Z-Index Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="z-index"
           title="Z-Index Scale"
           description="Layering system for stacking contexts. Higher = more prominent."
@@ -341,10 +363,12 @@ export function TokenReferencePage() {
             { key: "z-50", value: "50", usage: "Sticky header" },
             { key: "z-max", value: "9999", usage: "Emergency top" },
           ]}
-        />
+          />
+        </Box>
 
         {/* Density Section */}
-        <Section
+        <Box as="section" style={{ display: "contents" }}>
+          <Section
           id="density"
           title="Density Modes"
           description="Comfortable and compact modes for different contexts and user preferences."
@@ -380,9 +404,11 @@ export function TokenReferencePage() {
               ],
             },
           ]}
-        />
+          />
+        </Box>
       </Column>
-    </Container>
+      </Container>
+    </Box>
   );
 }
 
@@ -401,7 +427,8 @@ interface SectionProps {
 
 function Section({ id, title, description, tokens }: SectionProps) {
   return (
-    <Column gap={4} id={id}>
+    <Box as="section" id={id} style={{ display: "contents" }}>
+      <Column gap={4}>
       <Column gap={2}>
         <Text as="h2" size={3} weight="semibold">
           {title}
@@ -431,7 +458,7 @@ function Section({ id, title, description, tokens }: SectionProps) {
           </div>
         ))}
       </Column>
-    </Column>
+    </Box>
   );
 }
 
