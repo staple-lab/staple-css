@@ -785,6 +785,127 @@ pre {
   padding: 0;
 }
 
+/* Modal and dialog styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn var(--st-duration-normal) var(--st-easing-default);
+}
+
+.modal-overlay--hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background-color: var(--st-color-surface);
+  border-radius: var(--st-radius-2);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp var(--st-duration-normal) var(--st-easing-default);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  padding: var(--st-space-6);
+  border-bottom: 1px solid var(--st-color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--st-space-4);
+}
+
+.modal-title {
+  font-size: var(--st-font-size-4);
+  font-weight: 700;
+  font-family: var(--st-font-display);
+  margin: 0;
+  color: var(--st-color-text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--st-color-text-muted);
+  font-size: var(--st-font-size-2);
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--st-radius-1);
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+}
+
+.modal-close:hover {
+  background-color: rgba(42, 125, 82, 0.08);
+  color: var(--st-color-text);
+}
+
+.modal-close:focus {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+.modal-body {
+  padding: var(--st-space-6);
+  color: var(--st-color-text);
+  line-height: var(--st-leading-relaxed);
+}
+
+.modal-footer {
+  padding: var(--st-space-6);
+  border-top: 1px solid var(--st-color-border);
+  display: flex;
+  gap: var(--st-space-3);
+  justify-content: flex-end;
+}
+
+/* Dialog variant - smaller, simpler */
+.dialog {
+  max-width: 400px;
+}
+
+.dialog .modal-body {
+  padding: var(--st-space-4);
+}
+
+.dialog .modal-header,
+.dialog .modal-footer {
+  padding: var(--st-space-4);
+}
+
 /* Badge styling */
 .badge {
   display: inline-block;
