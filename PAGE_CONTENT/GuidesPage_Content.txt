@@ -1,0 +1,56 @@
+================================================================================
+GUIDES PAGE CONTENT - Design Guides & Best Practices
+================================================================================
+
+PAGE HEADER
+===========
+Design Guides & Best Practices
+Comprehensive guides for building consistent, accessible, and performant interfaces with staple-css tokens and primitives.
+
+GUIDE 1: SPACING & LAYOUT
+=========================
+Space Scale (0-8): 9 predefined values from 0-4rem
+Padding vs Margin: Internal vs component spacing
+Intrinsic Responsive: CSS Grid auto-fit/auto-fill with minmax()
+
+GUIDE 2: COLOR & CONTRAST
+=========================
+Semantic Colors: Primary, danger, warning, success tokens
+WCAG AA Compliance: All colors meet contrast standards
+Light & Dark: Adaptive colors for both themes
+
+GUIDE 3: TYPOGRAPHY & TEXT
+===========================
+Font Scale (0-6): 12px to 32px with hierarchy
+Line Height: Scales with font size (1.25-1.75)
+Readable Length: 50-75 characters optimal
+
+GUIDE 4: MOTION & ANIMATION
+============================
+Duration Scale: Fast (100ms), normal (200ms), slow (300ms)
+Easing Functions: Default, in/out for motion
+Accessibility: Respect prefers-reduced-motion
+
+GUIDE 5: RESPONSIVE DESIGN
+===========================
+Mobile-First: Start with mobile, enhance for larger screens
+Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
+Touch Targets: Minimum 44x44px for interactive elements
+
+GUIDE 6: ACCESSIBILITY (A11Y)
+=============================
+Semantic HTML: Use correct elements for screen readers
+Color Contrast: 4.5:1 for normal, 3:1 for large text
+Focus Management: All interactive elements keyboard accessible
+
+GUIDE 7: COMPONENT PATTERNS
+============================
+Composition: Combine primitives to create components
+Props as Tokens: Accept token keys, not arbitrary values
+Escape Hatches: Use className for edge cases
+
+GUIDE 8: DESIGN TOKENS STRATEGY
+================================
+Token Hierarchy: Global → Component → Instance
+Naming Convention: Semantic names, not color names
+Versioning: Document changes, provide migration guides

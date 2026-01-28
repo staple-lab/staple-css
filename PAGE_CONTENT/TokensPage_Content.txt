@@ -1,0 +1,105 @@
+================================================================================
+TOKENS PAGE CONTENT
+================================================================================
+
+PAGE HEADER
+===========
+Tokens
+Design tokens are the foundation of staple-css. They encode design decisions as CSS variables, ensuring consistency across your application.
+
+USAGE SECTION
+=============
+
+Import all tokens:
+import "@staple-css/tokens/all.css";
+
+Or import individually:
+import "@staple-css/tokens/tokens.css";   // Base tokens
+import "@staple-css/tokens/themes.css";   // Light/dark themes
+import "@staple-css/tokens/density.css";  // Density variants
+
+THEMING SECTION
+===============
+
+Apply themes using the data-theme attribute:
+<body data-theme="light">  <!-- Light theme (default) -->
+<body data-theme="dark">   <!-- Dark theme -->
+
+Apply density using the data-density attribute:
+<body data-density="comfortable">  <!-- Comfortable (default) -->
+<body data-density="compact">      <!-- Compact -->
+
+TOKEN TABLES
+============
+
+SPACE SCALE (0-8)
+-----------------
+| Token | CSS Variable | Value |
+| 0 | --st-space-0 | 0 |
+| 1 | --st-space-1 | 4px |
+| 2 | --st-space-2 | 8px |
+| 3 | --st-space-3 | 12px |
+| 4 | --st-space-4 | 16px |
+| 5 | --st-space-5 | 24px |
+| 6 | --st-space-6 | 32px |
+| 7 | --st-space-7 | 48px |
+| 8 | --st-space-8 | 64px |
+
+RADIUS SCALE (0-4)
+------------------
+| Token | CSS Variable | Value |
+| 0 | --st-radius-0 | 0 |
+| 1 | --st-radius-1 | 2px |
+| 2 | --st-radius-2 | 4px |
+| 3 | --st-radius-3 | 8px |
+| 4 | --st-radius-4 | 16px |
+
+SHADOW SCALE (0-2)
+------------------
+| Token | CSS Variable | Value |
+| 0 | --st-shadow-0 | (no shadow) |
+| 1 | --st-shadow-1 | (subtle shadow) |
+| 2 | --st-shadow-2 | (medium shadow) |
+
+FONT SIZE SCALE (0-6)
+---------------------
+| Token | CSS Variable | Value |
+| 0 | --st-font-size-0 | 12px |
+| 1 | --st-font-size-1 | 14px |
+| 2 | --st-font-size-2 | 16px |
+| 3 | --st-font-size-3 | 18px |
+| 4 | --st-font-size-4 | 20px |
+| 5 | --st-font-size-5 | 24px |
+| 6 | --st-font-size-6 | 32px |
+
+FONT WEIGHT
+-----------
+| Token | CSS Variable | Value |
+| normal | --st-font-weight-normal | 400 |
+| medium | --st-font-weight-medium | 500 |
+| semibold | --st-font-weight-semibold | 600 |
+| bold | --st-font-weight-bold | 700 |
+
+LINE HEIGHT
+-----------
+| Token | CSS Variable | Value |
+| (various) | --st-leading-* | (height values) |
+
+MOTION DURATION
+---------------
+| Token | CSS Variable | Value |
+| (various) | --st-duration-* | (timing values) |
+
+MOTION EASING
+-------------
+| Token | CSS Variable | Value |
+| (various) | --st-easing-* | (cubic-bezier values) |
+
+COLOR TOKENS
+============
+Colors automatically adapt to the current theme (light/dark).
+
+All color tokens follow the pattern:
+--st-color-{colorName}
+
+Sample colors shown in visual swatches in the interface.

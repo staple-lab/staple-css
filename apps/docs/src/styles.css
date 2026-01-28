@@ -1195,6 +1195,95 @@ input[type="file"]:focus {
   outline-offset: 2px;
 }
 
+/* Input validation states */
+input[type="text"].is-invalid,
+input[type="email"].is-invalid,
+input[type="password"].is-invalid,
+input[type="number"].is-invalid,
+input[type="search"].is-invalid,
+textarea.is-invalid,
+select.is-invalid {
+  border-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.02);
+}
+
+input[type="text"].is-invalid:focus,
+input[type="email"].is-invalid:focus,
+input[type="password"].is-invalid:focus,
+input[type="number"].is-invalid:focus,
+input[type="search"].is-invalid:focus,
+textarea.is-invalid:focus,
+select.is-invalid:focus {
+  outline-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+}
+
+input[type="text"].is-valid,
+input[type="email"].is-valid,
+input[type="password"].is-valid,
+input[type="number"].is-valid,
+input[type="search"].is-valid,
+textarea.is-valid,
+select.is-valid {
+  border-color: #22c55e;
+  background-color: rgba(34, 197, 94, 0.02);
+}
+
+input[type="text"].is-valid:focus,
+input[type="email"].is-valid:focus,
+input[type="password"].is-valid:focus,
+input[type="number"].is-valid:focus,
+input[type="search"].is-valid:focus,
+textarea.is-valid:focus,
+select.is-valid:focus {
+  outline-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  border-color: #22c55e;
+}
+
+input[type="text"].is-warning,
+input[type="email"].is-warning,
+input[type="password"].is-warning,
+input[type="number"].is-warning,
+input[type="search"].is-warning,
+textarea.is-warning,
+select.is-warning {
+  border-color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.02);
+}
+
+input[type="text"].is-warning:focus,
+input[type="email"].is-warning:focus,
+input[type="password"].is-warning:focus,
+input[type="number"].is-warning:focus,
+input[type="search"].is-warning:focus,
+textarea.is-warning:focus,
+select.is-warning:focus {
+  outline-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  border-color: #f59e0b;
+}
+
+/* Form field messages */
+.field-message {
+  font-size: var(--st-font-size-0);
+  margin-top: var(--st-space-1);
+  line-height: var(--st-leading-tight);
+}
+
+.field-message--error {
+  color: #ef4444;
+}
+
+.field-message--success {
+  color: #22c55e;
+}
+
+.field-message--warning {
+  color: #f59e0b;
+}
+
 /* Range input styling */
 input[type="range"] {
   width: 100%;

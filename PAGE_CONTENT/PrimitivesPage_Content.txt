@@ -1,0 +1,203 @@
+================================================================================
+PRIMITIVES PAGE CONTENT - Layout and Typography Primitives
+================================================================================
+
+PAGE HEADER
+===========
+Primitives
+Layout and typography primitives with complete responsive support. All layout props (direction, gap, alignment, sizing) can be responsive objects.
+
+INSTALLATION
+=============
+npm install @staple-css/primitives @staple-css/tokens
+
+Import CSS:
+import "@staple-css/tokens/all.css";
+import "@staple-css/primitives/primitives.css";
+
+Import components:
+import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css/primitives";
+
+RESPONSIVE DESIGN
+=================
+All layout props support responsive objects. Use { base, sm, md, lg, xl, 2xl } keys to change values at different breakpoints.
+
+BREAKPOINTS TABLE:
+| Name | Min-Width |
+| base | 0px |
+| sm | 640px |
+| md | 768px |
+| lg | 1024px |
+| xl | 1280px |
+| 2xl | 1536px |
+
+Responsive Pattern Example:
+// Mobile-first: start with base, override at breakpoints
+<Box pad={{ base: 2, md: 4, lg: 6 }}>
+  Mobile padding 2 → Tablet 4 → Desktop 6
+</Box>
+
+<Flex
+  direction={{ base: "column", md: "row" }}
+  gap={{ base: 2, md: 4 }}
+  align={{ base: "start", md: "center" }}
+/>
+
+<Grid
+  cols={{ base: 1, md: 2, lg: 3 }}
+  gap={{ base: 2, md: 3, lg: 4 }}
+  alignContent={{ base: "start", lg: "center" }}
+/>
+
+BOX PRIMITIVE
+=============
+Generic container with padding, radius, and shadow. Use pad and margin props with responsive support.
+
+BOX PROPS:
+- pad: 0-8 | Responsive<0-8> - Padding (responsive)
+- margin: 0-8 | Responsive<0-8> - Margin (responsive)
+- marginX: 0-8 | Responsive<0-8> - Horizontal margin (responsive)
+- marginY: 0-8 | Responsive<0-8> - Vertical margin (responsive)
+- radius: 0-4 - Border radius
+- shadow: 0-2 - Box shadow
+
+FLEX PRIMITIVE
+==============
+Complete flexbox layout. All props are fully responsive, including direction, gap, alignment, justification, and wrapping.
+
+FLEX PROPS:
+- direction: row | column | row-reverse | column-reverse | Responsive<> - Flex direction (responsive)
+- gap: 0-8 | Responsive<0-8> - Gap between items (responsive)
+- align: start | center | end | stretch | baseline | Responsive<> - Cross-axis alignment (responsive)
+- justify: start | center | end | between | around | evenly | Responsive<> - Main-axis justification (responsive)
+- wrap: wrap | nowrap | wrap-reverse | Responsive<> - Flex wrap behavior (responsive)
+- alignContent: start | center | end | between | around | evenly | Responsive<> - Multi-line alignment (responsive)
+- inline: boolean | Responsive<boolean> - Use inline-flex (responsive)
+
+ROW & COLUMN ALIASES
+====================
+Convenient aliases for common patterns:
+- Column = <Flex direction="column">
+- Row = <Flex direction="row">
+
+All Flex props available on both.
+
+Column Example:
+<Column gap={{ base: 2, md: 4 }}>
+  <Box pad={3}>Item 1</Box>
+  <Box pad={3}>Item 2</Box>
+  <Box pad={3}>Item 3</Box>
+</Column>
+
+Row Example:
+<Row
+  gap={{ base: 2, md: 4 }}
+  justify={{ base: "start", md: "between" }}
+  align={{ base: "start", md: "center" }}
+>
+  <Text weight="semibold">Left</Text>
+  <Text>Right</Text>
+</Row>
+
+GRID PRIMITIVE
+==============
+CSS Grid with complete specification support. All props including columns, rows, gaps, alignment, and sizing are fully responsive.
+
+GRID PROPS:
+- cols: 1-12 | Responsive<1-12> - Number of columns (responsive)
+- rows: 1-6 | Responsive<1-6> - Number of rows (responsive)
+- preset: auto-fit-xs/sm/md/lg | auto-fill-xs/sm/md/lg | Responsive<> - Intrinsic responsive preset (responsive)
+- gap: 0-8 | Responsive<0-8> - Gap between items (responsive)
+- align: start | center | end | baseline | Responsive<> - Item alignment on cross-axis (responsive)
+- justify: start | center | end | between | around | evenly | Responsive<> - Item justification on main-axis (responsive)
+- placeItems: start | center | end | baseline | Responsive<> - Shorthand for align & justify (responsive)
+- alignContent: start | center | end | between | around | evenly | Responsive<> - Track alignment (responsive)
+- justifyContent: start | center | end | between | around | evenly | Responsive<> - Track justification (responsive)
+- placeContent: start | center | end | between | around | evenly | Responsive<> - Shorthand for align & justify content (responsive)
+- flow: row | column | dense | row-dense | column-dense | Responsive<> - Grid auto-flow direction (responsive)
+- autoRows: auto | min | max | 1fr | minmax | Responsive<> - Implicit row sizing (responsive)
+- autoColumns: auto | min | max | 1fr | minmax | Responsive<> - Implicit column sizing (responsive)
+- inline: boolean | Responsive<boolean> - Use inline-grid (responsive)
+
+Grid Example - Responsive Columns:
+// 1 col on mobile, 2 on tablet, 3 on desktop
+<Grid cols={{ base: 1, md: 2, lg: 3 }} gap={{ base: 2, md: 4 }}>
+  <Card pad={4}>1</Card>
+  <Card pad={4}>2</Card>
+  <Card pad={4}>3</Card>
+  <Card pad={4}>4</Card>
+</Grid>
+
+CONTAINER PRIMITIVE
+====================
+Centered container with max-width and horizontal padding.
+
+CONTAINER PROPS:
+- size: sm | md | lg | xl - Max-width preset
+
+Usage:
+<Container size="md">
+  <Text>Centered content with max-width</Text>
+</Container>
+
+TEXT PRIMITIVE
+==============
+Typography primitive with size, weight, tone, and alignment.
+
+TEXT PROPS:
+- as: p | span | label | h1-h6 - HTML element
+- size: 0-6 - Font size
+- weight: normal | medium | semibold | bold - Font weight
+- tone: neutral | muted | primary | danger | warn | success - Color tone
+- align: start | center | end - Text alignment
+- leading: tight | normal | relaxed - Line height
+- mono: boolean - Monospace font
+
+TEXT EXAMPLE:
+<Column gap={2}>
+  <Text as="h1" size={5} weight="bold">Heading</Text>
+  <Text tone="muted" size={1}>Muted small text</Text>
+  <Text tone="primary" weight="semibold">Primary emphasis</Text>
+</Column>
+
+CARD PRIMITIVE
+==============
+Surface wrapper for grouping content with semantic tones.
+
+CARD PROPS:
+- pad: 0-8 | Responsive<0-8> - Padding (responsive)
+- radius: 0-4 - Border radius
+- shadow: 0-2 - Box shadow
+- tone: neutral | primary | danger | warn | success - Color tone
+
+CARD EXAMPLE:
+<Column gap={3}>
+  <Card pad={5} radius={3} shadow={1}>
+    <Column gap={2}>
+      <Text weight="semibold">Default Card</Text>
+      <Text tone="muted">Description</Text>
+    </Column>
+  </Card>
+  <Card tone="success" pad={4}>
+    <Text>Success message</Text>
+  </Card>
+</Column>
+
+ESCAPE HATCHES
+==============
+All primitives accept className for custom styling.
+Layout primitives also accept a limited style prop for dynamic sizing.
+
+Allowed style props:
+- width, height, minWidth, maxWidth, minHeight, maxHeight
+- flex, flexGrow, flexShrink, flexBasis
+- gridTemplateColumns, gridTemplateRows, gridColumn, gridRow
+
+Usage:
+<Box style={{ width: "300px", minHeight: "100px" }}>
+  Fixed-width box
+</Box>
+
+<Column style={{ flex: 1 }}>
+  Flexible stack
+</Column>
