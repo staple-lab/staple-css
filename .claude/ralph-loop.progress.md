@@ -1,5 +1,5 @@
 # Ralph Loop Progress - Solarpunk Documentation Redesign
-## Master Status: Foundation & Planning Complete (Iterations 1-3)
+## Master Status: Foundation Complete + Accessibility Phase Started (Iterations 1-4)
 
 ## Overview
 Comprehensive redesign of Staple CSS documentation site to Tailwind-docs quality with unique Solarpunk aesthetic. 50+ iteration plan focusing on typography, layout, components, style, and polish.
@@ -40,15 +40,21 @@ Comprehensive redesign of Staple CSS documentation site to Tailwind-docs quality
 - ✅ Identified 8+ tables needing scope="col" attributes
 - ✅ Identified 20+ sections needing semantic HTML
 - ✅ Identified 5+ form inputs needing htmlFor association
-- ✅ Created comprehensive redesign specification with:
-  - Audit: 25+ bullet points of current issues
-  - Tokens: Complete JSON-like design token system
-  - Component spec: 13 Staple CSS components with variants, spacing, states
-  - Implementation steps: 6 phases across 50+ iterations
-  - Code patterns: 10 ready-to-use snippets (TSX, CSS)
-  - Visual QA checklist: 60+ item verification list
+- ✅ Created comprehensive redesign specification with all deliverables
 - ✅ Extracted and organized all documentation content
 - Files: ACCESSIBILITY_AUDIT_ITERATION3.md, COMPREHENSIVE_REDESIGN_SPECIFICATION.md, DOCUMENTATION_CONTENT_STRUCTURE.md
+
+### Iteration 4: HomePage Accessibility Implementation (PHASE 2 START)
+**Status**: COMPLETE ✅
+**Deliverables**:
+- ✅ HomePage semantic HTML: Added <main>, <section> elements
+- ✅ Decorative elements: Added aria-hidden="true" to background gradients
+- ✅ Decorative icons: Added aria-hidden="true" to icon-only display boxes
+- ✅ Table headers: Added scope="col" to comparison table
+- ✅ WCAG 2.1 A compliance on HomePage
+- ✅ Keyboard navigation fully supported
+- ✅ Build passing with no errors
+- Files: apps/docs/src/pages/HomePage.tsx (modified with accessibility improvements)
 
 ---
 
@@ -131,12 +137,12 @@ Comprehensive redesign of Staple CSS documentation site to Tailwind-docs quality
 
 | Metric | Target | Status | Details |
 |--------|--------|--------|---------|
-| **Iterations** | 50+ | 3/50+ (6%) | Foundation phase complete |
+| **Iterations** | 50+ | 4/50+ (8%) | Foundation + HomePage a11y |
 | **Typography** | Distinctive pair | ✅ COMPLETE | Bricolage + IBM Plex |
 | **Focus States** | All interactive | ✅ COMPLETE | 2px outline, :focus-visible |
 | **Motion Support** | prefers-reduced-motion | ✅ COMPLETE | CSS wrapper implemented |
 | **Color System** | Solarpunk palette | ✅ COMPLETE | 5 primary + 10+ secondary |
-| **Accessibility** | WCAG 2.1 AA | 🔄 IN PROGRESS | Foundation set, 40+ fixes queued |
+| **Accessibility** | WCAG 2.1 AA | 🔄 IN PROGRESS | HomePage ✅, 10 pages queued |
 | **Documentation** | 11 pages | ✅ AUDITED | All pages documented |
 | **Specification** | Complete | ✅ COMPLETE | 1000+ lines specification |
 | **Code Patterns** | Ready-to-use | ✅ COMPLETE | 10 snippets provided |
@@ -184,12 +190,16 @@ Comprehensive redesign of Staple CSS documentation site to Tailwind-docs quality
 ## 📝 NEXT PHASES
 
 ### Phase 2: Accessibility Implementation (Iterations 4-5)
-- [ ] Add aria-labels to 40+ icon-only elements across all pages
-- [ ] Add aria-hidden to 30+ decorative elements
-- [ ] Add scope="col" to 8+ tables
-- [ ] Wrap sections in semantic HTML (main, section, nav)
-- [ ] Associate form labels with inputs (htmlFor/id)
-- [ ] Expected: WCAG 2.1 AA compliance
+- [x] Iteration 4: HomePage accessibility (COMPLETE)
+  - [x] Add semantic HTML: <main>, <section> elements
+  - [x] Add aria-hidden to decorative elements
+  - [x] Add scope="col" to tables
+  - [x] Ensure WCAG 2.1 A compliance
+- [ ] Iteration 5: Remaining pages accessibility
+  - [ ] Apply same patterns to WhyPage, GuidesPage, etc.
+  - [ ] Add aria-labels to icon-only elements
+  - [ ] Form label associations
+  - [ ] Complete WCAG 2.1 AA compliance across all 11 pages
 
 ### Phase 3: Layout Architecture (Iterations 6-15)
 - [ ] Create Sidebar.tsx navigation component
