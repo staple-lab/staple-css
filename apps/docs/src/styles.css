@@ -1158,12 +1158,43 @@ pre {
   border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
-/* Card components - minimal style */
+/* ============================================================================
+   Elevation System - ITER 40
+   Refined approach: No shadow-0 (flat is just flat)
+   Levels 1-5 for progressive depth and hierarchy
+   ============================================================================ */
+
+/* Elevation utilities - semantic naming */
+.elevation-1 {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.elevation-2 {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.elevation-3 {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.elevation-4 {
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+.elevation-5 {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================================
+   Card Components - Minimal, Token-based (ITER 34, refined in ITER 40)
+   ============================================================================ */
+
+/* Card components - minimal style with optional elevation */
 .card {
   border: 1px solid var(--st-color-border);
   border-radius: var(--st-radius-2);
   padding: var(--st-space-4);
-  background-color: transparent;
+  background-color: var(--st-color-surface);
   transition: all var(--st-duration-normal) var(--st-easing-default);
 }
 
@@ -1172,15 +1203,41 @@ pre {
   background-color: rgba(42, 125, 82, 0.02);
 }
 
-/* Minimal panel - flat design alternative to card */
+/* Card elevation variant - adds subtle shadow for depth */
+.card.card-elevated {
+  background-color: var(--st-color-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card.card-elevated:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card interactive variant - for clickable cards */
+.card.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Panel - flat design alternative with left accent */
 .panel {
   padding: var(--st-space-4);
   background-color: var(--st-color-surface);
   border-left: 3px solid var(--st-color-primary);
   border-radius: var(--st-radius-1);
+  transition: all var(--st-duration-normal) var(--st-easing-default);
 }
 
-/* Section block - simple content container */
+.panel:hover {
+  border-left-color: #227a50;
+}
+
+/* Panel elevated - adds subtle shadow when needed */
+.panel.panel-elevated {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Section block - simple content container without shadows */
 .section-block {
   padding: var(--st-space-4) 0;
   border-bottom: 1px solid var(--st-color-border);
@@ -1190,18 +1247,31 @@ pre {
   border-bottom: none;
 }
 
-/* Feature box - minimal highlight */
+/* Feature box - minimal highlight with organic gradient */
 .feature-box {
   padding: var(--st-space-4);
   background: linear-gradient(90deg, rgba(42, 125, 82, 0.03) 0%, transparent 100%);
   border-left: 2px solid var(--st-color-primary);
   border-radius: var(--st-radius-1);
+  transition: all var(--st-duration-normal) var(--st-easing-default);
+}
+
+.feature-box:hover {
+  border-left-color: #227a50;
+  background: linear-gradient(90deg, rgba(42, 125, 82, 0.06) 0%, transparent 100%);
 }
 
 /* Content group - related items without heavy styling */
 .content-group {
   margin: var(--st-space-6) 0;
   padding: 0;
+}
+
+/* Content group with subtle background */
+.content-group.content-group-subtle {
+  background-color: var(--st-color-background);
+  padding: var(--st-space-4);
+  border-radius: var(--st-radius-1);
 }
 
 /* Modal and dialog styling */
