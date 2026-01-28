@@ -190,7 +190,6 @@ export function VisualsPage() {
 
         {/* Motion & Transitions */}
         <Box as="section" style={{ display: "contents" }}>
-          <Column gap={3}>
           <Row gap={2} align="center">
             <div className="icon-badge" aria-hidden="true">
               <Zap size={20} />
