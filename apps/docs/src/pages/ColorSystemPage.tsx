@@ -62,16 +62,16 @@ export function ColorSystemPage() {
           {/* Color Palettes */}
           <Box as="section" style={{ display: "contents" }}>
             <Column gap={6}>
-            <div className="section-header">
+              <div className="section-header">
               <Text as="h2" size={3} weight="semibold">
                 Color Palettes
               </Text>
               <Text size={1} tone="muted" style={{ marginTop: "var(--st-space-2)" }}>
                 22 scales (50-950) for data visualization and custom components.
               </Text>
-            </div>
+              </div>
 
-            <Grid cols={{ base: 2, md: 3, lg: 4 }} gap={3}>
+              <Grid cols={{ base: 2, md: 3, lg: 4 }} gap={3}>
               {["slate", "gray", "zinc", "neutral", "stone", "red", "orange", "amber", "yellow", "lime", "green", "emerald"].map((palette) => (
                 <div key={palette} className="palette-card">
                   <div className="palette-ramp" aria-hidden="true">
