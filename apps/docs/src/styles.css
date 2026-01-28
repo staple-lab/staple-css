@@ -212,6 +212,12 @@ pre {
 }
 
 /* Main content responsive padding and layout */
+@media (max-width: 1400px) {
+  .app-main-content > div:first-child {
+    max-width: 85ch;
+  }
+}
+
 @media (max-width: 1024px) {
   .app-content-wrapper {
     flex-direction: column;
@@ -221,6 +227,11 @@ pre {
   .app-main {
     margin-left: 0;
     padding: var(--st-space-8) var(--st-space-6);
+    max-width: 100%;
+  }
+
+  .app-main-content > div:first-child {
+    max-width: 100%;
   }
 }
 
@@ -228,17 +239,30 @@ pre {
   .app-main {
     padding: var(--st-space-6) var(--st-space-4);
   }
+
+  .app-main-content {
+    gap: var(--st-space-4);
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 640px) {
   .app-main {
     padding: var(--st-space-5) var(--st-space-3);
   }
+
+  .section-header {
+    margin-top: var(--st-space-6);
+  }
 }
 
 @media (max-width: 480px) {
   .app-main {
     padding: var(--st-space-4) var(--st-space-2);
+  }
+
+  .app-main-content {
+    gap: var(--st-space-2);
   }
 }
 
@@ -556,6 +580,26 @@ pre {
   border-radius: var(--st-radius-2);
   padding: var(--st-space-4);
   background-color: var(--st-color-background);
+  transition: all var(--st-duration-normal) var(--st-easing-default);
+}
+
+.example-preview:hover {
+  border-color: var(--st-color-primary);
+  box-shadow: 0 2px 8px rgba(42, 125, 82, 0.08);
+}
+
+/* Card components */
+.card {
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  padding: var(--st-space-5);
+  background-color: var(--st-color-surface);
+  transition: all var(--st-duration-normal) var(--st-easing-default);
+}
+
+.card:hover {
+  border-color: var(--st-color-primary);
+  box-shadow: 0 4px 12px rgba(42, 125, 82, 0.1);
 }
 
 /* Primary colored box for examples */
