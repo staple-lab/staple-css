@@ -11,6 +11,7 @@ import {
   colorsLight,
 } from "@staple-css/tokens";
 import { CodePreview } from "../components/CodePreview";
+import { TokenCopyButton } from "../components/TokenCopyButton";
 
 function TokenTable({
   title,
@@ -35,6 +36,7 @@ function TokenTable({
               <th scope="col">Token</th>
               <th scope="col">CSS Variable</th>
               <th scope="col">Value</th>
+              <th scope="col" style={{ width: '100px', textAlign: 'center' }}>Copy</th>
               {renderSample && <th scope="col">Sample</th>}
             </tr>
           </thead>
@@ -55,6 +57,9 @@ function TokenTable({
                   <Text as="span" size={1}>
                     {value}
                   </Text>
+                </td>
+                <td style={{ textAlign: 'center' }}>
+                  <TokenCopyButton varName={`${varPrefix}-${key}`} copyValue={`var(--${varPrefix}-${key})`} />
                 </td>
                 {renderSample && <td>{renderSample(key, value)}</td>}
               </tr>
