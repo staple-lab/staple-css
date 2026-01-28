@@ -906,6 +906,103 @@ pre {
   padding: var(--st-space-4);
 }
 
+/* Breadcrumb styling */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-1);
+  font-size: var(--st-font-size-1);
+  margin: var(--st-space-4) 0;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-1);
+}
+
+.breadcrumb-link {
+  color: var(--st-color-primary);
+  text-decoration: none;
+  border-bottom: none;
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+  font-weight: 500;
+}
+
+.breadcrumb-link:hover {
+  color: #227a50;
+}
+
+.breadcrumb-link:focus {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+.breadcrumb-separator {
+  color: var(--st-color-text-muted);
+  margin: 0 var(--st-space-1);
+  user-select: none;
+}
+
+.breadcrumb-current {
+  color: var(--st-color-text);
+  font-weight: 500;
+}
+
+/* Pagination styling */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-2);
+  justify-content: center;
+  margin: var(--st-space-8) 0;
+}
+
+.pagination-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-1);
+  background-color: var(--st-color-surface);
+  color: var(--st-color-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+  cursor: pointer;
+}
+
+.pagination-item:hover {
+  border-color: var(--st-color-primary);
+  color: var(--st-color-primary);
+  background-color: rgba(42, 125, 82, 0.04);
+}
+
+.pagination-item:focus {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+.pagination-item.active {
+  background-color: var(--st-color-primary);
+  color: white;
+  border-color: var(--st-color-primary);
+}
+
+.pagination-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.pagination-ellipsis {
+  padding: 0 var(--st-space-1);
+  color: var(--st-color-text-muted);
+}
+
 /* Badge styling */
 .badge {
   display: inline-block;
