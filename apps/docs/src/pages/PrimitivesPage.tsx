@@ -34,9 +34,9 @@ function PropsTable({
       <table className="token-table">
         <thead>
           <tr>
-            <th>Prop</th>
-            <th>Type</th>
-            <th>Description</th>
+            <th scope="col">Prop</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
           </tr>
         </thead>
         <tbody>
@@ -67,8 +67,9 @@ function PropsTable({
 
 export function PrimitivesPage() {
   return (
-    <Container size="lg">
-      <Column gap={8}>
+    <Box as="main">
+      <Container size="lg">
+        <Column gap={8}>
         <Column gap={2}>
           <Text as="h1" size={5} weight="bold">
             Primitives
@@ -80,12 +81,15 @@ export function PrimitivesPage() {
         </Column>
 
         {/* Enhanced Component Explorer */}
-        <Card pad={6} radius={3} shadow={1}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Card pad={6} radius={3} shadow={1}>
           <EnhancedComponentExplorer />
-        </Card>
+          </Card>
+        </Box>
 
         {/* Installation */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Installation
           </Text>
@@ -104,10 +108,12 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
             language="typescript"
             title="Usage"
           />
-        </Column>
+          </Column>
+        </Box>
 
         {/* Responsive API */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Responsive Design
           </Text>
@@ -123,8 +129,8 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
               <table className="token-table">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Min-Width</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Min-Width</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -178,10 +184,12 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
             language="tsx"
             title="Responsive Pattern"
           />
-        </Column>
+          </Column>
+        </Box>
 
         {/* Box */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Box
           </Text>
@@ -208,10 +216,12 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
               { name: "shadow", type: "0-2", description: "Box shadow" },
             ]}
           />
-        </Column>
+          </Column>
+        </Box>
 
         {/* Flex */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Flex
           </Text>
@@ -304,10 +314,12 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
               { name: "inline", type: "boolean | Responsive<boolean>", description: "Use inline-flex (responsive)" },
             ]}
           />
-        </Column>
+          </Column>
+        </Box>
 
         {/* Row & Column Aliases */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Row & Column Aliases
           </Text>
@@ -359,10 +371,12 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
               </Box>
             </Row>
           </CodeExample>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Grid */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Grid
           </Text>
@@ -473,10 +487,12 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
               { name: "inline", type: "boolean | Responsive<boolean>", description: "Use inline-grid (responsive)" },
             ]}
           />
-        </Column>
+          </Column>
+        </Box>
 
         {/* Container */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Container
           </Text>
@@ -498,10 +514,12 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
               { name: "size", type: "sm | md | lg | xl", description: "Max-width preset" },
             ]}
           />
-        </Column>
+          </Column>
+        </Box>
 
         {/* Text */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Text
           </Text>
@@ -531,10 +549,12 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
               { name: "mono", type: "boolean", description: "Monospace font" },
             ]}
           />
-        </Column>
+          </Column>
+        </Box>
 
         {/* Card */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Card
           </Text>
@@ -573,10 +593,12 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
               { name: "tone", type: "neutral | primary | danger | warn | success", description: "Color tone" },
             ]}
           />
-        </Column>
+          </Column>
+        </Box>
 
         {/* Escape Hatches */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Escape Hatches
           </Text>
@@ -600,8 +622,10 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
             language="tsx"
             title="Style Props"
           />
-        </Column>
+          </Column>
+        </Box>
       </Column>
     </Container>
+    </Box>
   );
 }
