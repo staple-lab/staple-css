@@ -1,0 +1,128 @@
+/* Palette Ramp Component */
+
+.palette-ramp-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-3);
+  padding: var(--st-space-4);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  background: var(--st-color-surface);
+}
+
+.palette-ramp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.palette-name {
+  font-size: var(--st-font-size-2);
+  font-weight: 600;
+  color: var(--st-color-text);
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.palette-ramp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: var(--st-space-2);
+}
+
+.palette-ramp-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-1);
+  align-items: center;
+  position: relative;
+}
+
+.ramp-color {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--st-radius-1);
+  border: 1px solid var(--st-color-border);
+  transition: box-shadow 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  cursor: pointer;
+  position: relative;
+}
+
+.ramp-color:hover {
+  box-shadow: 0 2px 8px rgba(42, 125, 82, 0.12);
+}
+
+.ramp-copy-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border: none;
+  border-radius: var(--st-radius-1);
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  z-index: 10;
+}
+
+.ramp-color:hover .ramp-copy-btn,
+.palette-ramp-step:hover .ramp-copy-btn {
+  opacity: 1;
+}
+
+.ramp-copy-btn:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.ramp-copy-btn:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+.ramp-step-label {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-font-size-xs);
+  color: var(--st-color-text-muted);
+  font-weight: 500;
+}
+
+.palette-ramp-step.copied .ramp-copy-btn {
+  opacity: 1;
+  background: var(--st-color-success);
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .palette-ramp-container {
+    padding: var(--st-space-3);
+  }
+
+  .palette-ramp-grid {
+    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+    gap: var(--st-space-1);
+  }
+
+  .ramp-color {
+    height: 35px;
+  }
+
+  .ramp-copy-btn {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ramp-step-label {
+    font-size: var(--st-font-size-xxs);
+  }
+}
