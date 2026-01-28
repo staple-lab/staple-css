@@ -4608,7 +4608,7 @@ input[type="range"]::-moz-range-thumb:hover {
 
 @container preview (min-width: 900px) {
   .preview-content-grid {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
