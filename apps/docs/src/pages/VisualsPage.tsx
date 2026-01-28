@@ -17,8 +17,9 @@ import "./VisualsPage.css";
 
 export function VisualsPage() {
   return (
-    <Container size="xl" style={{ paddingTop: "var(--st-space-6)", paddingBottom: "var(--st-space-6)" }}>
-      <Column gap={6}>
+    <Box as="main">
+      <Container size="xl" style={{ paddingTop: "var(--st-space-6)", paddingBottom: "var(--st-space-6)" }}>
+        <Column gap={6}>
         {/* Header */}
         <Column gap={2}>
           <Text as="h1" size={5} weight="bold">
@@ -31,9 +32,10 @@ export function VisualsPage() {
         </Column>
 
         {/* Elevation System */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Row gap={2} align="center">
-            <div className="icon-badge">
+            <div className="icon-badge" aria-hidden="true">
               <Layers size={20} />
             </div>
             <Text as="h2" size={3} weight="semibold">
@@ -80,12 +82,14 @@ export function VisualsPage() {
               </div>
             ))}
           </Grid>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Border Radius System */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Row gap={2} align="center">
-            <div className="icon-badge">
+            <div className="icon-badge" aria-hidden="true">
               <Square size={20} />
             </div>
             <Text as="h2" size={3} weight="semibold">
@@ -126,12 +130,14 @@ export function VisualsPage() {
               </Column>
             ))}
           </Grid>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Color Gradients Showcase */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Row gap={2} align="center">
-            <div className="icon-badge">
+            <div className="icon-badge" aria-hidden="true">
               <Droplet size={20} />
             </div>
             <Text as="h2" size={3} weight="semibold">
@@ -179,12 +185,14 @@ export function VisualsPage() {
               </Box>
             ))}
           </Grid>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Motion & Transitions */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Row gap={2} align="center">
-            <div className="icon-badge">
+            <div className="icon-badge" aria-hidden="true">
               <Zap size={20} />
             </div>
             <Text as="h2" size={3} weight="semibold">
@@ -277,12 +285,13 @@ export function VisualsPage() {
               75% { transform: translateY(-5px); }
             }
           `}</style>
-        </Column>
+        </Box>
 
         {/* Typography Showcase */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Row gap={2} align="center">
-            <div className="icon-badge">
+            <div className="icon-badge" aria-hidden="true">
               <Type size={20} />
             </div>
             <Text as="h2" size={3} weight="semibold">
@@ -316,12 +325,14 @@ export function VisualsPage() {
               </div>
             ))}
           </Column>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Spacing Visualization */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Row gap={2} align="center">
-            <div className="icon-badge">
+            <div className="icon-badge" aria-hidden="true">
               <Ruler size={20} />
             </div>
             <Text as="h2" size={3} weight="semibold">
@@ -364,12 +375,14 @@ export function VisualsPage() {
               </Row>
             ))}
           </Column>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Interactive States */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Row gap={2} align="center">
-            <div className="icon-badge">
+            <div className="icon-badge" aria-hidden="true">
               <ToggleRight size={20} />
             </div>
             <Text as="h2" size={3} weight="semibold">
@@ -415,10 +428,12 @@ export function VisualsPage() {
               </div>
             ))}
           </Grid>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Accessibility in Design */}
-        <div className="accent-card accent-card--featured">
+        <Box as="section" style={{ display: "contents" }}>
+          <div className="accent-card accent-card--featured">
           <Column gap={3}>
             <Row gap={2} align="center">
               <div className="icon-badge">
@@ -504,8 +519,10 @@ export function VisualsPage() {
               })}
             </Grid>
           </Column>
-        </div>
+          </div>
+        </Box>
       </Column>
-    </Container>
+      </Container>
+    </Box>
   );
 }
