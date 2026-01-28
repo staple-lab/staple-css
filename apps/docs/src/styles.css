@@ -361,17 +361,16 @@ pre {
 }
 
 /* Full-width for interactive builder pages */
-.app-main-content > div:first-child.builder-page-wrapper {
-  max-width: 100%;
+.builder-page-wrapper {
+  max-width: 100% !important;
+  width: 100%;
 }
 
-/* Hide table of contents on token studio page */
-.app-main-content > .builder-page-wrapper ~ .table-of-contents,
-.builder-page-wrapper ~ .table-of-contents {
-  display: none !important;
+.app-main-content > .builder-page-wrapper {
+  max-width: 100% !important;
 }
 
-/* When builder page is active, hide TOC and make main full width */
+/* Hide table of contents when builder page is present */
 .app-main-content:has(.builder-page-wrapper) > .table-of-contents {
   display: none !important;
 }

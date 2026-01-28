@@ -5,11 +5,13 @@
   top: 60px;
   height: calc(100vh - 60px);
   overflow-y: auto;
+  overflow-x: hidden;
   background: var(--st-color-background);
   border-right: 1px solid var(--st-color-border);
   width: 250px;
   flex-shrink: 0;
   z-index: 10;
+  padding-right: 0;
 }
 
 
