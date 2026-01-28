@@ -368,8 +368,14 @@ pre {
 }
 
 /* Hide table of contents on token studio page */
+.app-main-content > .builder-page-wrapper ~ .table-of-contents,
 .builder-page-wrapper ~ .table-of-contents {
-  display: none;
+  display: none !important;
+}
+
+/* When builder page is active, hide TOC and make main full width */
+.app-main-content:has(.builder-page-wrapper) > .table-of-contents {
+  display: none !important;
 }
 
 /* Main content responsive padding and layout */
