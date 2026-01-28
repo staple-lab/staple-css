@@ -115,7 +115,7 @@ export function App() {
       <div className="app-content-wrapper">
         <SidebarNav />
         <main className="app-main">
-          <div style={{ paddingBottom: "var(--st-space-2)" }}>
+          <div style={{ paddingBottom: "var(--st-space-4)" }}>
             <Breadcrumb />
           </div>
           <div className="app-main-content">
