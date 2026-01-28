@@ -1,27 +1,56 @@
 /**
- * Guides Page - Premium Card Layout
- * Used with Staple components for consistent styling
+ * Guides Page - World-Class Documentation Design
+ * Tailwind docs-level premium aesthetic with Solarpunk colors
  */
 
 .guides-page {
   background: var(--st-color-background);
 }
 
-/* Responsive card adjustments */
+.guides-hero {
+  border-bottom: 1px solid var(--st-color-border);
+}
+
+/* Guide cards with smooth interactions */
 .guide-card {
-  transition: all 150ms ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.guide-card:hover {
-  transform: translateY(-2px);
+.guide-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0;
+  transition: opacity 150ms ease;
 }
 
+.guide-card:hover::before {
+  opacity: 0.1;
+}
+
+/* Reduce motion support */
 @media (prefers-reduced-motion: reduce) {
   .guide-card {
-    transition: none;
+    transition: none !important;
   }
 
   .guide-card:hover {
-    transform: none;
+    transform: none !important;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .guides-hero {
+    padding: var(--st-space-6) var(--st-space-4);
+  }
+
+  .guide-card {
+    padding: var(--st-space-4) !important;
   }
 }
