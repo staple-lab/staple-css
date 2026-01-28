@@ -80,6 +80,45 @@ h5, h6 {
   font-size: var(--st-font-size-2);
 }
 
+/* Lists */
+ul, ol {
+  margin: var(--st-space-4) 0;
+  padding-left: var(--st-space-6);
+  color: var(--st-color-text);
+}
+
+ul li, ol li {
+  margin-bottom: var(--st-space-2);
+  line-height: var(--st-leading-relaxed);
+}
+
+ul ul, ul ol, ol ul, ol ol {
+  margin-top: var(--st-space-2);
+  margin-bottom: var(--st-space-2);
+}
+
+/* Blockquote */
+blockquote {
+  margin: var(--st-space-6) 0;
+  padding: var(--st-space-4) var(--st-space-5);
+  padding-left: calc(var(--st-space-5) - 3px);
+  border-left: 3px solid var(--st-color-primary);
+  background: rgba(42, 125, 82, 0.04);
+  border-radius: var(--st-radius-1);
+  font-style: italic;
+  color: var(--st-color-text-muted);
+}
+
+blockquote p {
+  margin: 0;
+  line-height: var(--st-leading-relaxed);
+}
+
+blockquote p + p {
+  margin-top: var(--st-space-3);
+}
+
+/* Code styling */
 code,
 pre {
   font-family: var(--st-font-mono);
@@ -92,6 +131,7 @@ code {
   background-color: var(--st-color-surface);
   border-radius: var(--st-radius-1);
   border: 1px solid var(--st-color-border-muted);
+  color: var(--st-color-primary);
 }
 
 pre {
