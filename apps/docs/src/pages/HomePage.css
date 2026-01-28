@@ -89,8 +89,9 @@
 
 .cta-primary {
   background: var(--st-color-primary);
-  color: white;
+  color: #ffffff;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  font-weight: 700;
 }
 
 .cta-primary:hover {
@@ -383,8 +384,9 @@
 
 .link-button.primary {
   background: var(--st-color-primary);
-  color: white;
+  color: #ffffff;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  font-weight: 700;
 }
 
 .link-button.primary:hover {
