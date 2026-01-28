@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, Link } from "react-router-dom";
+import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { Container, Row, Text } from "@staple-css/primitives/full";
 import { Monitor, Sun, Moon } from "lucide-react";
 import { HomePageNew as HomePage } from "./pages/HomePageNew";
@@ -33,6 +33,12 @@ function getSystemTheme(): "light" | "dark" {
 export function App() {
   const [theme, setTheme] = useState<Theme>("system");
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(getSystemTheme);
+  const location = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [location.pathname]);
 
   // Listen for system theme changes
   useEffect(() => {
