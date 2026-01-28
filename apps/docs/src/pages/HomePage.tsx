@@ -72,9 +72,9 @@ const SecondaryButton = (props: any) => (
 
 export function HomePage() {
   return (
-    <Box style={{ minHeight: "100vh" }}>
+    <Box as="main" style={{ minHeight: "100vh" }}>
       {/* Hero Section - Premium gradient background */}
-      <Box style={{
+      <Box as="section" style={{
         background: "linear-gradient(135deg, var(--st-color-primary) 0%, var(--st-color-primary-dark, #1a5a8f) 100%)",
         color: "white",
         padding: "var(--st-space-8) var(--st-space-4)",
@@ -83,16 +83,18 @@ export function HomePage() {
         width: "100%",
         boxSizing: "border-box",
       }}>
-        <Box style={{
-          position: "absolute",
-          top: "0",
-          left: "0",
-          right: "0",
-          bottom: "0",
-          opacity: "0.1",
-          backgroundImage: "radial-gradient(circle at 20% 50%, white 0%, transparent 50%), radial-gradient(circle at 80% 80%, white 0%, transparent 50%)",
-          pointerEvents: "none",
-        }} />
+        <Box
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: "0",
+            left: "0",
+            right: "0",
+            bottom: "0",
+            opacity: "0.1",
+            backgroundImage: "radial-gradient(circle at 20% 50%, white 0%, transparent 50%), radial-gradient(circle at 80% 80%, white 0%, transparent 50%)",
+            pointerEvents: "none",
+          }} />
 
         <Container size="lg" style={{ position: "relative", zIndex: 1 }}>
           <Column gap={6} align="center">
@@ -150,7 +152,7 @@ export function HomePage() {
       </Box>
 
       {/* Features Section - What You Get */}
-      <Box style={{ background: "var(--st-color-surface)", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
+      <Box as="section" style={{ background: "var(--st-color-surface)", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={8}>
             <Column gap={2} style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto" }}>
@@ -187,18 +189,20 @@ export function HomePage() {
                       alignItems: "center",
                       gap: "11px"
                     }}>
-                      <Box style={{
-                        width: "32px",
-                        height: "32px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        background: "var(--st-color-primary)",
-                        color: "white",
-                        borderRadius: "6px",
-                        flexShrink: 0,
-                        fontSize: "16px"
-                      }}>
+                      <Box
+                        aria-hidden="true"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background: "var(--st-color-primary)",
+                          color: "white",
+                          borderRadius: "6px",
+                          flexShrink: 0,
+                          fontSize: "16px"
+                        }}>
                         <IconComponent size={16} strokeWidth={1.5} />
                       </Box>
                       <Text weight="bold" size={2} style={{ fontSize: "17px", fontWeight: 700, margin: 0, lineHeight: "1.3", fontFamily: "'Courier New', monospace" }}>{feature.title}</Text>
@@ -245,7 +249,7 @@ export function HomePage() {
       </Box>
 
       {/* Comparison Section */}
-      <Box style={{ background: "var(--st-color-surface-secondary, rgba(0,0,0,0.02))", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
+      <Box as="section" style={{ background: "var(--st-color-surface-secondary, rgba(0,0,0,0.02))", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={6}>
             <Column gap={2}>
@@ -261,10 +265,10 @@ export function HomePage() {
               }}>
                 <thead>
                   <tr style={{ borderBottom: "2px solid var(--st-color-border)" }}>
-                    <th style={{ padding: "12px", textAlign: "left", fontWeight: "600" }}>Feature</th>
-                    <th style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>staple-css</th>
-                    <th style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>Tailwind</th>
-                    <th style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>Chakra UI</th>
+                    <th scope="col" style={{ padding: "12px", textAlign: "left", fontWeight: "600" }}>Feature</th>
+                    <th scope="col" style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>staple-css</th>
+                    <th scope="col" style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>Tailwind</th>
+                    <th scope="col" style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>Chakra UI</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -300,18 +304,20 @@ export function HomePage() {
       </Box>
 
       {/* Interactive Playground */}
-      <Container size="lg" style={{ padding: "var(--st-space-8) var(--st-space-4)" }}>
-        <Column gap={6} id="playground">
-          <Column gap={2}>
-            <Text as="h2" size={5} weight="bold">Try It Live</Text>
-            <Text tone="muted">Interact with real components. Switch examples, view code, tweak props.</Text>
+      <Box as="section" style={{ padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
+        <Container size="lg">
+          <Column gap={6} id="playground">
+            <Column gap={2}>
+              <Text as="h2" size={5} weight="bold">Try It Live</Text>
+              <Text tone="muted">Interact with real components. Switch examples, view code, tweak props.</Text>
+            </Column>
+            <InteractivePlayground />
           </Column>
-          <InteractivePlayground />
-        </Column>
-      </Container>
+        </Container>
+      </Box>
 
       {/* Principles Section */}
-      <Box style={{ background: "var(--st-color-surface-secondary, rgba(0,0,0,0.02))", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
+      <Box as="section" style={{ background: "var(--st-color-surface-secondary, rgba(0,0,0,0.02))", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={6}>
             <Column gap={2}>
@@ -361,7 +367,7 @@ export function HomePage() {
       </Box>
 
       {/* Getting Started Section */}
-      <Box style={{ background: "var(--st-color-surface)", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
+      <Box as="section" style={{ background: "var(--st-color-surface)", padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={6}>
             <Column gap={2}>
@@ -436,8 +442,9 @@ export function HomePage() {
       </Box>
 
       {/* Use Cases Section */}
-      <Container size="lg" style={{ padding: "var(--st-space-8) var(--st-space-4)" }}>
-        <Column gap={6}>
+      <Box as="section" style={{ padding: "var(--st-space-8) var(--st-space-4)", width: "100%", boxSizing: "border-box" }}>
+        <Container size="lg">
+          <Column gap={6}>
           <Column gap={2}>
             <Text as="h2" size={5} weight="bold">Perfect For</Text>
             <Text tone="muted">Use cases where staple-css excels</Text>
@@ -481,18 +488,20 @@ export function HomePage() {
                   e.currentTarget.style.transform = "translateY(0) translateX(0)";
                   e.currentTarget.style.boxShadow = "none";
                 }}>
-                  <Box style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "4px",
-                    background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "white",
-                    flexShrink: 0,
-                    marginTop: "2px"
-                  }}>
+                  <Box
+                    aria-hidden="true"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "4px",
+                      background: "linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "white",
+                      flexShrink: 0,
+                      marginTop: "2px"
+                    }}>
                     <IconComponent size={20} strokeWidth={1.5} />
                   </Box>
                   <Column gap={2}>
@@ -504,10 +513,11 @@ export function HomePage() {
             })}
           </div>
         </Column>
-      </Container>
+        </Container>
+      </Box>
 
       {/* CTA Section */}
-      <Box style={{ background: "linear-gradient(135deg, var(--st-color-primary) 0%, #1a5a8f 100%)", padding: "var(--st-space-8) var(--st-space-4)", color: "white", width: "100%", boxSizing: "border-box" }}>
+      <Box as="section" style={{ background: "linear-gradient(135deg, var(--st-color-primary) 0%, #1a5a8f 100%)", padding: "var(--st-space-8) var(--st-space-4)", color: "white", width: "100%", boxSizing: "border-box" }}>
         <Container size="lg">
           <Column gap={6} align="center">
             <Column gap={2} align="center">
