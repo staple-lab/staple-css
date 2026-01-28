@@ -367,6 +367,11 @@ pre {
   max-width: 100%;
 }
 
+/* Hide table of contents on token studio page */
+.builder-page-wrapper ~ .table-of-contents {
+  display: none;
+}
+
 /* Main content responsive padding and layout */
 @media (max-width: 1400px) {
   .app-main-content > div:first-child {

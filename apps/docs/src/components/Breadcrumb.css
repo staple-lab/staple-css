@@ -5,7 +5,7 @@
 
 .breadcrumb {
   padding: var(--st-space-4) var(--st-space-8);
-  padding-bottom: calc(var(--st-space-4) + var(--st-space-2));
+  padding-bottom: var(--st-space-6);
   background-color: var(--st-color-background);
   border-bottom: 1px solid var(--st-color-border);
   font-size: var(--st-font-size-0);
