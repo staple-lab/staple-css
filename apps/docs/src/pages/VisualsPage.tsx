@@ -49,37 +49,39 @@ export function VisualsPage() {
 
           <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={3}>
             {[
-              { level: 0, description: "Flat - No shadow", shadow: "none" },
-              { level: 1, description: "Subtle - Minimal elevation", shadow: "var(--st-shadow-1)" },
-              { level: 2, description: "Raised - Card elevation", shadow: "var(--st-shadow-2)" },
-              { level: 3, description: "Floating - Dropdown/modal", shadow: "var(--st-shadow-3)" },
-              { level: 4, description: "Lifted - Emphasis", shadow: "var(--st-shadow-4)" },
-              { level: 5, description: "Prominent - Top layer", shadow: "var(--st-shadow-5)" },
+              { level: 1, description: "Subtle depth", shadow: "var(--st-shadow-1)" },
+              { level: 2, description: "Raised elements", shadow: "var(--st-shadow-2)" },
+              { level: 3, description: "Floating state", shadow: "var(--st-shadow-3)" },
+              { level: 4, description: "Emphasized layer", shadow: "var(--st-shadow-4)" },
+              { level: 5, description: "Topmost elements", shadow: "var(--st-shadow-5)" },
             ].map((item) => (
-              <div key={item.level} className="accent-card">
-                <Column gap={1} align="center">
-                  <Text size={0} weight="semibold">
-                    Level {item.level}
-                  </Text>
-                  <Text size={0} tone="muted" align="center">
-                    {item.description}
-                  </Text>
-                  <Text size={0} tone="muted" style={{ fontFamily: "var(--st-font-mono)" }}>
-                    shadow-{item.level}
-                  </Text>
+              <Box
+                key={item.level}
+                style={{
+                  padding: "var(--st-space-4)",
+                  border: "1px solid var(--st-color-border)",
+                  borderRadius: "var(--st-radius-2)",
+                  background: "var(--st-color-surface)",
+                }}
+              >
+                <Column gap={3}>
+                  <Column gap={1}>
+                    <Text weight="semibold">Level {item.level}</Text>
+                    <Text size={0} tone="muted">{item.description}</Text>
+                  </Column>
+                  <Box
+                    style={{
+                      background: "var(--st-color-surface)",
+                      padding: "var(--st-space-4)",
+                      borderRadius: "var(--st-radius-1)",
+                      boxShadow: item.shadow,
+                      border: "1px solid var(--st-color-border)",
+                      height: "80px",
+                      transition: "all var(--st-duration-normal) var(--st-easing-default)",
+                    }}
+                  />
                 </Column>
-                <Box
-                  style={{
-                    background: "var(--st-color-surface)",
-                    padding: "var(--st-space-4)",
-                    borderRadius: "var(--st-radius-2)",
-                    boxShadow: item.shadow,
-                    transition: "all var(--st-duration-normal) var(--st-easing-default)",
-                    height: "100px",
-                    marginTop: "var(--st-space-2)",
-                  }}
-                />
-              </div>
+              </Box>
             ))}
           </Grid>
           </Column>
@@ -205,33 +207,21 @@ export function VisualsPage() {
 
           <Grid cols={{ base: 1, md: 2 }} gap={3}>
             {[
-              {
-                title: "Fade In",
-                description: "Gentle appearance animation",
-                duration: "200ms",
-                demo: "fade",
-              },
-              {
-                title: "Slide Up",
-                description: "Entrance from bottom",
-                duration: "300ms",
-                demo: "slide",
-              },
-              {
-                title: "Scale",
-                description: "Growth from center",
-                duration: "250ms",
-                demo: "scale",
-              },
-              {
-                title: "Bounce",
-                description: "Playful arrival",
-                duration: "500ms",
-                demo: "bounce",
-              },
+              { title: "Fade In", description: "Gentle appearance", duration: "200ms", demo: "fade" },
+              { title: "Slide Up", description: "Entrance from below", duration: "300ms", demo: "slide" },
+              { title: "Scale", description: "Growth from center", duration: "250ms", demo: "scale" },
+              { title: "Bounce", description: "Playful arrival", duration: "500ms", demo: "bounce" },
             ].map((motion) => (
-              <div key={motion.title} className="accent-card">
-                <Column gap={3} align="center">
+              <Box
+                key={motion.title}
+                style={{
+                  padding: "var(--st-space-4)",
+                  border: "1px solid var(--st-color-border)",
+                  borderRadius: "var(--st-radius-2)",
+                  background: "var(--st-color-surface)",
+                }}
+              >
+                <Column gap={4} align="center">
                   <Box
                     style={{
                       width: "60px",
@@ -249,18 +239,14 @@ export function VisualsPage() {
                     }}
                   />
                   <Column gap={1} align="center">
-                    <Text weight="semibold" size={1}>
-                      {motion.title}
-                    </Text>
-                    <Text size={0} tone="muted">
-                      {motion.description}
-                    </Text>
+                    <Text weight="semibold">{motion.title}</Text>
+                    <Text size={0} tone="muted">{motion.description}</Text>
                     <Text size={0} tone="muted" style={{ fontFamily: "var(--st-font-mono)" }}>
                       {motion.duration}
                     </Text>
                   </Column>
                 </Column>
-              </div>
+              </Box>
             ))}
           </Grid>
 
@@ -304,24 +290,22 @@ export function VisualsPage() {
 
           <Column gap={2}>
             {[
-              { size: "0", label: "12px - XS", text: "Extra small for captions" },
-              { size: "1", label: "14px - SM", text: "Small for secondary text" },
-              { size: "2", label: "16px - Base", text: "Base size for body copy" },
-              { size: "3", label: "18px - LG", text: "Large for subheadings" },
-              { size: "4", label: "20px - XL", text: "Extra large for headings" },
-              { size: "5", label: "24px - 2XL", text: "2XL for section headings" },
-              { size: "6", label: "32px - 3XL", text: "3XL for page titles" },
+              { size: "0", label: "12px - XS", text: "Extra small" },
+              { size: "1", label: "14px - SM", text: "Small text" },
+              { size: "2", label: "16px - Base", text: "Body copy" },
+              { size: "3", label: "18px - LG", text: "Subheadings" },
+              { size: "4", label: "20px - XL", text: "Headings" },
+              { size: "5", label: "24px - 2XL", text: "Section titles" },
+              { size: "6", label: "32px - 3XL", text: "Page titles" },
             ].map((item) => (
-              <div key={item.size} className="accent-card accent-card--compact">
-                <Row gap={3} align="center">
-                  <Text as="span" style={{ fontSize: `var(--st-font-size-${item.size})` }} weight="semibold">
-                    {item.label}
-                  </Text>
-                  <Text size={0} tone="muted">
-                    {item.text}
-                  </Text>
-                </Row>
-              </div>
+              <Row key={item.size} gap={3} align="center" style={{ padding: "var(--st-space-3)", border: "1px solid var(--st-color-border)", borderRadius: "var(--st-radius-1)", background: "var(--st-color-surface)", minWidth: "100px" }}>
+                <Text as="span" style={{ fontSize: `var(--st-font-size-${item.size})`, minWidth: "100px" }} weight="semibold">
+                  {item.label}
+                </Text>
+                <Text size={0} tone="muted">
+                  {item.text}
+                </Text>
+              </Row>
             ))}
           </Column>
           </Column>
@@ -395,8 +379,16 @@ export function VisualsPage() {
 
           <Grid cols={{ base: 1, md: 2 }} gap={3}>
             {["Default", "Hover", "Active", "Disabled"].map((state) => (
-              <div key={state} className="accent-card">
-                <Column gap={2} align="center">
+              <Box
+                key={state}
+                style={{
+                  padding: "var(--st-space-4)",
+                  border: "1px solid var(--st-color-border)",
+                  borderRadius: "var(--st-radius-2)",
+                  background: "var(--st-color-surface)",
+                }}
+              >
+                <Column gap={3} align="center">
                   <button
                     disabled={state === "Disabled"}
                     style={{
@@ -417,14 +409,14 @@ export function VisualsPage() {
                   >
                     Button {state}
                   </button>
-                  <Text size={0} tone="muted" align="center" style={{ lineHeight: "1.4" }}>
-                    {state === "Default" && "Base state, ready for interaction"}
-                    {state === "Hover" && "User hovers over element, shows readiness"}
-                    {state === "Active" && "Element is being clicked/pressed"}
-                    {state === "Disabled" && "Element is unavailable for interaction"}
+                  <Text size={0} tone="muted" align="center">
+                    {state === "Default" && "Base state"}
+                    {state === "Hover" && "Hover state"}
+                    {state === "Active" && "Clicked"}
+                    {state === "Disabled" && "Unavailable"}
                   </Text>
                 </Column>
-              </div>
+              </Box>
             ))}
           </Grid>
           </Column>
@@ -432,93 +424,47 @@ export function VisualsPage() {
 
         {/* Accessibility in Design */}
         <Box as="section" style={{ display: "contents" }}>
-          <div className="accent-card accent-card--featured">
           <Column gap={3}>
             <Row gap={2} align="center">
-              <div className="icon-badge">
-                <Eye size={20} />
-              </div>
+              <Eye size={20} style={{ color: "var(--st-color-primary)" }} />
               <Text as="h2" size={3} weight="semibold">
                 Visual Accessibility
               </Text>
             </Row>
             <Grid cols={{ base: 1, md: 2 }} gap={3}>
               {[
-                {
-                  icon: Eye,
-                  title: "Color Contrast",
-                  description: "All text meets WCAG AA standards (4.5:1 minimum) for readability",
-                },
-                {
-                  icon: Search,
-                  title: "Clear Focus",
-                  description: "Focus indicators are highly visible (2px outline, 2px offset)",
-                },
-                {
-                  icon: Wind,
-                  title: "Reduced Motion",
-                  description: "Respects prefers-reduced-motion preference for safer interactions",
-                },
-                {
-                  icon: Maximize2,
-                  title: "Touch Targets",
-                  description: "Interactive elements are 44px minimum (32px on mobile)",
-                },
-                {
-                  icon: Palette,
-                  title: "Not Color Alone",
-                  description: "Information is conveyed with icons, patterns, and text too",
-                },
-                {
-                  icon: Type,
-                  title: "Readable Text",
-                  description: "Line height and length optimized for dyslexia-friendly reading",
-                },
+                { icon: Eye, title: "Contrast", description: "WCAG AA 4.5:1+ for text" },
+                { icon: Search, title: "Focus", description: "Visible focus indicators" },
+                { icon: Wind, title: "Motion", description: "prefers-reduced-motion support" },
+                { icon: Maximize2, title: "Touch", description: "44px min tap targets" },
+                { icon: Palette, title: "Meaning", description: "Not color alone" },
+                { icon: Type, title: "Readability", description: "Optimized line height" },
               ].map((item) => {
                 const IconComponent = item.icon;
                 return (
-                  <div
+                  <Box
                     key={item.title}
                     style={{
+                      padding: "var(--st-space-4)",
                       background: "var(--st-color-surface)",
-                      padding: "var(--st-space-3)",
-                      borderRadius: "var(--st-radius-1)",
-                      borderLeft: "2px solid var(--st-color-primary)",
+                      border: "1px solid var(--st-color-border)",
+                      borderRadius: "var(--st-radius-2)",
                     }}
                   >
                     <Column gap={2}>
                       <Row gap={2} align="start">
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            width: "28px",
-                            height: "28px",
-                            background: "var(--st-gradient-primary-light)",
-                            borderRadius: "var(--st-radius-1)",
-                            flexShrink: 0,
-                            color: "var(--st-color-primary)",
-                          }}
-                        >
-                          <IconComponent size={16} />
-                        </div>
+                        <IconComponent size={16} style={{ color: "var(--st-color-primary)", flexShrink: 0, marginTop: "2px" }} />
                         <Column gap={1}>
-                          <Text weight="semibold" size={0}>
-                            {item.title}
-                          </Text>
-                          <Text size={0} tone="muted" style={{ lineHeight: "1.4" }}>
-                            {item.description}
-                          </Text>
+                          <Text weight="semibold" size={1}>{item.title}</Text>
+                          <Text size={0} tone="muted">{item.description}</Text>
                         </Column>
                       </Row>
                     </Column>
-                  </div>
+                  </Box>
                 );
               })}
             </Grid>
           </Column>
-          </div>
         </Box>
       </Column>
       </Container>

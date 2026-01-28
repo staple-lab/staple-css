@@ -15,82 +15,51 @@ export function ExamplesPage() {
           </Column>
         </Box>
 
-        {/* Email Card Example */}
+        {/* Quick Start Section */}
         <Box as="section" style={{ display: "contents" }}>
           <Column gap={3}>
-          <Text as="h2" size={5} weight="bold">Email Card</Text>
-          <div className="st-accent-card">
-            {/* Header */}
-            <Box pad={4} style={{ background: "var(--st-color-primary)" }}>
-              <Text weight="bold" style={{ color: "white" }}>Welcome to staple-css</Text>
-            </Box>
-            {/* Content */}
-            <Box pad={5}>
-              <Column gap={4}>
-                <Column gap={2}>
-                  <Text as="h3" size={4} weight="semibold">Get Started in Minutes</Text>
-                  <Text tone="muted">
-                    Install the package, import CSS, and start building. Choose your bundle size: 2.5 KB core or 8.23 KB full.
-                  </Text>
-                </Column>
-                <Row gap={3}>
-                  <button style={{
-                    padding: "var(--st-space-3) var(--st-space-6)",
-                    background: "var(--st-color-primary)",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "var(--st-radius-2)",
-                    fontWeight: "600",
-                    cursor: "pointer",
-                  }}>
-                    View Docs
-                  </button>
-                  <button style={{
-                    padding: "var(--st-space-3) var(--st-space-6)",
-                    background: "transparent",
-                    color: "var(--st-color-primary)",
-                    border: "2px solid var(--st-color-primary)",
-                    borderRadius: "var(--st-radius-2)",
-                    fontWeight: "600",
-                    cursor: "pointer",
-                  }}>
-                    Try Playground
-                  </button>
-                </Row>
-              </Column>
-            </Box>
-            {/* Footer */}
-            <Box pad={3} style={{ background: "var(--st-color-surface-secondary)", borderTop: "1px solid var(--st-color-border)" }}>
-              <Text size={1} tone="muted">© 2024 staple-css • MIT License</Text>
-            </Box>
-          </div>
+          <Text as="h2" size={5} weight="bold">Quick Start</Text>
+          <Column gap={3}>
+            <Text as="h3" size={4} weight="semibold">Get Started in Minutes</Text>
+            <Text tone="muted">
+              Install the package, import CSS, and start building. Choose your bundle size: 2.5 KB core or 8.23 KB full.
+            </Text>
+            <Row gap={3}>
+              <button className="btn btn-primary">
+                View Docs
+              </button>
+              <button className="btn btn-secondary">
+                Try Playground
+              </button>
+            </Row>
+          </Column>
           </Column>
         </Box>
 
-        {/* Feature Cards Grid */}
+        {/* Key Features */}
         <Box as="section" style={{ display: "contents" }}>
           <Column gap={3}>
-          <Text as="h2" size={5} weight="bold">Feature Showcase</Text>
-          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+          <Text as="h2" size={5} weight="bold">Key Features</Text>
+          <Grid cols={{ base: 1, md: 2 }} gap={4}>
             {[
-              { icon: Target, title: "Token-First", desc: "Design decisions as code. Type-safe props prevent invalid values.", color: "rgb(59, 130, 246)" },
-              { icon: Zap, title: "Ultra-Lightweight", desc: "2.5 KB default. 75% smaller than competitors. Zero runtime cost.", color: "rgb(234, 179, 8)" },
-              { icon: Lock, title: "Type-Safe", desc: "Full TypeScript support. Compile-time validation. IDE autocomplete.", color: "rgb(168, 85, 247)" },
-              { icon: Palette, title: "Beautiful by Default", desc: "Professional design system. Light/dark themes included.", color: "rgb(236, 72, 153)" },
-              { icon: Package, title: "Tree-Shakeable", desc: "Import only what you need. Per-component splitting.", color: "rgb(34, 197, 94)" },
-              { icon: Rocket, title: "Performance", desc: "Minimal overhead. Static CSS. Instant theme switching.", color: "rgb(239, 68, 68)" },
+              { icon: Target, title: "Token-First", desc: "Design decisions as code. Type-safe props prevent invalid values." },
+              { icon: Zap, title: "Ultra-Lightweight", desc: "2.5 KB default. 75% smaller than competitors." },
+              { icon: Lock, title: "Type-Safe", desc: "Full TypeScript support. Compile-time validation." },
+              { icon: Palette, title: "Beautiful by Default", desc: "Professional design system included." },
+              { icon: Package, title: "Tree-Shakeable", desc: "Import only what you need. Per-component splitting." },
+              { icon: Rocket, title: "Performance", desc: "Minimal overhead. Static CSS. Instant switching." },
             ].map((feature) => {
               const Icon = feature.icon;
               return (
-                <div key={feature.title} className="st-accent-card st-feature-card">
-                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": feature.color } as any}>
-                    <Icon size={20} strokeWidth={2} />
+                <Row key={feature.title} gap={3} align="start" style={{ padding: "var(--st-space-4)", borderRadius: "var(--st-radius-2)", background: "var(--st-color-surface)", border: "1px solid var(--st-color-border)" }}>
+                  <div style={{ width: "28px", height: "28px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <Icon size={20} strokeWidth={2} style={{ color: "var(--st-color-primary)" }} />
                   </div>
-                  <Column gap={2}>
-                    <Text weight="semibold" size={3}>{feature.title}</Text>
-                    <Text tone="muted" size={2}>{feature.desc}</Text>
+                  <Column gap={1}>
+                    <Text weight="semibold" size={2}>{feature.title}</Text>
+                    <Text tone="muted" size={1}>{feature.desc}</Text>
                   </Column>
-                </div>
+                </Row>
               );
             })}
           </Grid>
@@ -100,145 +69,97 @@ export function ExamplesPage() {
         {/* Form Example */}
         <Box as="section" style={{ display: "contents" }}>
           <Column gap={3}>
-          <Text as="h2" size={5} weight="bold">Login Form</Text>
-          <div className="st-accent-card" style={{ maxWidth: "400px" }}>
-            <Box pad={6}>
-              <Column gap={5}>
-                <Column gap={1}>
-                  <Text as="h3" size={4} weight="bold">Sign In</Text>
-                  <Text tone="muted">Enter your credentials to continue</Text>
-                </Column>
-
-                <Column gap={4}>
-                  <Column gap={2}>
-                    <Text as="label" weight="semibold" size={2}>Email</Text>
-                    <input
-                      type="email"
-                      placeholder="user@example.com"
-                      style={{
-                        width: "100%",
-                        padding: "var(--st-space-3) var(--st-space-4)",
-                        borderRadius: "var(--st-radius-2)",
-                        border: "1px solid var(--st-color-border)",
-                        fontSize: "var(--st-font-size-1)",
-                        fontFamily: "inherit",
-                      }}
-                    />
-                  </Column>
-
-                  <Column gap={2}>
-                    <Row justify="between" align="center">
-                      <Text as="label" weight="semibold" size={2}>Password</Text>
-                      <Text as="a" href="#" size={1} tone="primary" style={{ textDecoration: "none" }}>Forgot?</Text>
-                    </Row>
-                    <input
-                      type="password"
-                      placeholder="••••••••"
-                      style={{
-                        width: "100%",
-                        padding: "var(--st-space-3) var(--st-space-4)",
-                        borderRadius: "var(--st-radius-2)",
-                        border: "1px solid var(--st-color-border)",
-                        fontSize: "var(--st-font-size-1)",
-                        fontFamily: "inherit",
-                      }}
-                    />
-                  </Column>
-
-                  <label style={{ display: "flex", alignItems: "center", gap: "var(--st-space-2)", cursor: "pointer" }}>
-                    <input type="checkbox" />
-                    <Text size={2}>Remember me</Text>
-                  </label>
-                </Column>
-
-                <button style={{
-                  width: "100%",
-                  padding: "var(--st-space-3) var(--st-space-6)",
-                  background: "var(--st-color-primary)",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "var(--st-radius-2)",
-                  fontWeight: "600",
-                  fontSize: "var(--st-font-size-2)",
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                }}>
-                  Sign In
-                </button>
-
-                <Text size={1} tone="muted" align="center">
-                  Don't have an account? <Text as="a" href="#" tone="primary" style={{ textDecoration: "none", fontWeight: "600" }}>Sign up</Text>
-                </Text>
+          <Text as="h2" size={5} weight="bold">Form Example: Sign In</Text>
+          <Box style={{ maxWidth: "400px", padding: "var(--st-space-6)", border: "1px solid var(--st-color-border)", borderRadius: "var(--st-radius-2)" }}>
+            <Column gap={5}>
+              <Column gap={1}>
+                <Text size={3} weight="semibold">Enter your details</Text>
+                <Text tone="muted" size={1}>Continue to your dashboard</Text>
               </Column>
-            </Box>
-          </div>
+
+              <Column gap={4}>
+                <Column gap={2}>
+                  <Text as="label" weight="semibold" size={1}>Email</Text>
+                  <input
+                    type="email"
+                    placeholder="you@example.com"
+                    style={{
+                      width: "100%",
+                      padding: "var(--st-space-2) var(--st-space-3)",
+                      borderRadius: "var(--st-radius-1)",
+                      border: "1px solid var(--st-color-border)",
+                      fontSize: "var(--st-font-size-2)",
+                      fontFamily: "inherit",
+                      boxSizing: "border-box",
+                    }}
+                  />
+                </Column>
+
+                <Column gap={2}>
+                  <Row justify="between" align="center">
+                    <Text as="label" weight="semibold" size={1}>Password</Text>
+                    <Text as="a" href="#" size={0} tone="primary" style={{ textDecoration: "none" }}>Reset</Text>
+                  </Row>
+                  <input
+                    type="password"
+                    placeholder="••••••••"
+                    style={{
+                      width: "100%",
+                      padding: "var(--st-space-2) var(--st-space-3)",
+                      borderRadius: "var(--st-radius-1)",
+                      border: "1px solid var(--st-color-border)",
+                      fontSize: "var(--st-font-size-2)",
+                      fontFamily: "inherit",
+                      boxSizing: "border-box",
+                    }}
+                  />
+                </Column>
+
+                <label style={{ display: "flex", alignItems: "center", gap: "var(--st-space-2)", cursor: "pointer" }}>
+                  <input type="checkbox" />
+                  <Text size={1}>Keep me signed in</Text>
+                </label>
+              </Column>
+
+              <button className="btn btn-primary" style={{ width: "100%" }}>
+                Sign In
+              </button>
+
+              <Text size={0} tone="muted" align="center">
+                New user? <Text as="a" href="#" tone="primary" style={{ textDecoration: "none", fontWeight: "600" }}>Create account</Text>
+              </Text>
+            </Column>
+          </Box>
           </Column>
         </Box>
 
         {/* Dashboard Example */}
         <Box as="section" style={{ display: "contents" }}>
           <Column gap={3}>
-          <Text as="h2" size={5} weight="bold">Dashboard Widget</Text>
+          <Text as="h2" size={5} weight="bold">Dashboard Metrics</Text>
           <Grid cols={{ base: 1, md: 2 }} gap={4}>
-            <div className="st-accent-card st-dashboard-card">
-              <Column gap={3}>
-                <Row justify="between" align="center">
-                  <Column gap={1}>
-                    <Text tone="muted" size={1}>Total Users</Text>
-                    <Text as="h3" size={5} weight="bold">12,345</Text>
+            {[
+              { label: "Total Users", value: "12,345", icon: Users, trend: "↑ 12% from last month", color: "rgb(59, 130, 246)" },
+              { label: "Revenue", value: "$48,230", icon: DollarSign, trend: "↑ 8% from last month", color: "rgb(34, 197, 94)" },
+              { label: "Conversion", value: "3.24%", icon: TrendingUp, trend: "↓ 0.5% from last month", color: "rgb(234, 179, 8)" },
+              { label: "Sessions", value: "1,892", icon: Circle, trend: "↑ 4% from average", color: "rgb(6, 182, 212)" },
+            ].map((metric) => {
+              const Icon = metric.icon;
+              return (
+                <Box key={metric.label} style={{ padding: "var(--st-space-4)", border: "1px solid var(--st-color-border)", borderRadius: "var(--st-radius-2)", background: "var(--st-color-surface)" }}>
+                  <Column gap={3}>
+                    <Row justify="between" align="start">
+                      <Column gap={2}>
+                        <Text tone="muted" size={1}>{metric.label}</Text>
+                        <Text size={5} weight="bold">{metric.value}</Text>
+                      </Column>
+                      <Icon size={20} strokeWidth={2} style={{ color: metric.color, opacity: 0.6 }} />
+                    </Row>
+                    <Text size={0} tone={metric.trend.includes("↑") ? "success" : "danger"}>{metric.trend}</Text>
                   </Column>
-                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": "rgb(59, 130, 246)" } as any}>
-                    <Users size={20} strokeWidth={2} />
-                  </div>
-                </Row>
-                <Text size={1} tone="success">↑ 12% from last month</Text>
-              </Column>
-            </div>
-
-            <div className="st-accent-card st-dashboard-card">
-              <Column gap={3}>
-                <Row justify="between" align="center">
-                  <Column gap={1}>
-                    <Text tone="muted" size={1}>Revenue</Text>
-                    <Text as="h3" size={5} weight="bold">$48,230</Text>
-                  </Column>
-                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": "rgb(34, 197, 94)" } as any}>
-                    <DollarSign size={20} strokeWidth={2} />
-                  </div>
-                </Row>
-                <Text size={1} tone="success">↑ 8% from last month</Text>
-              </Column>
-            </div>
-
-            <div className="st-accent-card st-dashboard-card">
-              <Column gap={3}>
-                <Row justify="between" align="center">
-                  <Column gap={1}>
-                    <Text tone="muted" size={1}>Conversion Rate</Text>
-                    <Text as="h3" size={5} weight="bold">3.24%</Text>
-                  </Column>
-                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": "rgb(234, 179, 8)" } as any}>
-                    <TrendingUp size={20} strokeWidth={2} />
-                  </div>
-                </Row>
-                <Text size={1} tone="danger">↓ 0.5% from last month</Text>
-              </Column>
-            </div>
-
-            <div className="st-accent-card st-dashboard-card">
-              <Column gap={3}>
-                <Row justify="between" align="center">
-                  <Column gap={1}>
-                    <Text tone="muted" size={1}>Active Sessions</Text>
-                    <Text as="h3" size={5} weight="bold">1,892</Text>
-                  </Column>
-                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": "rgb(6, 182, 212)" } as any}>
-                    <Circle size={20} strokeWidth={2} />
-                  </div>
-                </Row>
-                <Text size={1} tone="success">↑ 4% from average</Text>
-              </Column>
-            </div>
+                </Box>
+              );
+            })}
           </Grid>
           </Column>
         </Box>
@@ -247,37 +168,33 @@ export function ExamplesPage() {
         <Box as="section" style={{ display: "contents" }}>
           <Column gap={4}>
           <Text as="h2" size={5} weight="bold">Best Practices</Text>
-          <Grid cols={{ base: 1, md: 2 }} gap={4}>
-            <div className="st-accent-card st-practices-card" style={{ background: "var(--st-color-surface-secondary)" }}>
-              <Column gap={3}>
-                <Row gap={2} align="center">
-                  <CheckCircle2 size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} />
-                  <Text weight="semibold" size={3}>Do</Text>
-                </Row>
-                <Column gap={2} style={{ fontSize: "14px" }}>
-                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Use token scales: pad={"{0-8}"}</Text></Row>
-                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Compose layouts with Box & Flex</Text></Row>
-                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Use semantic token keys</Text></Row>
-                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Leverage type safety</Text></Row>
-                </Column>
+          <Row gap={4}>
+            <Column gap={3} style={{ flex: 1, paddingLeft: "var(--st-space-4)", borderLeft: "3px solid var(--st-color-success)" }}>
+              <Row gap={2} align="center">
+                <CheckCircle2 size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} />
+                <Text weight="semibold" size={3}>Do</Text>
+              </Row>
+              <Column gap={2}>
+                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text size={1}>Use token scales: pad={"{0-8}"}</Text></Row>
+                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text size={1}>Compose with Box & Flex</Text></Row>
+                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text size={1}>Use semantic token keys</Text></Row>
+                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text size={1}>Leverage type safety</Text></Row>
               </Column>
-            </div>
+            </Column>
 
-            <div className="st-accent-card st-practices-card" style={{ background: "var(--st-color-surface-secondary)" }}>
-              <Column gap={3}>
-                <Row gap={2} align="center">
-                  <XCircle size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} />
-                  <Text weight="semibold" size={3}>Don't</Text>
-                </Row>
-                <Column gap={2} style={{ fontSize: "14px" }}>
-                  <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Use raw pixel values</Text></Row>
-                  <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Create custom paddings</Text></Row>
-                  <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Hardcode colors</Text></Row>
-                  <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Ignore TypeScript warnings</Text></Row>
-                </Column>
+            <Column gap={3} style={{ flex: 1, paddingLeft: "var(--st-space-4)", borderLeft: "3px solid var(--st-color-danger)" }}>
+              <Row gap={2} align="center">
+                <XCircle size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} />
+                <Text weight="semibold" size={3}>Don't</Text>
+              </Row>
+              <Column gap={2}>
+                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text size={1}>Use raw pixel values</Text></Row>
+                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text size={1}>Create custom paddings</Text></Row>
+                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text size={1}>Hardcode colors</Text></Row>
+                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text size={1}>Ignore TypeScript warnings</Text></Row>
               </Column>
-            </div>
-          </Grid>
+            </Column>
+          </Row>
           </Column>
         </Box>
 
