@@ -1,0 +1,153 @@
+/* Code Block Component */
+
+.code-block {
+  background: var(--st-color-background);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  overflow: hidden;
+  margin: var(--st-space-4) 0;
+  position: relative;
+}
+
+/* Code Block Pre */
+.code-block-pre {
+  margin: 0;
+  padding: var(--st-space-4);
+  overflow-x: auto;
+  font-size: var(--st-font-size-1);
+  font-family: var(--st-font-mono);
+  line-height: 1.5;
+}
+
+.code-block-pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.code-block-pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.code-block-pre::-webkit-scrollbar-thumb {
+  background: var(--st-color-border);
+  border-radius: 3px;
+}
+
+.code-block-pre::-webkit-scrollbar-thumb:hover {
+  background: var(--st-color-text-muted);
+}
+
+/* Code Copy Button */
+.code-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-2);
+  padding: var(--st-space-2) var(--st-space-3);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--st-color-text-muted);
+  cursor: pointer;
+  font-size: var(--st-font-size-0);
+  font-weight: 500;
+  border-radius: var(--st-radius-1);
+  transition: all 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.code-copy-btn:hover {
+  background: var(--st-color-surface-raised);
+  color: var(--st-color-primary);
+  border-color: var(--st-color-primary);
+}
+
+.code-copy-btn:focus-visible {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+.code-copy-btn.copied {
+  background: var(--st-color-success);
+  color: white;
+  border-color: var(--st-color-success);
+}
+
+.copy-text {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .copy-text {
+    display: inline;
+  }
+}
+
+/* Code Syntax Highlighting Colors (Solarpunk theme) */
+.code-block code {
+  color: var(--st-color-text);
+}
+
+/* Keywords - Primary color */
+.language-css .keyword,
+.language-jsx .keyword,
+.language-ts .keyword,
+.language-tsx .keyword {
+  color: var(--st-color-primary);
+  font-weight: 500;
+}
+
+/* Strings - Warm gold */
+.language-css .string,
+.language-jsx .string,
+.language-ts .string,
+.language-tsx .string {
+  color: #d4a574;
+}
+
+/* Comments - Muted */
+.language-css .comment,
+.language-jsx .comment,
+.language-ts .comment,
+.language-tsx .comment {
+  color: var(--st-color-text-muted);
+  font-style: italic;
+}
+
+/* Property names - Text */
+.language-css .property,
+.language-json .property {
+  color: var(--st-color-text);
+}
+
+/* Values */
+.language-css .value,
+.language-json .value {
+  color: #d4a574;
+}
+
+/* Line numbers - Muted background */
+.code-block-pre .line-number {
+  display: inline-block;
+  width: 2.5em;
+  text-align: right;
+  margin-right: var(--st-space-3);
+  color: var(--st-color-text-muted);
+  user-select: none;
+  opacity: 0.5;
+}
+
+/* Responsive: Hide copy text on mobile */
+@media (max-width: 480px) {
+  .code-copy-btn {
+    padding: var(--st-space-2);
+  }
+
+  .code-copy-btn svg {
+    margin: 0;
+  }
+
+  .copy-text {
+    display: none !important;
+  }
+}
+
+/* Dark mode: Automatic via CSS variables */
