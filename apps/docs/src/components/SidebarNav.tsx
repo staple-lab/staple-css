@@ -56,7 +56,7 @@ export function SidebarNav() {
 
   return (
     <Box as="nav" className="sidebar-nav">
-      <Column gap={6} style={{ padding: 'var(--st-space-4)' }}>
+      <Column gap={4} style={{ padding: 'var(--st-space-4)' }}>
         {navigationStructure.map((section) => (
           <SidebarSection key={section.title} title={section.title}>
             {section.items.map((item) => (
@@ -83,7 +83,7 @@ function SidebarSection({
   children: React.ReactNode;
 }) {
   return (
-    <Column gap={2}>
+    <Column gap={3}>
       <Text
         size={0}
         weight="semibold"
@@ -97,7 +97,7 @@ function SidebarSection({
       >
         {title}
       </Text>
-      <Column gap={0}>{children}</Column>
+      <Column gap={1}>{children}</Column>
     </Column>
   );
 }
