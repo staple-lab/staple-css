@@ -67,7 +67,6 @@ function PropsTable({
 
 export function PrimitivesPage() {
   return (
-    <Box as="main">
       <Container size="lg">
         <Column gap={8}>
         <Column gap={2}>
@@ -626,6 +625,5 @@ import { Box, Column, Row, Flex, Grid, Container, Text, Card } from "@staple-css
         </Box>
       </Column>
     </Container>
-    </Box>
   );
 }

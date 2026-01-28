@@ -6,7 +6,6 @@ import {
   Zap,
   Smartphone,
   Accessibility,
-  Box,
   Settings,
 } from "lucide-react";
 import "./GuidesPage.css";

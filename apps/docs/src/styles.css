@@ -69,6 +69,8 @@ pre {
   z-index: 100;
   display: flex;
   align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow var(--st-duration-fast) var(--st-easing-default);
 }
 
 /* Responsive header padding */
@@ -89,8 +91,14 @@ pre {
 /* Section header with accent underline */
 .section-header {
   padding-bottom: var(--st-space-3);
-  border-bottom: 2px solid var(--accent-light);
-  margin-bottom: var(--st-space-4);
+  border-bottom: 2px solid var(--st-color-primary);
+  margin-bottom: var(--st-space-6);
+  margin-top: var(--st-space-8);
+}
+
+/* First section header - no top margin */
+.section-header:first-of-type {
+  margin-top: 0;
 }
 
 /* Highlight box with accent styling */
@@ -154,17 +162,25 @@ pre {
 
 .app-main {
   flex: 1;
-  padding: var(--st-space-8) 0 var(--st-space-8) var(--st-space-8);
+  padding: var(--st-space-8) var(--st-space-8) var(--st-space-8) var(--st-space-8);
   margin-left: 280px;
   display: flex;
   flex-direction: column;
   background: var(--st-color-background);
+  max-width: calc(100% - 280px);
 }
 
 /* Content area with TOC */
 .app-main-content {
   display: flex;
   gap: var(--st-space-8);
+  flex: 1;
+  width: 100%;
+}
+
+/* Main content wrapper - constrains width for readability */
+.app-main-content > div:first-child {
+  max-width: 90ch;
   flex: 1;
 }
 

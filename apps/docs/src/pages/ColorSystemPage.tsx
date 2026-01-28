@@ -101,6 +101,7 @@ export function ColorSystemPage() {
               </Text>
             </Box>
           </Column>
+          </Box>
 
           {/* Gradients */}
           <Box as="section" style={{ display: "contents" }}>
