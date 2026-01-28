@@ -109,9 +109,10 @@
 
 .nav-category-label.active {
   color: var(--st-color-primary);
-  background: transparent;
+  background: rgba(42, 125, 82, 0.05);
   border-left: 3px solid var(--st-color-primary);
   padding-left: calc(var(--st-space-3) - 3px);
+  border-radius: var(--st-radius-1);
 }
 
 .nav-category-label .chevron {
@@ -167,10 +168,11 @@
 }
 
 .nav-link.active {
-  background: transparent;
+  background: rgba(42, 125, 82, 0.08);
   color: var(--st-color-primary);
   border-left-color: var(--st-color-primary);
   font-weight: 600;
+  border-radius: var(--st-radius-1);
 }
 
 .nav-link.child {

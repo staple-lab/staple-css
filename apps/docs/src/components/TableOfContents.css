@@ -82,7 +82,8 @@
   color: var(--st-color-primary);
   border-left-color: var(--st-color-primary);
   font-weight: 600;
-  background: transparent;
+  background: rgba(42, 125, 82, 0.08);
+  border-radius: var(--st-radius-1);
 }
 
 .toc-text {
