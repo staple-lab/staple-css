@@ -659,6 +659,217 @@ pre {
   outline-offset: 2px;
 }
 
+/* Tertiary/Text button - ITER 39 */
+.btn-tertiary,
+.btn-text {
+  padding: var(--st-space-2) var(--st-space-3);
+  border: none;
+  background-color: transparent;
+  color: var(--st-color-primary);
+  font-size: var(--st-font-size-1);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--st-space-2);
+  text-decoration: none;
+  border-radius: var(--st-radius-1);
+}
+
+.btn-tertiary:hover,
+.btn-text:hover {
+  background-color: rgba(42, 125, 82, 0.08);
+  color: #227a50;
+}
+
+.btn-tertiary:active,
+.btn-text:active {
+  background-color: rgba(42, 125, 82, 0.12);
+}
+
+.btn-tertiary:focus-visible,
+.btn-text:focus-visible {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+/* Button sizes - ITER 39 */
+.btn-sm {
+  padding: var(--st-space-2) var(--st-space-3);
+  font-size: var(--st-font-size-0);
+}
+
+.btn-lg {
+  padding: var(--st-space-4) var(--st-space-7);
+  font-size: var(--st-font-size-2);
+}
+
+.btn-icon {
+  padding: var(--st-space-2);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--st-radius-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Button with loading state */
+.btn:disabled,
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-tertiary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn:disabled:hover,
+.btn-primary:disabled:hover,
+.btn-secondary:disabled:hover,
+.btn-tertiary:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Danger button variant */
+.btn-danger {
+  padding: var(--st-space-3) var(--st-space-6);
+  border: none;
+  border-radius: var(--st-radius-2);
+  background-color: #ef4444;
+  color: white;
+  font-size: var(--st-font-size-1);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--st-duration-normal) var(--st-easing-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--st-space-2);
+  text-decoration: none;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.15);
+}
+
+.btn-danger:focus-visible {
+  outline: 2px solid #ef4444;
+  outline-offset: 2px;
+}
+
+/* Success button variant */
+.btn-success {
+  padding: var(--st-space-3) var(--st-space-6);
+  border: none;
+  border-radius: var(--st-radius-2);
+  background-color: #22c55e;
+  color: white;
+  font-size: var(--st-font-size-1);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--st-duration-normal) var(--st-easing-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--st-space-2);
+  text-decoration: none;
+}
+
+.btn-success:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+}
+
+.btn-success:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(34, 197, 94, 0.15);
+}
+
+.btn-success:focus-visible {
+  outline: 2px solid #22c55e;
+  outline-offset: 2px;
+}
+
+/* Button groups */
+.btn-group {
+  display: inline-flex;
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  overflow: hidden;
+}
+
+.btn-group .btn-primary,
+.btn-group .btn-secondary,
+.btn-group .btn-tertiary,
+.btn-group button {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  flex: 1;
+  padding: var(--st-space-2) var(--st-space-4);
+  background-color: var(--st-color-surface);
+  color: var(--st-color-text);
+  font-size: var(--st-font-size-1);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+  border-right: 1px solid var(--st-color-border);
+}
+
+.btn-group button:last-child {
+  border-right: none;
+}
+
+.btn-group button:hover {
+  background-color: rgba(42, 125, 82, 0.08);
+  color: var(--st-color-primary);
+}
+
+.btn-group button:active,
+.btn-group button.active {
+  background-color: var(--st-color-primary);
+  color: white;
+  border-color: var(--st-color-primary);
+}
+
+/* Button loading state animation */
+@keyframes btn-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.btn.is-loading {
+  position: relative;
+  color: transparent;
+}
+
+.btn.is-loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
 /* Code blocks */
 .code-block {
   background-color: var(--st-color-surface);
