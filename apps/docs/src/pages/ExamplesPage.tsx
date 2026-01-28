@@ -4,16 +4,20 @@ import "./ExamplesPage.css";
 
 export function ExamplesPage() {
   return (
-    <Container size="lg" style={{ padding: "var(--st-space-8) var(--st-space-4)" }}>
-      <Column gap={8}>
+    <Box as="main" style={{ padding: "var(--st-space-8) var(--st-space-4)" }}>
+      <Container size="lg">
+        <Column gap={8}>
         {/* Header */}
-        <Column gap={2}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={2}>
           <Text as="h1" size={6} weight="bold">Real-World Examples</Text>
           <Text tone="muted">Production-ready patterns and components built with staple-css</Text>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Email Card Example */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Text as="h2" size={5} weight="bold">Email Card</Text>
           <div className="st-accent-card">
             {/* Header */}
@@ -60,10 +64,12 @@ export function ExamplesPage() {
               <Text size={1} tone="muted">© 2024 staple-css • MIT License</Text>
             </Box>
           </div>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Feature Cards Grid */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Text as="h2" size={5} weight="bold">Feature Showcase</Text>
           <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
             {[
@@ -77,7 +83,7 @@ export function ExamplesPage() {
               const Icon = feature.icon;
               return (
                 <div key={feature.title} className="st-accent-card st-feature-card">
-                  <div className="st-icon-badge" style={{ "--icon-color": feature.color } as any}>
+                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": feature.color } as any}>
                     <Icon size={20} strokeWidth={2} />
                   </div>
                   <Column gap={2}>
@@ -88,10 +94,12 @@ export function ExamplesPage() {
               );
             })}
           </Grid>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Form Example */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Text as="h2" size={5} weight="bold">Login Form</Text>
           <div className="st-accent-card" style={{ maxWidth: "400px" }}>
             <Box pad={6}>
@@ -164,10 +172,12 @@ export function ExamplesPage() {
               </Column>
             </Box>
           </div>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Dashboard Example */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Text as="h2" size={5} weight="bold">Dashboard Widget</Text>
           <Grid cols={{ base: 1, md: 2 }} gap={4}>
             <div className="st-accent-card st-dashboard-card">
@@ -177,7 +187,7 @@ export function ExamplesPage() {
                     <Text tone="muted" size={1}>Total Users</Text>
                     <Text as="h3" size={5} weight="bold">12,345</Text>
                   </Column>
-                  <div className="st-icon-badge" style={{ "--icon-color": "rgb(59, 130, 246)" } as any}>
+                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": "rgb(59, 130, 246)" } as any}>
                     <Users size={20} strokeWidth={2} />
                   </div>
                 </Row>
@@ -192,7 +202,7 @@ export function ExamplesPage() {
                     <Text tone="muted" size={1}>Revenue</Text>
                     <Text as="h3" size={5} weight="bold">$48,230</Text>
                   </Column>
-                  <div className="st-icon-badge" style={{ "--icon-color": "rgb(34, 197, 94)" } as any}>
+                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": "rgb(34, 197, 94)" } as any}>
                     <DollarSign size={20} strokeWidth={2} />
                   </div>
                 </Row>
@@ -207,7 +217,7 @@ export function ExamplesPage() {
                     <Text tone="muted" size={1}>Conversion Rate</Text>
                     <Text as="h3" size={5} weight="bold">3.24%</Text>
                   </Column>
-                  <div className="st-icon-badge" style={{ "--icon-color": "rgb(234, 179, 8)" } as any}>
+                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": "rgb(234, 179, 8)" } as any}>
                     <TrendingUp size={20} strokeWidth={2} />
                   </div>
                 </Row>
@@ -222,7 +232,7 @@ export function ExamplesPage() {
                     <Text tone="muted" size={1}>Active Sessions</Text>
                     <Text as="h3" size={5} weight="bold">1,892</Text>
                   </Column>
-                  <div className="st-icon-badge" style={{ "--icon-color": "rgb(6, 182, 212)" } as any}>
+                  <div className="st-icon-badge" aria-hidden="true" style={{ "--icon-color": "rgb(6, 182, 212)" } as any}>
                     <Circle size={20} strokeWidth={2} />
                   </div>
                 </Row>
@@ -230,23 +240,25 @@ export function ExamplesPage() {
               </Column>
             </div>
           </Grid>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Best Practices */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={5} weight="bold">Best Practices</Text>
           <Grid cols={{ base: 1, md: 2 }} gap={4}>
             <div className="st-accent-card st-practices-card" style={{ background: "var(--st-color-surface-secondary)" }}>
               <Column gap={3}>
                 <Row gap={2} align="center">
-                  <CheckCircle2 size={20} strokeWidth={2} style={{ color: "var(--st-color-success)", flexShrink: 0 }} />
+                  <CheckCircle2 size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} />
                   <Text weight="semibold" size={3}>Do</Text>
                 </Row>
                 <Column gap={2} style={{ fontSize: "14px" }}>
-                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Use token scales: pad={"{0-8}"}</Text></Row>
-                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Compose layouts with Box & Flex</Text></Row>
-                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Use semantic token keys</Text></Row>
-                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Leverage type safety</Text></Row>
+                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Use token scales: pad={"{0-8}"}</Text></Row>
+                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Compose layouts with Box & Flex</Text></Row>
+                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Use semantic token keys</Text></Row>
+                  <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text>Leverage type safety</Text></Row>
                 </Column>
               </Column>
             </div>
@@ -254,22 +266,24 @@ export function ExamplesPage() {
             <div className="st-accent-card st-practices-card" style={{ background: "var(--st-color-surface-secondary)" }}>
               <Column gap={3}>
                 <Row gap={2} align="center">
-                  <XCircle size={20} strokeWidth={2} style={{ color: "var(--st-color-danger)", flexShrink: 0 }} />
+                  <XCircle size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} />
                   <Text weight="semibold" size={3}>Don't</Text>
                 </Row>
                 <Column gap={2} style={{ fontSize: "14px" }}>
-                  <Row gap={2}><XCircle size={16} strokeWidth={2} style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Use raw pixel values</Text></Row>
-                  <Row gap={2}><XCircle size={16} strokeWidth={2} style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Create custom paddings</Text></Row>
-                  <Row gap={2}><XCircle size={16} strokeWidth={2} style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Hardcode colors</Text></Row>
-                  <Row gap={2}><XCircle size={16} strokeWidth={2} style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Ignore TypeScript warnings</Text></Row>
+                  <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Use raw pixel values</Text></Row>
+                  <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Create custom paddings</Text></Row>
+                  <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Hardcode colors</Text></Row>
+                  <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text>Ignore TypeScript warnings</Text></Row>
                 </Column>
               </Column>
             </div>
           </Grid>
-        </Column>
+          </Column>
+        </Box>
 
         {/* Code Comparison */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Text as="h2" size={5} weight="bold">Bundle Size Comparison</Text>
           <Box style={{ overflowX: "auto" }}>
             <table style={{
@@ -279,11 +293,11 @@ export function ExamplesPage() {
             }}>
               <thead>
                 <tr style={{ borderBottom: "2px solid var(--st-color-border)" }}>
-                  <th style={{ padding: "var(--st-space-3)", textAlign: "left", fontWeight: "600" }}>Framework</th>
-                  <th style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Bundle (gzip)</th>
-                  <th style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Runtime</th>
-                  <th style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Components</th>
-                  <th style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Type Safety</th>
+                  <th scope="col" style={{ padding: "var(--st-space-3)", textAlign: "left", fontWeight: "600" }}>Framework</th>
+                  <th scope="col" style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Bundle (gzip)</th>
+                  <th scope="col" style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Runtime</th>
+                  <th scope="col" style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Components</th>
+                  <th scope="col" style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>Type Safety</th>
                 </tr>
               </thead>
               <tbody>
@@ -318,8 +332,10 @@ export function ExamplesPage() {
               </tbody>
             </table>
           </Box>
-        </Column>
+          </Column>
+        </Box>
       </Column>
     </Container>
+    </Box>
   );
 }
