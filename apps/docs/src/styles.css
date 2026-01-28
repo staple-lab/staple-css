@@ -739,18 +739,50 @@ pre {
   box-shadow: 0 2px 8px rgba(42, 125, 82, 0.08);
 }
 
-/* Card components */
+/* Card components - minimal style */
 .card {
   border: 1px solid var(--st-color-border);
   border-radius: var(--st-radius-2);
-  padding: var(--st-space-5);
-  background-color: var(--st-color-surface);
+  padding: var(--st-space-4);
+  background-color: transparent;
   transition: all var(--st-duration-normal) var(--st-easing-default);
 }
 
 .card:hover {
   border-color: var(--st-color-primary);
-  box-shadow: 0 4px 12px rgba(42, 125, 82, 0.1);
+  background-color: rgba(42, 125, 82, 0.02);
+}
+
+/* Minimal panel - flat design alternative to card */
+.panel {
+  padding: var(--st-space-4);
+  background-color: var(--st-color-surface);
+  border-left: 3px solid var(--st-color-primary);
+  border-radius: var(--st-radius-1);
+}
+
+/* Section block - simple content container */
+.section-block {
+  padding: var(--st-space-4) 0;
+  border-bottom: 1px solid var(--st-color-border);
+}
+
+.section-block:last-child {
+  border-bottom: none;
+}
+
+/* Feature box - minimal highlight */
+.feature-box {
+  padding: var(--st-space-4);
+  background: linear-gradient(90deg, rgba(42, 125, 82, 0.03) 0%, transparent 100%);
+  border-left: 2px solid var(--st-color-primary);
+  border-radius: var(--st-radius-1);
+}
+
+/* Content group - related items without heavy styling */
+.content-group {
+  margin: var(--st-space-6) 0;
+  padding: 0;
 }
 
 /* Badge styling */
