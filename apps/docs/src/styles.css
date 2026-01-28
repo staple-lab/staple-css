@@ -1401,7 +1401,7 @@ pre {
   align-items: center;
   gap: var(--st-space-1);
   font-size: var(--st-font-size-1);
-  margin: var(--st-space-4) 0;
+  margin: var(--st-space-2) 0 var(--st-space-4) 0;
   flex-wrap: wrap;
 }
 
