@@ -1,4 +1,4 @@
-import { Container } from "@staple-css/primitives/full";
+import { Container, Box } from "@staple-css/primitives/full";
 import {
   Ruler,
   Palette,
@@ -96,23 +96,23 @@ export function GuidesPage() {
   ];
 
   return (
-    <div className="guides-page">
+    <Box as="main" className="guides-page">
       <Container size="xl">
         {/* Header */}
-        <div className="guides-header">
+        <Box as="section" className="guides-header" style={{ display: "contents" }}>
           <h1>Design Guides & Best Practices</h1>
           <p>Comprehensive guides for building consistent, accessible, and performant interfaces with staple-css tokens and primitives.</p>
-        </div>
+        </Box>
 
         {/* Guides Grid - 2 columns */}
-        <div className="guides-grid">
+        <Box as="section" className="guides-grid" style={{ display: "contents" }}>
           {guides.map((guide, idx) => {
             const IconComponent = guide.icon;
             return (
-              <div key={guide.title} className="guide-card" style={{"--accent-color": guide.color} as React.CSSProperties}>
-                <div className="guide-card-number">{String(idx + 1).padStart(2, "0")}</div>
+              <article key={guide.title} className="guide-card" style={{"--accent-color": guide.color} as React.CSSProperties}>
+                <div aria-hidden="true" className="guide-card-number">{String(idx + 1).padStart(2, "0")}</div>
                 <div className="guide-card-header">
-                  <div className="guide-card-icon">
+                  <div aria-hidden="true" className="guide-card-icon">
                     <IconComponent size={20} strokeWidth={1.5} />
                   </div>
                   <h3>{guide.title}</h3>
@@ -122,11 +122,11 @@ export function GuidesPage() {
                     <li key={i}>{point}</li>
                   ))}
                 </ul>
-              </div>
+              </article>
             );
           })}
-        </div>
+        </Box>
       </Container>
-    </div>
+    </Box>
   );
 }
