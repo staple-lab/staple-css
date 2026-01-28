@@ -32,10 +32,10 @@ function TokenTable({
         <table className="token-table">
           <thead>
             <tr>
-              <th>Token</th>
-              <th>CSS Variable</th>
-              <th>Value</th>
-              {renderSample && <th>Sample</th>}
+              <th scope="col">Token</th>
+              <th scope="col">CSS Variable</th>
+              <th scope="col">Value</th>
+              {renderSample && <th scope="col">Sample</th>}
             </tr>
           </thead>
           <tbody>
@@ -68,8 +68,9 @@ function TokenTable({
 
 export function TokensPage() {
   return (
-    <Container size="lg">
-      <Column gap={8}>
+    <Box as="main">
+      <Container size="lg">
+        <Column gap={8}>
         <Column gap={2}>
           <Text as="h1" size={5} weight="bold">
             Tokens
@@ -82,7 +83,8 @@ export function TokensPage() {
         </Column>
 
         {/* Usage */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Usage
           </Text>
@@ -97,10 +99,12 @@ import "@staple-css/tokens/density.css";  // Density variants`}
             language="typescript"
             title="Import"
           />
-        </Column>
+          </Column>
+        </Box>
 
         {/* Theming */}
-        <Column gap={4}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={4}>
           <Text as="h2" size={4} weight="semibold">
             Theming
           </Text>
@@ -122,10 +126,13 @@ import "@staple-css/tokens/density.css";  // Density variants`}
             language="html"
             title="Density"
           />
-        </Column>
+          </Column>
+        </Box>
 
-        {/* Space */}
-        <TokenTable
+        {/* Token Tables Section */}
+        <Box as="section" style={{ display: "contents" }}>
+          {/* Space */}
+          <TokenTable
           title="Space Scale (0-8)"
           tokens={spaceScale}
           varPrefix="--st-space"
@@ -222,9 +229,11 @@ import "@staple-css/tokens/density.css";  // Density variants`}
           tokens={easing}
           varPrefix="--st-easing"
         />
+        </Box>
 
         {/* Colors */}
-        <Column gap={3}>
+        <Box as="section" style={{ display: "contents" }}>
+          <Column gap={3}>
           <Text as="h3" size={3} weight="semibold">
             Color Tokens
           </Text>
@@ -235,9 +244,9 @@ import "@staple-css/tokens/density.css";  // Density variants`}
             <table className="token-table">
               <thead>
                 <tr>
-                  <th>Token</th>
-                  <th>CSS Variable</th>
-                  <th>Sample</th>
+                  <th scope="col">Token</th>
+                  <th scope="col">CSS Variable</th>
+                  <th scope="col">Sample</th>
                 </tr>
               </thead>
               <tbody>
@@ -267,7 +276,9 @@ import "@staple-css/tokens/density.css";  // Density variants`}
             </table>
           </Card>
         </Column>
+        </Box>
       </Column>
     </Container>
+    </Box>
   );
 }
