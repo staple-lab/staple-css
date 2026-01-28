@@ -1,0 +1,395 @@
+================================================================================
+PAGE: TokensPage.tsx
+================================================================================
+
+HERO SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+H1: Design Tokens
+Subtitle: Design tokens are the foundation of staple-css. They encode design
+          decisions as CSS variables, enabling consistency, maintainability,
+          and scalability across your entire design system.
+
+
+WHAT ARE DESIGN TOKENS?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Design tokens are named values that represent design decisions. Instead of
+hardcoding colors like #2a7d52 or sizes like 16px throughout your CSS,
+tokens abstract these values:
+
+Before (Raw Values):
+  padding: 16px;
+  background-color: #2a7d52;
+  border-radius: 8px;
+
+After (Tokens):
+  padding: var(--st-space-4);
+  background-color: var(--st-color-primary);
+  border-radius: var(--st-radius-3);
+
+Benefits:
+• Consistency: All components use the same values
+• Maintainability: Change token once, all components update
+• Scalability: Add themes, densities, locales easily
+• Design → Code traceability: Every value has a name
+
+
+INSTALLATION & IMPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Option 1: Import Everything
+```css
+@import "@staple-css/tokens/all.css";
+/* Includes: tokens, themes, density, palettes, breakpoints */
+```
+
+Option 2: Import Individual Modules
+```css
+@import "@staple-css/tokens/tokens.css";      /* Base tokens */
+@import "@staple-css/tokens/themes.css";      /* Light/dark */
+@import "@staple-css/tokens/density.css";     /* Comfortable/compact */
+@import "@staple-css/tokens/palettes.css";    /* Color palettes */
+@import "@staple-css/tokens/breakpoints.css"; /* Media query breakpoints */
+```
+
+Option 3: Import in TypeScript/JavaScript
+```typescript
+import "@staple-css/tokens";
+// CSS is injected at build time
+```
+
+
+THEMING SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Light Mode (Default):
+```html
+<html>
+  <!-- Light theme by default -->
+</html>
+```
+
+Dark Mode:
+```html
+<html data-theme="dark">
+  <!-- Dark theme applied -->
+</html>
+```
+
+System Preference:
+```javascript
+// Detect system preference
+const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+```
+
+Dark Mode CSS:
+```css
+/* Light mode (default) */
+:root {
+  --st-color-primary: #2a7d52;
+  --st-color-background: #f5f1e8;
+  --st-color-text: #2c3e35;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --st-color-primary: #4da870;
+  --st-color-background: #2c3e35;
+  --st-color-text: #f5f1e8;
+}
+```
+
+
+DENSITY MODES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Comfortable (Default):
+```html
+<html data-density="comfortable">
+  <!-- Standard spacing and sizing -->
+</html>
+```
+
+Compact Mode:
+```html
+<html data-density="compact">
+  <!-- Reduced spacing (80% of standard) -->
+</html>
+```
+
+CSS Variables:
+```css
+:root {
+  --st-density: comfortable; /* or "compact" */
+  --st-density-multiplier: 1; /* or 0.8 for compact */
+}
+```
+
+Usage Example:
+```css
+padding: calc(var(--st-space-4) * var(--st-density-multiplier));
+/* In comfortable: 16px * 1 = 16px */
+/* In compact: 16px * 0.8 = 12.8px */
+```
+
+
+TOKEN CATEGORIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Spacing Tokens
+CSS Variable        | Value
+────────────────────┼──────
+--st-space-0        | 0px
+--st-space-1        | 4px
+--st-space-2        | 8px
+--st-space-3        | 12px
+--st-space-4        | 16px
+--st-space-5        | 24px
+--st-space-6        | 32px
+--st-space-7        | 48px
+--st-space-8        | 64px
+
+Radius Tokens
+CSS Variable        | Value
+────────────────────┼──────
+--st-radius-0       | 0px
+--st-radius-1       | 2px
+--st-radius-2       | 4px
+--st-radius-3       | 8px
+--st-radius-4       | 16px
+
+Shadow Tokens
+CSS Variable        | Box-Shadow
+────────────────────┼──────────────────────────
+--st-shadow-0       | None
+--st-shadow-1       | 0 1px 2px rgba(0,0,0,0.05)
+--st-shadow-2       | 0 1px 3px rgba(0,0,0,0.1)
+--st-shadow-3       | 0 4px 6px rgba(0,0,0,0.1)
+--st-shadow-4       | 0 10px 15px rgba(0,0,0,0.1)
+--st-shadow-5       | 0 20px 25px rgba(0,0,0,0.1)
+
+Font Size Tokens
+CSS Variable        | Value
+────────────────────┼──────
+--st-size-0         | 12px
+--st-size-1         | 14px
+--st-size-2         | 16px
+--st-size-3         | 18px
+--st-size-4         | 20px
+--st-size-5         | 24px
+--st-size-6         | 32px
+
+Font Weight Tokens
+CSS Variable        | Value
+────────────────────┼──────
+--st-weight-regular | 400
+--st-weight-medium  | 500
+--st-weight-semibold| 600
+--st-weight-bold    | 700
+--st-weight-extrabold| 800
+
+Line Height Tokens
+CSS Variable        | Value
+────────────────────┼──────
+--st-lineheight-tight  | 1.25
+--st-lineheight-normal | 1.5
+--st-lineheight-relaxed| 1.75
+
+Motion Duration Tokens
+CSS Variable           | Value
+───────────────────────┼─────
+--st-duration-instant  | 75ms
+--st-duration-fast     | 100ms
+--st-duration-base     | 150ms
+--st-duration-slow     | 200ms
+--st-duration-slower   | 250ms
+--st-duration-slowest  | 300ms
+--st-duration-slowest-2| 500ms
+--st-duration-slowest-3| 1000ms
+
+Motion Easing Tokens
+CSS Variable       | Value
+────────────────────┼──────────────────
+--st-easing-default | ease-out
+--st-easing-in     | ease-in
+--st-easing-out    | ease-out
+--st-easing-bounce | cubic-bezier(...)
+
+Semantic Color Tokens
+CSS Variable           | Light Mode    | Dark Mode
+───────────────────────┼───────────────┼──────────────
+--st-color-primary     | #2a7d52       | #4da870
+--st-color-secondary   | #d4a574       | #f4dcc8
+--st-color-accent      | #b4d61e       | #e8f0cc
+--st-color-tertiary    | #9db4a8       | #e8ede8
+--st-color-background  | #f5f1e8       | #2c3e35
+--st-color-surface     | #fffbf7       | #3a4e47
+--st-color-text        | #2c3e35       | #f5f1e8
+
+Breakpoint Tokens
+CSS Variable      | Value
+──────────────────┼──────
+--st-screen-sm    | 640px
+--st-screen-md    | 768px
+--st-screen-lg    | 1024px
+--st-screen-xl    | 1280px
+--st-screen-2xl   | 1536px
+
+
+USING TOKENS IN CSS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Example: Button Component
+```css
+.st-Button {
+  padding: var(--st-space-3) var(--st-space-4);
+  background-color: var(--st-color-primary);
+  color: white;
+  border-radius: var(--st-radius-2);
+  font-size: var(--st-size-1);
+  font-weight: var(--st-weight-semibold);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--st-duration-base) var(--st-easing-default);
+}
+
+.st-Button:hover {
+  background-color: var(--st-color-primary-dark);
+}
+
+.st-Button:focus-visible {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+.st-Button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+```
+
+Example: Card Component
+```css
+.st-Card {
+  padding: var(--st-space-6);
+  background-color: var(--st-color-surface);
+  border-radius: var(--st-radius-3);
+  box-shadow: var(--st-shadow-1);
+}
+
+.st-Card--featured {
+  box-shadow: var(--st-shadow-3);
+}
+```
+
+Example: Typography
+```css
+h1 {
+  font-size: var(--st-size-6);
+  font-weight: var(--st-weight-bold);
+  line-height: var(--st-lineheight-tight);
+  color: var(--st-color-text);
+  margin-bottom: var(--st-space-4);
+}
+
+p {
+  font-size: var(--st-size-2);
+  line-height: var(--st-lineheight-normal);
+  color: var(--st-color-text);
+  margin-bottom: var(--st-space-3);
+}
+```
+
+Example: Responsive with Tokens
+```css
+.container {
+  padding: var(--st-space-4);
+}
+
+@media (min-width: var(--st-screen-md)) {
+  .container {
+    padding: var(--st-space-6);
+  }
+}
+```
+
+
+CREATING TOKEN OVERRIDES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Override Specific Theme:
+```css
+/* Override primary color in dark mode */
+[data-theme="dark"] {
+  --st-color-primary: #66c65a;
+}
+```
+
+Override for Entire Site:
+```css
+/* Increase all spacing by 20% */
+:root {
+  --st-space-1: 4.8px;
+  --st-space-2: 9.6px;
+  --st-space-3: 14.4px;
+  --st-space-4: 19.2px;
+  /* ... etc */
+}
+```
+
+Override for Specific Scope:
+```css
+/* Denser UI in .sidebar */
+.sidebar {
+  --st-density-multiplier: 0.8;
+}
+```
+
+
+BEST PRACTICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ DO's:
+• Use semantic color tokens (primary, danger, etc.)
+• Use space tokens for all spacing (never hardcode pixels)
+• Use radius, shadow, and size tokens consistently
+• Update tokens in one place for global changes
+• Document token usage in your style guide
+• Version tokens alongside releases
+
+✗ DON'Ts:
+• Mix tokens with raw values (use tokens for everything)
+• Create ad-hoc pixel values
+• Use hardcoded colors instead of semantic tokens
+• Ignore dark mode token variants
+• Add new tokens without documenting them
+
+
+ACCESSING TOKENS PROGRAMMATICALLY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Get Token Value in JavaScript:
+```javascript
+// Get a CSS variable value
+const primaryColor = getComputedStyle(document.documentElement)
+  .getPropertyValue('--st-color-primary')
+  .trim();
+
+console.log(primaryColor); // #2a7d52 (light) or #4da870 (dark)
+```
+
+Detect Theme:
+```javascript
+const theme = document.documentElement.getAttribute('data-theme');
+const isDark = theme === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches;
+```
+
+Detect Density:
+```javascript
+const density = document.documentElement.getAttribute('data-density');
+const isCompact = density === 'compact';
+```
+
+
+================================================================================

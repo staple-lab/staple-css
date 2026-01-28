@@ -1,0 +1,97 @@
+================================================================================
+PAGE: WhyPage.tsx
+================================================================================
+
+HERO SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+H1: Why staple-css?
+Subtitle: A styling contract that prioritizes consistency, performance, and maintainability.
+
+
+CORE PHILOSOPHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Section: Tokens are the API
+
+Description:
+Design decisions are encoded as CSS variables. When every component uses the same
+spacing scale, the same color tokens, the same typography settings, your UI
+naturally becomes more cohesive.
+
+Key Points:
+• Design decisions live in tokens
+• Contract ensures consistency
+• Centralized design system
+• Design → Code traceability
+
+
+PRINCIPLES (3 Cards)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Tokens are the API
+   Components consume token keys, not arbitrary values.
+   This enforces consistency by default.
+
+2. Contract Over Customization
+   A stable, constrained API enables consistency.
+   Override by design via className, not by default.
+
+3. Consistency by Default
+   When tokens are the API, consistency happens automatically.
+   No decision fatigue. No style sprawl.
+
+
+PERFORMANCE-FIRST DESIGN (4 Metrics)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• 0ms Runtime Overhead
+  Static CSS only. No runtime style generation.
+
+• <1kb Runtime Size
+  Zero dependencies. No CSS-in-JS bloat.
+
+• 100% Tree-Shakeable
+  Import only what you use. Components split individually.
+
+• ~40% Fewer Media Queries
+  Intrinsic responsive design with CSS Grid minmax().
+
+
+LONG-TERM MAINTAINABILITY (4 Items)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Token Versioning
+  Update design once, all components reflect the change.
+
+• Centralized Design System
+  Single source of truth for design decisions.
+
+• No Style Props Hell
+  Components use stable token keys, not style objects.
+
+• Design → Code Traceability
+  Every CSS value traces back to a token.
+
+
+ACCESSIBILITY BUILT-IN (4 Items)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• WCAG Compliance
+  Color contrast, focus states, motion respect.
+
+• Keyboard Navigation
+  All components support full keyboard access.
+
+• Motion Respect
+  @media (prefers-reduced-motion) built-in.
+
+• Dark Mode
+  Automatic light/dark theme support.
+
+
+CALL TO ACTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Primary CTA: Get Started with Primitives →
+Secondary CTA: Explore Tokens
+
+================================================================================

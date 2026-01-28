@@ -1,0 +1,381 @@
+================================================================================
+PAGE: FigmaIntegrationPage.tsx
+================================================================================
+
+HERO SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+H1: Figma Integration
+Subtitle: Seamlessly sync design tokens between Figma and your codebase.
+          Keep design and code in perfect sync with bidirectional token sync.
+
+
+WHAT IS FIGMA INTEGRATION?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Design tokens in Figma can be exported as CSS variables, JSON, or TypeScript,
+and CSS tokens can be imported back into Figma as design tokens. This keeps
+design decisions synchronized across both tools.
+
+Benefits:
+• Single source of truth for design tokens
+• Designers update Figma tokens → code updates automatically
+• Developers update code tokens → designers see changes
+• No manual sync required
+• Reduced design-dev misalignment
+
+
+TWO-WAY SYNC WORKFLOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Export Flow (Figma → Code):
+  Figma Design File
+        ↓
+  Select Tokens
+        ↓
+  Choose Format (CSS/JSON/TS)
+        ↓
+  Export
+        ↓
+  CSS Variables in Code
+
+Import Flow (Code → Figma):
+  CSS Variables in Code
+        ↓
+  Export from Code
+        ↓
+  Convert to JSON
+        ↓
+  Upload to Figma
+        ↓
+  Auto-sync to Figma Tokens
+
+
+KEY FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Bidirectional Sync
+   Export from Figma to code and import from code to Figma
+
+2. Multiple Formats
+   CSS Variables, JSON, TypeScript, Figma Tokens format
+
+3. All Token Types
+   Colors, typography, spacing, effects, motion, grid
+
+4. Version Control
+   Track token changes in Git alongside code
+
+5. Team Collaboration
+   Share token updates with entire design and dev teams
+
+6. Custom Mappings
+   Map Figma token groups to custom CSS variable names
+
+
+SUPPORTED TOKEN TYPES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Colors
+   Solarpunk palette with light/dark variants
+   Semantic colors: primary, secondary, accent, success, danger, warning
+
+2. Typography
+   Font families, weights, sizes, line heights
+
+3. Spacing & Sizing
+   Space scale (0-8), sizing scale, container sizes
+
+4. Effects (Shadows & Blur)
+   Box shadows (shadow-0 through shadow-5)
+
+5. Motion
+   Duration tokens, easing functions, animation speeds
+
+6. Grid & Layout
+   Breakpoints, column widths, gaps
+
+
+EXPORT WORKFLOW (Figma → Code)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Install Plugin
+  • In Figma, open Plugins menu
+  • Search for "Tokens Studio" or "Design Tokens" plugin
+  • Install the plugin
+  • Grant access to file
+
+Step 2: Select Tokens
+  • Open Figma file with token definitions
+  • In Tokens Panel, select token groups to export
+  • Can select all or specific categories
+
+Step 3: Choose Format
+  • CSS: @import "@staple-css/tokens.css";
+  • JSON: Structured token object format
+  • TypeScript: Type-safe token definitions
+  • Figma Tokens: Native Figma format
+
+Step 4: Configure Mapping
+  • Set CSS variable prefix (--st-)
+  • Configure naming convention
+  • Choose color format (hex, rgb, hsl)
+  • Set paths for output files
+
+Step 5: Download/Export
+  • Click "Export"
+  • Choose destination folder
+  • Select file format (.css, .json, .ts)
+  • Download exported file
+
+Step 6: Update Code
+  • Copy exported file to apps/docs/src/
+  • Import in styles.css
+  • Commit and push changes
+  • Deploy
+
+
+IMPORT WORKFLOW (Code → Figma)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Export Tokens from Code
+  • Extract CSS variables from tokens.css
+  • Convert to JSON format
+  • Include all token categories
+
+Step 2: Prepare JSON Structure
+```json
+{
+  "colors": {
+    "primary": {
+      "light": "#2a7d52",
+      "dark": "#4da870"
+    },
+    "secondary": {
+      "light": "#d4a574",
+      "dark": "#f4dcc8"
+    }
+  },
+  "spacing": {
+    "0": "0px",
+    "1": "4px",
+    "2": "8px"
+  },
+  "typography": {
+    "sizes": {
+      "0": "12px",
+      "1": "14px"
+    }
+  }
+}
+```
+
+Step 3: Upload to Figma
+  • In Tokens Panel, click "Load JSON"
+  • Select exported JSON file
+  • Confirm import
+
+Step 4: Create Libraries
+  • In Figma, create Shared Libraries
+  • Map imported tokens to library items
+  • Publish library for team access
+
+Step 5: Apply to Designs
+  • In design files, apply tokens to components
+  • Use library tokens consistently
+  • All designs stay synced with source tokens
+
+
+EXPORT FORMATS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CSS Variables Format:
+```css
+/* tokens.css */
+:root {
+  --st-color-primary: #2a7d52;
+  --st-color-secondary: #d4a574;
+  --st-space-0: 0px;
+  --st-space-1: 4px;
+  --st-space-2: 8px;
+  --st-space-3: 12px;
+  --st-space-4: 16px;
+  --st-size-0: 12px;
+  --st-size-1: 14px;
+}
+
+[data-theme="dark"] {
+  --st-color-primary: #4da870;
+  --st-color-secondary: #f4dcc8;
+}
+```
+
+JSON Format:
+```json
+{
+  "$schema": "https://tokens.studio/schema.json",
+  "global": {
+    "color": {
+      "primary": {
+        "value": "#2a7d52",
+        "type": "color"
+      }
+    },
+    "space": {
+      "0": { "value": "0", "type": "sizing" },
+      "4": { "value": "4", "type": "sizing" }
+    }
+  }
+}
+```
+
+TypeScript Format:
+```typescript
+// tokens.ts
+export const tokens = {
+  colors: {
+    primary: '#2a7d52',
+    secondary: '#d4a574',
+    accent: '#b4d61e',
+  },
+  spacing: {
+    0: '0px',
+    1: '4px',
+    2: '8px',
+    3: '12px',
+    4: '16px',
+  },
+  typography: {
+    sizes: {
+      0: '12px',
+      1: '14px',
+    },
+  },
+};
+```
+
+
+SETTING UP SYNC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Configure Token Naming:
+Pattern: --st-{category}-{subcategory}-{value}
+Examples:
+  --st-color-primary-light
+  --st-color-primary-dark
+  --st-space-4
+  --st-radius-2
+  --st-shadow-1
+
+Map Categories:
+Colors → --st-color-*
+Spacing → --st-space-*
+Sizing → --st-size-*
+Radius → --st-radius-*
+Shadows → --st-shadow-*
+Typography → --st-font-*, --st-size-*, --st-weight-*
+Motion → --st-duration-*, --st-easing-*
+
+Set Prefix:
+Default: --st-
+Custom: --app-, --design-, etc.
+
+Configure Output:
+Output File: packages/tokens/dist/tokens.css
+Format: CSS
+Include: All categories
+Variable Names: kebab-case
+
+
+WORKFLOW BEST PRACTICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Version Control Tokens
+   • Commit token exports to Git
+   • Track changes alongside code
+   • Release tokens with each version
+
+2. Naming Consistency
+   • Use same naming in Figma and code
+   • Document naming conventions
+   • Review token names in PRs
+
+3. Semantic Tokens
+   • Use semantic names (primary, danger) not descriptions (blue, red)
+   • Map to actual values on sync
+   • Maintain meaning across themes
+
+4. Theme Variants
+   • Export light and dark separately or together
+   • Use data-theme attribute for switching
+   • Test both themes after sync
+
+5. Breaking Changes
+   • Document token renames
+   • Deprecate old tokens gradually
+   • Use migration guides
+
+6. Team Communication
+   • Announce token changes to team
+   • Provide change logs
+   • Offer training on new tokens
+
+7. Automated Testing
+   • Test token values after export
+   • Verify CSS is valid
+   • Check contrast ratios on colors
+   • Validate responsive breakpoints
+
+8. Rollback Plan
+   • Keep previous token exports
+   • Use version control to revert
+   • Have backup of design file
+
+
+TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Issue: Tokens not exporting
+Solution: Verify plugin has file permissions, check Figma file is up to date
+
+Issue: CSS variables not applying
+Solution: Check @import path, verify CSS files are linked, clear browser cache
+
+Issue: Colors look different after sync
+Solution: Verify color format (hex vs rgb), check theme variants, test in browser
+
+Issue: TypeScript types not matching
+Solution: Regenerate type definitions, check naming convention matches
+
+Issue: Dark theme colors inverted
+Solution: Configure dark mode mapping in plugin settings
+
+
+INTEGRATION WITH CI/CD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Automated Sync:
+  • GitHub Action runs on push
+  • Exports tokens from Figma
+  • Creates PR with changes
+  • Auto-merge or manual review
+  • Deploy tokens with release
+
+Configuration:
+```yaml
+# .github/workflows/sync-tokens.yml
+on: [push]
+jobs:
+  sync-tokens:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Export tokens from Figma
+        run: npm run export:tokens
+      - name: Commit and push
+        run: |
+          git add packages/tokens/
+          git commit -m "Update tokens"
+          git push
+```
+
+
+================================================================================

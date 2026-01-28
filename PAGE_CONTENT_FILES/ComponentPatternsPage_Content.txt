@@ -1,0 +1,165 @@
+================================================================================
+PAGE: ComponentPatternsPage.tsx
+================================================================================
+
+HERO SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+H1: Component Patterns
+Subtitle: Production-ready patterns and examples for common UI components.
+
+
+BUTTON PATTERNS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Variants:
+• Primary Solid - Full color background
+• Primary Outline - Border with transparent background
+• Danger Solid - Error/destructive action
+• Success Outline - Positive confirmation
+• Small Size - Compact button
+• Large Size - Prominent button
+
+States:
+• Default: Normal appearance
+• Hover: Darker/lighter shade
+• Active: Pressed appearance
+• Disabled: Reduced opacity, cursor: not-allowed
+
+
+FORM COMPONENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Text Input - Single line text field
+• Select Dropdown - Multiple options dropdown
+• Checkbox - Toggle selection
+• Radio Group - Single choice from multiple
+• Textarea - Multi-line text input
+• Range Slider - Numeric slider input
+
+
+CARD PATTERNS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Simple - Basic card with padding and border
+• Header - Card with top section for title
+• Hover - Interactive card with hover effects
+• Feature - Large featured card with icon
+• Stats - Metric display card
+• Action - Card with call-to-action button
+
+
+ALERTS & NOTIFICATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Primary - Information alert
+• Success - Positive message
+• Danger - Error message
+• Warning - Warning message
+
+Each with:
+• Icon (Lucide React)
+• Title text
+• Description text
+• Optional action button
+
+
+LAYOUT PATTERNS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Two Column - Balanced two-column layout
+• Sidebar - Navigation sidebar + main content
+• Grid - Multi-column responsive grid
+• Stack - Vertical stacked layout
+
+
+DATA DISPLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Table Example:
+Columns: Name, Status, Progress
+Data:
+  • Alice Johnson - Active - 87%
+  • Bob Smith - Inactive - 62%
+  • Carol White - Active - 95%
+
+Features:
+• Semantic table markup (thead, tbody, th scope)
+• Striped rows for readability
+• Hover effects
+• Sortable columns
+
+
+CODE EXAMPLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Card Component Example:
+```tsx
+// Card with column layout
+<Card pad={6} radius={3} shadow={1}>
+  <Column gap={4}>
+    {/* Heading */}
+    <Text as="h2" size={3} weight="semibold">
+      Card Heading
+    </Text>
+
+    {/* Description */}
+    <Text size={1} tone="muted">
+      Description text goes here. Explains card content.
+    </Text>
+
+    {/* Footer with buttons */}
+    <Row gap={3} justify="end">
+      <button className="st-btn st-btn--secondary">
+        Cancel
+      </button>
+      <button className="st-btn st-btn--primary">
+        Submit
+      </button>
+    </Row>
+  </Column>
+</Card>
+```
+
+Usage Notes:
+- pad: Padding from space scale (0-8)
+- radius: Border radius from radius scale (0-4)
+- shadow: Shadow elevation (0-5)
+- gap: Component spacing from space scale
+- tone: Text color (muted, default, primary, danger, success, warning)
+
+
+COMPONENT SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Buttons:
+• Always use space token for padding
+• Use semantic tone (primary, danger, success, warning)
+• Provide visible focus state (2px outline)
+• Support disabled state with reduced opacity
+
+Forms:
+• All inputs need associated labels
+• Use space tokens for gaps
+• Validation states: default, error, success
+• Support keyboard navigation fully
+
+Cards:
+• Use Card primitive as base
+• Compose with Box/Column/Row/Grid
+• Apply consistent padding and gap
+• Use shadow for hierarchy
+
+Alerts:
+• Include icon for visual distinction
+• Use semantic tone for meaning
+• Always provide text content (not color alone)
+• Optional action button
+
+Tables:
+• Use semantic HTML (table, thead, tbody, th, tr, td)
+• Add scope="col" to header cells
+• Striped rows for readability
+• Keyboard accessible (Tab through cells)
+
+
+================================================================================
