@@ -377,22 +377,24 @@ export function VisualsPage() {
             feedback for interactions.
           </Text>
 
-          <Grid cols={{ base: 1, md: 2 }} gap={3}>
+          <Row gap={3} style={{ overflowX: "auto", paddingBottom: "var(--st-space-2)" }}>
             {["Default", "Hover", "Active", "Disabled"].map((state) => (
               <Box
                 key={state}
                 style={{
-                  padding: "var(--st-space-4)",
+                  padding: "var(--st-space-3)",
                   border: "1px solid var(--st-color-border)",
                   borderRadius: "var(--st-radius-2)",
                   background: "var(--st-color-surface)",
+                  minWidth: "120px",
+                  flex: "0 0 auto",
                 }}
               >
-                <Column gap={3} align="center">
+                <Column gap={2} align="center">
                   <button
                     disabled={state === "Disabled"}
                     style={{
-                      padding: "var(--st-space-2) var(--st-space-4)",
+                      padding: "var(--st-space-2) var(--st-space-3)",
                       borderRadius: "var(--st-radius-2)",
                       border: state === "Default" ? "1px solid var(--st-color-primary)" : "none",
                       background:
@@ -400,25 +402,25 @@ export function VisualsPage() {
                       color: state === "Disabled" ? "var(--st-color-text-muted)" : "white",
                       cursor: state === "Disabled" ? "not-allowed" : "pointer",
                       fontWeight: "600",
-                      fontSize: "var(--st-font-size-0)",
+                      fontSize: "12px",
                       opacity: state === "Disabled" ? 0.5 : 1,
                       transform: state === "Active" ? "scale(0.95)" : "scale(1)",
                       boxShadow: state === "Hover" ? "var(--st-shadow-2)" : "none",
                       transition: "all var(--st-duration-fast) var(--st-easing-default)",
                     }}
                   >
-                    Button {state}
+                    {state}
                   </button>
-                  <Text size={0} tone="muted" align="center">
-                    {state === "Default" && "Base state"}
-                    {state === "Hover" && "Hover state"}
-                    {state === "Active" && "Clicked"}
-                    {state === "Disabled" && "Unavailable"}
+                  <Text size={0} tone="muted" align="center" style={{ lineHeight: "1.2" }}>
+                    {state === "Default" && "Base"}
+                    {state === "Hover" && "Hover"}
+                    {state === "Active" && "Pressed"}
+                    {state === "Disabled" && "Off"}
                   </Text>
                 </Column>
               </Box>
             ))}
-          </Grid>
+          </Row>
           </Column>
         </Box>
 
