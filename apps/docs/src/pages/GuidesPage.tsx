@@ -168,9 +168,9 @@ export function GuidesPage() {
 
       {/* Guides by Category */}
       <Container size="lg" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
-        <Column gap={16}>
+        <Column gap={8}>
           {guideCategories.map((section) => (
-            <Box key={section.category} as="section" style={{ display: "contents" }}>
+            <Box key={section.category} as="section" style={{ display: "contents", marginBottom: "var(--st-space-8)" }}>
               {/* Category Header with accent line */}
               <Row gap={3} align="center" style={{ marginBottom: "var(--st-space-6)" }}>
                 <div
