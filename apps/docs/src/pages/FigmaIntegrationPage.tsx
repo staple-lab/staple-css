@@ -14,21 +14,23 @@ import "./FigmaIntegrationPage.css";
 export function FigmaIntegrationPage() {
   return (
     <div className="figma-page">
-      <Container size="xl">
-        {/* Header */}
-        <div className="figma-header">
+      <Box as="main">
+        <Container size="xl">
+          {/* Header */}
+          <div className="figma-header">
           <h1>Figma Integration</h1>
           <p>Seamlessly sync design tokens between Figma and your codebase. Keep design and development in perfect sync with bidirectional token support.</p>
         </div>
 
         {/* Two-Way Sync */}
-        <div className="sync-section">
+        <Box as="section" style={{ display: "contents" }}>
+          <div className="sync-section">
           <div className="sync-flow">
             <div className="sync-direction">
               <h3>Figma → Code</h3>
               <p>Export design tokens from Figma to CSS variables, JSON, or TypeScript</p>
             </div>
-            <div className="sync-arrow">
+            <div className="sync-arrow" aria-hidden="true">
               <ArrowRight size={32} strokeWidth={1.5} />
             </div>
             <div className="sync-direction">
@@ -36,10 +38,12 @@ export function FigmaIntegrationPage() {
               <p>Import your CSS variables and design tokens into Figma automatically</p>
             </div>
           </div>
-        </div>
+          </div>
+        </Box>
 
         {/* Features Grid */}
-        <div className="features-section">
+        <Box as="section" style={{ display: "contents" }}>
+          <div className="features-section">
           <h2>Key Features</h2>
           <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
             {[
@@ -75,7 +79,7 @@ export function FigmaIntegrationPage() {
               },
             ].map((feature) => (
               <div key={feature.title} className="feature-card">
-                <div className="feature-icon">
+                <div className="feature-icon" aria-hidden="true">
                   <feature.icon size={24} strokeWidth={1.5} />
                 </div>
                 <h3>{feature.title}</h3>
@@ -83,10 +87,12 @@ export function FigmaIntegrationPage() {
               </div>
             ))}
           </Grid>
-        </div>
+          </div>
+        </Box>
 
         {/* Supported Token Types */}
-        <div className="token-types-section">
+        <Box as="section" style={{ display: "contents" }}>
+          <div className="token-types-section">
           <h2>Supported Token Types</h2>
           <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
             {[
@@ -125,10 +131,12 @@ export function FigmaIntegrationPage() {
               </div>
             ))}
           </Grid>
-        </div>
+          </div>
+        </Box>
 
         {/* Workflow Steps */}
-        <div className="workflow-section">
+        <Box as="section" style={{ display: "contents" }}>
+          <div className="workflow-section">
           <h2>Integration Workflow</h2>
           <Grid cols={{ base: 1, md: 2 }} gap={6}>
             {/* Export Workflow */}
@@ -147,7 +155,7 @@ export function FigmaIntegrationPage() {
                   { step: "5", title: "Auto-Sync", desc: "Updates sync automatically" },
                 ].map((item) => (
                   <div key={item.step} className="step-item">
-                    <div className="step-number">{item.step}</div>
+                    <div className="step-number" aria-hidden="true">{item.step}</div>
                     <div className="step-content">
                       <div className="step-title">{item.title}</div>
                       <div className="step-desc">{item.desc}</div>
@@ -232,10 +240,12 @@ export function FigmaIntegrationPage() {
               </div>
             ))}
           </Grid>
-        </div>
+          </div>
+        </Box>
 
         {/* CTA */}
-        <div className="figma-cta">
+        <Box as="section" style={{ display: "contents" }}>
+          <div className="figma-cta">
           <h2>Ready to sync with Figma?</h2>
           <p>Install the staple-css Figma plugin to get started with token synchronization</p>
           <div className="cta-buttons">
@@ -246,8 +256,10 @@ export function FigmaIntegrationPage() {
               View Figma Plugin
             </a>
           </div>
-        </div>
-      </Container>
+          </div>
+        </Box>
+        </Container>
+      </Box>
     </div>
   );
 }
