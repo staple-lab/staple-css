@@ -3857,87 +3857,41 @@ function LivePreview({ colors, mode, palettes, size = "desktop", onSizeChange, e
               <StatCard label="Active Now" value="+573" change="-4%" changeType="danger" colors={colors} />
             </div>
 
-            {/* Content Area */}
-            <div className="preview-content-grid">
-              {/* Main Content */}
-              <Box
-                pad={{ base: 3, md: 4 }}
-                radius={2}
-                style={{
-                  backgroundColor: surfaceRaisedColor,
-                  border: `1px solid ${borderColor}`,
-                }}
-              >
-                <Column gap={4}>
-                  <Row gap={2} justify="between" align="center">
-                    <span style={{ fontWeight: 600, color: textColor }}>Recent Activity</span>
-                    <button
-                      style={{
-                        backgroundColor: primaryColor,
-                        color: primaryTextColor,
-                        border: "none",
-                        borderRadius: "var(--st-radius-2)",
-                        padding: "var(--st-space-1) var(--st-space-3)",
-                        fontSize: "var(--st-font-size-0)",
-                        cursor: "pointer",
-                      }}
-                    >
-                      View All
-                    </button>
-                  </Row>
+            {/* Content Area - Single Column */}
+            <Box
+              pad={{ base: 3, md: 4 }}
+              radius={2}
+              style={{
+                backgroundColor: surfaceRaisedColor,
+                border: `1px solid ${borderColor}`,
+              }}
+            >
+              <Column gap={4}>
+                <Row gap={2} justify="between" align="center">
+                  <span style={{ fontWeight: 600, color: textColor }}>Recent Activity</span>
+                  <button
+                    style={{
+                      backgroundColor: primaryColor,
+                      color: primaryTextColor,
+                      border: "none",
+                      borderRadius: "var(--st-radius-2)",
+                      padding: "var(--st-space-1) var(--st-space-3)",
+                      fontSize: "var(--st-font-size-0)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    View All
+                  </button>
+                </Row>
 
-                  <Column gap={3}>
-                    <ActivityItem title="New user registered" time="2 minutes ago" colors={colors} />
-                    <ActivityItem title="Payment received" time="15 minutes ago" colors={colors} />
-                    <ActivityItem title="Server alert resolved" time="1 hour ago" colors={colors} />
-                    <ActivityItem title="Database backup completed" time="3 hours ago" colors={colors} />
-                  </Column>
+                <Column gap={3}>
+                  <ActivityItem title="New user registered" time="2 minutes ago" colors={colors} />
+                  <ActivityItem title="Payment received" time="15 minutes ago" colors={colors} />
+                  <ActivityItem title="Server alert resolved" time="1 hour ago" colors={colors} />
+                  <ActivityItem title="Database backup completed" time="3 hours ago" colors={colors} />
                 </Column>
-              </Box>
-
-              {/* Sidebar */}
-              <Column gap={3}>
-                {/* Alert Card */}
-                <Box
-                  pad={{ base: 2, md: 3 }}
-                  radius={2}
-                  style={{
-                    backgroundColor: colors.warnSurface || "rgba(217, 119, 6, 0.1)",
-                    border: `1px solid ${warnColor}`,
-                  }}
-                >
-                  <Column gap={2}>
-                    <span style={{ fontWeight: 600, color: warnColor }}>
-                      Action Required
-                    </span>
-                    <span style={{ fontSize: "var(--st-font-size-0)", color: colors.warnText || warnColor }}>
-                      Please verify your email address to continue.
-                    </span>
-                  </Column>
-                </Box>
-
-                {/* Quick Actions */}
-                <Box
-                  pad={{ base: 2, md: 3 }}
-                  radius={2}
-                  style={{
-                    backgroundColor: surfaceRaisedColor,
-                    border: `1px solid ${borderColor}`,
-                  }}
-                >
-                  <Column gap={3}>
-                    <span style={{ fontWeight: 600, color: textColor }}>
-                      Quick Actions
-                    </span>
-                    <Column gap={2}>
-                      <ActionButton label="Create New" variant="primary" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
-                      <ActionButton label="Import Data" variant="outline" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
-                      <ActionButton label="Export Report" variant="ghost" colors={colors} primaryColor={primaryColor} primaryTextColor={primaryTextColor} />
-                    </Column>
-                  </Column>
-                </Box>
               </Column>
-            </div>
+            </Box>
 
             {/* Color Badges */}
             <Row gap={2} wrap="wrap">
