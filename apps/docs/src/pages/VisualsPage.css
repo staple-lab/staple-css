@@ -22,7 +22,6 @@
 .accent-card {
   display: flex;
   flex-direction: column;
-  background: var(--st-color-surface);
   padding: var(--st-space-4) var(--st-space-4);
   border-radius: var(--st-radius-2);
   border-left: 3px solid var(--st-color-primary);
