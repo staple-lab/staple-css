@@ -1,0 +1,183 @@
+/* Mobile Navigation Component */
+
+/* Hamburger toggle button - only visible on mobile */
+.mobile-nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-right: var(--st-space-2);
+  background: transparent;
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-1);
+  color: var(--st-color-text);
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  z-index: 1001;
+}
+
+.mobile-nav-toggle:hover {
+  background: var(--st-color-surface-raised);
+  border-color: var(--st-color-primary);
+  color: var(--st-color-primary);
+}
+
+.mobile-nav-toggle:focus-visible {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+/* Show mobile nav toggle on small screens */
+@media (max-width: 640px) {
+  .mobile-nav-toggle {
+    display: flex;
+  }
+}
+
+/* Mobile navigation backdrop */
+.mobile-nav-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: fadeIn 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+
+/* Mobile navigation panel */
+.mobile-nav-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 280px;
+  background: var(--st-color-background);
+  border-right: 1px solid var(--st-color-border);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 200ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mobile nav header */
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--st-space-4);
+  border-bottom: 1px solid var(--st-color-border);
+  flex-shrink: 0;
+}
+
+/* Close button in mobile nav header */
+.mobile-nav-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--st-color-text);
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+
+.mobile-nav-close:hover {
+  color: var(--st-color-primary);
+}
+
+.mobile-nav-close:focus-visible {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: 2px;
+}
+
+/* Mobile nav content */
+.mobile-nav-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: var(--st-space-4);
+}
+
+/* Mobile nav scrollbar styling */
+.mobile-nav-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mobile-nav-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-nav-panel::-webkit-scrollbar-thumb {
+  background: var(--st-color-border);
+  border-radius: 3px;
+}
+
+.mobile-nav-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--st-color-text-muted);
+}
+
+/* Hide sidebar nav items in mobile nav - show only SidebarNav */
+.mobile-nav-content .sidebar-nav {
+  position: static !important;
+  top: auto !important;
+  height: auto !important;
+  width: auto !important;
+  border-right: none !important;
+  background: transparent !important;
+  padding: var(--st-space-4) !important;
+}
+
+.mobile-nav-content .sidebar-item {
+  padding: var(--st-space-3) var(--st-space-2) !important;
+  border-left: none !important;
+}
+
+.mobile-nav-content .sidebar-item:hover {
+  background: var(--st-color-surface) !important;
+}
+
+.mobile-nav-content .sidebar-item.active {
+  background: var(--st-color-surface-raised) !important;
+  border-left: 4px solid var(--st-color-primary) !important;
+}
+
+/* Responsive: Only visible on mobile */
+@media (min-width: 641px) {
+  .mobile-nav-toggle,
+  .mobile-nav-backdrop,
+  .mobile-nav-panel {
+    display: none !important;
+  }
+}
+
+/* Prevent body scroll when menu is open */
+body.mobile-nav-open {
+  overflow: hidden;
+}

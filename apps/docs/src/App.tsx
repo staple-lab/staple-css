@@ -18,6 +18,7 @@ import { BuilderPage } from "./pages/tokens-studio";
 import { SearchPalette } from "./components/SearchPalette";
 import { SearchBar } from "./components/SearchBar";
 import { SidebarNav } from "./components/SidebarNav";
+import { MobileNav } from "./components/MobileNav";
 import { Breadcrumb } from "./components/Breadcrumb";
 import { TableOfContents } from "./components/TableOfContents";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -75,6 +76,7 @@ export function App() {
       <header className="app-header">
         <Container size="xl">
           <Row gap={4} align="center" className="header-layout">
+            <MobileNav />
             <Link to="/" className="logo-link">
               <Text as="span" size={3} weight="bold">
                 staple-css
