@@ -9,7 +9,7 @@ import "./WhyPage.css";
 
 export function WhyPage() {
   return (
-    <div className="why-page" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+    <Box as="main" className="why-page" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
       <Container size="md">
         <Column gap={8}>
           {/* Hero */}
@@ -23,6 +23,7 @@ export function WhyPage() {
           </Column>
 
           {/* Core Philosophy */}
+          <Box as="section" style={{ display: "contents" }}>
           <Column gap={4}>
             <Text as="h2" size={4} weight="semibold">
               Core Philosophy
@@ -68,7 +69,9 @@ export function WhyPage() {
                 const IconComponent = principle.icon;
                 return (
                   <div key={principle.title} className="principle-card">
-                    <Box style={{
+                    <Box
+                    aria-hidden="true"
+                    style={{
                       width: "32px",
                       height: "32px",
                       display: "flex",
@@ -79,8 +82,8 @@ export function WhyPage() {
                       borderRadius: "2px",
                       marginBottom: "var(--st-space-2)"
                     }}>
-                      <IconComponent size={16} strokeWidth={1.5} />
-                    </Box>
+                    <IconComponent size={16} strokeWidth={1.5} />
+                  </Box>
                     <Text weight="semibold" size={2} style={{ marginBottom: "var(--st-space-2)" }}>
                       {principle.title}
                     </Text>
@@ -93,7 +96,10 @@ export function WhyPage() {
             </div>
           </Column>
 
+          </Box>
+
           {/* Performance */}
+          <Box as="section" style={{ display: "contents" }}>
           <Column gap={4}>
             <Text as="h2" size={4} weight="semibold">
               Performance-First Design
@@ -148,7 +154,10 @@ export function WhyPage() {
             </div>
           </Column>
 
+          </Box>
+
           {/* Maintainability */}
+          <Box as="section" style={{ display: "contents" }}>
           <Column gap={4}>
             <Text as="h2" size={4} weight="semibold">
               Long-Term Maintainability
@@ -173,7 +182,10 @@ export function WhyPage() {
             </div>
           </Column>
 
+          </Box>
+
           {/* Accessibility */}
+          <Box as="section" style={{ display: "contents" }}>
           <Column gap={4}>
             <Text as="h2" size={4} weight="semibold">
               Accessibility Built-In
@@ -199,7 +211,7 @@ export function WhyPage() {
                 }
               ].map((item) => (
                 <div key={item.title} className="a11y-item">
-                  <Box className="a11y-check">
+                  <Box aria-hidden="true" className="a11y-check">
                     <Check size={18} strokeWidth={2} />
                   </Box>
                   <div>
@@ -213,14 +225,16 @@ export function WhyPage() {
             </div>
           </Column>
 
+          </Box>
+
           {/* CTA */}
-          <div className="cta-section">
+          <Box as="section" className="cta-section" style={{ display: "contents" }}>
             <Text size={1} style={{ marginBottom: "var(--st-space-4)" }}>
               Ready to build with staple-css? Check out the <a href="/primitives" style={{ color: "var(--st-color-primary)", textDecoration: "none" }}>component library</a> and explore the <a href="/tokens" style={{ color: "var(--st-color-primary)", textDecoration: "none" }}>token system</a>.
             </Text>
-          </div>
+          </Box>
         </Column>
       </Container>
-    </div>
+    </Box>
   );
 }
