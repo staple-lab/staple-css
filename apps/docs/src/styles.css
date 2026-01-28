@@ -739,6 +739,214 @@ pre {
   box-shadow: 0 2px 8px rgba(42, 125, 82, 0.08);
 }
 
+/* Component showcase card - Enhanced ITER 38 */
+.component-showcase {
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  overflow: hidden;
+  transition: all var(--st-duration-normal) var(--st-easing-default);
+  background-color: var(--st-color-surface);
+}
+
+.component-showcase:hover {
+  border-color: var(--st-color-primary);
+  box-shadow: 0 4px 16px rgba(42, 125, 82, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Component showcase header with status badge */
+.component-showcase-header {
+  padding: var(--st-space-4);
+  border-bottom: 1px solid var(--st-color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--st-space-3);
+}
+
+.component-showcase-title {
+  margin: 0;
+  font-size: var(--st-font-size-3);
+  font-weight: 600;
+  font-family: var(--st-font-display);
+  color: var(--st-color-text);
+}
+
+.component-showcase-description {
+  margin: var(--st-space-2) 0 0 0;
+  font-size: var(--st-font-size-0);
+  color: var(--st-color-text-muted);
+  line-height: var(--st-leading-normal);
+}
+
+/* Component showcase badges for status */
+.component-badges {
+  display: flex;
+  gap: var(--st-space-2);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.component-badge {
+  display: inline-block;
+  padding: var(--st-space-1) var(--st-space-2);
+  background-color: var(--st-color-accent);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: var(--st-radius-1);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.component-badge.badge-new {
+  background-color: #22c55e;
+}
+
+.component-badge.badge-beta {
+  background-color: #f59e0b;
+}
+
+.component-badge.badge-deprecated {
+  background-color: #ef4444;
+  opacity: 0.7;
+}
+
+.component-badge.badge-stable {
+  background-color: #2a7d52;
+}
+
+/* Component showcase preview area */
+.component-showcase-preview {
+  padding: var(--st-space-5);
+  background-color: var(--st-color-background);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--st-color-border);
+}
+
+/* Component showcase code section */
+.component-showcase-code {
+  padding: var(--st-space-4);
+  background-color: var(--st-color-surface);
+}
+
+/* Component showcase features list */
+.component-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-2);
+}
+
+.component-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--st-space-2);
+  font-size: var(--st-font-size-1);
+  color: var(--st-color-text-muted);
+}
+
+.component-feature::before {
+  content: "✓";
+  flex-shrink: 0;
+  color: var(--st-color-primary);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* Interactive demo container - code + preview */
+.demo-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  overflow: hidden;
+  background-color: var(--st-color-surface);
+}
+
+.demo-code {
+  padding: var(--st-space-4);
+  background-color: #1f2937;
+  border-right: 1px solid var(--st-color-border);
+  overflow-x: auto;
+}
+
+.demo-preview {
+  padding: var(--st-space-5);
+  background-color: var(--st-color-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 1024px) {
+  .demo-container {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-code {
+    border-right: none;
+    border-bottom: 1px solid var(--st-color-border);
+  }
+}
+
+/* Component gallery grid */
+.component-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--st-space-5);
+  margin-top: var(--st-space-6);
+}
+
+/* Minimal showcase variant - for showing off quick examples */
+.showcase-minimal {
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-1);
+  padding: var(--st-space-3);
+  background-color: var(--st-color-background);
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+}
+
+.showcase-minimal:hover {
+  border-color: var(--st-color-primary);
+  background-color: var(--st-color-surface);
+}
+
+/* Visual state indicators for components */
+.component-state-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--st-space-1);
+  font-size: var(--st-font-size-0);
+  font-weight: 500;
+  padding: var(--st-space-1) var(--st-space-2);
+  border-radius: var(--st-radius-1);
+}
+
+.component-state-indicator.state-active {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.component-state-indicator.state-inactive {
+  background-color: rgba(107, 114, 128, 0.1);
+  color: var(--st-color-text-muted);
+  border: 1px solid rgba(107, 114, 128, 0.2);
+}
+
+.component-state-indicator.state-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
 /* Card components - minimal style */
 .card {
   border: 1px solid var(--st-color-border);
