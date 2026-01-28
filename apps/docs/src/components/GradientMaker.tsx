@@ -123,7 +123,7 @@ export function GradientMaker() {
             </Text>
           </Row>
         </Row>
-        <Box
+        <div
           ref={previewRef}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
@@ -165,7 +165,7 @@ export function GradientMaker() {
           <Text weight="semibold" size={1} style={{ color: "white", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>
             {gradient.name}
           </Text>
-        </Box>
+        </div>
       </Column>
 
       {/* CSS Output */}

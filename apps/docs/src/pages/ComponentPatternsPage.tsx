@@ -14,7 +14,7 @@ import "./ComponentPatternsPage.css";
 
 export function ComponentPatternsPage() {
   const getSectionIcon = (name: string) => {
-    const iconProps = { size: 20, className: "cpp-icon", "aria-hidden": "true" };
+    const iconProps = { size: 20, className: "cpp-icon", "aria-hidden": true };
     switch (name) {
       case "buttons":
         return <ToggleRight {...iconProps} />;
@@ -36,7 +36,7 @@ export function ComponentPatternsPage() {
   };
 
   const getAlertIcon = (tone: string) => {
-    const iconProps = { size: 18, className: "cpp-alert-icon", "aria-hidden": "true" };
+    const iconProps = { size: 18, className: "cpp-alert-icon", "aria-hidden": true };
     switch (tone) {
       case "success":
         return <CheckCircle2 {...iconProps} />;
