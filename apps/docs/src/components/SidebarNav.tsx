@@ -6,33 +6,33 @@ const navigationStructure = [
   {
     title: 'Foundation',
     items: [
-      { href: '/', label: 'Home', icon: Home },
-      { href: '/why', label: 'Why staple-css?', icon: Lightbulb },
-      { href: '/guides', label: 'Design Guides', icon: Compass },
+      { href: '/', label: 'Home' },
+      { href: '/why', label: 'Why staple-css?' },
+      { href: '/guides', label: 'Design Guides' },
     ],
   },
   {
     title: 'Tokens',
     items: [
-      { href: '/tokens', label: 'All Tokens', icon: FileText },
-      { href: '/token-reference', label: 'Token Reference', icon: Book },
-      { href: '/colors', label: 'Colors', icon: Palette },
+      { href: '/tokens', label: 'All Tokens' },
+      { href: '/token-reference', label: 'Token Reference' },
+      { href: '/colors', label: 'Colors' },
     ],
   },
   {
     title: 'Components',
     items: [
-      { href: '/primitives', label: 'Primitives', icon: Layers },
-      { href: '/components', label: 'Patterns', icon: Grid3x3 },
-      { href: '/visuals', label: 'Visuals', icon: Eye },
+      { href: '/primitives', label: 'Primitives' },
+      { href: '/components', label: 'Patterns' },
+      { href: '/visuals', label: 'Visuals' },
     ],
   },
   {
     title: 'Tools',
     items: [
-      { href: '/gradient-studio', label: 'Gradient Studio', icon: Zap },
-      { href: '/token-reference', label: 'Token Studio', icon: Settings },
-      { href: '/figma', label: 'Figma Integration', icon: Share2 },
+      { href: '/gradient-studio', label: 'Gradient Studio' },
+      { href: '/token-reference', label: 'Token Studio' },
+      { href: '/figma', label: 'Figma Integration' },
     ],
   },
 ];
@@ -50,7 +50,6 @@ export function SidebarNav() {
                 key={item.href}
                 href={item.href}
                 label={item.label}
-                icon={item.icon}
                 isActive={location.pathname === item.href}
               />
             ))}
@@ -91,11 +90,10 @@ function SidebarSection({
 interface SidebarItemProps {
   href: string;
   label: string;
-  icon: React.ComponentType<{ size: number; strokeWidth?: number }>;
   isActive: boolean;
 }
 
-function SidebarItem({ href, label, icon: Icon, isActive }: SidebarItemProps) {
+function SidebarItem({ href, label, isActive }: SidebarItemProps) {
   return (
     <Link
       to={href}
