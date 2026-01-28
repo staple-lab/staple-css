@@ -137,7 +137,7 @@ Comprehensive redesign of Staple CSS documentation site to Tailwind-docs quality
 
 | Metric | Target | Status | Details |
 |--------|--------|--------|---------|
-| **Iterations** | 50+ | 4/50+ (8%) | Foundation + HomePage a11y |
+| **Iterations** | 50+ | 6/50+ (12%) | Foundation + 3 pages a11y |
 | **Typography** | Distinctive pair | ✅ COMPLETE | Bricolage + IBM Plex |
 | **Focus States** | All interactive | ✅ COMPLETE | 2px outline, :focus-visible |
 | **Motion Support** | prefers-reduced-motion | ✅ COMPLETE | CSS wrapper implemented |
@@ -195,10 +195,16 @@ Comprehensive redesign of Staple CSS documentation site to Tailwind-docs quality
   - [x] Add aria-hidden to decorative elements
   - [x] Add scope="col" to tables
   - [x] Ensure WCAG 2.1 A compliance
-- [ ] Iteration 5: Remaining pages accessibility
-  - [ ] Apply same patterns to WhyPage, GuidesPage, etc.
-  - [ ] Add aria-labels to icon-only elements
-  - [ ] Form label associations
+- [x] Iteration 5: WhyPage accessibility (COMPLETE)
+  - [x] Semantic sections + main wrapper
+  - [x] aria-hidden on decorative icons
+- [x] Iteration 6: GuidesPage accessibility (COMPLETE)
+  - [x] Article elements for guide cards
+  - [x] aria-hidden on decorative numbers and icons
+- [ ] Iterations 7-13: Remaining 8 pages accessibility
+  - ComponentPatternsPage, ExamplesPage, PrimitivesPage, TokenReferencePage
+  - TokensPage, ColorSystemPage, FigmaIntegrationPage, VisualsPage
+  - [ ] Apply same semantic HTML + aria patterns
   - [ ] Complete WCAG 2.1 AA compliance across all 11 pages
 
 ### Phase 3: Layout Architecture (Iterations 6-15)
