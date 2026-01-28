@@ -1378,6 +1378,83 @@ select.is-warning:focus {
   margin: var(--st-space-1) 0;
 }
 
+/* Tooltip styling */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-trigger {
+  cursor: help;
+  border-bottom: 1px dotted var(--st-color-primary);
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+}
+
+.tooltip-trigger:hover {
+  color: var(--st-color-primary);
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: calc(100% + var(--st-space-2));
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--st-color-text);
+  color: var(--st-color-surface);
+  padding: var(--st-space-2) var(--st-space-3);
+  border-radius: var(--st-radius-1);
+  font-size: var(--st-font-size-0);
+  white-space: nowrap;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--st-duration-fast) var(--st-easing-default);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip-content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--st-color-text);
+}
+
+.tooltip:hover .tooltip-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Tooltip positioning variants */
+.tooltip-content--top {
+  bottom: calc(100% + var(--st-space-2));
+  top: auto;
+}
+
+.tooltip-content--bottom {
+  top: calc(100% + var(--st-space-2));
+  bottom: auto;
+}
+
+.tooltip-content--bottom::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: var(--st-color-text);
+}
+
+.tooltip-content--left {
+  right: calc(100% + var(--st-space-2));
+  left: auto;
+}
+
+.tooltip-content--right {
+  left: calc(100% + var(--st-space-2));
+  right: auto;
+}
+
 /* Range input styling */
 input[type="range"] {
   width: 100%;
