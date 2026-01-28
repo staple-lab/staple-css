@@ -17,7 +17,7 @@ import { ExamplesPage } from "./pages/ExamplesPage";
 import { BuilderPage } from "./pages/tokens-studio";
 import { SearchPalette } from "./components/SearchPalette";
 import { SearchBar } from "./components/SearchBar";
-import { Sidebar } from "./components/Sidebar";
+import { SidebarNav } from "./components/SidebarNav";
 import { Breadcrumb } from "./components/Breadcrumb";
 import { TableOfContents } from "./components/TableOfContents";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -111,7 +111,7 @@ export function App() {
       </header>
 
       <div className="app-content-wrapper">
-        <Sidebar />
+        <SidebarNav />
         <main className="app-main">
           <div style={{ paddingBottom: "var(--st-space-2)" }}>
             <Breadcrumb />

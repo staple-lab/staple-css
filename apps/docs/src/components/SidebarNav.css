@@ -1,0 +1,134 @@
+/* Sidebar Navigation Component */
+
+.sidebar-nav {
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  background: var(--st-color-background);
+  border-right: 1px solid var(--st-color-border);
+  width: 250px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+/* Sidebar Icons */
+.sidebar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+
+.sidebar-icon.active {
+  opacity: 1;
+}
+
+/* Sidebar Items */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: var(--st-space-3) var(--st-space-4);
+  color: var(--st-color-text);
+  text-decoration: none;
+  border-left: 4px solid transparent;
+  transition: all 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  border-radius: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.sidebar-item:hover {
+  background: var(--st-color-surface-raised);
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+  color: var(--st-color-primary);
+}
+
+.sidebar-item:hover svg {
+  opacity: 1;
+}
+
+.sidebar-item.active {
+  border-left-color: var(--st-color-primary);
+  background: var(--st-color-surface);
+  font-weight: 500;
+}
+
+.sidebar-item:focus-visible {
+  outline: 2px solid var(--st-color-primary);
+  outline-offset: -2px;
+}
+
+/* Scrollbar styling */
+.sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--st-color-border);
+  border-radius: 3px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: var(--st-color-text-muted);
+}
+
+/* Tablet: Icons only (80px width) */
+@media (max-width: 1024px) {
+  .sidebar-nav {
+    width: 80px;
+  }
+
+  .sidebar-item {
+    justify-content: center;
+    padding: var(--st-space-3);
+  }
+
+  /* Hide text labels on tablet */
+  .sidebar-item > div > div:nth-child(2) {
+    display: none;
+  }
+
+  /* Tooltip on hover */
+  .sidebar-item::after {
+    content: attr(aria-label);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--st-color-surface);
+    color: var(--st-color-text);
+    padding: var(--st-space-2) var(--st-space-3);
+    border-radius: var(--st-radius-2);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms;
+    z-index: 1000;
+    margin-left: var(--st-space-2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: var(--st-font-size-0);
+  }
+
+  .sidebar-item:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Mobile: Hidden (hamburger menu will show overlay in ITER 69) */
+@media (max-width: 640px) {
+  .sidebar-nav {
+    display: none;
+  }
+}
+
+/* Dark mode: Automatic via CSS variables */
