@@ -362,6 +362,11 @@ pre {
   flex: 1;
 }
 
+/* Full-width for interactive builder pages */
+.app-main-content > div:first-child.builder-page-wrapper {
+  max-width: 100%;
+}
+
 /* Main content responsive padding and layout */
 @media (max-width: 1400px) {
   .app-main-content > div:first-child {

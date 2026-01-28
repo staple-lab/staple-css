@@ -118,6 +118,7 @@ export function App() {
           <div className="app-main-content">
             <div style={{ flex: 1 }}>
               <Routes>
+                {/* Regular pages with max-width constraint */}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/guides" element={<GuidesPage />} />
                 <Route path="/tokens" element={<TokensPage />} />
@@ -130,8 +131,12 @@ export function App() {
                 <Route path="/primitives" element={<PrimitivesPage />} />
                 <Route path="/why" element={<WhyPage />} />
                 <Route path="/examples" element={<ExamplesPage />} />
-                {/* Tokens Studio */}
-                <Route path="/tokens-studio" element={<BuilderPage />} />
+                {/* Full-width interactive builder */}
+                <Route path="/tokens-studio" element={
+                  <div className="builder-page-wrapper">
+                    <BuilderPage />
+                  </div>
+                } />
                 {/* Redirect old studio routes */}
                 <Route path="/tokens-studio/*" element={<Navigate to="/tokens-studio" replace />} />
                 <Route path="/studio" element={<Navigate to="/tokens-studio" replace />} />
