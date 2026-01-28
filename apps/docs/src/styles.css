@@ -597,6 +597,43 @@ pre {
   border-bottom-color: var(--st-color-primary);
 }
 
+/* Form inputs */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  padding: var(--st-space-3) var(--st-space-4);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2);
+  background-color: var(--st-color-surface);
+  color: var(--st-color-text);
+  font-family: inherit;
+  font-size: var(--st-font-size-1);
+  transition: all var(--st-duration-fast) var(--st-easing-default);
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--st-color-primary);
+  box-shadow: 0 0 0 3px rgba(42, 125, 82, 0.1);
+}
+
+textarea {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-font-size-0);
+  resize: vertical;
+  min-height: 120px;
+}
+
 /* Studio Buttons */
 .studio-btn {
   padding: var(--st-space-2) var(--st-space-4);
@@ -614,7 +651,7 @@ pre {
 
 .studio-btn:hover {
   border-color: var(--st-color-primary);
-  background-color: var(--st-color-primary-surface);
+  background-color: rgba(42, 125, 82, 0.05);
   transform: translateY(-1px);
   box-shadow: var(--st-shadow-1);
 }
