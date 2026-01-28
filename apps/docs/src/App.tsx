@@ -16,6 +16,7 @@ import { WhyPage } from "./pages/WhyPage";
 import { ExamplesPage } from "./pages/ExamplesPage";
 import { BuilderPage } from "./pages/tokens-studio";
 import { SearchPalette } from "./components/SearchPalette";
+import { SearchBar } from "./components/SearchBar";
 import { Sidebar } from "./components/Sidebar";
 import { Breadcrumb } from "./components/Breadcrumb";
 import { TableOfContents } from "./components/TableOfContents";
@@ -80,7 +81,7 @@ export function App() {
               </Text>
             </Link>
             <div className="header-center">
-              <SearchPalette />
+              <SearchBar />
             </div>
             <Row gap={2} className="header-right">
               <button onClick={cycleTheme} className="toggle-btn" title="Toggle theme" style={{
