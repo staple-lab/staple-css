@@ -4,8 +4,9 @@ import "./ColorSystemPage.css";
 export function ColorSystemPage() {
   return (
     <div className="color-system-page">
-      <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
-        <Column gap={8}>
+      <Box as="main">
+        <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+          <Column gap={8}>
           {/* Distinctive Hero */}
           <Box style={{ marginBottom: "var(--st-space-4)" }}>
             <Text as="h1" size={5} weight="bold" style={{ marginBottom: "var(--st-space-3)" }}>
@@ -17,7 +18,8 @@ export function ColorSystemPage() {
           </Box>
 
           {/* Semantic Colors */}
-          <Column gap={6}>
+          <Box as="section" style={{ display: "contents" }}>
+            <Column gap={6}>
             <div className="section-header">
               <Text as="h2" size={3} weight="semibold">
                 Semantic Colors
@@ -36,7 +38,7 @@ export function ColorSystemPage() {
                 { name: "Neutral", desc: "Text, borders, backgrounds", light: "#111827", dark: "#f9fafb" },
               ].map((color) => (
                 <div key={color.name} className="semantic-color">
-                  <div className="color-samples">
+                  <div className="color-samples" aria-hidden="true">
                     <div className="sample light" style={{ backgroundColor: color.light }} />
                     <div className="sample dark" style={{ backgroundColor: color.dark }} />
                   </div>
@@ -54,10 +56,12 @@ export function ColorSystemPage() {
                 </div>
               ))}
             </Grid>
-          </Column>
+            </Column>
+          </Box>
 
           {/* Color Palettes */}
-          <Column gap={6}>
+          <Box as="section" style={{ display: "contents" }}>
+            <Column gap={6}>
             <div className="section-header">
               <Text as="h2" size={3} weight="semibold">
                 Color Palettes
@@ -70,7 +74,7 @@ export function ColorSystemPage() {
             <Grid cols={{ base: 2, md: 3, lg: 4 }} gap={3}>
               {["slate", "gray", "zinc", "neutral", "stone", "red", "orange", "amber", "yellow", "lime", "green", "emerald"].map((palette) => (
                 <div key={palette} className="palette-card">
-                  <div className="palette-ramp">
+                  <div className="palette-ramp" aria-hidden="true">
                     {Array.from({ length: 11 }).map((_, i) => (
                       <div
                         key={i}
@@ -99,7 +103,8 @@ export function ColorSystemPage() {
           </Column>
 
           {/* Gradients */}
-          <Column gap={6}>
+          <Box as="section" style={{ display: "contents" }}>
+            <Column gap={6}>
             <div className="section-header">
               <Text as="h2" size={3} weight="semibold">
                 Gradient Tokens
@@ -118,6 +123,7 @@ export function ColorSystemPage() {
                 <div key={cat.name} className="gradient-showcase">
                   <div
                     className="gradient-preview"
+                    aria-hidden="true"
                     style={{
                       background: `linear-gradient(135deg, ${cat.colors[0]}, ${cat.colors[1]})`,
                     }}
@@ -131,10 +137,12 @@ export function ColorSystemPage() {
                 </div>
               ))}
             </Grid>
-          </Column>
+            </Column>
+          </Box>
 
           {/* Accessibility */}
-          <div className="accessibility-section">
+          <Box as="section" style={{ display: "contents" }}>
+            <div className="accessibility-section">
             <Text as="h2" size={3} weight="semibold" style={{ marginBottom: "var(--st-space-4)" }}>
               ♿ Accessibility
             </Text>
@@ -165,8 +173,10 @@ export function ColorSystemPage() {
               ))}
             </Grid>
           </div>
+          </Box>
         </Column>
-      </Container>
+        </Container>
+      </Box>
     </div>
   );
 }
