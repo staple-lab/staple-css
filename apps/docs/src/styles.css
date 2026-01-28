@@ -866,6 +866,104 @@ pre {
   text-align: left;
 }
 
+/* Loading and skeleton animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--st-color-border);
+  border-top-color: var(--st-color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner--lg {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+.spinner--sm {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.loading-state {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--st-space-2);
+}
+
+.loading-text {
+  color: var(--st-color-text-muted);
+  font-size: var(--st-font-size-1);
+}
+
+/* Skeleton loader */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--st-color-surface) 0%,
+    var(--st-color-border) 50%,
+    var(--st-color-surface) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--st-radius-1);
+}
+
+.skeleton--text {
+  height: 1rem;
+  margin-bottom: var(--st-space-2);
+}
+
+.skeleton--text:last-child {
+  margin-bottom: 0;
+}
+
+.skeleton--heading {
+  height: 1.5rem;
+  margin-bottom: var(--st-space-3);
+}
+
+.skeleton--card {
+  height: 200px;
+  border-radius: var(--st-radius-2);
+}
+
+/* Pulsing indicator */
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 /* Primary colored box for examples */
 .primary-box {
   background-color: var(--st-color-primary);
