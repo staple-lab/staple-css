@@ -6,6 +6,8 @@
 /* Import custom fonts and essential animations only */
 @import "./fonts.css";
 @import "./animations.css";
+@import "./accessibility.css";
+@import "./solarpunk-colors.css";
 
 * {
   box-sizing: border-box;
@@ -15,7 +17,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Geist Sans', var(--st-font-sans);
+  font-family: var(--st-font-body);
   background-color: var(--st-color-background);
   color: var(--st-color-text);
   line-height: var(--st-leading-normal);
@@ -25,14 +27,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: 'JetBrains Mono', var(--st-font-mono);
+code,
+pre {
+  font-family: var(--st-font-mono);
   font-size: 0.875em;
+  font-weight: 500;
+}
+
+code {
   padding: 0.125em 0.375em;
   background-color: var(--st-color-surface);
   border-radius: var(--st-radius-1);
   border: 1px solid var(--st-color-border-muted);
-  font-weight: 500;
+}
+
+pre {
+  padding: var(--st-space-4);
+  background-color: var(--st-color-surface);
+  border-radius: var(--st-radius-2);
+  border: 1px solid var(--st-color-border);
+  overflow-x: auto;
+  line-height: 1.5;
 }
 
 .app-root {

@@ -1,70 +1,16 @@
 /**
- * Custom Font Faces
- * Distinctive typography for staple-css docs
+ * Custom Font Faces - Solarpunk Edition
+ * Distinctive typography: Bricolage Grotesque (warm, retro-futuristic) + IBM Plex Mono (technical)
  */
 
-/* Geist Sans - Modern, geometric, premium */
-@font-face {
-  font-family: 'Geist Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/npm/@geist-ui/fonts@0.0.1/geist-sans-regular.woff2') format('woff2');
-}
+/* Bricolage Grotesque - Warm, organic, retro-futuristic (Solarpunk aesthetic) */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap');
 
-@font-face {
-  font-family: 'Geist Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/npm/@geist-ui/fonts@0.0.1/geist-sans-medium.woff2') format('woff2');
-}
+/* IBM Plex Mono - Clean, technical, warm neutrals */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
-@font-face {
-  font-family: 'Geist Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/npm/@geist-ui/fonts@0.0.1/geist-sans-semibold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Geist Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/npm/@geist-ui/fonts@0.0.1/geist-sans-bold.woff2') format('woff2');
-}
-
-/* JetBrains Mono - Technical, precise, readable */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/npm/@jetbrains/fonts@1.0.0/JetBrainsMono-Regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/npm/@jetbrains/fonts@1.0.0/JetBrainsMono-Medium.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/npm/@jetbrains/fonts@1.0.0/JetBrainsMono-SemiBold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/npm/@jetbrains/fonts@1.0.0/JetBrainsMono-Bold.woff2') format('woff2');
+:root {
+  --st-font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --st-font-body: 'Bricolage Grotesque', system-ui, sans-serif;
+  --st-font-mono: 'IBM Plex Mono', monospace;
 }
