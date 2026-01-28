@@ -804,6 +804,68 @@ pre {
   background-color: rgba(42, 125, 82, 0.04);
 }
 
+/* Typography utilities */
+.text-muted {
+  color: var(--st-color-text-muted);
+}
+
+.text-primary {
+  color: var(--st-color-primary);
+}
+
+.text-secondary {
+  color: #d4a574;
+}
+
+.text-accent {
+  color: #b4d61e;
+}
+
+.text-mono {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-font-size-0);
+}
+
+.text-sm {
+  font-size: var(--st-font-size-0);
+}
+
+.text-base {
+  font-size: var(--st-font-size-1);
+}
+
+.text-lg {
+  font-size: var(--st-font-size-2);
+}
+
+.text-xl {
+  font-size: var(--st-font-size-3);
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-semibold {
+  font-weight: 600;
+}
+
+.text-medium {
+  font-weight: 500;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
 /* Primary colored box for examples */
 .primary-box {
   background-color: var(--st-color-primary);
