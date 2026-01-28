@@ -3,19 +3,35 @@ import { Container, Column, Text, Box, Grid } from "@staple-css/primitives/full"
 export function TokenReferencePage() {
   return (
     <Box as="main">
+      {/* Hero Section */}
+      <Box
+        style={{
+          background: "linear-gradient(135deg, rgba(42, 125, 82, 0.05) 0%, rgba(212, 165, 116, 0.03) 100%)",
+          borderBottom: "1px solid var(--st-color-border)",
+          padding: "var(--st-space-8) var(--st-space-4)",
+        }}
+      >
+        <Container size="xl">
+          <Column gap={4}>
+            <Text
+              as="h1"
+              style={{
+                fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
+                fontWeight: 800,
+                fontFamily: "var(--st-font-display)",
+              }}
+            >
+              Token Reference
+            </Text>
+            <Text size={2} tone="muted" style={{ maxWidth: "60ch" }}>
+              Comprehensive documentation of every token in the staple-css system. Look up exact values, use cases, and implementation patterns.
+            </Text>
+          </Column>
+        </Container>
+      </Box>
+
       <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
         <Column gap={8}>
-        {/* Header */}
-        <Column gap={4}>
-          <Text as="h1" size={5} weight="bold">
-            Complete Token Reference
-          </Text>
-          <Text size={2} tone="muted">
-            Comprehensive documentation of every token in the staple-css system. Look up exact
-            values, use cases, and implementation patterns.
-          </Text>
-        </Column>
-
         {/* Quick Navigation */}
         <Grid cols={{ base: 2, md: 4, lg: 6 }} gap={3}>
           {[
@@ -257,12 +273,12 @@ export function TokenReferencePage() {
             {
               category: "Vibrant Multi-Color (6)",
               items: [
-                { key: "sunrise", value: "Orange → Coral", usage: "Energetic hero" },
-                { key: "sunset", value: "Orange → Pink", usage: "Warm showcase" },
-                { key: "ocean", value: "Blue → Teal", usage: "Cool/tech feel" },
+                { key: "sunrise", value: "Orange to Coral", usage: "Energetic hero" },
+                { key: "sunset", value: "Orange to Pink", usage: "Warm showcase" },
+                { key: "ocean", value: "Blue to Teal", usage: "Cool/tech feel" },
                 { key: "forest", value: "Green scale", usage: "Natural/organic" },
-                { key: "grape", value: "Purple → Pink", usage: "Creative/premium" },
-                { key: "mint", value: "Teal → Cyan", usage: "Fresh/modern" },
+                { key: "grape", value: "Purple to Pink", usage: "Creative/premium" },
+                { key: "mint", value: "Teal to Cyan", usage: "Fresh/modern" },
               ],
             },
           ]}
@@ -425,18 +441,31 @@ interface SectionProps {
   }>;
 }
 
+const colors = ["#2a7d52", "#d4a574", "#4a9d72", "#8b6f47"];
+
 function Section({ id, title, description, tokens }: SectionProps) {
+  const colorIndex = Math.abs(id.charCodeAt(0)) % colors.length;
+  const railColor = colors[colorIndex];
+
   return (
     <Box as="section" id={id} style={{ display: "contents" }}>
       <Column gap={4}>
-        <Column gap={2}>
-        <Text as="h2" size={3} weight="semibold">
-          {title}
-        </Text>
-        <Text size={1} tone="muted">
-          {description}
-        </Text>
-        </Column>
+        <div style={{ display: "flex", gap: "var(--st-space-3)" }}>
+          <div style={{ width: "4px", backgroundColor: railColor, borderRadius: "1px" }} />
+          <Column gap={2} style={{ flex: 1 }}>
+            <Text
+              as="h2"
+              size={3}
+              weight="semibold"
+              style={{ fontSize: "clamp(1.125rem, 3vw, 1.5rem)", fontWeight: 700 }}
+            >
+              {title}
+            </Text>
+            <Text size={1} tone="muted">
+              {description}
+            </Text>
+          </Column>
+        </div>
 
         <Column gap={3}>
         {tokens.map((token, idx) => (
