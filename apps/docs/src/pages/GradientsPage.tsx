@@ -1,4 +1,4 @@
-import { Column, Row, Text, Card, Grid, Box } from "@staple-css/primitives/full";
+import { Column, Row, Text, Card, Grid, Box, Container } from "@staple-css/primitives/full";
 
 interface GradientDefinition {
   name: string;
@@ -159,23 +159,48 @@ const gradients: GradientDefinition[] = [
 
 export function GradientsPage() {
   return (
-    <Column gap={8}>
-      {/* Header */}
-      <Column gap={4}>
-        <Text as="h1" size={5} weight="bold">
-          Gradient Tokens
-        </Text>
-        <Text size={2} tone="muted">
-          Pre-defined, perceptually-smooth gradients for modern, accessible design. Use
-          with the <code style={{ fontFamily: "var(--st-font-mono)" }}>background</code>
-          {" "}or{" "}
-          <code style={{ fontFamily: "var(--st-font-mono)" }}>background-image</code> CSS
-          properties.
-        </Text>
-      </Column>
+    <Box as="main">
+      {/* Hero Section */}
+      <Box style={{
+        background: "linear-gradient(135deg, rgba(42, 125, 82, 0.05) 0%, rgba(212, 165, 116, 0.03) 100%)",
+        borderBottom: "1px solid var(--st-color-border)",
+        padding: "var(--st-space-8) var(--st-space-4)"
+      }}>
+        <Container size="lg">
+          <Column gap={4} style={{ maxWidth: "750px" }}>
+            <Text as="h1" style={{
+              fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
+              fontWeight: 800,
+              fontFamily: "var(--st-font-display)",
+              lineHeight: 1.15,
+              margin: 0,
+              letterSpacing: "-2px"
+            }}>
+              Gradient Tokens
+            </Text>
+            <Text tone="muted" style={{
+              fontSize: "1.125rem",
+              lineHeight: 1.7,
+              maxWidth: "65ch",
+              fontWeight: 400
+            }}>
+              Pre-defined, perceptually-smooth gradients for modern, accessible design. OKLCH-generated for visual harmony.
+            </Text>
+          </Column>
+        </Container>
+      </Box>
 
-      {/* Usage Section */}
-      <Card pad={6} radius={3} shadow={1}>
+      <Container size="lg" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+        <Column gap={8}>
+          <Text>
+            Apply gradients via the <code style={{ fontFamily: "var(--st-font-mono)" }}>background</code>
+            {" "}or{" "}
+            <code style={{ fontFamily: "var(--st-font-mono)" }}>background-image</code> CSS
+            properties.
+          </Text>
+
+          {/* Usage Section */}
+          <Card pad={6} radius={3} shadow={1}>
         <Column gap={4}>
           <Text as="h2" size={3} weight="semibold">
             How to Use
@@ -202,74 +227,80 @@ export function GradientsPage() {
           </pre>
         </Column>
       </Card>
+        </Column>
+      </Container>
 
       {/* Tone-based Gradients */}
-      <Column gap={4}>
-        <Text as="h2" size={3} weight="semibold">
-          Tone-Based Gradients
-        </Text>
-        <Text size={1} tone="muted">
-          Systematic gradients for each tone (neutral, primary, danger, warning, success)
-          in three intensities: soft, medium, and bold.
-        </Text>
-        <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
-          {gradients
-            .filter((g) => g.category === "tone")
-            .map((gradient) => (
-              <GradientCard key={gradient.cssVariable} gradient={gradient} />
-            ))}
-        </Grid>
-      </Column>
+      <Container size="lg" style={{ paddingTop: "var(--st-space-6)", paddingBottom: "var(--st-space-6)" }}>
+        <Column gap={8}>
+          <Column gap={4}>
+            <Text as="h2" size={3} weight="semibold">
+              Tone-Based Gradients
+            </Text>
+            <Text size={1} tone="muted">
+              Systematic gradients for each tone (neutral, primary, danger, warning, success)
+              in three intensities: soft, medium, and bold.
+            </Text>
+            <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+              {gradients
+                .filter((g) => g.category === "tone")
+                .map((gradient) => (
+                  <GradientCard key={gradient.cssVariable} gradient={gradient} />
+                ))}
+            </Grid>
+          </Column>
 
-      {/* Vibrant Gradients */}
-      <Column gap={4}>
-        <Text as="h2" size={3} weight="semibold">
-          Vibrant Multi-Color Gradients
-        </Text>
-        <Text size={1} tone="muted">
-          Expressive, multi-color gradients for showcase sections, hero images, and
-          creative designs.
-        </Text>
-        <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
-          {gradients
-            .filter((g) => g.category === "vibrant")
-            .map((gradient) => (
-              <GradientCard key={gradient.cssVariable} gradient={gradient} />
-            ))}
-        </Grid>
-      </Column>
+          {/* Vibrant Gradients */}
+          <Column gap={4}>
+            <Text as="h2" size={3} weight="semibold">
+              Vibrant Multi-Color Gradients
+            </Text>
+            <Text size={1} tone="muted">
+              Expressive, multi-color gradients for showcase sections, hero images, and
+              creative designs.
+            </Text>
+            <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+              {gradients
+                .filter((g) => g.category === "vibrant")
+                .map((gradient) => (
+                  <GradientCard key={gradient.cssVariable} gradient={gradient} />
+                ))}
+            </Grid>
+          </Column>
 
-      {/* Overlay Gradients */}
-      <Column gap={4}>
-        <Text as="h2" size={3} weight="semibold">
-          Overlay Gradients
-        </Text>
-        <Text size={1} tone="muted">
-          Semi-transparent and shimmer gradients for overlays, loading states, and text
-          contrast.
-        </Text>
-        <Grid cols={{ base: 1, md: 2 }} gap={4}>
-          {gradients
-            .filter((g) => g.category === "overlay")
-            .map((gradient) => (
-              <GradientCard key={gradient.cssVariable} gradient={gradient} />
-            ))}
-        </Grid>
-      </Column>
+          {/* Overlay Gradients */}
+          <Column gap={4}>
+            <Text as="h2" size={3} weight="semibold">
+              Overlay Gradients
+            </Text>
+            <Text size={1} tone="muted">
+              Semi-transparent and shimmer gradients for overlays, loading states, and text
+              contrast.
+            </Text>
+            <Grid cols={{ base: 1, md: 2 }} gap={4}>
+              {gradients
+                .filter((g) => g.category === "overlay")
+                .map((gradient) => (
+                  <GradientCard key={gradient.cssVariable} gradient={gradient} />
+                ))}
+            </Grid>
+          </Column>
 
-      {/* Integration Section */}
-      <Card pad={6} radius={3} shadow={1} tone="primary">
-        <Column gap={3}>
-          <Text as="h2" size={3} weight="semibold" color="white">
-            Integration with Gradient Maker
-          </Text>
-          <Text size={1} style={{ color: "white", opacity: 0.9 }}>
-            Visit the <strong>Studio</strong> page to create custom gradients and manage
-            your design system's gradient tokens.
-          </Text>
+          {/* Integration Section */}
+          <Card pad={6} radius={3} shadow={1} tone="primary">
+            <Column gap={3}>
+              <Text as="h2" size={3} weight="semibold" color="white">
+                Integration with Gradient Maker
+              </Text>
+              <Text size={1} style={{ color: "white", opacity: 0.9 }}>
+                Visit the <strong>Studio</strong> page to create custom gradients and manage
+                your design system's gradient tokens.
+              </Text>
+            </Column>
+          </Card>
         </Column>
-      </Card>
-    </Column>
+      </Container>
+    </Box>
   );
 }
 
@@ -312,5 +343,5 @@ function GradientCard({ gradient }: { gradient: GradientDefinition }) {
         </Column>
       </Column>
     </Card>
-  );
-}
+    );
+  }

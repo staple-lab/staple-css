@@ -3,14 +3,39 @@ import { CodePreview } from "../components/CodePreview";
 
 export function PrimitivesPage() {
   return (
-    <Container size="lg">
-      <Column gap={8}>
-        <Column gap={2}>
-          <Text as="h1" size={5} weight="bold">Primitives</Text>
-          <Text tone="muted">
-            Essential layout and typography components. All props support responsive design with <Text as="span" mono>{"{ base, md, lg }"}</Text> breakpoints.
-          </Text>
-        </Column>
+    <Box as="main">
+      {/* Hero Section */}
+      <Box style={{
+        background: "linear-gradient(135deg, rgba(42, 125, 82, 0.05) 0%, rgba(212, 165, 116, 0.03) 100%)",
+        borderBottom: "1px solid var(--st-color-border)",
+        padding: "var(--st-space-8) var(--st-space-4)"
+      }}>
+        <Container size="lg">
+          <Column gap={4} style={{ maxWidth: "750px" }}>
+            <Text as="h1" style={{
+              fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
+              fontWeight: 800,
+              fontFamily: "var(--st-font-display)",
+              lineHeight: 1.15,
+              margin: 0,
+              letterSpacing: "-2px"
+            }}>
+              Primitives
+            </Text>
+            <Text tone="muted" style={{
+              fontSize: "1.125rem",
+              lineHeight: 1.7,
+              maxWidth: "65ch",
+              fontWeight: 400
+            }}>
+              Essential layout and typography components. All props support responsive design with breakpoint objects. Type-safe, performant, accessible.
+            </Text>
+          </Column>
+        </Container>
+      </Box>
+
+      <Container size="lg" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+        <Column gap={8}>
 
         {/* Installation */}
         <Box as="section" style={{ display: "contents" }}>
@@ -216,6 +241,7 @@ import { Box, Column, Row, Grid, Text } from "@staple-css/primitives";`}
           </Column>
         </Box>
       </Column>
-    </Container>
+      </Container>
+    </Box>
   );
 }

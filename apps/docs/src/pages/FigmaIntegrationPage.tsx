@@ -15,12 +15,37 @@ export function FigmaIntegrationPage() {
   return (
     <div className="figma-page">
       <Box as="main">
-        <Container size="xl">
-          {/* Header */}
-          <div className="figma-header">
-          <h1>Figma Integration</h1>
-          <p>Seamlessly sync design tokens between Figma and your codebase. Keep design and development in perfect sync with bidirectional token support.</p>
-        </div>
+        {/* Hero Section */}
+        <Box style={{
+          background: "linear-gradient(135deg, rgba(42, 125, 82, 0.05) 0%, rgba(212, 165, 116, 0.03) 100%)",
+          borderBottom: "1px solid var(--st-color-border)",
+          padding: "var(--st-space-8) var(--st-space-4)"
+        }}>
+          <Container size="lg">
+            <Column gap={4} style={{ maxWidth: "750px" }}>
+              <Text as="h1" style={{
+                fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
+                fontWeight: 800,
+                fontFamily: "var(--st-font-display)",
+                lineHeight: 1.15,
+                margin: 0,
+                letterSpacing: "-2px"
+              }}>
+                Figma Integration
+              </Text>
+              <Text tone="muted" style={{
+                fontSize: "1.125rem",
+                lineHeight: 1.7,
+                maxWidth: "65ch",
+                fontWeight: 400
+              }}>
+                Seamlessly sync design tokens between Figma and your codebase. Keep design and development in perfect sync with bidirectional token support.
+              </Text>
+            </Column>
+          </Container>
+        </Box>
+
+        <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
 
         {/* Two-Way Sync */}
         <Box as="section" style={{ display: "contents" }}>
