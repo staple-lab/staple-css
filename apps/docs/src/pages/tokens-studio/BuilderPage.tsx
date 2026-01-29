@@ -262,10 +262,10 @@ export function BuilderPage() {
   }, []);
 
   // Steps configuration
-  const steps: Array<{ id: BuilderStep; label: string; description: string }> = [
-    { id: "seeds", label: "1. Brand Colors", description: "Colors, palettes & semantics" },
-    { id: "scales", label: "2. Scales", description: "Space, radius, motion" },
-    { id: "export", label: "3. Export", description: "Save & download" },
+  const steps: Array<{ id: BuilderStep; label: string; description: string; icon: string }> = [
+    { id: "seeds", label: "1. Brand Colors", description: "Colors, palettes & semantics", icon: "🎨" },
+    { id: "scales", label: "2. Scales", description: "Space, radius, motion", icon: "📐" },
+    { id: "export", label: "3. Export", description: "Save & download", icon: "📦" },
   ];
 
   // Navigation
@@ -937,6 +937,32 @@ export function BuilderPage() {
           </button>
           {/* Step Content */}
           <div className="builder-main">
+            <Box style={{
+              padding: "var(--st-space-5)",
+              background: "var(--st-color-background)",
+              borderRadius: "var(--st-radius-3)",
+              border: "1px solid var(--st-color-border)",
+              boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
+            }}>
+              {/* Current Step Indicator */}
+              <Box style={{
+                marginBottom: "var(--st-space-4)",
+                paddingBottom: "var(--st-space-3)",
+                borderBottom: "1px solid var(--st-color-border)"
+              }}>
+                <Row gap={2} align="center">
+                  <Text size={3}>{steps[currentStepIndex]?.icon}</Text>
+                  <Column gap={1}>
+                    <Text size={2} weight="bold">
+                      {steps[currentStepIndex]?.label.split(". ")[1]}
+                    </Text>
+                    <Text size={0} tone="muted">
+                      {steps[currentStepIndex]?.description}
+                    </Text>
+                  </Column>
+                </Row>
+              </Box>
+
             {currentStep === "seeds" && (
               <SeedsStep
                 seeds={working.seeds}
@@ -989,6 +1015,7 @@ export function BuilderPage() {
                 onImport={importConfig}
               />
             )}
+            </Box>
           </div>
 
         </div>
