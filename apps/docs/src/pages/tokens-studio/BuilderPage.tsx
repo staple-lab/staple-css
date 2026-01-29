@@ -743,20 +743,65 @@ export function BuilderPage() {
   }, [allPalettes, working.semanticMap, working.overrides, semanticOverrides]);
 
   return (
-    <Container size="xl">
+    <>
+      {/* Hero Section - Solarpunk gradient matching HomePage */}
+      <Box as="section" style={{
+        background: "linear-gradient(135deg, #2a7d52 0%, rgba(42, 125, 82, 0.95) 50%, #d4a574 100%)",
+        color: "white",
+        padding: "var(--st-space-7) var(--st-space-4)",
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        boxSizing: "border-box",
+        marginBottom: "var(--st-space-7)"
+      }}>
+        <Box
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: "0",
+            left: "0",
+            right: "0",
+            bottom: "0",
+            opacity: "0.08",
+            backgroundImage: "radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(42, 125, 82, 0.2) 0%, transparent 50%)",
+            pointerEvents: "none",
+          }} />
+
+        <Container size="lg" style={{ position: "relative", zIndex: 1 }}>
+          <Column gap={4} align="center">
+            <Text as="h1" style={{
+              fontSize: "clamp(2rem, 6vw, 2.75rem)",
+              fontWeight: 800,
+              fontFamily: "var(--st-font-display)",
+              lineHeight: 1.15,
+              margin: 0,
+              color: "white",
+              letterSpacing: "-1.5px"
+            }}>
+              Tokens Studio
+            </Text>
+            <Text align="center" style={{
+              color: "rgba(255,255,255,0.95)",
+              fontSize: "1.125rem",
+              fontWeight: 400,
+              lineHeight: 1.6,
+              maxWidth: "600px"
+            }}>
+              Build a complete design token system step by step. Generate palettes, define scales, and export production-ready CSS.
+            </Text>
+          </Column>
+        </Container>
+      </Box>
+
+      <Container size="xl">
       <Column gap={6}>
-        {/* Header */}
-        <Column gap={2}>
-          <Text as="h1" size={5} weight="bold">
-            Tokens Studio
-          </Text>
-          <Text tone="muted">
-            Build a complete design token system step by step.
-          </Text>
-        </Column>
 
         {/* Step Navigation */}
-        <Card pad={4} radius={2}>
+        <Card pad={5} radius={3} shadow={1} style={{
+          background: "var(--st-color-surface)",
+          border: "1px solid var(--st-color-border)"
+        }}>
           <Row gap={2} align="center" wrap="wrap">
             {steps.map((step, index) => (
               <button
@@ -772,10 +817,13 @@ export function BuilderPage() {
         </Card>
 
         {/* Live Preview at Top */}
-        <Card pad={4} radius={2}>
+        <Card pad={5} radius={3} shadow={2} style={{
+          borderTop: "2px solid var(--st-color-primary)",
+          background: "linear-gradient(to bottom, rgba(42, 125, 82, 0.02), transparent)"
+        }}>
           <Column gap={4}>
             <Row gap={2} align="center" justify="between" wrap="wrap">
-              <Text weight="semibold">Live Preview</Text>
+              <Text weight="semibold" size={2} style={{ color: "var(--st-color-primary)" }}>Live Preview</Text>
               {/* View mode controls */}
               <Row gap={2} wrap="wrap">
                 {/* Size presets */}
@@ -902,7 +950,10 @@ export function BuilderPage() {
 
 
         {/* Navigation Footer */}
-        <Card pad={4} radius={2}>
+        <Card pad={5} radius={3} shadow={1} style={{
+          background: "var(--st-color-surface)",
+          border: "1px solid var(--st-color-border)"
+        }}>
           <Row gap={2} align="center" justify="between">
             <button
               onClick={goBack}
@@ -925,6 +976,7 @@ export function BuilderPage() {
         </Card>
       </Column>
     </Container>
+    </>
   );
 }
 

@@ -41,6 +41,29 @@
   }
 }
 
+/* ===== Aurora Edge - Solarpunk Gradient Animation ===== */
+
+@keyframes aurora-edge {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.aurora-edge {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.03),
+    rgba(245, 158, 11, 0.03),
+    rgba(132, 204, 22, 0.03)
+  );
+  background-size: 400% 400%;
+  animation: aurora-edge 15s ease-in-out infinite;
+  filter: blur(40px);
+}
+
 /* ===== Accessibility: Respect prefers-reduced-motion ===== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -50,5 +73,10 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .aurora-edge {
+    animation: none;
+    filter: blur(20px);
   }
 }
