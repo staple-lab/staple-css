@@ -797,12 +797,56 @@ export function BuilderPage() {
       <Container size="xl">
       <Column gap={6}>
 
-        {/* Step Navigation */}
-        <Card pad={5} radius={3} shadow={1} style={{
-          background: "var(--st-color-surface)",
-          border: "1px solid var(--st-color-border)"
-        }}>
-          <Row gap={2} align="center" wrap="wrap">
+        {/* Feature Highlights */}
+        <Grid cols={{ base: 1, md: 3 }} gap={4} style={{ marginBottom: "var(--st-space-4)" }}>
+          <Card pad={4} radius={2} shadow={1}>
+            <Column gap={2}>
+              <Text size={1} weight="semibold" style={{ color: "var(--st-color-primary)" }}>
+                🎨 Visual Design
+              </Text>
+              <Text size={1} tone="muted">
+                Generate harmonious color palettes with OKLCH color science
+              </Text>
+            </Column>
+          </Card>
+          <Card pad={4} radius={2} shadow={1}>
+            <Column gap={2}>
+              <Text size={1} weight="semibold" style={{ color: "var(--st-color-primary)" }}>
+                ⚡ Live Preview
+              </Text>
+              <Text size={1} tone="muted">
+                See your token changes in real-time with interactive preview
+              </Text>
+            </Column>
+          </Card>
+          <Card pad={4} radius={2} shadow={1}>
+            <Column gap={2}>
+              <Text size={1} weight="semibold" style={{ color: "var(--st-color-primary)" }}>
+                📦 Export Ready
+              </Text>
+              <Text size={1} tone="muted">
+                Generate production-ready CSS, JSON, or JavaScript
+              </Text>
+            </Column>
+          </Card>
+        </Grid>
+
+        {/* Step-by-Step Workflow */}
+        <Column gap={3}>
+          <Column gap={1}>
+            <Text as="h2" size={3} weight="bold">
+              Build Your Token System
+            </Text>
+            <Text size={1} tone="muted">
+              Follow these steps to create a comprehensive design token system
+            </Text>
+          </Column>
+
+          <Card pad={5} radius={3} shadow={1} style={{
+            background: "var(--st-color-surface)",
+            border: "1px solid var(--st-color-border)"
+          }}>
+            <Row gap={2} align="center" wrap="wrap">
             {steps.map((step, index) => (
               <button
                 key={step.id}
@@ -815,6 +859,7 @@ export function BuilderPage() {
             ))}
           </Row>
         </Card>
+        </Column>
 
         {/* Live Preview at Top */}
         <Card pad={5} radius={3} shadow={2} style={{
