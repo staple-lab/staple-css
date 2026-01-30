@@ -5,6 +5,9 @@ import { Monitor, Sun, Moon } from "lucide-react";
 import { HomePageNew as HomePage } from "./pages/HomePageNew";
 import { TokensPage } from "./pages/TokensPage";
 import { ColorSystemPage } from "./pages/ColorSystemPage";
+import { ColorsPage } from "./pages/ColorsPage";
+import { ColorPrimitiveRampsPage } from "./pages/ColorPrimitiveRampsPage";
+import { SpacingPrimitivesPage } from "./pages/SpacingPrimitivesPage";
 import { VisualsPage } from "./pages/VisualsPage";
 import { GradientStudioPage } from "./pages/GradientStudioPage";
 import { FigmaIntegrationPage } from "./pages/FigmaIntegrationPage";
@@ -115,7 +118,7 @@ export function App() {
       <div className="app-content-wrapper">
         <SidebarNav />
         <main className="app-main">
-          <div style={{ paddingBottom: "var(--st-space-4)" }}>
+          <div style={{ paddingBottom: "var(--st-space-5)", marginBottom: "var(--st-space-4)" }}>
             <Breadcrumb />
           </div>
           <div className="app-main-content">
@@ -127,6 +130,9 @@ export function App() {
                 <Route path="/tokens" element={<TokensPage />} />
                 <Route path="/token-reference" element={<TokenReferencePage />} />
                 <Route path="/colors" element={<ColorSystemPage />} />
+                <Route path="/color-ramp" element={<ColorsPage />} />
+                <Route path="/color-primitives" element={<ColorPrimitiveRampsPage />} />
+                <Route path="/spacing-primitives" element={<SpacingPrimitivesPage />} />
                 <Route path="/visuals" element={<VisualsPage />} />
                 <Route path="/components" element={<ComponentPatternsPage />} />
                 <Route path="/gradient-studio" element={<GradientStudioPage />} />

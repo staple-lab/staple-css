@@ -123,42 +123,6 @@ interface WorkingState {
 export function BuilderPage() {
   const [currentStep, setCurrentStep] = useState<BuilderStep>("seeds");
 
-  // Sidebar state with localStorage persistence
-  const [sidebarOpen, setSidebarOpen] = useState(() => {
-    if (typeof window === "undefined") return true;
-    const stored = localStorage.getItem("staple-builder-sidebar");
-    return stored !== null ? stored === "true" : window.innerWidth >= 1024;
-  });
-
-  // Keyboard shortcut handler (Cmd/Ctrl + B)
-  useEffect(() => {
-    const handleKeyboard = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "b") {
-        e.preventDefault();
-        setSidebarOpen(prev => !prev);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyboard);
-    return () => window.removeEventListener("keydown", handleKeyboard);
-  }, []);
-
-  // Persist sidebar state to localStorage
-  useEffect(() => {
-    localStorage.setItem("staple-builder-sidebar", String(sidebarOpen));
-  }, [sidebarOpen]);
-
-  // Auto-collapse on mobile (<1024px)
-  useEffect(() => {
-    const handleResize = () => {
-      if (typeof window !== "undefined") {
-        setSidebarOpen(window.innerWidth >= 1024);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   // Default breakpoints
   const defaultBreakpoints: Record<string, string> = {
@@ -743,198 +707,90 @@ export function BuilderPage() {
   }, [allPalettes, working.semanticMap, working.overrides, semanticOverrides]);
 
   return (
-    <>
-      {/* Hero Section - Solarpunk gradient matching HomePage */}
-      <Box as="section" style={{
-        background: "linear-gradient(135deg, #2a7d52 0%, rgba(42, 125, 82, 0.95) 50%, #d4a574 100%)",
-        color: "white",
-        padding: "var(--st-space-7) var(--st-space-4)",
-        position: "relative",
-        overflow: "hidden",
-        width: "100%",
-        boxSizing: "border-box",
-        marginBottom: "var(--st-space-7)"
-      }}>
-        <Box
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            top: "0",
-            left: "0",
-            right: "0",
-            bottom: "0",
-            opacity: "0.08",
-            backgroundImage: "radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(42, 125, 82, 0.2) 0%, transparent 50%)",
-            pointerEvents: "none",
-          }} />
-
-        <Container size="lg" style={{ position: "relative", zIndex: 1 }}>
-          <Column gap={4} align="center">
-            <Text as="h1" style={{
-              fontSize: "clamp(2rem, 6vw, 2.75rem)",
-              fontWeight: 800,
-              fontFamily: "var(--st-font-display)",
-              lineHeight: 1.15,
-              margin: 0,
-              color: "white",
-              letterSpacing: "-1.5px"
-            }}>
-              Tokens Studio
-            </Text>
-            <Text align="center" style={{
-              color: "rgba(255,255,255,0.95)",
-              fontSize: "1.125rem",
-              fontWeight: 400,
-              lineHeight: 1.6,
-              maxWidth: "600px"
-            }}>
+    <div className="studio-page">
+      {/* Hero Section - Aligned with Homepage Pattern */}
+      <section className="studio-hero">
+        <div className="studio-hero-glow" aria-hidden="true" />
+        <Container size="lg">
+          <Column gap={5} align="center">
+            <div className="studio-hero-eyebrow">Design Token Builder</div>
+            <h1 className="studio-hero-title">
+              Tokens
+              <span className="studio-hero-accent">Studio</span>
+            </h1>
+            <p className="studio-hero-subtitle">
               Build a complete design token system step by step. Generate palettes, define scales, and export production-ready CSS.
-            </Text>
+            </p>
           </Column>
         </Container>
-      </Box>
+      </section>
 
       <Container size="xl">
-      <Column gap={6}>
+        <Column gap={6} className="studio-content">
 
-        {/* Feature Highlights */}
-        <Grid cols={{ base: 1, md: 3 }} gap={4} style={{ marginBottom: "var(--st-space-4)" }}>
-          <Card pad={4} radius={2} shadow={1}>
-            <Column gap={2}>
-              <Text size={1} weight="semibold" style={{ color: "var(--st-color-primary)" }}>
-                🎨 Visual Design
-              </Text>
-              <Text size={1} tone="muted">
-                Generate harmonious color palettes with OKLCH color science
-              </Text>
-            </Column>
-          </Card>
-          <Card pad={4} radius={2} shadow={1}>
-            <Column gap={2}>
-              <Text size={1} weight="semibold" style={{ color: "var(--st-color-primary)" }}>
-                ⚡ Live Preview
-              </Text>
-              <Text size={1} tone="muted">
-                See your token changes in real-time with interactive preview
-              </Text>
-            </Column>
-          </Card>
-          <Card pad={4} radius={2} shadow={1}>
-            <Column gap={2}>
-              <Text size={1} weight="semibold" style={{ color: "var(--st-color-primary)" }}>
-                📦 Export Ready
-              </Text>
-              <Text size={1} tone="muted">
-                Generate production-ready CSS, JSON, or JavaScript
-              </Text>
-            </Column>
-          </Card>
-        </Grid>
+          {/* Live Preview - Prominent Position */}
+          <section className="studio-preview-section">
+            <div className="studio-preview-header">
+              <div className="studio-preview-title">
+                <span className="studio-preview-dot" />
+                Live Preview
+              </div>
+              <div className="studio-preview-controls">
+                <div className="studio-control-group">
+                  {(["mobile", "tablet", "desktop"] as const).map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => setPreviewSize(size)}
+                      className={`studio-control-btn ${previewSize === size ? "studio-control-btn--active" : ""}`}
+                      title={size.charAt(0).toUpperCase() + size.slice(1)}
+                    >
+                      {size === "mobile" ? "📱" : size === "tablet" ? "📑" : "🖥️"}
+                    </button>
+                  ))}
+                </div>
+                <div className="studio-control-divider" />
+                <div className="studio-control-group">
+                  {(["light", "dark"] as const).map((mode) => (
+                    <button
+                      key={mode}
+                      onClick={() => setPreviewMode(mode)}
+                      className={`studio-control-btn studio-control-btn--text ${previewMode === mode ? "studio-control-btn--active" : ""}`}
+                    >
+                      {mode.charAt(0).toUpperCase() + mode.slice(1)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="studio-preview-frame">
+              <LivePreview
+                colors={resolvedColors[previewMode]}
+                mode={previewMode}
+                palettes={allPalettes}
+                size={previewSize}
+                onSizeChange={setPreviewSize}
+                embedded={true}
+              />
+            </div>
+          </section>
 
-        {/* Step-by-Step Workflow */}
-        <Column gap={3}>
-          <Column gap={1}>
-            <Text as="h2" size={3} weight="bold">
-              Build Your Token System
-            </Text>
-            <Text size={1} tone="muted">
-              Follow these steps to create a comprehensive design token system
-            </Text>
-          </Column>
-
-          <Card pad={5} radius={3} shadow={1} style={{
-            background: "var(--st-color-surface)",
-            border: "1px solid var(--st-color-border)"
-          }}>
-            <Row gap={2} align="center" wrap="wrap">
+          {/* Step Navigation - Clean Horizontal Pills */}
+          <nav className="studio-steps" aria-label="Build steps">
             {steps.map((step, index) => (
               <button
                 key={step.id}
                 onClick={() => setCurrentStep(step.id)}
-                className={`builder-step-btn ${currentStep === step.id ? "builder-step-btn--active" : ""} ${index < currentStepIndex ? "builder-step-btn--completed" : ""}`}
+                className={`studio-step ${currentStep === step.id ? "studio-step--active" : ""} ${index < currentStepIndex ? "studio-step--completed" : ""}`}
+                aria-current={currentStep === step.id ? "step" : undefined}
               >
-                <span className="builder-step-num">{index + 1}</span>
-                <span className="builder-step-label">{step.label.split(". ")[1]}</span>
+                <span className="studio-step-number">{index + 1}</span>
+                <span className="studio-step-label">{step.label.split(". ")[1]}</span>
               </button>
             ))}
-          </Row>
-        </Card>
-        </Column>
-
-        {/* Live Preview at Top */}
-        <Card pad={5} radius={3} shadow={2} style={{
-          borderTop: "2px solid var(--st-color-primary)",
-          background: "linear-gradient(to bottom, rgba(42, 125, 82, 0.02), transparent)"
-        }}>
-          <Column gap={4}>
-            <Row gap={2} align="center" justify="between" wrap="wrap">
-              <Text weight="semibold" size={2} style={{ color: "var(--st-color-primary)" }}>Live Preview</Text>
-              {/* View mode controls */}
-              <Row gap={2} wrap="wrap">
-                {/* Size presets */}
-                <Row gap={1}>
-                  <button
-                    onClick={() => setPreviewSize("mobile")}
-                    className={`studio-btn studio-btn--xs ${previewSize === "mobile" ? "studio-btn--primary" : ""}`}
-                    title="Mobile viewport (375px)"
-                  >
-                    📱
-                  </button>
-                  <button
-                    onClick={() => setPreviewSize("tablet")}
-                    className={`studio-btn studio-btn--xs ${previewSize === "tablet" ? "studio-btn--primary" : ""}`}
-                    title="Tablet viewport (768px)"
-                  >
-                    📑
-                  </button>
-                  <button
-                    onClick={() => setPreviewSize("desktop")}
-                    className={`studio-btn studio-btn--xs ${previewSize === "desktop" ? "studio-btn--primary" : ""}`}
-                    title="Desktop viewport (1024px)"
-                  >
-                    🖥️
-                  </button>
-                </Row>
-                {/* Light/Dark mode controls */}
-                <Row gap={1}>
-                  <button
-                    onClick={() => setPreviewMode("light")}
-                    className={`studio-btn studio-btn--xs ${previewMode === "light" ? "studio-btn--primary" : ""}`}
-                  >
-                    Light
-                  </button>
-                  <button
-                    onClick={() => setPreviewMode("dark")}
-                    className={`studio-btn studio-btn--xs ${previewMode === "dark" ? "studio-btn--primary" : ""}`}
-                  >
-                    Dark
-                  </button>
-                </Row>
-              </Row>
-            </Row>
-            {/* Inline Preview Content */}
-            <LivePreview
-              colors={resolvedColors[previewMode]}
-              mode={previewMode}
-              palettes={allPalettes}
-              size={previewSize}
-              onSizeChange={setPreviewSize}
-              embedded={true}
-            />
-          </Column>
-        </Card>
+          </nav>
 
         {/* Main Content Area - Single Column */}
-        <div className={`builder-layout ${sidebarOpen ? "builder-layout--sidebar-open" : "builder-layout--sidebar-closed"}`}>
-          {/* Sidebar Toggle Button */}
-          <button
-            className="builder-sidebar-toggle"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            aria-label={sidebarOpen ? "Close sidebar (⌘B)" : "Open sidebar (⌘B)"}
-            title={`${sidebarOpen ? "Close" : "Open"} sidebar (Cmd/Ctrl + B)`}
-          >
-            {sidebarOpen ? "✕" : "≡"}
-          </button>
+        <div className="builder-layout">
           {/* Step Content */}
           <div className="builder-main">
             <Box style={{
@@ -1048,7 +904,7 @@ export function BuilderPage() {
         </Card>
       </Column>
     </Container>
-    </>
+    </div>
   );
 }
 

@@ -12,17 +12,25 @@ const navigationStructure = [
     ],
   },
   {
+    title: 'Primitives',
+    items: [
+      { href: '/color-primitives', label: 'Colour' },
+      { href: '/spacing-primitives', label: 'Spacing' },
+    ],
+  },
+  {
     title: 'Tokens',
     items: [
       { href: '/tokens', label: 'All Tokens' },
       { href: '/token-reference', label: 'Token Reference' },
       { href: '/colors', label: 'Colors' },
+      { href: '/color-ramp', label: 'Color Ramp' },
     ],
   },
   {
     title: 'Components',
     items: [
-      { href: '/primitives', label: 'Primitives' },
+      { href: '/primitives', label: 'Layout Primitives' },
       { href: '/components', label: 'Patterns' },
       { href: '/visuals', label: 'Visuals' },
     ],
