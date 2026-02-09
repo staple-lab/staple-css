@@ -1,115 +1,23 @@
 /**
- * Why Page - Clean, Intentional Design
- * Clear information hierarchy without excessive borders
+ * Why Page - Clean, minimal OKLCH.fyi-inspired aesthetic
+ * Gap-grid pattern with dark mode support
  */
 
 .why-page h1 {
-  background: linear-gradient(90deg, var(--st-color-primary) 0%, #0891b2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--st-color-text);
 }
 
-/* Philosophy block - text focus */
-.philosophy-block {
-  padding: var(--st-space-6);
-  line-height: 1.7;
+/* Dark mode: invert gap-grid separator color */
+[data-theme="dark"] .why-gap-grid {
+  background: rgba(255, 255, 255, 0.06) !important;
 }
 
-/* Principle cards - nice list with dot points */
-.principles-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 900px;
+/* Dark mode: invert icon badge backgrounds */
+[data-theme="dark"] .why-page [aria-hidden="true"] {
+  background: rgba(255, 255, 255, 0.06) !important;
 }
 
-.principle-card {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  padding: 0;
-  transition: all 200ms ease;
-}
-
-.principle-card:hover {
-  transform: none;
-}
-
-.principle-icon {
-  font-size: 32px;
-  margin-bottom: var(--st-space-3);
-  display: inline-block;
-}
-
-/* Performance grid - metrics focused */
-.performance-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: var(--st-space-4);
-}
-
-.perf-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--st-space-4);
-  padding: var(--st-space-4);
-}
-
-.perf-metric {
-  padding-bottom: var(--st-space-4);
-  border-bottom: 1px solid var(--st-color-border);
-}
-
-/* Maintainability list - table-like layout */
-.maintain-list {
-  overflow: hidden;
-}
-
-.maintain-list > div:last-child {
-  border-bottom: none;
-}
-
-/* Accessibility features - grid with checkmarks */
-.a11y-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-  gap: var(--st-space-6);
-}
-
-.a11y-item {
-  display: flex;
-  gap: var(--st-space-4);
-  align-items: flex-start;
-  padding: var(--st-space-4);
-  background: var(--st-color-surface);
-  border-radius: var(--st-radius-2);
-}
-
-.a11y-check {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
-  color: white;
-  border-radius: 2px;
-}
-
-/* CTA section */
-.cta-section {
-  padding: var(--st-space-6);
-  text-align: center;
-}
-
-.cta-section a {
-  font-weight: 600;
-  transition: opacity 150ms ease;
-  color: var(--st-color-primary);
-}
-
-.cta-section a:hover {
-  opacity: 0.8;
+/* Dark mode: invert CTA secondary button border */
+[data-theme="dark"] .why-page a[href="/tokens"] {
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }

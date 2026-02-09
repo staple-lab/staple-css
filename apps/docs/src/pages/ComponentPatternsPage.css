@@ -1,78 +1,27 @@
-/* ComponentPatternsPage - Modern Card Styling with Accent Borders */
+/* ComponentPatternsPage - Clean minimal styling */
 
 .cpp-container {
   padding-top: var(--st-space-8) !important;
   padding-bottom: var(--st-space-8) !important;
 }
 
-/* Section Headers with Icon Badges */
-.cpp-section-header {
-  display: flex;
-  align-items: center;
-  gap: var(--st-space-2);
-  margin-bottom: var(--st-space-3);
-}
-
-/* Icon Badge Containers - 36x36px with gradients */
-.cpp-icon-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--st-radius-1);
-  color: white;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.cpp-icon-badge--buttons {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-}
-
-.cpp-icon-badge--forms {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-}
-
-.cpp-icon-badge--cards {
-  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
-}
-
-.cpp-icon-badge--alerts {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-}
-
-.cpp-icon-badge--layouts {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-}
-
-.cpp-icon-badge--data {
-  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-}
-
-.cpp-icon-badge--code {
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-}
-
-.cpp-icon {
-  stroke-width: 2.5;
-}
-
-/* Pattern Cards - Left accent border design */
+/* Pattern Cards - Clean card design */
 .cpp-pattern-card {
-  padding: var(--st-space-2) var(--st-space-3);
+  padding: var(--st-space-3) var(--st-space-4);
   background: var(--st-color-background);
-  border-radius: 0;
-  border-left: 3px solid var(--st-color-primary);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: none;
-  transition: all var(--st-duration-fast) var(--st-easing-default);
-  padding-left: var(--st-space-4);
+  transition: none;
+}
+
+[data-theme="dark"] .cpp-pattern-card {
+  border-color: rgba(255, 255, 255, 0.06);
 }
 
 .cpp-pattern-card:hover {
   box-shadow: none;
-  transform: translateX(2px);
-  border-left-color: #06b6d4;
+  transform: none;
 }
 
 /* Large Pattern Cards */
@@ -88,58 +37,52 @@
 
 .cpp-card-header > div {
   overflow: hidden;
-  border-radius: var(--st-radius-2);
+  border-radius: 12px;
 }
 
 /* Hover Card */
 .cpp-card-hover {
   cursor: pointer;
-  border-left-color: var(--st-color-primary);
 }
 
 /* Feature Card */
 .cpp-card-feature {
   background: var(--st-color-primary);
-  border-left-color: var(--st-color-primary);
+  border-color: transparent;
   color: white;
 }
 
 /* Stats Card */
 .cpp-card-stats {
   background: var(--st-color-background);
-  border-left-color: var(--st-color-primary);
 }
 
 /* Alert Components */
 .cpp-alert {
-  border-radius: var(--st-radius-2);
-  border-left: 3px solid;
-  transition: all var(--st-duration-fast) var(--st-easing-default);
+  border-radius: 12px;
+  border-left: none;
+  transition: none;
 }
 
 .cpp-alert:hover {
-  transform: translateX(2px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: none;
+  box-shadow: none;
 }
 
 .cpp-alert--primary {
   background: var(--st-color-primary);
-  border-left-color: rgba(255, 255, 255, 0.3);
 }
 
 .cpp-alert--success {
   background: var(--st-color-success);
-  border-left-color: rgba(255, 255, 255, 0.3);
 }
 
 .cpp-alert--danger {
   background: var(--st-color-danger);
-  border-left-color: rgba(255, 255, 255, 0.3);
 }
 
 .cpp-alert--warn {
   background: var(--st-color-warn);
-  border-left-color: rgba(255, 255, 255, 0.3);
 }
 
 .cpp-alert-icon {
@@ -155,14 +98,5 @@
 
   .cpp-card-large {
     padding: var(--st-space-3);
-  }
-
-  .cpp-section-header {
-    gap: var(--st-space-2);
-  }
-
-  .cpp-icon-badge {
-    width: 36px;
-    height: 36px;
   }
 }

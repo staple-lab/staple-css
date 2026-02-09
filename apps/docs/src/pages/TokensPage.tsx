@@ -1,4 +1,4 @@
-import { Container, Column, Card, Text, Box, Row } from "@staple-css/primitives/full";
+import { Container, Column, Card, Text, Box } from "@staple-css/primitives/full";
 import {
   spaceScale,
   radiusScale,
@@ -75,25 +75,20 @@ export function TokensPage() {
   return (
     <Box as="main">
       {/* Hero Section */}
-      <Box style={{
-        background: "linear-gradient(135deg, rgba(42, 125, 82, 0.05) 0%, rgba(212, 165, 116, 0.03) 100%)",
-        borderBottom: "1px solid var(--st-color-border)",
-        padding: "var(--st-space-8) var(--st-space-4)"
-      }}>
+      <Box style={{ padding: "48px 0" }}>
         <Container size="lg">
-          <Column gap={4} style={{ maxWidth: "750px" }}>
+          <Column gap={3} style={{ maxWidth: "750px" }}>
             <Text as="h1" style={{
-              fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
-              fontWeight: 800,
-              fontFamily: "var(--st-font-display)",
+              fontSize: "clamp(1.75rem, 4vw, 2.25rem)",
+              fontWeight: 700,
               lineHeight: 1.15,
               margin: 0,
-              letterSpacing: "-2px"
+              letterSpacing: "-0.03em"
             }}>
               Design Tokens
             </Text>
             <Text tone="muted" style={{
-              fontSize: "1.125rem",
+              fontSize: "15px",
               lineHeight: 1.7,
               maxWidth: "65ch",
               fontWeight: 400
@@ -104,29 +99,15 @@ export function TokensPage() {
         </Container>
       </Box>
 
-      <Container size="lg" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+      <Container size="lg" style={{ padding: "48px 0" }}>
         <Column gap={8}>
 
         {/* Usage */}
         <Box as="section">
           <Column gap={4}>
-          <Row gap={3} align="center" style={{ marginBottom: "var(--st-space-2)" }}>
-            <div style={{
-              width: "4px",
-              height: "32px",
-              background: "#2a7d52",
-              borderRadius: "2px"
-            }} />
-            <Text as="h2" style={{
-              fontSize: "clamp(1.5rem, 4vw, 2rem)",
-              fontWeight: 700,
-              fontFamily: "var(--st-font-display)",
-              margin: 0,
-              letterSpacing: "-0.5px"
-            }}>
-              Usage
-            </Text>
-          </Row>
+          <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
+            Usage
+          </Text>
           <CodePreview
             code={`// Import all tokens
 import "@staple-css/tokens/all.css";
@@ -144,23 +125,9 @@ import "@staple-css/tokens/density.css";  // Density variants`}
         {/* Theming */}
         <Box as="section">
           <Column gap={4}>
-          <Row gap={3} align="center" style={{ marginBottom: "var(--st-space-2)" }}>
-            <div style={{
-              width: "4px",
-              height: "32px",
-              background: "#d4a574",
-              borderRadius: "2px"
-            }} />
-            <Text as="h2" style={{
-              fontSize: "clamp(1.5rem, 4vw, 2rem)",
-              fontWeight: 700,
-              fontFamily: "var(--st-font-display)",
-              margin: 0,
-              letterSpacing: "-0.5px"
-            }}>
-              Theming
-            </Text>
-          </Row>
+          <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
+            Theming
+          </Text>
           <Text>
             Apply themes using the <Text as="span" mono>data-theme</Text> attribute:
           </Text>
@@ -184,23 +151,9 @@ import "@staple-css/tokens/density.css";  // Density variants`}
 
         {/* Token Tables Section */}
         <Box as="section">
-          <Row gap={3} align="center" style={{ marginBottom: "var(--st-space-6)" }}>
-            <div style={{
-              width: "4px",
-              height: "32px",
-              background: "#4a9d72",
-              borderRadius: "2px"
-            }} />
-            <Text as="h2" style={{
-              fontSize: "clamp(1.5rem, 4vw, 2rem)",
-              fontWeight: 700,
-              fontFamily: "var(--st-font-display)",
-              margin: 0,
-              letterSpacing: "-0.5px"
-            }}>
-              Token Reference
-            </Text>
-          </Row>
+          <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0, marginBottom: "var(--st-space-6)" }}>
+            Token Reference
+          </Text>
           <Column gap={6}>
           {/* Space */}
           <TokenTable
@@ -306,23 +259,9 @@ import "@staple-css/tokens/density.css";  // Density variants`}
         {/* Colors */}
         <Box as="section">
           <Column gap={3}>
-          <Row gap={3} align="center" style={{ marginBottom: "var(--st-space-2)" }}>
-            <div style={{
-              width: "4px",
-              height: "32px",
-              background: "#8b6f47",
-              borderRadius: "2px"
-            }} />
-            <Text as="h3" style={{
-              fontSize: "clamp(1.5rem, 4vw, 2rem)",
-              fontWeight: 700,
-              fontFamily: "var(--st-font-display)",
-              margin: 0,
-              letterSpacing: "-0.5px"
-            }}>
-              Color Tokens
-            </Text>
-          </Row>
+          <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
+            Color Tokens
+          </Text>
           <Text size={1} tone="muted">
             Colors automatically adapt to the current theme (light/dark).
           </Text>

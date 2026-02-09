@@ -7,25 +7,23 @@ export function ExamplesPage() {
     <Box as="main">
       {/* Hero Section */}
       <Box style={{
-        background: "linear-gradient(135deg, rgba(42, 125, 82, 0.05) 0%, rgba(212, 165, 116, 0.03) 100%)",
-        borderBottom: "1px solid var(--st-color-border)",
         padding: "var(--st-space-8) var(--st-space-4)"
       }}>
         <Container size="lg">
           <Column gap={4} style={{ maxWidth: "750px" }}>
             <Text as="h1" style={{
-              fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
-              fontWeight: 800,
+              fontSize: "clamp(1.75rem, 4vw, 2.25rem)",
+              fontWeight: 700,
               fontFamily: "var(--st-font-display)",
               lineHeight: 1.15,
               margin: 0,
-              letterSpacing: "-2px"
+              letterSpacing: "-0.03em"
             }}>
               Real-World Examples
             </Text>
             <Text tone="muted" style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
+              fontSize: "15px",
+              lineHeight: 1.6,
               maxWidth: "65ch",
               fontWeight: 400
             }}>
@@ -35,7 +33,7 @@ export function ExamplesPage() {
         </Container>
       </Box>
 
-      <Container size="lg" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+      <Container size="lg" style={{ padding: "48px 0" }}>
         <Column gap={8}>
 
         {/* Quick Start Section */}
@@ -74,9 +72,9 @@ export function ExamplesPage() {
             ].map((feature) => {
               const Icon = feature.icon;
               return (
-                <Row key={feature.title} gap={3} align="start" style={{ padding: "var(--st-space-4)", borderRadius: "var(--st-radius-2)", background: "var(--st-color-surface)", border: "1px solid var(--st-color-border)" }}>
+                <Row key={feature.title} gap={3} align="start" style={{ padding: "var(--st-space-4)", borderRadius: "12px", background: "var(--st-color-background)", border: "1px solid rgba(0,0,0,0.06)" }}>
                   <div style={{ width: "28px", height: "28px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <Icon size={20} strokeWidth={2} style={{ color: "var(--st-color-primary)" }} />
+                    <Icon size={20} strokeWidth={2} style={{ color: "var(--st-color-text-muted)" }} />
                   </div>
                   <Column gap={1}>
                     <Text weight="semibold" size={2}>{feature.title}</Text>
@@ -162,21 +160,21 @@ export function ExamplesPage() {
           <Text as="h2" size={5} weight="bold">Dashboard Metrics</Text>
           <Grid cols={{ base: 1, md: 2 }} gap={4}>
             {[
-              { label: "Total Users", value: "12,345", icon: Users, trend: "↑ 12% from last month", color: "rgb(59, 130, 246)" },
-              { label: "Revenue", value: "$48,230", icon: DollarSign, trend: "↑ 8% from last month", color: "rgb(34, 197, 94)" },
-              { label: "Conversion", value: "3.24%", icon: TrendingUp, trend: "↓ 0.5% from last month", color: "rgb(234, 179, 8)" },
-              { label: "Sessions", value: "1,892", icon: Circle, trend: "↑ 4% from average", color: "rgb(6, 182, 212)" },
+              { label: "Total Users", value: "12,345", icon: Users, trend: "↑ 12% from last month" },
+              { label: "Revenue", value: "$48,230", icon: DollarSign, trend: "↑ 8% from last month" },
+              { label: "Conversion", value: "3.24%", icon: TrendingUp, trend: "↓ 0.5% from last month" },
+              { label: "Sessions", value: "1,892", icon: Circle, trend: "↑ 4% from average" },
             ].map((metric) => {
               const Icon = metric.icon;
               return (
-                <Box key={metric.label} style={{ padding: "var(--st-space-4)", border: "1px solid var(--st-color-border)", borderRadius: "var(--st-radius-2)", background: "var(--st-color-surface)" }}>
+                <Box key={metric.label} style={{ padding: "var(--st-space-4)", border: "1px solid rgba(0,0,0,0.06)", borderRadius: "12px", background: "var(--st-color-background)" }}>
                   <Column gap={3}>
                     <Row justify="between" align="start">
                       <Column gap={2}>
                         <Text tone="muted" size={1}>{metric.label}</Text>
                         <Text size={5} weight="bold">{metric.value}</Text>
                       </Column>
-                      <Icon size={20} strokeWidth={2} style={{ color: metric.color, opacity: 0.6 }} />
+                      <Icon size={20} strokeWidth={2} style={{ color: "var(--st-color-text-muted)", opacity: 0.6 }} />
                     </Row>
                     <Text size={0} tone={metric.trend.includes("↑") ? "success" : "danger"}>{metric.trend}</Text>
                   </Column>
@@ -192,29 +190,29 @@ export function ExamplesPage() {
           <Column gap={4}>
           <Text as="h2" size={5} weight="bold">Best Practices</Text>
           <Row gap={4}>
-            <Column gap={3} style={{ flex: 1, paddingLeft: "var(--st-space-4)", borderLeft: "3px solid var(--st-color-success)" }}>
+            <Column gap={3} style={{ flex: 1, paddingLeft: "var(--st-space-4)", borderLeft: "2px solid rgba(0,0,0,0.1)" }}>
               <Row gap={2} align="center">
-                <CheckCircle2 size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} />
+                <CheckCircle2 size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} />
                 <Text weight="semibold" size={3}>Do</Text>
               </Row>
               <Column gap={2}>
-                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text size={1}>Use token scales: pad={"{0-8}"}</Text></Row>
-                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text size={1}>Compose with Box & Flex</Text></Row>
-                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text size={1}>Use semantic token keys</Text></Row>
-                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-success)", flexShrink: 0 }} /><Text size={1}>Leverage type safety</Text></Row>
+                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} /><Text size={1}>Use token scales: pad={"{0-8}"}</Text></Row>
+                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} /><Text size={1}>Compose with Box & Flex</Text></Row>
+                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} /><Text size={1}>Use semantic token keys</Text></Row>
+                <Row gap={2}><CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} /><Text size={1}>Leverage type safety</Text></Row>
               </Column>
             </Column>
 
-            <Column gap={3} style={{ flex: 1, paddingLeft: "var(--st-space-4)", borderLeft: "3px solid var(--st-color-danger)" }}>
+            <Column gap={3} style={{ flex: 1, paddingLeft: "var(--st-space-4)", borderLeft: "2px solid rgba(0,0,0,0.1)" }}>
               <Row gap={2} align="center">
-                <XCircle size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} />
+                <XCircle size={20} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} />
                 <Text weight="semibold" size={3}>Don't</Text>
               </Row>
               <Column gap={2}>
-                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text size={1}>Use raw pixel values</Text></Row>
-                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text size={1}>Create custom paddings</Text></Row>
-                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text size={1}>Hardcode colors</Text></Row>
-                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-danger)", flexShrink: 0 }} /><Text size={1}>Ignore TypeScript warnings</Text></Row>
+                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} /><Text size={1}>Use raw pixel values</Text></Row>
+                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} /><Text size={1}>Create custom paddings</Text></Row>
+                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} /><Text size={1}>Hardcode colors</Text></Row>
+                <Row gap={2}><XCircle size={16} strokeWidth={2} aria-hidden="true" style={{ color: "var(--st-color-text-muted)", flexShrink: 0 }} /><Text size={1}>Ignore TypeScript warnings</Text></Row>
               </Column>
             </Column>
           </Row>
@@ -242,32 +240,32 @@ export function ExamplesPage() {
               </thead>
               <tbody>
                 <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
-                  <td style={{ padding: "var(--st-space-3)", fontWeight: "600", color: "var(--st-color-success, green)" }}>staple-css</td>
-                  <td style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600", color: "var(--st-color-success, green)" }}>2.5 KB</td>
+                  <td style={{ padding: "var(--st-space-3)", fontWeight: "600" }}>staple-css</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center", fontWeight: "600" }}>2.5 KB</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>0 KB</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>8</td>
-                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>✅ Full</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>Full</td>
                 </tr>
                 <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
                   <td style={{ padding: "12px" }}>Tailwind CSS</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~10 KB</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>0 KB</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>1000+</td>
-                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>⚠️ Partial</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>Partial</td>
                 </tr>
                 <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
                   <td style={{ padding: "12px" }}>Chakra UI</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~45 KB</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~15 KB</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>50+</td>
-                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>✅ Full</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>Full</td>
                 </tr>
                 <tr>
                   <td style={{ padding: "12px" }}>Material-UI</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~80 KB</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>~45 KB</td>
                   <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>100+</td>
-                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>✅ Full</td>
+                  <td style={{ padding: "var(--st-space-3)", textAlign: "center" }}>Full</td>
                 </tr>
               </tbody>
             </table>

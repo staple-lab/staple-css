@@ -1,93 +1,92 @@
 /**
- * Solarpunk Color Palette - Warm, Organic, Retro-Futuristic
- * Iteration 2: Foundation
+ * Docs Color Palette - Clean, Minimal, Developer-Focused
+ * Inspired by Agentation's neutral aesthetic with blue accents
  */
 
 :root {
-  /* Primary Brand - Warm Forest Green */
-  --st-color-primary-solarpunk: #2a7d52;
-  --st-color-primary-light: #4da870;
-  --st-color-primary-pale: #d4f0e8;
+  /* Primary Brand - Blue */
+  --st-color-primary-solarpunk: #3b82f6;
+  --st-color-primary-light: #60a5fa;
+  --st-color-primary-pale: #dbeafe;
 
-  /* Secondary Accent - Gold/Amber (Warmth) */
-  --st-color-accent-warm: #d4a574;
-  --st-color-accent-light: #f4dcc8;
+  /* Secondary Accent - Green (success states) */
+  --st-color-accent-warm: #22c55e;
+  --st-color-accent-light: #bbf7d0;
 
-  /* Tertiary - Organic Sage Green */
-  --st-color-organic-green: #9db4a8;
-  --st-color-organic-light: #e8ede8;
+  /* Tertiary - Subtle Gray */
+  --st-color-organic-green: #94a3b8;
+  --st-color-organic-light: #f1f5f9;
 
-  /* Accent - Electric Lime (Retro-futuristic) */
-  --st-color-accent-lime: #b4d61e;
-  --st-color-accent-lime-pale: #e8f0cc;
+  /* Accent - Orange (warnings) */
+  --st-color-accent-lime: #f59e0b;
+  --st-color-accent-lime-pale: #fef3c7;
 
-  /* Neutrals - Warm tones */
-  --st-color-background-warm: #f5f1e8;
-  --st-color-surface-warm: #fffbf7;
-  --st-color-text-warm: #2c3e35;
+  /* Neutrals - Cool tones */
+  --st-color-background-warm: #faf9f7;
+  --st-color-surface-warm: #ffffff;
+  --st-color-text-warm: #1a1a1a;
 
-  /* Solarpunk Primary Override (optional - use instead of st-color-primary for green theme) */
-  --st-color-primary-solarpunk-rgb: 42, 125, 82;
+  /* Primary RGB for alpha usage */
+  --st-color-primary-solarpunk-rgb: 59, 130, 246;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Dark mode solarpunk colors */
-    --st-color-primary-solarpunk: #4da870;
-    --st-color-primary-light: #7ec89b;
-    --st-color-primary-pale: #1a4d32;
+    /* Dark mode colors */
+    --st-color-primary-solarpunk: #60a5fa;
+    --st-color-primary-light: #93bbfd;
+    --st-color-primary-pale: #1e3a5f;
 
-    --st-color-accent-warm: #c4915e;
-    --st-color-accent-light: #8b6f47;
+    --st-color-accent-warm: #4ade80;
+    --st-color-accent-light: #166534;
 
-    --st-color-organic-green: #6d8278;
-    --st-color-organic-light: #3d4a43;
+    --st-color-organic-green: #64748b;
+    --st-color-organic-light: #1e293b;
 
-    --st-color-accent-lime: #d4ff59;
-    --st-color-accent-lime-pale: #5a7a2a;
+    --st-color-accent-lime: #fbbf24;
+    --st-color-accent-lime-pale: #78350f;
 
-    --st-color-background-warm: #1a2620;
-    --st-color-surface-warm: #222d28;
-    --st-color-text-warm: #e8ede8;
+    --st-color-background-warm: #0f0f0f;
+    --st-color-surface-warm: #1a1a1a;
+    --st-color-text-warm: #fafafa;
   }
 }
 
 /* ============================================================================
-   Gradient Utilities - Solarpunk Aesthetic
+   Gradient Utilities - Minimal Aesthetic
    ============================================================================ */
 
 .gradient-sunrise {
-  background: linear-gradient(135deg, #d4a574 0%, #2a7d52 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
 }
 
 .gradient-sunset {
-  background: linear-gradient(135deg, #b4d61e 0%, #d4a574 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
 }
 
 .gradient-forest {
-  background: linear-gradient(135deg, #2a7d52 0%, #1a4d32 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
 
 .gradient-lime {
-  background: linear-gradient(135deg, #b4d61e 0%, #9db4a8 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
 }
 
 .gradient-organic {
-  background: linear-gradient(135deg, #9db4a8 0%, #4da870 100%);
+  background: linear-gradient(135deg, #64748b 0%, #3b82f6 100%);
 }
 
 /* Text gradients */
 .text-gradient-warm {
-  background: linear-gradient(135deg, #d4a574 0%, #2a7d52 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-lime {
-  background: linear-gradient(135deg, #b4d61e 0%, #2a7d52 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-

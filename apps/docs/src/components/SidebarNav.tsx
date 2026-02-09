@@ -1,125 +1,142 @@
 import { useLocation, Link } from 'react-router-dom';
-import { Box, Column, Text } from '@staple-css/primitives/full';
+import {
+  Home,
+  HelpCircle,
+  BookOpen,
+  Palette,
+  SwatchBook,
+  Eye,
+  LayoutGrid,
+  Layers,
+  FileCode,
+  Blend,
+  Wrench,
+  Figma,
+  ExternalLink,
+  Ruler,
+  Box,
+  Type,
+} from 'lucide-react';
 import './SidebarNav.css';
 
-const navigationStructure = [
-  {
-    title: 'Foundation',
-    items: [
-      { href: '/', label: 'Home' },
-      { href: '/why', label: 'Why staple-css?' },
-      { href: '/guides', label: 'Design Guides' },
-    ],
-  },
-  {
-    title: 'Primitives',
-    items: [
-      { href: '/color-primitives', label: 'Colour' },
-      { href: '/spacing-primitives', label: 'Spacing' },
-    ],
-  },
-  {
-    title: 'Tokens',
-    items: [
-      { href: '/tokens', label: 'All Tokens' },
-      { href: '/token-reference', label: 'Token Reference' },
-      { href: '/colors', label: 'Colors' },
-      { href: '/color-ramp', label: 'Color Ramp' },
-    ],
-  },
-  {
-    title: 'Components',
-    items: [
-      { href: '/primitives', label: 'Layout Primitives' },
-      { href: '/components', label: 'Patterns' },
-      { href: '/visuals', label: 'Visuals' },
-    ],
-  },
-  {
-    title: 'Tools',
-    items: [
-      { href: '/gradient-studio', label: 'Gradient Studio' },
-      { href: '/token-reference', label: 'Token Studio' },
-      { href: '/figma', label: 'Figma Integration' },
-    ],
-  },
+const topNavItems = [
+  { href: '/', label: 'Home', icon: Home },
+  { href: '/why', label: 'Why Staple CSS', icon: HelpCircle },
+  { href: '/guides', label: 'Guides', icon: BookOpen },
+  { href: '/tokens', label: 'Tokens', icon: SwatchBook },
+  { href: '/token-reference', label: 'Token Reference', icon: FileCode },
+  { href: '/colors', label: 'Colors', icon: Palette },
+  { href: '/visuals', label: 'Visuals', icon: Eye },
+  { href: '/primitives', label: 'Primitives', icon: Layers },
+  { href: '/components', label: 'Patterns', icon: LayoutGrid },
+  { href: '/examples', label: 'Examples', icon: Box },
+];
+
+const toolItems = [
+  { href: '/gradient-studio', label: 'Gradient Studio', icon: Blend },
+  { href: '/tokens-studio', label: 'Token Studio', icon: Wrench },
+  { href: '/figma', label: 'Figma', icon: Figma },
+];
+
+const primitiveItems = [
+  { href: '/color-primitives', label: 'Colour', icon: Palette },
+  { href: '/spacing-primitives', label: 'Spacing', icon: Ruler },
+  { href: '/sizing-primitives', label: 'Sizing', icon: Box },
+  { href: '/type-primitives', label: 'Typography', icon: Type },
+];
+
+const resourceItems = [
+  { href: '/storybook', label: 'Storybook', icon: ExternalLink, external: true },
 ];
 
 export function SidebarNav() {
   const location = useLocation();
 
   return (
-    <Box as="nav" className="sidebar-nav">
-      <Column gap={4} style={{ padding: 'var(--st-space-4)' }}>
-        {navigationStructure.map((section) => (
-          <SidebarSection key={section.title} title={section.title}>
-            {section.items.map((item) => (
-              <SidebarItem
-                key={item.href}
-                href={item.href}
-                label={item.label}
-                isActive={location.pathname === item.href}
-              />
-            ))}
-          </SidebarSection>
+    <nav className="sidebar-nav-v2">
+      <div className="sidebar-nav-v2-top">
+        {topNavItems.map((item) => (
+          <SidebarLink
+            key={item.href}
+            href={item.href}
+            label={item.label}
+            icon={item.icon}
+            isActive={location.pathname === item.href}
+          />
         ))}
-      </Column>
-    </Box>
+
+        <div className="sidebar-nav-v2-divider" />
+        <div className="sidebar-nav-v2-section-label">Primitives</div>
+        {primitiveItems.map((item) => (
+          <SidebarLink
+            key={item.href}
+            href={item.href}
+            label={item.label}
+            icon={item.icon}
+            isActive={location.pathname === item.href}
+          />
+        ))}
+
+        <div className="sidebar-nav-v2-divider" />
+        <div className="sidebar-nav-v2-section-label">Tools</div>
+        {toolItems.map((item) => (
+          <SidebarLink
+            key={item.href}
+            href={item.href}
+            label={item.label}
+            icon={item.icon}
+            isActive={location.pathname === item.href}
+          />
+        ))}
+
+        <div className="sidebar-nav-v2-divider" />
+        <div className="sidebar-nav-v2-section-label">Resources</div>
+        {resourceItems.map((item) => (
+          <SidebarLink
+            key={item.href}
+            href={item.href}
+            label={item.label}
+            icon={item.icon}
+            isActive={location.pathname === item.href}
+            external={'external' in item}
+          />
+        ))}
+      </div>
+    </nav>
   );
 }
 
-function SidebarSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Column gap={3}>
-      <Text
-        size={0}
-        weight="semibold"
-        tone="muted"
-        style={{
-          textTransform: 'uppercase',
-          letterSpacing: '0.5px',
-          paddingLeft: 'var(--st-space-2)',
-          fontSize: '0.75rem',
-        }}
-      >
-        {title}
-      </Text>
-      <Column gap={1}>{children}</Column>
-    </Column>
-  );
-}
-
-interface SidebarItemProps {
+interface SidebarLinkProps {
   href: string;
   label: string;
+  icon: React.ComponentType<{ size?: number; strokeWidth?: number }>;
   isActive: boolean;
+  external?: boolean;
 }
 
-function SidebarItem({ href, label, isActive }: SidebarItemProps) {
+function SidebarLink({ href, label, icon: Icon, isActive, external }: SidebarLinkProps) {
+  if (external) {
+    return (
+      <a
+        href={href}
+        className="sidebar-nav-v2-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon size={16} strokeWidth={1.5} />
+        <span>{label}</span>
+      </a>
+    );
+  }
+
   return (
     <Link
       to={href}
-      className={`sidebar-item ${isActive ? 'active' : ''}`}
+      className={`sidebar-nav-v2-link ${isActive ? 'active' : ''}`}
       aria-current={isActive ? 'page' : undefined}
     >
-      <Text
-        size={1}
-        weight={isActive ? 'semibold' : 'normal'}
-        style={{
-          color: isActive
-            ? 'var(--st-color-primary)'
-            : 'var(--st-color-text)',
-          transition: 'color 150ms cubic-bezier(0.2, 0, 0.38, 0.9)',
-        }}
-      >
-        {label}
-      </Text>
+      <Icon size={16} strokeWidth={1.5} />
+      <span>{label}</span>
     </Link>
   );
 }

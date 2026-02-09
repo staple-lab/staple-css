@@ -1,6 +1,6 @@
 /**
  * Spacing Primitives Page
- * Untitled UI-inspired spacing scale visualization
+ * Numeric spacing scale visualization
  */
 
 import { useState } from "react";
@@ -14,25 +14,7 @@ interface SpacingToken {
   description: string;
 }
 
-const SEMANTIC_SPACING: SpacingToken[] = [
-  { name: "xxs", cssVar: "--st-spacing-xxs", value: "2px", pxValue: 2, description: "Micro spacing for icons, tight gaps" },
-  { name: "xs", cssVar: "--st-spacing-xs", value: "4px", pxValue: 4, description: "Small gaps, icon padding" },
-  { name: "sm", cssVar: "--st-spacing-sm", value: "6px", pxValue: 6, description: "Compact element spacing" },
-  { name: "md", cssVar: "--st-spacing-md", value: "8px", pxValue: 8, description: "Default small spacing" },
-  { name: "lg", cssVar: "--st-spacing-lg", value: "12px", pxValue: 12, description: "Component internal padding" },
-  { name: "xl", cssVar: "--st-spacing-xl", value: "16px", pxValue: 16, description: "Standard component spacing" },
-  { name: "2xl", cssVar: "--st-spacing-2xl", value: "20px", pxValue: 20, description: "Card padding, medium gaps" },
-  { name: "3xl", cssVar: "--st-spacing-3xl", value: "24px", pxValue: 24, description: "Section spacing" },
-  { name: "4xl", cssVar: "--st-spacing-4xl", value: "32px", pxValue: 32, description: "Large section gaps" },
-  { name: "5xl", cssVar: "--st-spacing-5xl", value: "40px", pxValue: 40, description: "Page section margins" },
-  { name: "6xl", cssVar: "--st-spacing-6xl", value: "48px", pxValue: 48, description: "Major section dividers" },
-  { name: "7xl", cssVar: "--st-spacing-7xl", value: "64px", pxValue: 64, description: "Hero section spacing" },
-  { name: "8xl", cssVar: "--st-spacing-8xl", value: "80px", pxValue: 80, description: "Page-level margins" },
-  { name: "9xl", cssVar: "--st-spacing-9xl", value: "96px", pxValue: 96, description: "Large page sections" },
-  { name: "10xl", cssVar: "--st-spacing-10xl", value: "128px", pxValue: 128, description: "Maximum spacing" },
-];
-
-const NUMERIC_SPACING: SpacingToken[] = [
+const SPACING_SCALE: SpacingToken[] = [
   { name: "0", cssVar: "--st-spacing-0", value: "0px", pxValue: 0, description: "No spacing" },
   { name: "1", cssVar: "--st-spacing-1", value: "4px", pxValue: 4, description: "1 unit" },
   { name: "2", cssVar: "--st-spacing-2", value: "8px", pxValue: 8, description: "2 units" },
@@ -55,7 +37,6 @@ const NUMERIC_SPACING: SpacingToken[] = [
 
 export function SpacingPrimitivesPage() {
   const [copied, setCopied] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"semantic" | "numeric">("semantic");
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -63,39 +44,21 @@ export function SpacingPrimitivesPage() {
     setTimeout(() => setCopied(null), 2000);
   };
 
-  const spacingTokens = activeTab === "semantic" ? SEMANTIC_SPACING : NUMERIC_SPACING;
-
   return (
     <div className="spacing-page">
       {/* Page Header */}
       <header className="spacing-page-header">
         <h1 className="spacing-page-title">Spacing Primitives</h1>
         <p className="spacing-page-description">
-          A comprehensive spacing scale for consistent layouts. Use semantic names (xs, sm, md, lg, xl)
-          for adaptive spacing or numeric values for precise control.
+          A comprehensive spacing scale based on a 4px unit for consistent layouts.
+          Use numeric values for precise control over margins, padding, and gaps.
         </p>
       </header>
-
-      {/* Tab Switcher */}
-      <div className="spacing-tabs">
-        <button
-          className={`spacing-tab ${activeTab === "semantic" ? "spacing-tab--active" : ""}`}
-          onClick={() => setActiveTab("semantic")}
-        >
-          Semantic Scale
-        </button>
-        <button
-          className={`spacing-tab ${activeTab === "numeric" ? "spacing-tab--active" : ""}`}
-          onClick={() => setActiveTab("numeric")}
-        >
-          Numeric Scale
-        </button>
-      </div>
 
       {/* Spacing Scale Visualization */}
       <section className="spacing-section">
         <div className="spacing-scale-container">
-          {spacingTokens.map((token) => (
+          {SPACING_SCALE.map((token) => (
             <div key={token.cssVar} className="spacing-item">
               <div className="spacing-item-header">
                 <span className="spacing-name">{token.name}</span>
@@ -130,7 +93,7 @@ export function SpacingPrimitivesPage() {
             Spacing tokens visualized side by side for quick comparison.
           </p>
           <div className="spacing-visual-grid">
-            {SEMANTIC_SPACING.slice(0, 10).map((token) => (
+            {SPACING_SCALE.slice(0, 10).map((token) => (
               <div key={token.cssVar} className="spacing-visual-item">
                 <div
                   className="spacing-visual-box"
@@ -165,20 +128,20 @@ export function SpacingPrimitivesPage() {
                 onClick={() => handleCopy(`@import "@staple-css/tokens/spacing-primitives.css";
 
 .card {
-  padding: var(--st-spacing-xl);      /* 16px */
-  margin-bottom: var(--st-spacing-3xl); /* 24px */
+  padding: var(--st-spacing-4);       /* 16px */
+  margin-bottom: var(--st-spacing-6); /* 24px */
 }
 
 .button-group {
-  gap: var(--st-spacing-sm);          /* 6px */
+  gap: var(--st-spacing-2);           /* 8px */
 }
 
 .page-section {
-  padding-block: var(--st-spacing-7xl); /* 64px */
+  padding-block: var(--st-spacing-16); /* 64px */
 }
 
 .icon-text {
-  gap: var(--st-spacing-xs);          /* 4px */
+  gap: var(--st-spacing-1);           /* 4px */
 }`)}
               >
                 Copy
@@ -187,20 +150,20 @@ export function SpacingPrimitivesPage() {
             <pre className="spacing-code-content">{`@import "@staple-css/tokens/spacing-primitives.css";
 
 .card {
-  padding: var(--st-spacing-xl);      /* 16px */
-  margin-bottom: var(--st-spacing-3xl); /* 24px */
+  padding: var(--st-spacing-4);       /* 16px */
+  margin-bottom: var(--st-spacing-6); /* 24px */
 }
 
 .button-group {
-  gap: var(--st-spacing-sm);          /* 6px */
+  gap: var(--st-spacing-2);           /* 8px */
 }
 
 .page-section {
-  padding-block: var(--st-spacing-7xl); /* 64px */
+  padding-block: var(--st-spacing-16); /* 64px */
 }
 
 .icon-text {
-  gap: var(--st-spacing-xs);          /* 4px */
+  gap: var(--st-spacing-1);           /* 4px */
 }`}</pre>
           </div>
         </div>
@@ -213,19 +176,19 @@ export function SpacingPrimitivesPage() {
           <div className="spacing-guidelines">
             <div className="spacing-guideline">
               <h3>Component Internals</h3>
-              <p>Use <code>xs</code> to <code>lg</code> (4-12px) for padding and gaps within components.</p>
+              <p>Use <code>1</code> to <code>3</code> (4-12px) for padding and gaps within components.</p>
             </div>
             <div className="spacing-guideline">
               <h3>Between Components</h3>
-              <p>Use <code>xl</code> to <code>3xl</code> (16-24px) for spacing between related components.</p>
+              <p>Use <code>4</code> to <code>6</code> (16-24px) for spacing between related components.</p>
             </div>
             <div className="spacing-guideline">
               <h3>Section Spacing</h3>
-              <p>Use <code>4xl</code> to <code>7xl</code> (32-64px) for major section divisions.</p>
+              <p>Use <code>8</code> to <code>16</code> (32-64px) for major section divisions.</p>
             </div>
             <div className="spacing-guideline">
               <h3>Page Layout</h3>
-              <p>Use <code>8xl</code> to <code>10xl</code> (80-128px) for page-level margins and hero sections.</p>
+              <p>Use <code>20</code> to <code>32</code> (80-128px) for page-level margins and hero sections.</p>
             </div>
           </div>
         </div>

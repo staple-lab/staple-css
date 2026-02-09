@@ -19,25 +19,25 @@ const PrimaryButton = (props: any) => (
     {...props}
     style={{
       padding: "14px 32px",
-      borderRadius: "8px",
-      background: "var(--st-color-primary)",
+      borderRadius: "14px",
+      background: "#3b82f6",
       color: "#fff",
       textDecoration: "none",
       fontWeight: "600",
       fontSize: "16px",
-      transition: "all 0.2s ease",
-      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      transition: "all 0.2s cubic-bezier(0.19, 1, 0.22, 1)",
+      boxShadow: "0 1px 2px rgba(0, 0, 0, 0.04)",
       display: "inline-block",
       border: "none",
       cursor: "pointer",
       ...props.style,
     }}
     onMouseEnter={(e: any) => {
-      e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.15)";
-      e.currentTarget.style.transform = "translateY(-2px)";
+      e.currentTarget.style.boxShadow = "0 4px 12px rgba(59, 130, 246, 0.2)";
+      e.currentTarget.style.transform = "translateY(-1px)";
     }}
     onMouseLeave={(e: any) => {
-      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
+      e.currentTarget.style.boxShadow = "0 1px 2px rgba(0, 0, 0, 0.04)";
       e.currentTarget.style.transform = "translateY(0)";
     }}
   />
@@ -48,24 +48,25 @@ const SecondaryButton = (props: any) => (
     {...props}
     style={{
       padding: "14px 32px",
-      borderRadius: "8px",
-      border: "2px solid var(--st-color-primary)",
-      color: "var(--st-color-primary)",
+      borderRadius: "14px",
+      border: "1px solid rgba(0, 0, 0, 0.06)",
+      color: "var(--st-color-text)",
       textDecoration: "none",
       fontWeight: "600",
       fontSize: "16px",
-      transition: "all 0.2s ease",
+      transition: "all 0.2s cubic-bezier(0.19, 1, 0.22, 1)",
       display: "inline-block",
       cursor: "pointer",
+      background: "var(--st-color-surface)",
       ...props.style,
     }}
     onMouseEnter={(e: any) => {
-      e.currentTarget.style.background = "var(--st-color-primary)";
-      e.currentTarget.style.color = "#fff";
+      e.currentTarget.style.borderColor = "#3b82f6";
+      e.currentTarget.style.color = "#3b82f6";
     }}
     onMouseLeave={(e: any) => {
-      e.currentTarget.style.background = "transparent";
-      e.currentTarget.style.color = "var(--st-color-primary)";
+      e.currentTarget.style.borderColor = "rgba(0, 0, 0, 0.06)";
+      e.currentTarget.style.color = "var(--st-color-text)";
     }}
   />
 );
@@ -73,9 +74,9 @@ const SecondaryButton = (props: any) => (
 export function HomePage() {
   return (
     <Box as="main" style={{ minHeight: "100vh" }}>
-      {/* Hero Section - Solarpunk gradient with organic warmth */}
+      {/* Hero Section - Clean dark gradient */}
       <Box as="section" style={{
-        background: "linear-gradient(135deg, #2a7d52 0%, rgba(42, 125, 82, 0.95) 50%, #d4a574 100%)",
+        background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
         color: "white",
         padding: "var(--st-space-8) var(--st-space-4)",
         position: "relative",
@@ -91,8 +92,8 @@ export function HomePage() {
             left: "0",
             right: "0",
             bottom: "0",
-            opacity: "0.08",
-            backgroundImage: "radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(42, 125, 82, 0.2) 0%, transparent 50%)",
+            opacity: "0.06",
+            backgroundImage: "radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.4) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)",
             pointerEvents: "none",
           }} />
 
@@ -102,19 +103,19 @@ export function HomePage() {
             <Column gap={2} align="center">
               <Text as="h1" style={{
                 fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
-                fontWeight: 800,
+                fontWeight: 700,
                 fontFamily: "var(--st-font-display)",
                 lineHeight: 1.15,
                 margin: 0,
                 color: "white",
-                letterSpacing: "-2px"
+                letterSpacing: "-1.5px"
               }}>
                 staple-css
               </Text>
               <Text size={3} align="center" style={{
-                color: "rgba(255,255,255,0.95)",
+                color: "rgba(255,255,255,0.85)",
                 fontSize: "1.25rem",
-                fontWeight: 500,
+                fontWeight: 400,
                 lineHeight: 1.5
               }}>
                 Token-First Design System for Performance-First Teams
@@ -124,7 +125,7 @@ export function HomePage() {
             {/* Value Proposition */}
             <Box style={{ maxWidth: "700px" }}>
               <Text align="center" style={{
-                color: "rgba(255,255,255,0.9)",
+                color: "rgba(255,255,255,0.7)",
                 lineHeight: "1.7",
                 fontSize: "1.0625rem",
                 fontWeight: 400
@@ -135,72 +136,46 @@ export function HomePage() {
 
             {/* CTA Buttons */}
             <Row gap={3} style={{ marginTop: "var(--st-space-4)", flexWrap: "wrap" }}>
-              <PrimaryButton href="#playground" style={{ background: "white", color: "#2a7d52", fontWeight: 700 }}>
-                Try it Live →
+              <PrimaryButton href="#playground">
+                Try it Live
               </PrimaryButton>
-              <SecondaryButton href="/tokens" style={{ borderColor: "white", color: "white", fontWeight: 700 }}>
+              <SecondaryButton href="/tokens" style={{ borderColor: "rgba(255,255,255,0.2)", color: "white", background: "transparent" }}>
                 Get Started
               </SecondaryButton>
             </Row>
 
             {/* Stats */}
             <Grid cols={{ base: 2, md: 4 }} gap={4} style={{ marginTop: "var(--st-space-6)", width: "100%" }}>
-              <Box align="center">
-                <Text weight="bold" style={{
-                  color: "white",
-                  fontSize: "2rem",
-                  fontFamily: "var(--st-font-display)",
-                  fontWeight: 800,
-                  margin: 0,
-                  lineHeight: 1
-                }}>2.5 KB</Text>
-                <Text size={1} style={{ color: "rgba(255,255,255,0.75)", marginTop: "var(--st-space-1)", fontWeight: 500 }}>Core</Text>
-              </Box>
-              <Box align="center">
-                <Text weight="bold" style={{
-                  color: "white",
-                  fontSize: "2rem",
-                  fontFamily: "var(--st-font-display)",
-                  fontWeight: 800,
-                  margin: 0,
-                  lineHeight: 1
-                }}>0 KB</Text>
-                <Text size={1} style={{ color: "rgba(255,255,255,0.75)", marginTop: "var(--st-space-1)", fontWeight: 500 }}>Runtime</Text>
-              </Box>
-              <Box align="center">
-                <Text weight="bold" style={{
-                  color: "white",
-                  fontSize: "2rem",
-                  fontFamily: "var(--st-font-display)",
-                  fontWeight: 800,
-                  margin: 0,
-                  lineHeight: 1
-                }}>350+</Text>
-                <Text size={1} style={{ color: "rgba(255,255,255,0.75)", marginTop: "var(--st-space-1)", fontWeight: 500 }}>Tokens</Text>
-              </Box>
-              <Box align="center">
-                <Text weight="bold" style={{
-                  color: "white",
-                  fontSize: "2rem",
-                  fontFamily: "var(--st-font-display)",
-                  fontWeight: 800,
-                  margin: 0,
-                  lineHeight: 1
-                }}>∞</Text>
-                <Text size={1} style={{ color: "rgba(255,255,255,0.75)", marginTop: "var(--st-space-1)", fontWeight: 500 }}>Scalable</Text>
-              </Box>
+              {[
+                { value: "2.5 KB", label: "Core" },
+                { value: "0 KB", label: "Runtime" },
+                { value: "350+", label: "Tokens" },
+                { value: "\u221E", label: "Scalable" },
+              ].map((stat, i) => (
+                <Box key={i} align="center">
+                  <Text weight="bold" style={{
+                    color: "white",
+                    fontSize: "2rem",
+                    fontFamily: "var(--st-font-display)",
+                    fontWeight: 700,
+                    margin: 0,
+                    lineHeight: 1
+                  }}>{stat.value}</Text>
+                  <Text size={1} style={{ color: "rgba(255,255,255,0.5)", marginTop: "var(--st-space-1)", fontWeight: 500 }}>{stat.label}</Text>
+                </Box>
+              ))}
             </Grid>
           </Column>
         </Container>
       </Box>
 
-      {/* Features Section - What You Get */}
+      {/* Features Section */}
       <Box as="section" style={{
         background: "var(--st-color-background)",
         padding: "var(--st-space-8) var(--st-space-4)",
         width: "100%",
         boxSizing: "border-box",
-        borderTop: "1px solid var(--st-color-border)"
+        borderTop: "1px solid rgba(0, 0, 0, 0.06)"
       }}>
         <Container size="lg">
           <Column gap={8}>
@@ -210,7 +185,7 @@ export function HomePage() {
                 fontWeight: 700,
                 fontFamily: "var(--st-font-display)",
                 margin: 0,
-                letterSpacing: "-1px",
+                letterSpacing: "-0.5px",
                 color: "var(--st-color-text)"
               }}>Everything needed for professional design systems</Text>
               <Text tone="muted" style={{ fontSize: "1rem", fontWeight: 400, lineHeight: 1.6 }}>Complete toolkit. Start lightweight, scale to enterprise. No compromise.</Text>
@@ -226,12 +201,12 @@ export function HomePage() {
               boxSizing: "border-box"
             }}>
               {[
-                { icon: Target, title: "Token-First Design", color: "#2a7d52", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
-                { icon: Zap, title: "Ultra-Lightweight", color: "#d4a574", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"] },
-                { icon: Cpu, title: "AI-Friendly APIs", color: "#4a9d72", items: ["Constrained props", "Prevent hallucination", "Perfect for AI code gen"] },
-                { icon: Palette, title: "Design System Ready", color: "#8b6f47", items: ["8 primitives", "Light/dark themes", "Multiple density"] },
-                { icon: Lock, title: "Type-Safe", color: "#2a7d52", items: ["Full TypeScript", "Compile-time validation", "IDE autocomplete"] },
-                { icon: Package, title: "Tree-Shakeable", color: "#d4a574", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
+                { icon: Target, title: "Token-First Design", items: ["350+ CSS variables", "Type-safe props", "Consistent by default"] },
+                { icon: Zap, title: "Ultra-Lightweight", items: ["2.5 KB core", "Zero runtime JS", "Static CSS only"] },
+                { icon: Cpu, title: "AI-Friendly APIs", items: ["Constrained props", "Prevent hallucination", "Perfect for AI code gen"] },
+                { icon: Palette, title: "Design System Ready", items: ["8 primitives", "Light/dark themes", "Multiple density"] },
+                { icon: Lock, title: "Type-Safe", items: ["Full TypeScript", "Compile-time validation", "IDE autocomplete"] },
+                { icon: Package, title: "Tree-Shakeable", items: ["Import only what you use", "ESM exports", "Per-component splitting"] },
               ].map((feature, idx) => {
                 const IconComponent = feature.icon;
                 return (
@@ -240,15 +215,14 @@ export function HomePage() {
                     flexDirection: "column",
                     gap: "var(--st-space-4)",
                     padding: "var(--st-space-5)",
-                    border: "1px solid var(--st-color-border)",
-                    borderRadius: "var(--st-radius-2)",
+                    border: "1px solid rgba(0, 0, 0, 0.06)",
+                    borderRadius: "12px",
                     background: "var(--st-color-surface)",
-                    transition: "all 150ms cubic-bezier(0.2, 0, 0.38, 0.9)",
-                    borderLeft: `4px solid ${feature.color}`
+                    transition: "all 150ms cubic-bezier(0.19, 1, 0.22, 1)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-4px)";
-                    e.currentTarget.style.boxShadow = "0 10px 25px rgba(0, 0, 0, 0.08)";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.06)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
@@ -263,22 +237,21 @@ export function HomePage() {
                       <Box
                         aria-hidden="true"
                         style={{
-                          width: "44px",
-                          height: "44px",
+                          width: "40px",
+                          height: "40px",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          background: feature.color,
-                          color: "white",
-                          borderRadius: "var(--st-radius-2)",
+                          background: "rgba(59, 130, 246, 0.08)",
+                          color: "#3b82f6",
+                          borderRadius: "10px",
                           flexShrink: 0,
-                          fontSize: "20px"
                         }}>
-                        <IconComponent size={22} strokeWidth={1.5} />
+                        <IconComponent size={20} strokeWidth={1.5} />
                       </Box>
                       <Text weight="bold" style={{
-                        fontSize: "1.125rem",
-                        fontWeight: 700,
+                        fontSize: "1.0625rem",
+                        fontWeight: 600,
                         margin: 0,
                         lineHeight: "1.3",
                         fontFamily: "var(--st-font-display)",
@@ -307,13 +280,13 @@ export function HomePage() {
                           fontWeight: 400
                         }}>
                           <span style={{
-                            color: feature.color,
-                            fontWeight: 700,
-                            fontSize: "0.9375rem",
+                            color: "#3b82f6",
+                            fontWeight: 500,
+                            fontSize: "0.875rem",
                             display: "inline-block",
                             flexShrink: 0,
                             marginTop: "2px"
-                          }}>•</span>
+                          }}>\u2022</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -332,7 +305,7 @@ export function HomePage() {
         padding: "var(--st-space-8) var(--st-space-4)",
         width: "100%",
         boxSizing: "border-box",
-        borderTop: "1px solid var(--st-color-border)"
+        borderTop: "1px solid rgba(0, 0, 0, 0.06)"
       }}>
         <Container size="lg">
           <Column gap={6}>
@@ -342,7 +315,7 @@ export function HomePage() {
                 fontWeight: 700,
                 fontFamily: "var(--st-font-display)",
                 margin: 0,
-                letterSpacing: "-1px"
+                letterSpacing: "-0.5px"
               }}>How It Compares</Text>
               <Text tone="muted">staple-css is smaller, faster, and more intentional.</Text>
             </Column>
@@ -354,7 +327,7 @@ export function HomePage() {
                 fontSize: "14px",
               }}>
                 <thead>
-                  <tr style={{ borderBottom: "2px solid var(--st-color-border)" }}>
+                  <tr style={{ borderBottom: "1px solid rgba(0, 0, 0, 0.06)" }}>
                     <th scope="col" style={{ padding: "12px", textAlign: "left", fontWeight: "600" }}>Feature</th>
                     <th scope="col" style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>staple-css</th>
                     <th scope="col" style={{ padding: "12px", textAlign: "center", fontWeight: "600" }}>Tailwind</th>
@@ -362,27 +335,27 @@ export function HomePage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
+                  <tr style={{ borderBottom: "1px solid rgba(0, 0, 0, 0.06)" }}>
                     <td style={{ padding: "12px" }}>Bundle Size (gzip)</td>
-                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "var(--st-color-success, green)" }}>2.5 KB</td>
+                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "#3b82f6" }}>2.5 KB</td>
                     <td style={{ padding: "12px", textAlign: "center" }}>~10 KB</td>
                     <td style={{ padding: "12px", textAlign: "center" }}>~45 KB</td>
                   </tr>
-                  <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
+                  <tr style={{ borderBottom: "1px solid rgba(0, 0, 0, 0.06)" }}>
                     <td style={{ padding: "12px" }}>Runtime Cost</td>
-                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "var(--st-color-success, green)" }}>0 KB</td>
+                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "#3b82f6" }}>0 KB</td>
                     <td style={{ padding: "12px", textAlign: "center" }}>0 KB</td>
                     <td style={{ padding: "12px", textAlign: "center" }}>~15 KB</td>
                   </tr>
-                  <tr style={{ borderBottom: "1px solid var(--st-color-border)" }}>
+                  <tr style={{ borderBottom: "1px solid rgba(0, 0, 0, 0.06)" }}>
                     <td style={{ padding: "12px" }}>Learning Curve</td>
-                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "var(--st-color-success, green)" }}>Easy</td>
+                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "#3b82f6" }}>Easy</td>
                     <td style={{ padding: "12px", textAlign: "center" }}>Easy</td>
                     <td style={{ padding: "12px", textAlign: "center" }}>Moderate</td>
                   </tr>
                   <tr>
                     <td style={{ padding: "12px" }}>Type Safety</td>
-                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "var(--st-color-success, green)" }}>Full TS</td>
+                    <td style={{ padding: "12px", textAlign: "center", fontWeight: "600", color: "#3b82f6" }}>Full TS</td>
                     <td style={{ padding: "12px", textAlign: "center" }}>Partial</td>
                     <td style={{ padding: "12px", textAlign: "center" }}>Full TS</td>
                   </tr>
@@ -412,7 +385,7 @@ export function HomePage() {
         padding: "var(--st-space-8) var(--st-space-4)",
         width: "100%",
         boxSizing: "border-box",
-        borderTop: "1px solid var(--st-color-border)"
+        borderTop: "1px solid rgba(0, 0, 0, 0.06)"
       }}>
         <Container size="lg">
           <Column gap={6}>
@@ -422,7 +395,7 @@ export function HomePage() {
                 fontWeight: 700,
                 fontFamily: "var(--st-font-display)",
                 margin: 0,
-                letterSpacing: "-1px"
+                letterSpacing: "-0.5px"
               }}>Core Principles</Text>
               <Text tone="muted">Thoughtful design decisions that guide every feature.</Text>
             </Column>
@@ -437,23 +410,20 @@ export function HomePage() {
               boxSizing: "border-box"
             }}>
               {[
-                { title: "Tokens are the API", color: "#2a7d52", desc: "Design decisions live in tokens. Components consume token keys, not arbitrary raw values. This enforces consistency by default." },
-                { title: "Contract Over Customization", color: "#d4a574", desc: "A stable, constrained API enables consistency. Override by design via className, not by default. This reduces decision fatigue." },
-                { title: "Zero Runtime Overhead", color: "#4a9d72", desc: "All CSS is static. No JavaScript style generation. No CSS-in-JS overhead. Minimum bundle size, maximum performance." }
+                { title: "Tokens are the API", desc: "Design decisions live in tokens. Components consume token keys, not arbitrary raw values. This enforces consistency by default." },
+                { title: "Contract Over Customization", desc: "A stable, constrained API enables consistency. Override by design via className, not by default. This reduces decision fatigue." },
+                { title: "Zero Runtime Overhead", desc: "All CSS is static. No JavaScript style generation. No CSS-in-JS overhead. Minimum bundle size, maximum performance." }
               ].map((item, idx) => (
                 <div key={idx} style={{
                   padding: "var(--st-space-5)",
-                  border: "1px solid var(--st-color-border)",
-                  borderLeft: `4px solid ${item.color}`,
-                  borderRadius: "var(--st-radius-2)",
-                  transition: "all 150ms cubic-bezier(0.2, 0, 0.38, 0.9)",
+                  border: "1px solid rgba(0, 0, 0, 0.06)",
+                  borderRadius: "12px",
+                  transition: "all 150ms cubic-bezier(0.19, 1, 0.22, 1)",
                   background: "var(--st-color-background)"
                 }} onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 10px 25px rgba(0, 0, 0, 0.08)";
-                  e.currentTarget.style.background = "var(--st-color-surface)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.06)";
                 }} onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "var(--st-color-background)";
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow = "none";
                 }}>
@@ -472,7 +442,7 @@ export function HomePage() {
         padding: "var(--st-space-8) var(--st-space-4)",
         width: "100%",
         boxSizing: "border-box",
-        borderTop: "1px solid var(--st-color-border)"
+        borderTop: "1px solid rgba(0, 0, 0, 0.06)"
       }}>
         <Container size="lg">
           <Column gap={6}>
@@ -482,7 +452,7 @@ export function HomePage() {
                 fontWeight: 700,
                 fontFamily: "var(--st-font-display)",
                 margin: 0,
-                letterSpacing: "-1px"
+                letterSpacing: "-0.5px"
               }}>Getting Started</Text>
               <Text tone="muted">Installation and setup in 3 minutes</Text>
             </Column>
@@ -496,9 +466,10 @@ export function HomePage() {
             }}>
               {/* Installation */}
               <div style={{
-                padding: "var(--st-space-4)",
-                border: "1px solid var(--st-color-border)",
-                borderRadius: "0"
+                padding: "var(--st-space-5)",
+                border: "1px solid rgba(0, 0, 0, 0.06)",
+                borderRadius: "12px",
+                background: "var(--st-color-surface)"
               }}>
                 <Column gap={3}>
                   <Column gap={1}>
@@ -510,11 +481,11 @@ export function HomePage() {
                   <Box style={{
                     background: "var(--st-color-background)",
                     padding: "var(--st-space-3)",
-                    borderRadius: "2px",
+                    borderRadius: "8px",
                     fontFamily: "var(--st-font-mono)",
                     fontSize: "var(--st-font-size-0)",
                     overflowX: "auto",
-                    border: "1px solid var(--st-color-border)"
+                    border: "1px solid rgba(0, 0, 0, 0.06)"
                   }}>
                     <code>npm install @staple-css/tokens</code>
                   </Box>
@@ -523,9 +494,10 @@ export function HomePage() {
 
               {/* Quick Start */}
               <div style={{
-                padding: "var(--st-space-4)",
-                border: "1px solid var(--st-color-border)",
-                borderRadius: "0"
+                padding: "var(--st-space-5)",
+                border: "1px solid rgba(0, 0, 0, 0.06)",
+                borderRadius: "12px",
+                background: "var(--st-color-surface)"
               }}>
                 <Column gap={3}>
                   <Column gap={1}>
@@ -537,12 +509,12 @@ export function HomePage() {
                   <Box style={{
                     background: "var(--st-color-background)",
                     padding: "var(--st-space-3)",
-                    borderRadius: "2px",
+                    borderRadius: "8px",
                     fontFamily: "var(--st-font-mono)",
                     fontSize: "var(--st-font-size-0)",
                     overflowX: "auto",
                     lineHeight: "1.6",
-                    border: "1px solid var(--st-color-border)"
+                    border: "1px solid rgba(0, 0, 0, 0.06)"
                   }}>
                     <code>{`import "@staple-css/tokens"\nimport { Box } from "@staple-css/primitives"`}</code>
                   </Box>
@@ -559,7 +531,7 @@ export function HomePage() {
         width: "100%",
         boxSizing: "border-box",
         background: "var(--st-color-surface)",
-        borderTop: "1px solid var(--st-color-border)"
+        borderTop: "1px solid rgba(0, 0, 0, 0.06)"
       }}>
         <Container size="lg">
           <Column gap={6}>
@@ -569,7 +541,7 @@ export function HomePage() {
               fontWeight: 700,
               fontFamily: "var(--st-font-display)",
               margin: 0,
-              letterSpacing: "-1px"
+              letterSpacing: "-0.5px"
             }}>Perfect For</Text>
             <Text tone="muted">Use cases where staple-css excels</Text>
           </Column>
@@ -584,10 +556,10 @@ export function HomePage() {
             boxSizing: "border-box"
           }}>
             {[
-              { icon: Gauge, title: "Performance", color: "#2a7d52", desc: "2.5 KB zero JS overhead" },
-              { icon: Target, title: "Design Systems", color: "#d4a574", desc: "Token-first consistency" },
-              { icon: Cpu, title: "AI & Automation", color: "#4a9d72", desc: "Type-safe API constraints" },
-              { icon: Smartphone, title: "Mobile Apps", color: "#8b6f47", desc: "Ultra-lightweight library" },
+              { icon: Gauge, title: "Performance", desc: "2.5 KB zero JS overhead" },
+              { icon: Target, title: "Design Systems", desc: "Token-first consistency" },
+              { icon: Cpu, title: "AI & Automation", desc: "Type-safe API constraints" },
+              { icon: Smartphone, title: "Mobile Apps", desc: "Ultra-lightweight library" },
             ].map((item, idx) => {
               const IconComponent = item.icon;
               return (
@@ -595,39 +567,36 @@ export function HomePage() {
                   display: "flex",
                   gap: "var(--st-space-3)",
                   padding: "var(--st-space-5)",
-                  border: "1px solid var(--st-color-border)",
-                  borderLeft: `4px solid ${item.color}`,
-                  borderRadius: "var(--st-radius-2)",
-                  transition: "all 150ms cubic-bezier(0.2, 0, 0.38, 0.9)",
+                  border: "1px solid rgba(0, 0, 0, 0.06)",
+                  borderRadius: "12px",
+                  transition: "all 150ms cubic-bezier(0.19, 1, 0.22, 1)",
                   cursor: "pointer",
                   background: "var(--st-color-background)"
                 }} onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 10px 25px rgba(0, 0, 0, 0.08)";
-                  e.currentTarget.style.background = "var(--st-color-surface)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.06)";
                 }} onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "var(--st-color-background)";
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow = "none";
                 }}>
                   <Box
                     aria-hidden="true"
                     style={{
-                      width: "44px",
-                      height: "44px",
-                      borderRadius: "var(--st-radius-2)",
-                      background: item.color,
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "10px",
+                      background: "rgba(59, 130, 246, 0.08)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      color: "white",
+                      color: "#3b82f6",
                       flexShrink: 0,
                       marginTop: "2px"
                     }}>
-                    <IconComponent size={22} strokeWidth={1.5} />
+                    <IconComponent size={20} strokeWidth={1.5} />
                   </Box>
                   <Column gap={2}>
-                    <Text weight="bold" size={1} style={{ fontSize: "1rem", fontFamily: "var(--st-font-display)", fontWeight: 700 }}>{item.title}</Text>
+                    <Text weight="bold" size={1} style={{ fontSize: "1rem", fontFamily: "var(--st-font-display)", fontWeight: 600 }}>{item.title}</Text>
                     <Text size={0} tone="muted" style={{ fontSize: "0.9375rem" }}>{item.desc}</Text>
                   </Column>
                 </div>
@@ -640,42 +609,41 @@ export function HomePage() {
 
       {/* CTA Section */}
       <Box as="section" style={{
-        background: "linear-gradient(135deg, #2a7d52 0%, #d4a574 100%)",
+        background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
         padding: "var(--st-space-8) var(--st-space-4)",
         color: "white",
         width: "100%",
         boxSizing: "border-box",
-        borderTop: "1px solid rgba(255,255,255,0.1)"
       }}>
         <Container size="lg">
           <Column gap={6} align="center">
             <Column gap={2} align="center">
               <Text as="h2" style={{
                 fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
-                fontWeight: 800,
+                fontWeight: 700,
                 fontFamily: "var(--st-font-display)",
                 color: "white",
                 margin: 0,
-                letterSpacing: "-1px"
+                letterSpacing: "-0.5px"
               }}>Ready to Build?</Text>
               <Text style={{
-                color: "rgba(255,255,255,0.92)",
+                color: "rgba(255,255,255,0.7)",
                 fontSize: "1.0625rem",
                 fontWeight: 400
               }}>Choose your edition. Core or full. MIT licensed.</Text>
             </Column>
 
             <Row gap={3} justify="center" style={{ flexWrap: "wrap" }}>
-              <PrimaryButton href="/tokens" style={{ background: "white", color: "#2a7d52", fontWeight: 700 }}>Get Started →</PrimaryButton>
-              <SecondaryButton href="/tokens-studio" style={{ borderColor: "white", color: "white", fontWeight: 700 }}>Open Studio</SecondaryButton>
+              <PrimaryButton href="/tokens">Get Started</PrimaryButton>
+              <SecondaryButton href="/tokens-studio" style={{ borderColor: "rgba(255,255,255,0.2)", color: "white", background: "transparent" }}>Open Studio</SecondaryButton>
             </Row>
 
             <Text size={1} style={{
-              color: "rgba(255,255,255,0.75)",
+              color: "rgba(255,255,255,0.5)",
               fontSize: "0.9375rem",
               fontWeight: 400
             }}>
-              350+ Tokens • Zero Runtime • Enterprise Ready
+              350+ Tokens &bull; Zero Runtime &bull; Enterprise Ready
             </Text>
           </Column>
         </Container>

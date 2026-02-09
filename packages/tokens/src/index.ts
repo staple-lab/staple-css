@@ -23,7 +23,12 @@
 export {
   // Token definitions (for documentation/tooling)
   tokens,
+
+  // Primitive scales
   spaceScale,
+  sizeScale,
+  sizeRelativeScale,
+  heightRelativeScale,
   radiusScale,
   shadowScale,
   zIndexScale,
@@ -57,16 +62,64 @@ export {
   duration,
   easing,
   delay,
+
+  // Legacy color tokens (backwards compatibility)
   colorsLight,
   colorsDark,
+
+  // Semantic color tokens - Light
+  colorTextLight,
+  colorBgLight,
+  colorBorderLight,
+  colorInteractiveLight,
+  colorFeedbackLight,
+  colorIconLight,
+  colorFocusLight,
+
+  // Semantic color tokens - Dark
+  colorTextDark,
+  colorBgDark,
+  colorBorderDark,
+  colorInteractiveDark,
+  colorFeedbackDark,
+  colorIconDark,
+  colorFocusDark,
+
+  // Semantic spacing tokens
+  spacingComponent,
+  spacingLayout,
+  spacingInset,
+
+  // Semantic sizing tokens
+  sizingIcon,
+  sizingAvatar,
+  sizingControl,
+  sizingContainer,
+  sizingRadius,
+
+  // Semantic z-index
+  zIndexSemantic,
+
+  // Semantic motion tokens
+  motionDuration,
+  motionEasing,
+  motionTransition,
+
+  // Semantic opacity
+  opacitySemantic,
+
+  // Density
   densityComfortable,
   densityCompact,
   tones,
 } from "./tokens.js";
 
 export type {
-  // Token types for type-safe props
+  // Primitive token types
   SpaceToken,
+  SizeToken,
+  SizeRelativeToken,
+  HeightRelativeToken,
   RadiusToken,
   ShadowToken,
   ZIndexToken,
@@ -103,6 +156,40 @@ export type {
   ColorToken,
   DensityToken,
   ToneToken,
+
+  // Semantic color token types
+  ColorTextToken,
+  ColorBgToken,
+  ColorBorderToken,
+  ColorInteractiveToken,
+  ColorFeedbackToken,
+  ColorIconToken,
+  ColorFocusToken,
+
+  // Semantic spacing token types
+  SpacingComponentToken,
+  SpacingLayoutToken,
+  SpacingInsetToken,
+
+  // Semantic sizing token types
+  SizingIconToken,
+  SizingAvatarToken,
+  SizingControlToken,
+  SizingContainerToken,
+  SizingRadiusToken,
+
+  // Semantic z-index token type
+  ZIndexSemanticToken,
+
+  // Semantic motion token types
+  MotionDurationToken,
+  MotionEasingToken,
+  MotionTransitionToken,
+
+  // Semantic opacity token type
+  OpacitySemanticToken,
+
+  // Master tokens type
   Tokens,
 } from "./tokens.js";
 

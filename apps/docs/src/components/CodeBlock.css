@@ -100,7 +100,7 @@
 .language-jsx .string,
 .language-ts .string,
 .language-tsx .string {
-  color: #d4a574;
+  color: #8b5cf6;
 }
 
 /* Comments - Muted */
@@ -121,7 +121,7 @@
 /* Values */
 .language-css .value,
 .language-json .value {
-  color: #d4a574;
+  color: #8b5cf6;
 }
 
 /* Line numbers - Muted background */

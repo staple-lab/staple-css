@@ -1,0 +1,433 @@
+/**
+ * Sizing Primitives Page
+ * Clean visualization of sizing scale
+ */
+
+.sizing-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================================
+   PAGE HEADER
+   ============================================================================ */
+.sizing-page-header {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--st-color-border, #e1e3e5);
+  margin-bottom: 32px;
+}
+
+.sizing-page-title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--st-color-text, #202223);
+  margin: 0 0 12px 0;
+}
+
+.sizing-page-description {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--st-color-text-muted, #6d7175);
+  margin: 0;
+  max-width: 680px;
+}
+
+/* ============================================================================
+   TABS
+   ============================================================================ */
+.sizing-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  padding: 4px;
+  background: var(--st-color-surface-raised, #f6f6f7);
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.sizing-tab {
+  padding: 8px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--st-color-text-muted, #6d7175);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.sizing-tab:hover {
+  color: var(--st-color-text, #202223);
+}
+
+.sizing-tab--active {
+  background: var(--st-color-surface, #ffffff);
+  color: var(--st-color-text, #202223);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================================
+   SECTIONS
+   ============================================================================ */
+.sizing-section {
+  margin-bottom: 48px;
+}
+
+/* ============================================================================
+   SIZING SCALE CONTAINER
+   ============================================================================ */
+.sizing-scale-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sizing-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: auto auto;
+  gap: 8px 16px;
+  padding: 16px;
+  background: var(--st-color-surface, #ffffff);
+  border: 1px solid var(--st-color-border, #e1e3e5);
+  border-radius: 10px;
+  transition: border-color 150ms ease;
+}
+
+.sizing-item:hover {
+  border-color: var(--st-color-primary, #2c6ecb);
+}
+
+.sizing-item--relative {
+  grid-template-columns: 1fr;
+}
+
+.sizing-item-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.sizing-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--st-color-text, #202223);
+}
+
+.sizing-value {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 13px;
+  color: var(--st-color-text-muted, #6d7175);
+}
+
+.sizing-bar-container {
+  display: flex;
+  align-items: center;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.sizing-bar {
+  height: 24px;
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  border-radius: 4px;
+  min-width: 4px;
+  transition: width 200ms ease;
+}
+
+.sizing-item-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sizing-var {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 12px;
+  color: var(--st-color-text, #202223);
+  background: var(--st-color-surface-raised, #f6f6f7);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.sizing-description {
+  font-size: 13px;
+  color: var(--st-color-text-muted, #6d7175);
+  flex: 1;
+}
+
+.sizing-copy-btn {
+  padding: 6px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--st-color-text-muted, #6d7175);
+  background: var(--st-color-surface, #ffffff);
+  border: 1px solid var(--st-color-border, #c9cccf);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.sizing-copy-btn:hover {
+  color: var(--st-color-text, #202223);
+  border-color: var(--st-color-text-muted, #8c9196);
+}
+
+/* ============================================================================
+   CARD
+   ============================================================================ */
+.sizing-card {
+  background: var(--st-color-surface, #ffffff);
+  border: 1px solid var(--st-color-border, #e1e3e5);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.sizing-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--st-color-text, #202223);
+  margin: 0 0 12px 0;
+}
+
+.sizing-section-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--st-color-text-muted, #6d7175);
+  margin: 0 0 20px 0;
+}
+
+/* ============================================================================
+   VISUAL GRID
+   ============================================================================ */
+.sizing-visual-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-end;
+}
+
+.sizing-visual-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.sizing-visual-box {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  border-radius: 4px;
+}
+
+.sizing-visual-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--st-color-text, #202223);
+}
+
+.sizing-visual-value {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 10px;
+  color: var(--st-color-text-muted, #6d7175);
+}
+
+/* ============================================================================
+   GUIDELINES
+   ============================================================================ */
+.sizing-guidelines {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.sizing-guideline {
+  padding: 16px;
+  background: var(--st-color-surface-raised, #f6f6f7);
+  border-radius: 8px;
+}
+
+.sizing-guideline h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--st-color-text, #202223);
+  margin: 0 0 8px 0;
+}
+
+.sizing-guideline p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--st-color-text-muted, #6d7175);
+  margin: 0;
+}
+
+.sizing-guideline code {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.9em;
+  background: var(--st-color-surface, #ffffff);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* ============================================================================
+   CODE BLOCK
+   ============================================================================ */
+.sizing-code-block {
+  border: 1px solid var(--st-color-border, #e1e3e5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sizing-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--st-color-surface-raised, #f6f6f7);
+  border-bottom: 1px solid var(--st-color-border, #e1e3e5);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--st-color-text-muted, #6d7175);
+}
+
+.sizing-code-copy {
+  padding: 4px 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--st-color-text-muted, #6d7175);
+  background: var(--st-color-surface, #ffffff);
+  border: 1px solid var(--st-color-border, #c9cccf);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.sizing-code-copy:hover {
+  color: var(--st-color-text, #202223);
+  border-color: var(--st-color-text-muted, #8c9196);
+}
+
+.sizing-code-content {
+  margin: 0;
+  padding: 16px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+/* ============================================================================
+   TOAST
+   ============================================================================ */
+.sizing-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  background: #202223;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: sizingToastIn 200ms ease;
+}
+
+@keyframes sizingToastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ============================================================================
+   DARK MODE
+   ============================================================================ */
+[data-theme="dark"] .sizing-page {
+  --st-color-surface: #1a1a1a;
+  --st-color-surface-raised: #2a2a2a;
+  --st-color-border: #3a3a3a;
+  --st-color-text: #f1f1f1;
+  --st-color-text-muted: #a0a0a0;
+}
+
+[data-theme="dark"] .sizing-code-content {
+  background: #0d0d0d;
+}
+
+[data-theme="dark"] .sizing-toast {
+  background: #f1f1f1;
+  color: #1a1a1a;
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+@media (max-width: 768px) {
+  .sizing-page {
+    padding: 0 16px;
+  }
+
+  .sizing-page-header {
+    padding: 32px 0 24px;
+  }
+
+  .sizing-page-title {
+    font-size: 24px;
+  }
+
+  .sizing-item {
+    grid-template-columns: 1fr;
+  }
+
+  .sizing-bar-container {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .sizing-item-footer {
+    grid-row: 3;
+  }
+
+  .sizing-visual-grid {
+    gap: 16px;
+  }
+
+  .sizing-guidelines {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================================
+   REDUCED MOTION
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .sizing-tab,
+  .sizing-item,
+  .sizing-copy-btn,
+  .sizing-code-copy,
+  .sizing-bar {
+    transition: none;
+  }
+
+  .sizing-toast {
+    animation: none;
+  }
+}

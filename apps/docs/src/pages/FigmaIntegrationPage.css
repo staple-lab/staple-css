@@ -1,5 +1,5 @@
 /**
- * Figma Integration Page - Clean, tight layout with Lucide icons
+ * Figma Integration Page - Clean, minimal layout
  */
 
 .figma-page {
@@ -13,18 +13,15 @@
 }
 
 .figma-header h1 {
-  font-size: clamp(32px, 6vw, 44px);
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
   margin: 0 0 var(--st-space-3) 0;
-  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--st-color-text);
 }
 
 .figma-header p {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--st-color-text-muted);
   line-height: 1.6;
   margin: 0;
@@ -35,7 +32,7 @@
 .sync-section {
   margin-bottom: var(--st-space-8);
   padding-bottom: var(--st-space-8);
-  border-bottom: 1px solid var(--st-color-border);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .sync-flow {
@@ -45,8 +42,9 @@
   gap: var(--st-space-6);
   flex-wrap: wrap;
   padding: var(--st-space-6);
-  background: var(--st-color-surface);
-  border-radius: var(--st-radius-2);
+  background: var(--st-color-background);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .sync-direction {
@@ -72,11 +70,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
-  color: white;
-  border-radius: var(--st-radius-2);
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--st-color-text-muted);
+  border-radius: 8px;
   flex-shrink: 0;
 }
 
@@ -86,41 +84,39 @@
 }
 
 .features-section h2 {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 var(--st-space-5) 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
   color: var(--st-color-text);
 }
 
 .feature-card {
-  padding: var(--st-space-3);
-  background: var(--st-color-surface);
-  border: none;
-  border-left: 3px solid var(--st-color-primary);
-  border-radius: 0;
-  transition: all 200ms ease;
+  padding: var(--st-space-4);
+  background: var(--st-color-background);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  transition: none;
   display: flex;
   flex-direction: column;
   gap: var(--st-space-2);
   align-items: flex-start;
-  padding-left: var(--st-space-4);
 }
 
 .feature-card:hover {
-  border-left-color: #06b6d4;
-  transform: translateX(3px);
+  transform: none;
   background: var(--st-color-background);
 }
 
 .feature-icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--st-color-primary) 0%, #06b6d4 100%);
-  color: white;
-  border-radius: var(--st-radius-1);
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--st-color-text-muted);
+  border-radius: 8px;
 }
 
 .feature-card h3 {
@@ -144,22 +140,23 @@
 }
 
 .token-types-section h2 {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 var(--st-space-5) 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
   color: var(--st-color-text);
 }
 
 .token-category {
   padding: var(--st-space-4);
-  background: var(--st-color-surface);
-  border: 1px solid var(--st-color-border);
-  border-radius: var(--st-radius-2);
-  transition: all 150ms ease;
+  background: var(--st-color-background);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  transition: none;
 }
 
 .token-category:hover {
-  border-color: var(--st-color-primary);
+  border-color: rgba(0, 0, 0, 0.06);
 }
 
 .token-category h4 {
@@ -190,8 +187,8 @@
 }
 
 .token-category li::before {
-  content: "✓";
-  color: var(--st-color-primary);
+  content: "\2713";
+  color: var(--st-color-text-muted);
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -202,17 +199,18 @@
 }
 
 .workflow-section h2 {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 var(--st-space-5) 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
   color: var(--st-color-text);
 }
 
 .workflow-card {
   padding: var(--st-space-6);
-  background: var(--st-color-surface);
-  border: 1px solid var(--st-color-border);
-  border-radius: var(--st-radius-2);
+  background: var(--st-color-background);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
 }
 
 .workflow-header h3 {
@@ -247,16 +245,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--st-color-primary);
-  color: white;
-  border-radius: var(--st-radius-1);
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--st-color-text-muted);
+  border-radius: 8px;
   font-weight: 700;
   font-size: 13px;
   flex-shrink: 0;
 }
 
 .step-number.success {
-  background: var(--st-color-success);
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--st-color-text-muted);
 }
 
 .step-content {
@@ -282,17 +281,18 @@
 }
 
 .export-formats-section h2 {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 var(--st-space-5) 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
   color: var(--st-color-text);
 }
 
 .format-card {
   padding: var(--st-space-4);
-  background: var(--st-color-surface);
-  border: 1px solid var(--st-color-border);
-  border-radius: var(--st-radius-2);
+  background: var(--st-color-background);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
 }
 
 .format-card h4 {
@@ -310,9 +310,9 @@
 }
 
 .format-card pre {
-  background: var(--st-color-background);
+  background: rgba(0, 0, 0, 0.02);
   padding: var(--st-space-3);
-  border-radius: var(--st-radius-1);
+  border-radius: 8px;
   font-size: 11px;
   font-family: var(--st-font-mono);
   margin: 0;
@@ -327,16 +327,17 @@
 /* CTA Section */
 .figma-cta {
   padding: var(--st-space-8);
-  background: var(--st-color-surface);
-  border-radius: var(--st-radius-2);
+  background: var(--st-color-background);
+  border-radius: 12px;
   text-align: center;
-  border: 1px solid var(--st-color-border);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .figma-cta h2 {
-  font-size: 28px;
-  font-weight: 800;
+  font-size: 1.1rem;
+  font-weight: 600;
   margin: 0 0 var(--st-space-2) 0;
+  letter-spacing: -0.01em;
   color: var(--st-color-text);
 }
 
@@ -359,11 +360,11 @@
 
 .btn {
   padding: var(--st-space-3) var(--st-space-6);
-  border-radius: var(--st-radius-2);
+  border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
-  transition: all 200ms ease;
+  transition: none;
   display: inline-flex;
   align-items: center;
   gap: var(--st-space-2);
@@ -372,25 +373,25 @@
 .btn.btn-primary {
   background: var(--st-color-primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: none;
 }
 
 .btn.btn-primary:hover {
   background: var(--st-color-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+  transform: none;
+  box-shadow: none;
 }
 
 .btn.btn-secondary {
   background: transparent;
-  color: var(--st-color-primary);
-  border: 1px solid var(--st-color-border);
+  color: var(--st-color-text);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .btn.btn-secondary:hover {
-  background: var(--st-color-surface);
-  border-color: var(--st-color-primary);
-  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.1);
+  transform: none;
 }
 
 /* Responsive */
@@ -400,7 +401,7 @@
   }
 
   .figma-header h1 {
-    font-size: clamp(24px, 5vw, 32px);
+    font-size: clamp(1.5rem, 5vw, 2rem);
   }
 
   .sync-flow {

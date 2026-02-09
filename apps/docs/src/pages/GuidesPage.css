@@ -1,6 +1,5 @@
 /**
- * Guides Page - World-Class Documentation Design
- * Tailwind docs-level premium aesthetic with Solarpunk colors
+ * Guides Page - Clean minimal aesthetic
  */
 
 .guides-page {
@@ -8,49 +7,25 @@
 }
 
 .guides-hero {
-  border-bottom: 1px solid var(--st-color-border);
+  border-bottom: none;
 }
 
-/* Guide cards with smooth interactions */
 .guide-card {
   position: relative;
-  overflow: hidden;
 }
 
 .guide-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, currentColor, transparent);
-  opacity: 0;
-  transition: opacity 150ms ease;
+  display: none;
 }
 
-.guide-card:hover::before {
-  opacity: 0.1;
-}
-
-/* Reduce motion support */
 @media (prefers-reduced-motion: reduce) {
   .guide-card {
     transition: none !important;
   }
-
-  .guide-card:hover {
-    transform: none !important;
-  }
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
-  .guides-hero {
-    padding: var(--st-space-6) var(--st-space-4);
-  }
-
   .guide-card {
-    padding: var(--st-space-4) !important;
+    padding: 20px !important;
   }
 }

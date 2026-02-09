@@ -1,4 +1,4 @@
-import { Column, Row, Text, Card, Grid, Box, Container } from "@staple-css/primitives/full";
+import { Column, Text, Card, Grid, Box, Container } from "@staple-css/primitives/full";
 
 interface GradientDefinition {
   name: string;
@@ -162,24 +162,22 @@ export function GradientsPage() {
     <Box as="main">
       {/* Hero Section */}
       <Box style={{
-        background: "linear-gradient(135deg, rgba(42, 125, 82, 0.05) 0%, rgba(212, 165, 116, 0.03) 100%)",
-        borderBottom: "1px solid var(--st-color-border)",
-        padding: "var(--st-space-8) var(--st-space-4)"
+        padding: "48px 0"
       }}>
         <Container size="lg">
           <Column gap={4} style={{ maxWidth: "750px" }}>
             <Text as="h1" style={{
-              fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
-              fontWeight: 800,
+              fontSize: "clamp(1.75rem, 4vw, 2.25rem)",
+              fontWeight: 700,
               fontFamily: "var(--st-font-display)",
               lineHeight: 1.15,
               margin: 0,
-              letterSpacing: "-2px"
+              letterSpacing: "-0.03em"
             }}>
               Gradient Tokens
             </Text>
             <Text tone="muted" style={{
-              fontSize: "1.125rem",
+              fontSize: "15px",
               lineHeight: 1.7,
               maxWidth: "65ch",
               fontWeight: 400
@@ -190,7 +188,7 @@ export function GradientsPage() {
         </Container>
       </Box>
 
-      <Container size="lg" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+      <Container size="lg" style={{ padding: "48px 0" }}>
         <Column gap={8}>
           <Text>
             Apply gradients via the <code style={{ fontFamily: "var(--st-font-mono)" }}>background</code>
@@ -202,7 +200,7 @@ export function GradientsPage() {
           {/* Usage Section */}
           <Card pad={6} radius={3} shadow={1}>
         <Column gap={4}>
-          <Text as="h2" size={3} weight="semibold">
+          <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
             How to Use
           </Text>
           <Text>Apply gradients via CSS variables:</Text>
@@ -231,10 +229,10 @@ export function GradientsPage() {
       </Container>
 
       {/* Tone-based Gradients */}
-      <Container size="lg" style={{ paddingTop: "var(--st-space-6)", paddingBottom: "var(--st-space-6)" }}>
+      <Container size="lg" style={{ padding: "48px 0" }}>
         <Column gap={8}>
           <Column gap={4}>
-            <Text as="h2" size={3} weight="semibold">
+            <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
               Tone-Based Gradients
             </Text>
             <Text size={1} tone="muted">
@@ -252,7 +250,7 @@ export function GradientsPage() {
 
           {/* Vibrant Gradients */}
           <Column gap={4}>
-            <Text as="h2" size={3} weight="semibold">
+            <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
               Vibrant Multi-Color Gradients
             </Text>
             <Text size={1} tone="muted">
@@ -270,7 +268,7 @@ export function GradientsPage() {
 
           {/* Overlay Gradients */}
           <Column gap={4}>
-            <Text as="h2" size={3} weight="semibold">
+            <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
               Overlay Gradients
             </Text>
             <Text size={1} tone="muted">
@@ -289,7 +287,7 @@ export function GradientsPage() {
           {/* Integration Section */}
           <Card pad={6} radius={3} shadow={1} tone="primary">
             <Column gap={3}>
-              <Text as="h2" size={3} weight="semibold" color="white">
+              <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0, color: "white" }}>
                 Integration with Gradient Maker
               </Text>
               <Text size={1} style={{ color: "white", opacity: 0.9 }}>

@@ -1,103 +1,103 @@
 /**
- * Color System Page - Clean, Intentional Design
- * Focus on colors, minimal visual noise
+ * Color System Page - Clean minimal aesthetic
  */
 
 .color-system-page h1 {
-  background: linear-gradient(135deg, var(--st-color-primary) 0%, #059669 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.5px;
+  background: none;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  -webkit-background-clip: unset;
+  letter-spacing: -0.03em;
 }
 
 /* Section Headers */
 .section-header {
-  padding-bottom: var(--st-space-4);
-  border-bottom: 1px solid var(--st-color-border);
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 /* Semantic Color Cards */
 .semantic-color {
-  padding: var(--st-space-4);
-  transition: all 150ms ease;
+  padding: 20px;
+  transition: none;
 }
 
 .semantic-color:hover {
-  background: var(--st-color-surface);
+  background: transparent;
 }
 
 .color-samples {
   display: flex;
-  gap: var(--st-space-2);
-  margin-bottom: var(--st-space-4);
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .sample {
   flex: 1;
-  height: 60px;
-  border-radius: var(--st-radius-2);
+  height: 48px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 150ms ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: none;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .sample:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: none;
+  box-shadow: none;
 }
 
 .color-meta {
   display: flex;
   flex-direction: column;
-  gap: var(--st-space-2);
+  gap: 4px;
 }
 
 /* Palette Cards */
 .palette-card {
-  padding: var(--st-space-3);
-  transition: all 150ms ease;
+  padding: 16px;
+  transition: none;
 }
 
 .palette-card:hover {
-  transform: translateY(-2px);
+  transform: none;
 }
 
 .palette-ramp {
   display: flex;
   gap: 2px;
-  height: 40px;
+  height: 32px;
 }
 
 .palette-step {
   flex: 1;
-  border-radius: var(--st-radius-1);
+  border-radius: 4px;
   cursor: pointer;
-  transition: transform 100ms ease;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  transition: none;
+  box-shadow: none;
 }
 
 .palette-step:hover {
-  transform: scaleY(1.2);
+  transform: none;
 }
 
 /* Gradient Showcase */
 .gradient-showcase {
-  padding: var(--st-space-4);
+  padding: 20px;
 }
 
 .gradient-preview {
   width: 100%;
-  height: 120px;
-  border-radius: var(--st-radius-2);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  height: 100px;
+  border-radius: 10px;
+  box-shadow: none;
 }
 
 /* Accessibility Section */
 .accessibility-section {
-  padding: var(--st-space-6);
+  padding: 24px;
 }
 
 .a11y-card {
-  padding: var(--st-space-4);
+  padding: 20px;
 }

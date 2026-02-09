@@ -6,9 +6,7 @@ export function TokenReferencePage() {
       {/* Hero Section */}
       <Box
         style={{
-          background: "linear-gradient(135deg, rgba(42, 125, 82, 0.05) 0%, rgba(212, 165, 116, 0.03) 100%)",
-          borderBottom: "1px solid var(--st-color-border)",
-          padding: "var(--st-space-8) var(--st-space-4)",
+          padding: "48px 0",
         }}
       >
         <Container size="xl">
@@ -16,9 +14,10 @@ export function TokenReferencePage() {
             <Text
               as="h1"
               style={{
-                fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
-                fontWeight: 800,
+                fontSize: "clamp(1.75rem, 4vw, 2.25rem)",
+                fontWeight: 700,
                 fontFamily: "var(--st-font-display)",
+                letterSpacing: "-0.03em",
               }}
             >
               Token Reference
@@ -30,7 +29,7 @@ export function TokenReferencePage() {
         </Container>
       </Box>
 
-      <Container size="xl" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+      <Container size="xl" style={{ padding: "48px 0" }}>
         <Column gap={8}>
         {/* Quick Navigation */}
         <Grid cols={{ base: 2, md: 4, lg: 6 }} gap={3}>
@@ -53,23 +52,14 @@ export function TokenReferencePage() {
               href={`#${section.toLowerCase()}`}
               style={{
                 padding: "var(--st-space-3) var(--st-space-4)",
-                borderRadius: "var(--st-radius-2)",
-                background: "var(--st-color-surface)",
-                border: "1px solid var(--st-color-border)",
+                borderRadius: "10px",
+                background: "transparent",
+                border: "1px solid rgba(0,0,0,0.06)",
                 textDecoration: "none",
-                color: "var(--st-color-primary)",
+                color: "var(--st-color-text)",
                 fontWeight: "600",
                 fontSize: "var(--st-font-size-0)",
                 textAlign: "center",
-                transition: "all var(--st-duration-fast) var(--st-easing-default)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--st-color-primary)";
-                e.currentTarget.style.background = "var(--st-color-surface-raised)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--st-color-border)";
-                e.currentTarget.style.background = "var(--st-color-surface)";
               }}
             >
               {section}
@@ -441,31 +431,18 @@ interface SectionProps {
   }>;
 }
 
-const colors = ["#2a7d52", "#d4a574", "#4a9d72", "#8b6f47"];
-
 function Section({ id, title, description, tokens }: SectionProps) {
-  const colorIndex = Math.abs(id.charCodeAt(0)) % colors.length;
-  const railColor = colors[colorIndex];
-
   return (
     <Box as="section" id={id} style={{ display: "contents" }}>
       <Column gap={4}>
-        <div style={{ display: "flex", gap: "var(--st-space-3)" }}>
-          <div style={{ width: "4px", backgroundColor: railColor, borderRadius: "1px" }} />
-          <Column gap={2} style={{ flex: 1 }}>
-            <Text
-              as="h2"
-              size={3}
-              weight="semibold"
-              style={{ fontSize: "clamp(1.125rem, 3vw, 1.5rem)", fontWeight: 700 }}
-            >
+        <Column gap={2}>
+            <Text as="h2" style={{ fontSize: "1.1rem", fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
               {title}
             </Text>
             <Text size={1} tone="muted">
               {description}
             </Text>
-          </Column>
-        </div>
+        </Column>
 
         <Column gap={3}>
         {tokens.map((token, idx) => (
@@ -500,9 +477,9 @@ function TokenRow({ token }: { token: any }) {
         gridTemplateColumns: "150px 200px 1fr",
         gap: "var(--st-space-4)",
         padding: "var(--st-space-3)",
-        background: "var(--st-color-surface)",
-        borderRadius: "var(--st-radius-2)",
-        border: "1px solid var(--st-color-border)",
+        background: "var(--st-color-background)",
+        borderRadius: "12px",
+        border: "1px solid rgba(0,0,0,0.06)",
         alignItems: "center",
       }}
     >

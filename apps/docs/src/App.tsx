@@ -8,6 +8,8 @@ import { ColorSystemPage } from "./pages/ColorSystemPage";
 import { ColorsPage } from "./pages/ColorsPage";
 import { ColorPrimitiveRampsPage } from "./pages/ColorPrimitiveRampsPage";
 import { SpacingPrimitivesPage } from "./pages/SpacingPrimitivesPage";
+import { SizingPrimitivesPage } from "./pages/SizingPrimitivesPage";
+import { TypePrimitivesPage } from "./pages/TypePrimitivesPage";
 import { VisualsPage } from "./pages/VisualsPage";
 import { GradientStudioPage } from "./pages/GradientStudioPage";
 import { FigmaIntegrationPage } from "./pages/FigmaIntegrationPage";
@@ -18,12 +20,28 @@ import { PrimitivesPage } from "./pages/PrimitivesPage";
 import { WhyPage } from "./pages/WhyPage";
 import { ExamplesPage } from "./pages/ExamplesPage";
 import { BuilderPage } from "./pages/tokens-studio";
+import {
+  ColorTextTokensPage,
+  ColorBackgroundTokensPage,
+  ColorBorderTokensPage,
+  ColorInteractiveTokensPage,
+  ColorFeedbackTokensPage,
+  ColorIconTokensPage,
+  ColorFocusTokensPage,
+  SpacingComponentTokensPage,
+  SpacingLayoutTokensPage,
+  SpacingInsetTokensPage,
+  SizingComponentsTokensPage,
+  SizingLayoutTokensPage,
+  BordersTokensPage,
+  ZIndexTokensPage,
+  MotionTokensPage,
+  OpacityTokensPage,
+} from "./pages/tokens";
 import { SearchPalette } from "./components/SearchPalette";
 import { SearchBar } from "./components/SearchBar";
 import { SidebarNav } from "./components/SidebarNav";
 import { MobileNav } from "./components/MobileNav";
-import { Breadcrumb } from "./components/Breadcrumb";
-import { TableOfContents } from "./components/TableOfContents";
 import { ScrollToTop } from "./components/ScrollToTop";
 
 type Theme = "light" | "dark" | "system";
@@ -76,51 +94,20 @@ export function App() {
       data-theme={resolvedTheme}
       className="app-root"
     >
-      <header className="app-header">
-        <Container size="xl">
-          <Row gap={4} align="center" className="header-layout">
-            <MobileNav />
-            <Link to="/" className="logo-link">
-              <Text as="span" size={3} weight="bold">
-                staple-css
-              </Text>
-            </Link>
-            <div className="header-center">
-              <SearchBar />
-            </div>
-            <Row gap={2} className="header-right">
-              <button onClick={cycleTheme} className="toggle-btn" title="Toggle theme" style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "36px",
-                height: "36px",
-                borderRadius: "6px",
-                border: "1px solid var(--st-color-border)",
-                background: "transparent",
-                cursor: "pointer",
-                color: "inherit",
-                transition: "all 200ms ease"
-              }} onMouseEnter={(e) => {
-                e.currentTarget.style.background = "var(--st-color-surface)";
-                e.currentTarget.style.borderColor = "var(--st-color-primary)";
-              }} onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.borderColor = "var(--st-color-border)";
-              }}>
-                {theme === "system" ? <Monitor size={18} strokeWidth={1.5} /> : theme === "light" ? <Sun size={18} strokeWidth={1.5} /> : <Moon size={18} strokeWidth={1.5} />}
-              </button>
-            </Row>
-          </Row>
-        </Container>
+      <header className="app-header-v2">
+        <Link to="/" className="app-header-v2-logo">
+          <span className="app-header-v2-logo-icon">S</span>
+        </Link>
+        <div className="app-header-v2-right">
+          <button onClick={cycleTheme} className="app-header-v2-icon-btn" title="Toggle theme">
+            {theme === "system" ? <Monitor size={16} strokeWidth={1.5} /> : theme === "light" ? <Sun size={16} strokeWidth={1.5} /> : <Moon size={16} strokeWidth={1.5} />}
+          </button>
+        </div>
       </header>
 
       <div className="app-content-wrapper">
         <SidebarNav />
         <main className="app-main">
-          <div style={{ paddingBottom: "var(--st-space-5)", marginBottom: "var(--st-space-4)" }}>
-            <Breadcrumb />
-          </div>
           <div className="app-main-content">
             <div style={{ flex: 1 }}>
               <Routes>
@@ -133,6 +120,8 @@ export function App() {
                 <Route path="/color-ramp" element={<ColorsPage />} />
                 <Route path="/color-primitives" element={<ColorPrimitiveRampsPage />} />
                 <Route path="/spacing-primitives" element={<SpacingPrimitivesPage />} />
+                <Route path="/sizing-primitives" element={<SizingPrimitivesPage />} />
+                <Route path="/type-primitives" element={<TypePrimitivesPage />} />
                 <Route path="/visuals" element={<VisualsPage />} />
                 <Route path="/components" element={<ComponentPatternsPage />} />
                 <Route path="/gradient-studio" element={<GradientStudioPage />} />
@@ -140,6 +129,26 @@ export function App() {
                 <Route path="/primitives" element={<PrimitivesPage />} />
                 <Route path="/why" element={<WhyPage />} />
                 <Route path="/examples" element={<ExamplesPage />} />
+                {/* Semantic Color Tokens */}
+                <Route path="/tokens/color-text" element={<ColorTextTokensPage />} />
+                <Route path="/tokens/color-background" element={<ColorBackgroundTokensPage />} />
+                <Route path="/tokens/color-border" element={<ColorBorderTokensPage />} />
+                <Route path="/tokens/color-interactive" element={<ColorInteractiveTokensPage />} />
+                <Route path="/tokens/color-feedback" element={<ColorFeedbackTokensPage />} />
+                <Route path="/tokens/color-icon" element={<ColorIconTokensPage />} />
+                <Route path="/tokens/color-focus" element={<ColorFocusTokensPage />} />
+                {/* Semantic Spacing Tokens */}
+                <Route path="/tokens/spacing-component" element={<SpacingComponentTokensPage />} />
+                <Route path="/tokens/spacing-layout" element={<SpacingLayoutTokensPage />} />
+                <Route path="/tokens/spacing-inset" element={<SpacingInsetTokensPage />} />
+                {/* Semantic Sizing Tokens */}
+                <Route path="/tokens/sizing-components" element={<SizingComponentsTokensPage />} />
+                <Route path="/tokens/sizing-layout" element={<SizingLayoutTokensPage />} />
+                {/* Other Tokens */}
+                <Route path="/tokens/borders" element={<BordersTokensPage />} />
+                <Route path="/tokens/z-index" element={<ZIndexTokensPage />} />
+                <Route path="/tokens/motion" element={<MotionTokensPage />} />
+                <Route path="/tokens/opacity" element={<OpacityTokensPage />} />
                 {/* Full-width interactive builder */}
                 <Route path="/tokens-studio" element={
                   <div className="builder-page-wrapper">
@@ -152,7 +161,6 @@ export function App() {
                 <Route path="/studio/*" element={<Navigate to="/tokens-studio" replace />} />
               </Routes>
             </div>
-            <TableOfContents />
           </div>
         </main>
       </div>

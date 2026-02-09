@@ -16,7 +16,7 @@ export function GuidesPage() {
   const guideCategories = [
     {
       category: "Foundation",
-      color: "#2a7d52",
+      color: "#3b82f6",
       guides: [
         {
           icon: Ruler,
@@ -44,7 +44,7 @@ export function GuidesPage() {
     },
     {
       category: "Design System",
-      color: "#d4a574",
+      color: "#8b5cf6",
       guides: [
         {
           icon: Type,
@@ -72,7 +72,7 @@ export function GuidesPage() {
     },
     {
       category: "Implementation",
-      color: "#4a9d72",
+      color: "#22c55e",
       guides: [
         {
           icon: Smartphone,
@@ -131,20 +131,21 @@ export function GuidesPage() {
   return (
     <Box as="main" className="guides-page">
       {/* Hero Section */}
-      <Box className="guides-hero" style={{ background: "linear-gradient(135deg, var(--st-color-background) 0%, rgba(42, 125, 82, 0.03) 100%)" }}>
+      <Box className="guides-hero">
         <Container size="lg">
-          <Column gap={6} style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+          <Column gap={6} style={{ padding: "48px 0" }}>
             <Column gap={4} style={{ maxWidth: "700px" }}>
               <Column gap={2}>
                 <Text
                   as="h1"
                   style={{
-                    fontSize: "clamp(2.5rem, 8vw, 3.5rem)",
-                    fontWeight: 800,
+                    fontSize: "clamp(1.75rem, 4vw, 2.25rem)",
+                    fontWeight: 700,
                     fontFamily: "var(--st-font-display)",
                     lineHeight: 1.15,
                     margin: 0,
                     color: "var(--st-color-text)",
+                    letterSpacing: "-0.03em",
                   }}
                 >
                   Design Guides
@@ -153,9 +154,10 @@ export function GuidesPage() {
                   size={1}
                   tone="muted"
                   style={{
-                    fontSize: "1.125rem",
+                    fontSize: "15px",
                     lineHeight: 1.6,
                     fontWeight: 400,
+                    color: "var(--st-color-text-muted)",
                   }}
                 >
                   Learn the principles and patterns that make staple-css powerful. Organized by foundation, design system, implementation, and composition.
@@ -167,33 +169,24 @@ export function GuidesPage() {
       </Box>
 
       {/* Guides by Category */}
-      <Container size="lg" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+      <Container size="lg" style={{ padding: "48px 0" }}>
         <Column gap={8}>
           {guideCategories.map((section) => (
-            <Box key={section.category} as="section" style={{ display: "contents", marginBottom: "var(--st-space-8)" }}>
-              {/* Category Header with accent line */}
-              <Row gap={3} align="center" style={{ marginBottom: "var(--st-space-6)" }}>
-                <div
-                  style={{
-                    width: "4px",
-                    height: "32px",
-                    background: section.color,
-                    borderRadius: "2px",
-                  }}
-                />
-                <Text
-                  as="h2"
-                  size={3}
-                  weight="bold"
-                  style={{
-                    fontFamily: "var(--st-font-display)",
-                    color: "var(--st-color-text)",
-                    margin: 0,
-                  }}
-                >
-                  {section.category}
-                </Text>
-              </Row>
+            <Box key={section.category} as="section" style={{ display: "contents" }}>
+              {/* Category Header */}
+              <Text
+                as="h2"
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 600,
+                  letterSpacing: "-0.01em",
+                  fontFamily: "var(--st-font-display)",
+                  color: "var(--st-color-text)",
+                  margin: 0,
+                }}
+              >
+                {section.category}
+              </Text>
 
               {/* Guides Grid */}
               <Grid cols={{ base: 1, md: 2 }} gap={6}>
@@ -204,49 +197,37 @@ export function GuidesPage() {
                       key={guide.title}
                       className="guide-card"
                       style={{
-                        padding: "var(--st-space-6)",
-                        border: "1px solid var(--st-color-border)",
-                        borderRadius: "var(--st-radius-2)",
-                        background: "var(--st-color-surface)",
-                        transition: "all 180ms cubic-bezier(0.2, 0, 0.38, 0.9)",
+                        padding: "24px",
+                        border: "1px solid rgba(0,0,0,0.06)",
+                        borderRadius: "12px",
+                        background: "var(--st-color-background)",
                         display: "flex",
                         flexDirection: "column",
                         gap: "var(--st-space-4)",
                       }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = "translateY(-4px)";
-                        e.currentTarget.style.boxShadow = "0 20px 25px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.1)";
-                        e.currentTarget.style.borderColor = section.color;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = "translateY(0)";
-                        e.currentTarget.style.boxShadow = "0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)";
-                        e.currentTarget.style.borderColor = "var(--st-color-border)";
-                      }}
                     >
                       {/* Icon & Title */}
-                      <Row gap={3} align="start" style={{ marginBottom: "var(--st-space-2)" }}>
+                      <Row gap={3} align="start">
                         <div
                           style={{
-                            width: "44px",
-                            height: "44px",
+                            width: "32px",
+                            height: "32px",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            background: section.color,
-                            borderRadius: "var(--st-radius-2)",
-                            color: "white",
+                            background: "rgba(0,0,0,0.04)",
+                            borderRadius: "8px",
+                            color: "var(--st-color-text-muted)",
                             flexShrink: 0,
                           }}
                         >
-                          <IconComponent size={24} strokeWidth={1.5} />
+                          <IconComponent size={16} strokeWidth={1.5} />
                         </div>
                         <Column gap={1} style={{ flex: 1 }}>
                           <div
                             style={{
-                              fontSize: "1.25rem",
-                              fontWeight: 700,
-                              fontFamily: "var(--st-font-display)",
+                              fontSize: "15px",
+                              fontWeight: 600,
                               color: "var(--st-color-text)",
                               margin: 0,
                               lineHeight: 1.3,
@@ -254,9 +235,15 @@ export function GuidesPage() {
                           >
                             {guide.title}
                           </div>
-                          <Text size={0} tone="muted" style={{ fontWeight: 500 }}>
+                          <div
+                            style={{
+                              fontSize: "13px",
+                              color: "var(--st-color-text-muted)",
+                              lineHeight: 1.5,
+                            }}
+                          >
                             {guide.description}
-                          </Text>
+                          </div>
                         </Column>
                       </Row>
 
@@ -264,19 +251,25 @@ export function GuidesPage() {
                       <Column gap={2}>
                         {guide.details.map((detail, i) => (
                           <Row key={i} gap={2} align="start">
-                            <div
+                            <span
                               style={{
-                                width: "5px",
-                                height: "5px",
-                                borderRadius: "50%",
-                                background: section.color,
-                                marginTop: "7px",
+                                fontSize: "13px",
+                                color: "var(--st-color-text-muted)",
+                                lineHeight: 1.6,
                                 flexShrink: 0,
                               }}
-                            />
-                            <Text size={0} tone="muted" style={{ lineHeight: 1.6 }}>
+                            >
+                              ·
+                            </span>
+                            <span
+                              style={{
+                                fontSize: "13px",
+                                color: "var(--st-color-text-muted)",
+                                lineHeight: 1.6,
+                              }}
+                            >
                               {detail}
-                            </Text>
+                            </span>
                           </Row>
                         ))}
                       </Column>
@@ -286,32 +279,25 @@ export function GuidesPage() {
                         gap={2}
                         align="center"
                         style={{
-                          marginTop: "var(--st-space-2)",
+                          marginTop: "auto",
                           paddingTop: "var(--st-space-4)",
-                          borderTop: "1px solid var(--st-color-border)",
+                          borderTop: "1px solid rgba(0,0,0,0.06)",
                         }}
                       >
                         <a
                           href={guide.link}
                           style={{
-                            color: section.color,
+                            color: "var(--st-color-text-muted)",
                             textDecoration: "none",
-                            fontWeight: 600,
-                            fontSize: "14px",
+                            fontWeight: 500,
+                            fontSize: "13px",
                             display: "flex",
                             alignItems: "center",
-                            gap: "var(--st-space-1)",
-                            transition: "gap 150ms ease",
-                          }}
-                          onMouseEnter={(e) => {
-                            (e.currentTarget as any).style.gap = "var(--st-space-2)";
-                          }}
-                          onMouseLeave={(e) => {
-                            (e.currentTarget as any).style.gap = "var(--st-space-1)";
+                            gap: "4px",
                           }}
                         >
                           Learn more
-                          <ArrowRight size={14} strokeWidth={2} />
+                          <ArrowRight size={13} strokeWidth={2} />
                         </a>
                       </Row>
                     </Box>
@@ -324,38 +310,45 @@ export function GuidesPage() {
       </Container>
 
       {/* CTA Section */}
-      <Box style={{ background: "linear-gradient(135deg, rgba(42, 125, 82, 0.05) 0%, rgba(212, 165, 116, 0.03) 100%)", marginTop: "var(--st-space-8)" }}>
-        <Container size="lg" style={{ paddingTop: "var(--st-space-8)", paddingBottom: "var(--st-space-8)" }}>
+      <Box style={{ padding: "48px 0" }}>
+        <Container size="lg">
           <Column gap={4} align="center" style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto" }}>
             <Column gap={2}>
-              <Text as="h2" size={3} weight="bold" style={{ fontFamily: "var(--st-font-display)" }}>
+              <Text
+                as="h2"
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 600,
+                  letterSpacing: "-0.01em",
+                  fontFamily: "var(--st-font-display)",
+                  color: "var(--st-color-text)",
+                  margin: 0,
+                }}
+              >
                 Ready to build?
               </Text>
-              <Text tone="muted">
+              <div
+                style={{
+                  fontSize: "13px",
+                  color: "var(--st-color-text-muted)",
+                  lineHeight: 1.6,
+                }}
+              >
                 Explore the interactive Tokens Studio or dive into the Primitives documentation to start composing beautiful interfaces.
-              </Text>
+              </div>
             </Column>
-            <Row gap={3} style={{ marginTop: "var(--st-space-4)" }}>
+            <Row gap={3} style={{ marginTop: "8px" }}>
               <a
                 href="/tokens-studio"
                 style={{
-                  padding: "var(--st-space-3) var(--st-space-6)",
-                  background: "#2a7d52",
-                  color: "white",
+                  padding: "10px 24px",
+                  background: "var(--st-color-text)",
+                  color: "var(--st-color-background)",
                   textDecoration: "none",
-                  borderRadius: "var(--st-radius-2)",
-                  fontWeight: 600,
+                  borderRadius: "999px",
+                  fontWeight: 500,
                   fontSize: "14px",
-                  transition: "all 150ms ease",
                   display: "inline-block",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as any).style.background = "#4a9d72";
-                  (e.currentTarget as any).style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as any).style.background = "#2a7d52";
-                  (e.currentTarget as any).style.transform = "translateY(0)";
                 }}
               >
                 Open Token Studio
@@ -363,24 +356,15 @@ export function GuidesPage() {
               <a
                 href="/primitives"
                 style={{
-                  padding: "var(--st-space-3) var(--st-space-6)",
+                  padding: "10px 24px",
                   background: "transparent",
-                  color: "#2a7d52",
-                  border: "1px solid #2a7d52",
+                  color: "var(--st-color-text)",
+                  border: "1px solid rgba(0,0,0,0.12)",
                   textDecoration: "none",
-                  borderRadius: "var(--st-radius-2)",
-                  fontWeight: 600,
+                  borderRadius: "999px",
+                  fontWeight: 500,
                   fontSize: "14px",
-                  transition: "all 150ms ease",
                   display: "inline-block",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as any).style.background = "rgba(42, 125, 82, 0.05)";
-                  (e.currentTarget as any).style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as any).style.background = "transparent";
-                  (e.currentTarget as any).style.transform = "translateY(0)";
                 }}
               >
                 Explore Primitives
