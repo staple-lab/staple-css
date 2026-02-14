@@ -1,0 +1,139 @@
+/* Code block styling */
+
+.code-block {
+  position: relative;
+  margin: 24px 0;
+  border-radius: 6px;
+  border: 1px solid var(--doc-color-border);
+  background-color: var(--doc-color-code-bg);
+  overflow: hidden;
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--doc-color-border);
+  font-size: 0.75rem;
+  color: var(--doc-color-text-secondary);
+}
+
+.code-block-lang {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.code-block-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid var(--doc-color-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--doc-color-text-secondary);
+  cursor: pointer;
+  font-size: 0.75rem;
+  min-height: 28px;
+}
+
+.code-block-copy:hover {
+  color: var(--doc-color-text);
+  border-color: var(--doc-color-text-secondary);
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.code-block code {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.8125rem;
+}
+
+/* Inline code */
+:not(pre) > code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: var(--doc-color-code-bg);
+  border: 1px solid var(--doc-color-border-subtle);
+  font-size: 0.875em;
+}
+
+/* PrismJS tokens - monochrome light theme */
+[data-theme="light"] .token.comment,
+[data-theme="light"] .token.prolog,
+[data-theme="light"] .token.doctype,
+[data-theme="light"] .token.cdata { color: #6b7280; }
+
+[data-theme="light"] .token.punctuation { color: #4b5563; }
+
+[data-theme="light"] .token.property,
+[data-theme="light"] .token.tag,
+[data-theme="light"] .token.boolean,
+[data-theme="light"] .token.number,
+[data-theme="light"] .token.constant,
+[data-theme="light"] .token.symbol { color: #1d4ed8; }
+
+[data-theme="light"] .token.selector,
+[data-theme="light"] .token.attr-name,
+[data-theme="light"] .token.string,
+[data-theme="light"] .token.char,
+[data-theme="light"] .token.builtin { color: #047857; }
+
+[data-theme="light"] .token.operator,
+[data-theme="light"] .token.entity,
+[data-theme="light"] .token.url { color: #4b5563; }
+
+[data-theme="light"] .token.atrule,
+[data-theme="light"] .token.attr-value,
+[data-theme="light"] .token.keyword { color: #7c3aed; }
+
+[data-theme="light"] .token.function,
+[data-theme="light"] .token.class-name { color: #b91c1c; }
+
+[data-theme="light"] .token.regex,
+[data-theme="light"] .token.important,
+[data-theme="light"] .token.variable { color: #c2410c; }
+
+/* PrismJS tokens - monochrome dark theme */
+[data-theme="dark"] .token.comment,
+[data-theme="dark"] .token.prolog,
+[data-theme="dark"] .token.doctype,
+[data-theme="dark"] .token.cdata { color: #6b7280; }
+
+[data-theme="dark"] .token.punctuation { color: #9ca3af; }
+
+[data-theme="dark"] .token.property,
+[data-theme="dark"] .token.tag,
+[data-theme="dark"] .token.boolean,
+[data-theme="dark"] .token.number,
+[data-theme="dark"] .token.constant,
+[data-theme="dark"] .token.symbol { color: #93c5fd; }
+
+[data-theme="dark"] .token.selector,
+[data-theme="dark"] .token.attr-name,
+[data-theme="dark"] .token.string,
+[data-theme="dark"] .token.char,
+[data-theme="dark"] .token.builtin { color: #6ee7b7; }
+
+[data-theme="dark"] .token.operator,
+[data-theme="dark"] .token.entity,
+[data-theme="dark"] .token.url { color: #9ca3af; }
+
+[data-theme="dark"] .token.atrule,
+[data-theme="dark"] .token.attr-value,
+[data-theme="dark"] .token.keyword { color: #c4b5fd; }
+
+[data-theme="dark"] .token.function,
+[data-theme="dark"] .token.class-name { color: #fca5a5; }
+
+[data-theme="dark"] .token.regex,
+[data-theme="dark"] .token.important,
+[data-theme="dark"] .token.variable { color: #fdba74; }

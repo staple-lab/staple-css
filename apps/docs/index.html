@@ -3,12 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>staple-css Documentation</title>
-    <meta name="description" content="A shared styling contract for apps—tokens, primitives, and accessible components." />
-    <!-- Distinctive typography fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="color-scheme" content="light dark" />
+    <title>staple-css — Design Tokens</title>
+    <meta name="description" content="A design token system for consistent, semantic styling. Exhaustive semantic coverage with a 5-level hierarchical architecture." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- JetBrains Mono for code blocks only - loaded async -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+    <!-- Prevent flash of wrong theme -->
+    <script>
+      (function() {
+        const stored = localStorage.getItem('staple-theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored === 'dark' || stored === 'light' ? stored : (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
     <!-- Handle SPA redirect from 404.html on GitHub Pages -->
     <script>
       (function() {

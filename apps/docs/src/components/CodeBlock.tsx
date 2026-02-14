@@ -1,118 +1,53 @@
-import { useState } from 'react';
-import { Box, Row, Text } from '@staple-css/primitives/full';
-import { Copy, Check } from 'lucide-react';
-import './CodeBlock.css';
+import { useEffect, useRef, useState, useCallback } from "react";
+import Prism from "prismjs";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-tsx";
+import "prismjs/components/prism-bash";
+import "prismjs/components/prism-json";
+import { Copy, Check } from "lucide-react";
 
 interface CodeBlockProps {
   code: string;
-  language?: 'css' | 'jsx' | 'tsx' | 'ts' | 'json' | 'html' | 'bash';
-  showLineNumbers?: boolean;
+  language?: string;
 }
 
-export function CodeBlock({
-  code,
-  language = 'css',
-  showLineNumbers = false,
-}: CodeBlockProps) {
+export function CodeBlock({ code, language = "css" }: CodeBlockProps) {
+  const codeRef = useRef<HTMLElement>(null);
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  useEffect(() => {
+    if (codeRef.current) {
+      Prism.highlightElement(codeRef.current);
+    }
+  }, [code, language]);
 
-  const lines = code.trim().split('\n');
+  const handleCopy = useCallback(() => {
+    navigator.clipboard.writeText(code).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [code]);
 
   return (
-    <Box className="code-block">
-      <Row
-        justify="between"
-        align="start"
-        className="code-block-header"
-        style={{
-          padding: 'var(--st-space-3) var(--st-space-4)',
-          borderBottom: '1px solid var(--st-color-border)',
-          background: 'var(--st-color-surface)',
-        }}
-      >
-        <Text
-          size={0}
-          tone="muted"
-          style={{
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px',
-            fontWeight: 500,
-            fontSize: '0.75rem',
-          }}
-        >
-          {language}
-        </Text>
+    <div className="code-block">
+      <div className="code-block-header">
+        <span className="code-block-lang">{language}</span>
         <button
+          className="code-block-copy"
           onClick={handleCopy}
-          className={`code-copy-btn ${copied ? 'copied' : ''}`}
-          title={copied ? 'Copied!' : 'Copy code'}
+          aria-label={copied ? "Copied" : "Copy code"}
         >
-          {copied ? (
-            <>
-              <Check size={16} />
-              <span className="copy-text">Copied</span>
-            </>
-          ) : (
-            <>
-              <Copy size={16} />
-              <span className="copy-text">Copy</span>
-            </>
-          )}
+          {copied ? <Check size={12} /> : <Copy size={12} />}
+          {copied ? "Copied" : "Copy"}
         </button>
-      </Row>
-
-      <pre
-        className="code-block-pre"
-        style={{
-          padding: 'var(--st-space-4)',
-          margin: 0,
-          overflow: 'auto',
-          background: 'var(--st-color-background)',
-          border: 'none',
-          borderRadius: '0',
-        }}
-      >
-        <code
-          className={`language-${language}`}
-          style={{
-            fontSize: 'var(--st-font-size-1)',
-            fontFamily: 'var(--st-font-mono)',
-            lineHeight: 1.5,
-            display: 'block',
-          }}
-        >
-          {lines.map((line, index) => (
-            <div
-              key={index}
-              style={{
-                display: 'flex',
-                gap: 'var(--st-space-3)',
-              }}
-            >
-              {showLineNumbers && (
-                <span
-                  style={{
-                    color: 'var(--st-color-text-muted)',
-                    userSelect: 'none',
-                    minWidth: '2em',
-                    textAlign: 'right',
-                    opacity: 0.5,
-                  }}
-                >
-                  {index + 1}
-                </span>
-              )}
-              <span>{line}</span>
-            </div>
-          ))}
+      </div>
+      <pre>
+        <code ref={codeRef} className={`language-${language}`}>
+          {code}
         </code>
       </pre>
-    </Box>
+    </div>
   );
 }

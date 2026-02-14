@@ -209,7 +209,8 @@ export function clampToGamut(lch: OKLCH): OKLCH {
  * Parse hex color to RGB
  */
 export function hexToRgb(hex: string): RGB {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  // Match 6-digit (#rrggbb) or 8-digit (#rrggbbaa) hex, ignoring alpha
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i.exec(hex);
   if (!result || result.length < 4) {
     throw new Error(`Invalid hex color: ${hex}`);
   }

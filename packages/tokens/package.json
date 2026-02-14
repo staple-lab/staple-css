@@ -1,12 +1,9 @@
 {
   "name": "@staple-css/tokens",
-  "version": "0.1.0",
-  "description": "Design tokens for staple-css - semantic CSS variables for spacing, color, typography, shadows, motion. Includes OKLCH color generation and 22 Tailwind-compatible palettes.",
-  "homepage": "https://staple-lab.github.io/staple-css/",
+  "version": "0.2.0",
+  "description": "Design tokens for staple-css — semantic CSS variables with a 5-level hierarchical architecture. Includes OKLCH color tools and 22 Tailwind-compatible palettes.",
+  "homepage": "https://css.staplelab.com",
   "type": "module",
-  "bin": {
-    "staple-tokens": "./dist/cli.js"
-  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,27 +12,17 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./config": {
-      "types": "./dist/config.d.ts",
-      "import": "./dist/config.js"
-    },
     "./color": {
       "types": "./dist/color/index.d.ts",
       "import": "./dist/color/index.js"
     },
     "./generator": {
-      "types": "./dist/generator.d.ts",
-      "import": "./dist/generator.js"
-    },
-    "./dynamic-theme": {
-      "types": "./dist/dynamic-theme.d.ts",
-      "import": "./dist/dynamic-theme.js"
+      "types": "./dist/generator/index.d.ts",
+      "import": "./dist/generator/index.js"
     },
     "./tokens.css": "./dist/tokens.css",
     "./themes.css": "./dist/themes.css",
-    "./density.css": "./dist/density.css",
     "./palettes.css": "./dist/palettes.css",
-    "./breakpoints.css": "./dist/breakpoints.css",
     "./all.css": "./dist/all.css"
   },
   "files": [
@@ -49,10 +36,7 @@
     "generate": "node --import tsx src/generate.ts",
     "dev": "tsup --watch"
   },
-  "dependencies": {
-    "lucide-react": "^0.563.0",
-    "zod": "^3.24.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "tsup": "^8.3.5",
     "tsx": "^4.19.2"
@@ -66,14 +50,11 @@
     "design-tokens",
     "oklch",
     "color-palette",
-    "color-generation",
-    "responsive-design",
-    "breakpoints",
     "tailwind",
     "dark-mode",
-    "light-mode",
     "accessibility",
-    "wcag"
+    "wcag",
+    "semantic-tokens"
   ],
   "license": "MIT",
   "repository": {

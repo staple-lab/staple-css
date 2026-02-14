@@ -3,11 +3,8 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   entry: [
     "src/index.ts",
-    "src/config.ts",
-    "src/generator.ts",
     "src/color/index.ts",
-    "src/dynamic-theme.ts",
-    "src/cli.ts",
+    "src/generator/index.ts",
   ],
   format: ["esm"],
   dts: true,
@@ -15,5 +12,4 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   treeshake: true,
-  external: ["zod"],
 });

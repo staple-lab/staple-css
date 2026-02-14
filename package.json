@@ -3,17 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "A shared styling contract for apps—tokens, primitives, and accessible components",
+  "description": "A design token system for consistent, semantic styling",
   "workspaces": [
-    "packages/*",
-    "apps/*"
+    "packages/tokens",
+    "apps/docs"
   ],
   "scripts": {
     "build": "npm run build -ws --if-present",
-    "build:packages": "npm run build -w @staple-css/tokens -w @staple-css/primitives",
+    "build:packages": "npm run build -w @staple-css/tokens",
     "build:docs": "npm run build -w docs",
     "dev": "npm run dev -w docs",
-    "dev:demo": "npm run dev -w demo",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint .",
@@ -24,9 +23,7 @@
     "bundle-size": "node scripts/bundle-size.js",
     "check-raw-values": "node scripts/check-raw-values.js",
     "quality": "npm run typecheck && npm run lint && npm run test && npm run bundle-size",
-    "clean": "rm -rf packages/*/dist apps/*/dist node_modules/.cache",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "clean": "rm -rf packages/*/dist apps/*/dist node_modules/.cache"
   },
   "engines": {
     "node": ">=24.0.0"
@@ -49,12 +46,6 @@
     "typescript-eslint": "^8.17.0",
     "vite": "^6.0.3",
     "vitest": "^2.1.8",
-    "storybook": "^10.2.0",
-    "@storybook/react-vite": "^10.2.0",
-    "@storybook/addon-a11y": "^10.2.0",
-    "@storybook/addon-docs": "^10.2.0",
-    "@storybook/addon-onboarding": "^10.2.0",
-    "eslint-plugin-storybook": "^10.2.0",
     "playwright": "^1.58.0",
     "@vitest/browser": "^2.1.8",
     "@vitest/coverage-v8": "^2.1.8"

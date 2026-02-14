@@ -4,49 +4,80 @@ This file provides guidance for AI assistants working on the staple-css codebase
 
 ## Project Summary
 
-staple-css is a shared styling contract for apps—tokens, primitives, and accessible components. Semantic CSS variables standardize spacing, color, typography, and variants. Tokens are the API. Contract over customization. Consistency by default, with deliberate escape hatches.
+staple-css is a design token system for consistent, semantic styling. Semantic CSS variables standardize spacing, color, typography, elevation, motion, border, and layout. Tokens are the API. Contract over customization. Consistency by default.
 
-This is a performance-first UI styling system built as an npm monorepo (npm workspaces). It provides:
-- **@staple-css/tokens**: CSS variables for design tokens (colors, spacing, typography, etc.)
-- **@staple-css/primitives**: React layout/typography primitives that consume tokens
+This is a performance-first styling system built as an npm monorepo (npm workspaces). It provides:
+- **@staple-css/tokens**: CSS custom properties for design tokens with light/dark themes, OKLCH color tools, and generation pipeline
+
+Deployed at **css.staplelab.com** via GitHub Pages.
 
 ## Core Principles
 
-- **Tokens are the API.** Design decisions are encoded in tokens. Components consume token keys, not arbitrary values.
-- **Contract over customization.** A stable API enables consistency. Override by design, not by default.
-- **Consistency by default, escape hatches by design.** The happy path keeps you in the token system. `className` is always available for overrides.
+- **Tokens are the API.** Design decisions are encoded in tokens. Consumers use `var(--st-*)`, not raw values.
+- **Contract over customization.** A stable variable API enables consistency across apps.
+- **Zero runtime.** Pure CSS custom properties. No JavaScript runtime, no style injection.
+
+## Token Architecture
+
+5-level naming: `--st-{category}-{property}-{role}-{prominence}-{state}`
+
+### Categories
+- **color**: bg, fg, bd, icon, ring across surface/interactive/form/feature/ui/status roles
+- **space**: 0-8 scale (0 to 4rem) plus `px` (1px)
+- **type**: size (0-9), weight, leading, tracking, family
+- **elevation**: shadow levels 0-4
+- **border**: radius (0-4 + full), width (0-2)
+- **motion**: duration (instant to slow), easing curves
+- **layout**: container/screen breakpoints, z-index scale
+
+### Color Token Count
+~121 semantic color tokens, each with light and dark hex values.
 
 ## Repo Map
 
 ```
 staple-css/
 ├── packages/
-│   ├── tokens/           # @staple-css/tokens - CSS variable definitions
-│   │   ├── src/
-│   │   │   ├── tokens.ts    # Token definitions (source of truth)
-│   │   │   ├── generate.ts  # CSS generator script
-│   │   │   └── index.ts     # TypeScript exports
-│   │   └── dist/            # Generated CSS files
-│   │       ├── tokens.css      # Base tokens
-│   │       ├── themes.css      # Light/dark themes
-│   │       ├── density.css     # Comfortable/compact density
-│   │       ├── palettes.css    # Tailwind-style color palettes (50-950)
-│   │       ├── breakpoints.css # Responsive breakpoints
-│   │       └── all.css         # Combined import
-│   └── primitives/       # @staple-css/primitives - React components
+│   └── tokens/              # @staple-css/tokens
 │       ├── src/
-│       │   ├── Box.tsx, Stack.tsx, etc.  # Components
-│       │   ├── primitives.css            # Component CSS
-│       │   ├── cx.ts                     # Tiny classname utility
-│       │   └── types.ts                  # Shared types
-│       └── dist/
+│       │   ├── types.ts        # 5-level type system
+│       │   ├── definitions/    # Token definitions by category
+│       │   │   ├── color.ts       # ~121 semantic color tokens
+│       │   │   ├── space.ts       # Space scale
+│       │   │   ├── typography.ts  # Type tokens
+│       │   │   ├── elevation.ts   # Shadow tokens
+│       │   │   ├── border.ts      # Radius and width
+│       │   │   ├── motion.ts      # Duration and easing
+│       │   │   ├── layout.ts      # Container, screen, z-index
+│       │   │   └── index.ts       # getAllTokens() registry
+│       │   ├── color/          # OKLCH color utilities
+│       │   │   ├── oklch.ts       # Color space conversions
+│       │   │   ├── contrast.ts    # WCAG + APCA contrast
+│       │   │   └── ramp.ts        # Ramp generation + harmonies
+│       │   ├── generator/      # Output generators
+│       │   │   ├── css.ts         # CSS custom properties
+│       │   │   ├── json.ts        # W3C DTCG format
+│       │   │   └── typescript.ts  # TS constants + cssVar()
+│       │   ├── palettes.ts     # 22 Tailwind-compatible palettes
+│       │   ├── generate.ts     # CLI entry point
+│       │   └── index.ts        # Public API
+│       └── dist/               # Generated output
+│           ├── tokens.css         # Semantic tokens (:root)
+│           ├── themes.css         # [data-theme] + prefers-color-scheme
+│           ├── palettes.css       # 22 palette ramps (50-950)
+│           ├── all.css            # Combined import
+│           ├── tokens.json        # W3C DTCG format
+│           └── tokens.ts          # TypeScript constants
 ├── apps/
-│   ├── docs/             # Documentation site (Vite + React)
-│   └── demo/             # Demo app with real screens
-├── scripts/
-│   ├── bundle-size.js    # Bundle size reporter
-│   └── check-raw-values.js  # CSS lint for raw values
-└── [config files]        # tsconfig, eslint, prettier, vitest
+│   └── docs/                # Documentation site (Vite + React)
+│       └── src/
+│           ├── pages/          # 18 lazy-loaded pages
+│           ├── components/     # Layout, Header, Sidebar, etc.
+│           ├── studio/         # Token Studio tools
+│           ├── hooks/          # useTheme, useSearch, useTokens
+│           ├── data/           # Navigation, search index
+│           └── styles/         # theme, global, layout, code, animations
+└── [config files]
 ```
 
 ## Local Development
@@ -55,17 +86,11 @@ staple-css/
 # Install dependencies
 npm install
 
-# Build packages (required before running apps)
+# Build token package (generates dist/ files)
 npm run build:packages
 
 # Run docs site
 npm run dev
-
-# Run demo app
-npm run dev:demo
-
-# Run tests
-npm run test
 
 # Type check
 npm run typecheck
@@ -73,297 +98,93 @@ npm run typecheck
 # Lint
 npm run lint
 
-# Check bundle size
-npm run bundle-size
+# Regenerate token output files
+cd packages/tokens && node --import tsx src/generate.ts
+```
 
-# Check for raw values in CSS
-npm run check-raw-values
+## Token Usage
 
-# Run all quality checks
-npm run quality
+### Import CSS
+
+```css
+/* Import all tokens + themes + palettes */
+@import "@staple-css/tokens/all.css";
+
+/* Or import selectively */
+@import "@staple-css/tokens/tokens.css";
+@import "@staple-css/tokens/themes.css";
+@import "@staple-css/tokens/palettes.css";
+```
+
+### Use in stylesheets
+
+```css
+.card {
+  padding: var(--st-space-4);
+  background: var(--st-color-bg-surface-base);
+  color: var(--st-color-fg-surface-base);
+  border: var(--st-border-width-1) solid var(--st-color-bd-surface-base);
+  border-radius: var(--st-border-radius-3);
+  box-shadow: var(--st-elevation-2);
+}
+```
+
+### Theme switching
+
+Themes use `[data-theme]` attribute with `prefers-color-scheme` fallback:
+
+```html
+<html data-theme="light">
+<!-- or -->
+<html data-theme="dark">
+```
+
+### TypeScript usage
+
+```typescript
+import { colorTokens, spaceTokens, getAllTokens } from "@staple-css/tokens";
+import { generateRamp, hexToOklch } from "@staple-css/tokens/color";
 ```
 
 ## Publishing
 
-### Package Structure
+ESM-only with proper exports map. CSS files marked as `sideEffects`:
 
-Both packages use ESM-only output with proper exports maps:
-
-```json
-{
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./tokens.css": "./dist/tokens.css"
-  },
-  "sideEffects": ["**/*.css"]
-}
+```bash
+cd packages/tokens && npm publish --access public
 ```
 
-### Publishing Steps
-
-1. Ensure all tests pass: `npm run quality`
-2. Update version in package.json files
-3. Build packages: `npm run build:packages`
-4. Publish with provenance:
-   ```bash
-   cd packages/tokens && npm publish --access public
-   cd packages/primitives && npm publish --access public
-   ```
-
-### CSS sideEffects
-
-Both packages mark CSS files as sideEffects so bundlers don't tree-shake them:
-- tokens: `"sideEffects": ["**/*.css"]`
-- primitives: `"sideEffects": ["**/*.css"]`
-
-### files Field
-
-Only `dist/` is published. Source files are excluded.
-
-## Contribution Rules
-
-### Token Enforcement
-
-- **Props accept token keys only.** No raw pixel values, no arbitrary color strings.
-- Space: 0-8 scale
-- Radius: 0-4 scale
-- Shadow: 0-2 scale
-- Font size: 0-6 scale
-- Tone: neutral, primary, danger, warn, success
-
-### No Raw Values
-
-The CSS should use token variables, not hardcoded values:
-
-```css
-/* Good */
-padding: var(--st-space-4);
-color: var(--st-color-text);
-
-/* Bad */
-padding: 16px;
-color: #333;
-```
-
-Run `npm run check-raw-values` to lint for violations.
-
-### Performance Rules
-
-1. **No runtime CSS generation.** All CSS is static files.
-2. **Minimal class composition.** Use precomputed variant maps.
-3. **Stable class names.** `st-Box--pad-4` never changes per render.
-4. **No heavy dependencies.** The primitives package has near-zero runtime.
-5. **Tree-shakeable exports.** Each component can be imported individually.
-
-### No Large Dependencies
-
-Do not add dependencies unless absolutely necessary. Current dependencies:
-- React (peer dep)
-- @staple-css/tokens (peer dep for primitives)
-
-### Code Style
+## Code Style
 
 - ESM only (`type: "module"`)
 - TypeScript strict mode
-- Use `:where()` for low specificity CSS
-- Use logical properties where appropriate
-- Component class naming: `st-Component`, `st-Component--variant-value`
-
-## Release Process
-
-### Versioning
-
-Follow semver:
-- Patch: Bug fixes, docs updates
-- Minor: New features, new tokens, new components
-- Major: Breaking changes to token API or component props
-
-### Changelog
-
-Maintain CHANGELOG.md with:
-- Version number and date
-- Added/Changed/Fixed/Removed sections
-- Migration notes for breaking changes
-
-### Changesets (Optional)
-
-The repo is set up for manual versioning, but changesets can be added:
-```bash
-npm install @changesets/cli
-npx changeset init
-```
-
-## Non-Goals
-
-### No Huge Component Surface
-
-staple-css provides primitives (Box, Stack, Inline, Grid, Container, Text, Card), not a complete component library. Complex widgets like datepickers, modals, or data tables are out of scope.
-
-### No Deep Override Engine
-
-There's no theme provider, no component variant API, no style props engine. The escape hatch is `className`. That's it.
-
-### No Primitive-Per-Element
-
-Primitives map to roles (layout, typography, surface), not HTML elements. There's no `<Div>`, `<Section>`, `<Article>` primitive. Use `as` prop on Box for polymorphism.
-
-### No Utility Classes
-
-staple-css is not a utility-first framework. Props are the API; classes are implementation details.
-
-## Responsive Design
-
-### Intrinsic Responsive Patterns
-
-The recommended approach for responsive layouts is **intrinsic design** using CSS Grid with `auto-fill`/`auto-fit` and `minmax()`. This avoids media queries entirely:
-
-```css
-/* Grid that automatically adjusts columns based on available space */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--st-space-4);
-}
-```
-
-This pattern is used throughout the docs app and is the preferred method.
-
-### Breakpoints System
-
-For cases where you need explicit breakpoints, staple-css provides a configurable breakpoint system.
-
-**Import breakpoints CSS:**
-```css
-@import "@staple-css/tokens/breakpoints.css";
-```
-
-**Default breakpoints (Tailwind-style):**
-| Name | Min-Width | CSS Variable |
-|------|-----------|--------------|
-| sm   | 640px     | `--st-screen-sm` |
-| md   | 768px     | `--st-screen-md` |
-| lg   | 1024px    | `--st-screen-lg` |
-| xl   | 1280px    | `--st-screen-xl` |
-| 2xl  | 1536px    | `--st-screen-2xl` |
-
-**Using breakpoints in CSS:**
-```css
-/* Mobile-first: start with mobile styles */
-.card {
-  padding: var(--st-space-3);
-}
-
-/* Then add breakpoint overrides */
-@media (min-width: 768px) {
-  .card {
-    padding: var(--st-space-5);
-  }
-}
-```
-
-**Visibility utilities included:**
-```css
-.st-hide-md { }        /* Hidden at md and up */
-.st-show-md { }        /* Shown at md and up */
-.st-hide-below-md { }  /* Hidden below md */
-.st-show-below-md { }  /* Shown below md */
-```
-
-### Custom Breakpoints Configuration
-
-Generate breakpoints with custom prefixes or values:
-
-```typescript
-import { generateBreakpointsCss, type BreakpointsOptions } from "@staple-css/tokens";
-
-// Custom prefix
-const css = generateBreakpointsCss({
-  prefix: "my",           // Default: "st"
-  screenPrefix: "bp",     // Default: "screen"
-});
-// Generates: --my-bp-sm, --my-bp-md, etc.
-
-// Custom breakpoints
-const css = generateBreakpointsCss({
-  breakpoints: [
-    { name: "mobile", minWidth: 480 },
-    { name: "tablet", minWidth: 768 },
-    { name: "desktop", minWidth: 1200 },
-  ],
-});
-```
-
-**Available presets:**
-```typescript
-import { breakpointPresets, getBreakpoints } from "@staple-css/tokens";
-
-// Tailwind (default): sm, md, lg, xl, 2xl
-const tailwind = getBreakpoints("tailwind");
-
-// Bootstrap: sm, md, lg, xl, xxl
-const bootstrap = getBreakpoints("bootstrap");
-
-// Minimal: tablet, desktop, wide
-const minimal = getBreakpoints("minimal");
-
-// Fine-grained: xs, sm, md, lg, xl, 2xl, 3xl
-const fine = getBreakpoints("fine-grained");
-```
-
-**TypeScript helpers for runtime breakpoint detection:**
-```typescript
-import { createBreakpointHelpers } from "@staple-css/tokens";
-
-const bp = createBreakpointHelpers();
-
-// Check current breakpoint
-if (bp.matches("md")) {
-  // Viewport is md or larger
-}
-
-// Get current breakpoint name
-const current = bp.current(); // "lg" | "md" | etc.
-
-// Subscribe to changes
-const unsubscribe = bp.onChange((breakpoint) => {
-  console.log("Now at:", breakpoint);
-});
-```
+- No raw CSS values -- always use `var(--st-*)`
+- No runtime CSS generation
+- No heavy dependencies
+- Tree-shakeable exports
 
 ## Color Palettes
 
-### Tailwind-Compatible Palettes
-
-22 color palettes with 11 shades each (50-950):
+22 Tailwind-compatible palettes with 11 shades (50-950):
+slate, gray, zinc, neutral, stone, red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose
 
 ```css
-@import "@staple-css/tokens/palettes.css";
-
-.button {
-  background: var(--st-blue-600);
-}
-.button:hover {
-  background: var(--st-blue-700);
-}
+.button { background: var(--st-blue-600); }
 ```
 
-**Available palettes:** slate, gray, zinc, neutral, stone, red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose
-
-### OKLCH Color Tools
-
-Generate custom palettes using perceptually uniform OKLCH color space:
+## OKLCH Color Tools
 
 ```typescript
 import { generateRamp, generateHarmony, hexToOklch } from "@staple-css/tokens/color";
 
-// Generate 12-step ramp from base color
 const ramp = generateRamp({ baseColor: "#2563eb" });
-
-// Generate color harmonies
 const complementary = generateHarmony("#2563eb", "complementary");
-const triadic = generateHarmony("#2563eb", "triadic");
 ```
+
+## Docs Site
+
+React + Vite + react-router-dom. Deployed to css.staplelab.com via GitHub Pages.
+
+Pages: Home, Getting Started, Why Staple, Token reference (7 categories), Palettes, AI Usage, Token Studio (Explorer, Palette Generator, Token Editor, Theme Builder).
+
+Visual direction: minimal, typographic, monochrome chrome with blue accent (#2563eb). System fonts + JetBrains Mono. No decorative elements, gradients, or illustrations.
